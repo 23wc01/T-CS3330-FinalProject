@@ -3,12 +3,12 @@ package edu.mu.finalproject.model;
 import java.util.Date;
 
 public abstract class MediaObject {
-	public int id;
-	public String name;
-	public String description;
-	public Date addedDate;
-	public Boolean isFavorited;
-	public float rating;
+	protected int id;
+	protected String name;
+	protected String description;
+	protected Date addedDate;
+	protected Boolean isFavorited;
+	protected float rating;
 	
 	public int getId() {
 		return id;
