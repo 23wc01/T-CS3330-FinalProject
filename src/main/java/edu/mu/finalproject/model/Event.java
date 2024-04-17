@@ -11,7 +11,18 @@ public class Event {
 	protected String artistName;
 	
 	
-
+	//Parameterized Constructor
+	public Event(MonthDay eventMonthDay, Year eventYear, String artistName) {
+		super();
+		this.eventMonthDay = eventMonthDay;
+		this.eventYear = eventYear;
+		this.artistName = artistName;
+	}
+	
+	//No use for copy constructor
+	
+	
+	
 	public MonthDay getEventMonthDay() {
 		return eventMonthDay;
 	}
