@@ -22,44 +22,37 @@ public class Main {
 		songsList.add(song1);
 		songsList.add(song2);
 		songsList.add(song3);
-		
+		Playlist yourPlaylist = new Playlist(0, "Unordered songs", null, new Date(), false, 0, songsList);
 		System.out.println("Unordered:");
 		for (Song song : songsList) {
 			System.out.println("'" + song.getName() + "'\t" + song.toString().toString());
 		}
-		
-
-		SearchComparator songSearch = new SearchComparator("Gu");
+		String queryString = "Po";
+		SearchComparator songSearch = new SearchComparator(queryString);
 		Collections.sort(songsList, songSearch);
-		Playlist yourPlaylist = new Playlist(0, "Random songs", null, new Date(), false, 0, songsList);
-
-		System.out.println("\n\nOrdered:");
+		
+		System.out.println("\n\nSearch results for " + queryString);
 		for (Song song : songsList) {
 			System.out.println(song);
 		}
+		
 		Playlist myPlaylist = new Playlist(0, "Matched songs", null, new Date(), false, 0, songsList);
 		Playlist addedPlaylist = new Playlist(0, "Added songs", null, new Date(), false, 0, songsList);
 		
-		ArrayList<MediaObject> allPlaylists = new ArrayList<MediaObject>();
-		allPlaylists.add(myPlaylist);
-		allPlaylists.add(yourPlaylist);
-		allPlaylists.add(addedPlaylist);
-		allPlaylists.add(song0);
+		ArrayList<MediaObject> allObjs = new ArrayList<MediaObject>();
+		allObjs.add(myPlaylist);
+		allObjs.add(yourPlaylist);
+		allObjs.add(addedPlaylist);
+		allObjs.add(song0);
 		
-		SearchComparator search1 = new SearchComparator("Gu");
-		Collections.sort(allPlaylists, search1);
+		SearchComparator search1 = new SearchComparator("Peel");
+		Collections.sort(allObjs, search1);
 		
-		for (MediaObject mediaObj : allPlaylists) {
+		
+		for (MediaObject mediaObj : allObjs) {
 			System.out.println(mediaObj);
 		}
-		System.out.println("New search:" + "Peel");
 		
-		SearchComparator search2 = new SearchComparator("Peel");
-		Collections.sort(allPlaylists, search2);
-		
-		for (MediaObject mediaObj : allPlaylists) {
-			System.out.println(mediaObj);
-		}
 	}
 
 }
