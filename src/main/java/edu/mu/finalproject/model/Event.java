@@ -48,6 +48,14 @@ public class Event {
 		this.artistName = artistName;
 	}
 
+	@Override
+	public String toString() {
+		return "Event [eventMonthDay=" + eventMonthDay + ", eventYear=" + eventYear + ", artistName=" + artistName
+				+ "]";
+	}
+	
+	
+
 		
 		
 		

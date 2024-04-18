@@ -5,10 +5,12 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 
+import edu.mu.finalproject.controller.EventManager;
 import edu.mu.finalproject.model.MediaObject;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;
 import edu.mu.finalproject.util.SearchComparator;
+
 
 public class Main {
 
@@ -53,6 +55,14 @@ public class Main {
 			System.out.println(mediaObj);
 		}
 		
+		
+		/*
+		EventManager testManager = EventManager.getInstance(); //create an instance of EventManager
+		testManager.addEvent();
+		*/
+		
 	}
+	
+
 
 }
