@@ -56,10 +56,8 @@ public class Main {
 		}
 		
 		
-		/*
-		EventManager testManager = EventManager.getInstance(); //create an instance of EventManager
-		testManager.addEvent();
-		*/
+//		UserInterface ui = new UserInterface();
+//		ui.start();
 		
 	}
 	

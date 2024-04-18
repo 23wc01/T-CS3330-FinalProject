@@ -48,7 +48,7 @@ public class EventManager {
 	 
 	 
 	 
-	 private Event createEvent() {
+	 private static Event createEvent() {
 		 
 		 Scanner scanner = new Scanner(System.in);
 		 
@@ -80,7 +80,7 @@ public class EventManager {
 		 
 		 //Using the information to make an event
 		 Event myEvent = new Event(monthday, year, artistName);
-		 System.out.println("Added new Event! " + myEvent.getArtistName() + " on " + myEvent.getEventMonthDay() + ", " + myEvent.getEventYear());
+		 System.out.println("Added new Event! " + myEvent.getArtistName() + " on " + myEvent.getEventMonthDay() + ", " + myEvent.getEventYear() + "\n");
 		 return myEvent;
 		 }
 		 
