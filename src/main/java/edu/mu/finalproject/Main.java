@@ -30,6 +30,10 @@ public class Main {
 			catalog.add(song);
 		}
 		
+
+		UserInterface ui = new UserInterface();
+		ui.start();
+
 		/*
 		// Search the catalog
 		SearchController searchController = new SearchController();
@@ -39,6 +43,7 @@ public class Main {
 		/* EventManager testManager = EventManager.getInstance(); //create an instance of EventManager
 		testManager.addEvent();
 		*/
+
 		
 	}
 	
