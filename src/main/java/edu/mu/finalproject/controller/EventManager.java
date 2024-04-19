@@ -30,7 +30,7 @@ public class EventManager {
 	 
 	 
 	 
-	 
+//------------------------------------------------------------------------------------	 
 	 
 	 public void addEvent() {
 		 
@@ -104,40 +104,37 @@ public class EventManager {
 	 
 	 
 	 
+//-------------------------------------------------------------------------------------------
 	 
-	 public void deleteEvent(Event myEvent) {
-		 // Code here
-	 }
-		
-	 //parameterized
 	 public void displayEventsByDate(Year startYear, MonthDay startDate, Year endYear, MonthDay endDate) {
 		
-		if(eventCollection.isEmpty()) {
-			System.out.println("You have no events!");
-			return;
-		}
-		
-		else {
-			for(Event event : eventCollection) {
+
+		for(Event event : eventCollection) {
+			
+			if(event.getEventYear().compareTo(startYear)>0 || (event.getEventYear().compareTo(startYear)==0 && event.getEventMonthDay().compareTo(startDate)>0)) {
 				
-				if(event.getEventYear().compareTo(startYear)>0 || (event.getEventYear().compareTo(startYear)==0 && event.getEventMonthDay().compareTo(startDate)>0)) {
-					
-					if(event.getEventYear().compareTo(endYear) < 0  ||  (event.getEventYear().compareTo(endYear)==0 && event.getEventMonthDay().compareTo(endDate) < 0) ) {
-						System.out.println(event.toString());
-					}
-				}
-				else {
-					System.out.println("No events in date range...");
+				if(event.getEventYear().compareTo(endYear) < 0  ||  (event.getEventYear().compareTo(endYear)==0 && event.getEventMonthDay().compareTo(endDate) < 0) ) {
+					System.out.println(event.toString());
 				}
 			}
-
+			else {
+				System.out.println("No events in date range...");
+			}
 		}
+
+		
 		
 		System.out.println();
 		
 	 }
 	 
 	 public void getEventDisplayInfo() {
+		
+		 if(eventCollection.isEmpty()) {
+				System.out.println("You have no events!");
+				return;
+			}
+		 
 		 Scanner scanner = new Scanner(System.in);
 		 
 		 try {
@@ -195,7 +192,33 @@ public class EventManager {
 		 }
 		 
 	 }
+
 	 
-	
+	 
+//-----------------------------------------------------------------------------------
+	 
+
+	 
+	 public void deleteEvent() {
+		
+		 if(eventCollection.isEmpty()) {
+			 System.out.println("You have no events!");
+			 return;
+		 }
+		 
+		System.out.println("\nEnter information so we can find the event to delete\n ");
+		Event eventToBeDeleted = createEvent();
+		 
+		 for(Event traverseEvent : eventCollection) {
+			 
+			 if(traverseEvent.equals(eventToBeDeleted)) {
+				 eventCollection.remove(eventToBeDeleted);
+				 return;
+			 }
+			
+		 }
+		 
+		 System.out.println("No event with that information found"); 
+	 }
 	 
 }

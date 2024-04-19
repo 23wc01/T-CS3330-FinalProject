@@ -54,7 +54,20 @@ public class Event {
 				+ "]";
 	}
 	
-	
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Event other = (Event) obj;
+        return eventMonthDay.equals(other.eventMonthDay) &&
+                eventYear.equals(other.eventYear) &&
+                artistName.equalsIgnoreCase(other.artistName);
+    }
+
 
 		
 		
