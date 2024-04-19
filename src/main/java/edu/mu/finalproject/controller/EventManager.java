@@ -4,7 +4,6 @@ import java.time.MonthDay;
 import java.time.Year;
 import java.util.*;
 
-import edu.mu.finalproject.UserInterface;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.util.GetIntegerInput;
 
@@ -96,7 +95,7 @@ public class EventManager {
 			 
 		 }
 		 finally {
-			 scanner.close();
+			 //scanner.close(); Doing this closes System.in
 		 }
 		 
 		System.out.println("Failed to create event.");
@@ -121,15 +120,20 @@ public class EventManager {
 		else {
 			for(Event event : eventCollection) {
 				
-				if(event.getEventYear().compareTo(startYear)>0 && event.getEventYear().compareTo(endYear)<0) {
-					if(event.getEventMonthDay().compareTo(startDate)>0 && event.getEventMonthDay().compareTo(endDate)<0) {
+				if(event.getEventYear().compareTo(startYear)>0 || (event.getEventYear().compareTo(startYear)==0 && event.getEventMonthDay().compareTo(startDate)>0)) {
+					
+					if(event.getEventYear().compareTo(endYear) < 0  ||  (event.getEventYear().compareTo(endYear)==0 && event.getEventMonthDay().compareTo(endDate) < 0) ) {
 						System.out.println(event.toString());
 					}
+				}
+				else {
+					System.out.println("No events in date range...");
 				}
 			}
 
 		}
 		
+		System.out.println();
 		
 	 }
 	 
@@ -189,11 +193,7 @@ public class EventManager {
 			 System.out.println("Type mismatch. Please enter a valid date. Valid dates have four integers for the year, and 1-2 integers for the month and day");
 			 
 		 }
-		 finally {
-			 scanner.close();
-		 }
 		 
-		System.out.println("Failed to display events.");
 	 }
 	 
 	
