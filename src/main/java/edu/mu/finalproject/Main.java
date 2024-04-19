@@ -31,8 +31,8 @@ public class Main {
 		}
 		
 
-//		UserInterface ui = new UserInterface();
-//		ui.start();
+		UserInterface ui = new UserInterface();
+		ui.start();
 
 		/*
 		// Search the catalog
