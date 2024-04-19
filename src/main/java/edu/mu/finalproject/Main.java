@@ -17,7 +17,7 @@ public class Main {
 		Song song3 = new Song(3, "Hot potato", "Pop song", new Date(), false, 0, 0);
 		
 		// Add songs to unorderedPlaylist
-		Playlist unorderedPlaylist = new Playlist(0, "Unordered pee songs", null, new Date(), false, 0, new ArrayList<Song>());		
+		Playlist unorderedPlaylist = new Playlist(0, "Unordered songs", null, new Date(), false, 0, new ArrayList<Song>());		
 		unorderedPlaylist.getSongs().add(song0);
 		unorderedPlaylist.getSongs().add(song1);
 		unorderedPlaylist.getSongs().add(song2);
@@ -30,7 +30,7 @@ public class Main {
 			catalog.add(song);
 		}		
 		SearchController searchController = new SearchController();
-		searchController.searchSort("Pee", catalog);	
+		searchController.search(catalog);	
 		
 		
 		EventManager testManager = EventManager.getInstance(); //create an instance of EventManager
