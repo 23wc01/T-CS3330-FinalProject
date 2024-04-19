@@ -28,14 +28,17 @@ public class Main {
 		catalog.add(unorderedPlaylist);
 		for (Song song : unorderedPlaylist.getSongs()) {
 			catalog.add(song);
-		}		
+		}
+		
+		/*
+		// Search the catalog
 		SearchController searchController = new SearchController();
 		searchController.search(catalog);	
+		*/
 		
-		
-		EventManager testManager = EventManager.getInstance(); //create an instance of EventManager
+		/* EventManager testManager = EventManager.getInstance(); //create an instance of EventManager
 		testManager.addEvent();
-		
+		*/
 		
 	}
 	
