@@ -27,8 +27,8 @@ public class Playlist extends MediaObject {
 
 	@Override
 	public String toString() {
-		return "Playlist [songs=" + songs + ", name=" + name + ", description=" + description + ", addedDate="
-				+ addedDate + ", isFavorited=" + isFavorited + ", rating=" + rating + "]";
+		return "Playlist [name=" + name + ", description=" + description + ", addedDate="
+				+ addedDate + ", isFavorited=" + isFavorited + ", rating=" + rating + "\nSongs in Playlist " + name + ": " + songs + "]";
 	}
 
 	
