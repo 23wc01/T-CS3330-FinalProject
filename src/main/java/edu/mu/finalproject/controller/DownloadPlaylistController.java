@@ -1,5 +1,6 @@
 // Source(s): https://stackoverflow.com/questions/5826384/java-iteration-through-a-hashmap-which-is-more-efficient
 // https://www.educative.io/answers/what-is-the-stringutilsreplace-method-in-java
+// https://www.w3schools.com/howto/howto_css_social_media_buttons.asp
 package edu.mu.finalproject.controller;
 import java.io.File;
 import java.io.FileWriter;
@@ -30,8 +31,7 @@ public class DownloadPlaylistController {
 		{"@songName",
 		"@songDescription",
 		"@songRating",
-		"@songAddedDate",
-		"@songArtistName"
+		"@songAddedDate"
 		};
 	private final static String[] accountHtmlComponent = 
 		{"@accountUsername"
@@ -146,7 +146,6 @@ public class DownloadPlaylistController {
 		String songDescription = "music";
 		String songRating = "None";
 		String songAddedDate = "";
-		String artistID = "";
 		if (song.getName() != null) {
 			songName = song.getName();
 		}
@@ -159,11 +158,8 @@ public class DownloadPlaylistController {
 		if (song.getAddedDate() != null) {
 			songAddedDate = song.getAddedDate().toString();
 		}
-		if (song.getArtistID() != -1) {
-			artistID = Integer.toString(song.getArtistID());
-			// artistName = Integer.toString(song.getArtistID());
-		}
-		String[] songInfo = {songName, songDescription, songRating, songAddedDate, artistID};
+
+		String[] songInfo = {songName, songDescription, songRating, songAddedDate};
 		return mapKeysToValues(songHtmlComponents, songInfo);
 	}
 	

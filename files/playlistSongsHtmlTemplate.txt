@@ -5,7 +5,7 @@
       <h1>@songName</h1>
     </div>
     <div class="flip-card-back">
-      <h1>@songArtistName</h1> 
+      <a href="https://www.youtube.com/results?search_query=@songName" target="_blank" class="fa fa-youtube"></a> 
       <p>Rating: @songRating</p>
       <br> 
       <p>@songAddedDate</p>

@@ -12,9 +12,9 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// Unofficially create some songs
-		Song song0 = new Song(0, "Gummy Bear", "gummy bear", new Date(), false, 3.2f, 0);
+		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, 3.2f, 0);
 		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, 2.1f, 0);
-		Song song2 = new Song(2, "Peel the avocado", "avocado", new Date(), false, 8.9f, 0);
+		Song song2 = new Song(2, "The Guacamole Song", "avocado", new Date(), false, 8.9f, 0);
 		Song song3 = new Song(3, "Hot potato", "potato", new Date(), false, 9f, 0);
 		
 		// Add songs to unorderedPlaylist
