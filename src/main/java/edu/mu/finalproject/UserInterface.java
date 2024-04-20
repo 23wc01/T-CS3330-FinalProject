@@ -4,7 +4,7 @@ import java.util.Scanner;
 import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
 
-//DO NOT USE THIS YET
+
 public class UserInterface {
 	
 	public static EventManager TheEventManager;

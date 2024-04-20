@@ -1,13 +1,14 @@
 package edu.mu.finalproject.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 public abstract class MediaObject {
 	protected int id;
 	protected String name;
 	protected String description;
 	protected Date addedDate;
-	protected Boolean isFavorited;
+	protected Boolean isFavorited = false;
 	protected float rating;
 	
 	public int getId() {
@@ -46,5 +47,41 @@ public abstract class MediaObject {
 	public void setRating(float rating) {
 		this.rating = rating;
 	}
+	
+	
+	public int toggleFavorite() {
+		
+		if(this.isFavorited == true) {
+			return -1;
+		}
+		else {
+			this.isFavorited = true;
+			return 1;
+		}
+
+		
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(addedDate, description, id, isFavorited, name, rating);
+	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MediaObject other = (MediaObject) obj;
+		return Objects.equals(addedDate, other.addedDate) && Objects.equals(description, other.description)
+				&& id == other.id && Objects.equals(isFavorited, other.isFavorited) && Objects.equals(name, other.name)
+				&& Float.floatToIntBits(rating) == Float.floatToIntBits(other.rating);
+	}
+	
+	
 	
 }

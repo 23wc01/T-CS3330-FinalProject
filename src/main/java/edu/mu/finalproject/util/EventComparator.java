@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import edu.mu.finalproject.model.Event;
 
+//Not currently in use, saving in case it's useful later
 public class EventComparator implements Comparator<Event>{
 	
 	@Override

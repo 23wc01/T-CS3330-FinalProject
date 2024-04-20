@@ -40,9 +40,6 @@ public class Main {
 		searchController.search(catalog);	
 		*/
 		
-		/* EventManager testManager = EventManager.getInstance(); //create an instance of EventManager
-		testManager.addEvent();
-		*/
 
 		
 	}
