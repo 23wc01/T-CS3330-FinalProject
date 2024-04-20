@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, html {
+  height: 100%;
+  background-color: black;
+}
+body {
+ font-family: "Lucida Console", "Courier New", monospace;
+}
+.parallax {
+  background-image: url("https://source.unsplash.com/random/?music");
+  height: 100%; 
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.playlistInfo {
+ text-align: center;
+ height: auto;
+ color: white;
+}
+.playlistInfo h1 {
+	font-weight: bold;
+	font-size: 10vw;
+}
+.playlistInfo h3 {
+	font-size: 3vw;
+}
+.songs {
+  height: 0%;
+  margin-top: -35%;
+  background-color: rgba(0,0,0,0.2);
+}
+.flip-card {
+  background-color: transparent;
+  width: 18vw;
+  height: 30vh;
+  perspective: 1000px;
+  display: inline-block; /* Display cards in a row */
+  margin: 2vw; /* Add some margin between cards */
+}
+
+.flip-card-inner {
+  border-radius: 5%;
+  position: relative;
+  width: 18vw;
+  height: 30vh;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  background-color: transparent;
+  border-radius: 5%;
+  position: absolute;
+  width: 18vw;
+  height: 30vh;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front h1 {
+  position: absolute;
+  text-shadow: 0 0 5px #808080, 0 0 5px #000000;
+  left: 0;
+  top: 0;
+  width: 18vw;
+  color: #FFF;
+  text-align: center;
+}
+.flip-card-front img {
+   border-radius: 5%;
+   width: 18vw;
+   height: 30vh;
+}
+
+.flip-card-back {
+  background-color: #000000;
+  color: white;
+  transform: rotateY(180deg);
+}
+.fa {
+  padding: 4%;
+  font-size: 4vw;
+  width: 4vw;
+  text-align: center;
+  text-decoration: none;
+  margin: 3% 2%;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+.userInfo {
+  height: 0%;
+  margin-top: 5%;
+  background-color: rgba(0,0,0,0.5);
+  text-size: 10vw;
+  text-align: center;
+  text-shadow: 0 0 5px #808080, 0 0 5px #000000;
+  color: white;
+  font-weight: bold;
+}
+.glow {
+  font-size: 80px;
+  color: #FFF;
+  text-align: center;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #7b24ed, 0 0 40px #7b24ed, 0 0 50px #7b24ed, 0 0 60px #7b24ed, 0 0 70px #7b24ed;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #9d77fc, 0 0 50px #9d77fc, 0 0 60px #9d77fc, 0 0 70px #9d77fc, 0 0 80px #9d77fc;
+  }
+}
+</style>
+
+</style>
+</head>
+<body>
+<div class="playlistInfo">
+<h1 class="glow">Songs that slap</h1>
+<p></p>
+<h3>4 songs</h3>
+<h3>Fri Apr 19 21:57:47 PDT 2024</h3>
+</div>
+<div class="parallax"></div>
+<div class="songs">
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://source.unsplash.com/random/?gummy bear" alt="gummy bear image" >
+      <h1>The Gummy Bear Song</h1>
+    </div>
+    <div class="flip-card-back">
+      <a href="https://www.youtube.com/results?search_query=The Gummy Bear Song" target="_blank" class="fa fa-youtube"></a> 
+      <p>Rating: 3.2</p>
+      <br> 
+      <p>Fri Apr 19 21:57:47 PDT 2024</p>
+    </div>
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://source.unsplash.com/random/?peanut" alt="peanut image" >
+      <h1>Peanut Butter Jelly Time</h1>
+    </div>
+    <div class="flip-card-back">
+      <a href="https://www.youtube.com/results?search_query=Peanut Butter Jelly Time" target="_blank" class="fa fa-youtube"></a> 
+      <p>Rating: 2.1</p>
+      <br> 
+      <p>Fri Apr 19 21:57:47 PDT 2024</p>
+    </div>
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://source.unsplash.com/random/?avocado" alt="avocado image" >
+      <h1>The Guacamole Song</h1>
+    </div>
+    <div class="flip-card-back">
+      <a href="https://www.youtube.com/results?search_query=The Guacamole Song" target="_blank" class="fa fa-youtube"></a> 
+      <p>Rating: 8.9</p>
+      <br> 
+      <p>Fri Apr 19 21:57:47 PDT 2024</p>
+    </div>
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://source.unsplash.com/random/?potato" alt="potato image" >
+      <h1>Hot potato</h1>
+    </div>
+    <div class="flip-card-back">
+      <a href="https://www.youtube.com/results?search_query=Hot potato" target="_blank" class="fa fa-youtube"></a> 
+      <p>Rating: 9.0</p>
+      <br> 
+      <p>Fri Apr 19 21:57:47 PDT 2024</p>
+    </div>
+  </div>
+</div>
+<div class="userInfo">
+<h1 class="glow">@accountUsername 's playlist</h1>
+</div>
+</div>
+
+<div class="parallax"></div>
+</body>
+</html>
