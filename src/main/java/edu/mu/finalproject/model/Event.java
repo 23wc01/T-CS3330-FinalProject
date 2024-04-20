@@ -2,21 +2,31 @@ package edu.mu.finalproject.model;
 
 import java.time.MonthDay;
 import java.time.Year;
+import java.util.Collection;
+
+import org.json.JSONObject;
 
 public class Event {
 	
+	
 	protected MonthDay eventMonthDay;
 	protected Year eventYear;
-	
 	protected String artistName;
 	
 	
-	//Parameterized Constructor
+	//Parameterized Constructors
 	public Event(MonthDay eventMonthDay, Year eventYear, String artistName) {
-		super();
 		this.eventMonthDay = eventMonthDay;
 		this.eventYear = eventYear;
 		this.artistName = artistName;
+	}
+	
+	//Parameterized Constructor for parsing strings into Date objects
+	//Decided not to use for now, consider for deletion
+	public Event(String eventMonthDay, int eventYear, String artistName) {
+	    this.eventMonthDay = MonthDay.parse("--" + eventMonthDay); // ensure the string is in MM-DD format coming in
+	    this.eventYear = Year.of(eventYear);
+	    this.artistName = artistName;
 	}
 	
 	//No use for copy constructor
@@ -66,6 +76,14 @@ public class Event {
         return eventMonthDay.equals(other.eventMonthDay) &&
                 eventYear.equals(other.eventYear) &&
                 artistName.equalsIgnoreCase(other.artistName);
+    }
+
+	 public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("eventMonthDay", eventMonthDay.toString().replace("--", "")); // Format "MM-DD"
+        jsonObject.put("eventYear", eventYear.toString()); // Format "YYYY"
+        jsonObject.put("artistName", artistName);
+        return jsonObject;
     }
 
 

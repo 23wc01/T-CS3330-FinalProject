@@ -5,13 +5,14 @@ import java.time.Year;
 import java.util.*;
 
 import edu.mu.finalproject.model.Event;
+import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.util.GetIntegerInput;
 
 
 public class EventManager {
 
 	private static EventManager instance;
-	ArrayList <Event> eventCollection = new ArrayList<Event>();
+	public static ArrayList <Event> eventCollection = new ArrayList<Event>();
 	
 	//private constructor to prevent instantiation
 	private EventManager() {
@@ -20,7 +21,9 @@ public class EventManager {
 	//Static method to provide access to the single instance
 	 public static EventManager getInstance() {
 	 
-	 	//create instance if it doesn't exist
+	 	/*
+	 	 * create instance if it doesn't exist
+	 	 */
 	 	if (instance == null){
 	 		instance = new EventManager();
 	 	}
@@ -48,6 +51,7 @@ public class EventManager {
 		 }
 		 
 		 eventCollection.add(myEvent); 
+		 EventFileReader.appendEvent(myEvent);
 		 System.out.println("Added new Event! " + myEvent.getArtistName() + " on " + myEvent.getEventMonthDay() + ", " + myEvent.getEventYear());
 	 }
 	 
@@ -108,18 +112,19 @@ public class EventManager {
 	 
 	 public void displayEventsByDate(Year startYear, MonthDay startDate, Year endYear, MonthDay endDate) {
 		
-
+		 int printCount = 0;
 		for(Event event : eventCollection) {
 			
 			if(event.getEventYear().compareTo(startYear)>0 || (event.getEventYear().compareTo(startYear)==0 && event.getEventMonthDay().compareTo(startDate)>0)) {
 				
 				if(event.getEventYear().compareTo(endYear) < 0  ||  (event.getEventYear().compareTo(endYear)==0 && event.getEventMonthDay().compareTo(endDate) < 0) ) {
 					System.out.println(event.toString());
+					printCount++;
 				}
 			}
-			else {
-				System.out.println("No events in date range...");
-			}
+		}
+		if(printCount == 0) {
+			System.out.println("No events in date range...");
 		}
 
 		
@@ -213,6 +218,9 @@ public class EventManager {
 			 
 			 if(traverseEvent.equals(eventToBeDeleted)) {
 				 eventCollection.remove(eventToBeDeleted);
+				 EventFileReader.deleteEvent(traverseEvent.getEventMonthDay(),
+						 					 traverseEvent.getEventYear(),
+						 					 traverseEvent.getArtistName()); //eventToBeDeleted is a "fake" event just for comparisons
 				 return;
 			 }
 			

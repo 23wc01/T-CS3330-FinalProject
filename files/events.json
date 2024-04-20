@@ -1,0 +1,20 @@
+[
+    {
+        "eventID": -1,
+        "eventMonthDay": "12-25",
+        "eventYear": 2023,
+        "artistName": "New Jeans"
+    },
+    {
+        "eventID": -2,
+        "eventMonthDay": "07-04",
+        "eventYear": 2024,
+        "artistName": "Twice"
+    },
+    {
+        "eventID": -3,
+        "eventMonthDay": "10-31",
+        "eventYear": 2025,
+        "artistName": "Stray Kids"
+    }
+]

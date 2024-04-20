@@ -1,8 +1,12 @@
 package edu.mu.finalproject;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
+import edu.mu.finalproject.model.Event;
+import edu.mu.finalproject.model.EventFileReader;
+import edu.mu.finalproject.controller.EventManager;
 
 
 public class UserInterface {
@@ -18,10 +22,14 @@ public class UserInterface {
 		//Create a music catalog
 		
 	}
-	
+	public void start() {
+		EventManager.eventCollection = EventFileReader.readEvents();
+		run();
+	}
 	
 	//Waits for a valid input and runs the method that aligns with what the user wants.
-	public void start() {
+	public void run() {
+		
 		
 		System.out.println("Welcome to Media Tracker! Type your command, or type \"menu\" to see options.");
 		Scanner scanner = new Scanner(System.in);

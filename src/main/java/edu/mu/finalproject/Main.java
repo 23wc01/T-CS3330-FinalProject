@@ -33,13 +33,13 @@ public class Main {
 		
 		
 
-		/* UserInterface ui = new UserInterface();
+		UserInterface ui = new UserInterface();
 		ui.start();
-		*/
+		
 
 		// Download playlist & display playlist contents in html file
-		DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
-		downloadPlaylist.downloadPlaylist(unorderedPlaylist);
+		//DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
+		//downloadPlaylist.downloadPlaylist(unorderedPlaylist);
 		/*
 		// Search the catalog
 		SearchController searchController = new SearchController();
