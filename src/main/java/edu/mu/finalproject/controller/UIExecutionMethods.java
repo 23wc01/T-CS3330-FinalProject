@@ -11,6 +11,10 @@ public class UIExecutionMethods {
 		    UserInterface.TheEventManager.addEvent();
 		}
 		
+		public static void executeDeleteEvent() {
+			UserInterface.TheEventManager.deleteEvent();
+		}
+		
 		public static void executeDisplayEvents() {
 			UserInterface.TheEventManager.getEventDisplayInfo();
 		}

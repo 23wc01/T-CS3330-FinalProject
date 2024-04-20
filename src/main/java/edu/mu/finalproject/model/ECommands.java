@@ -7,6 +7,7 @@ public enum ECommands {
 	//The descriptions (things in parenthesis) have to match the enum name exactly. Other wise it won't work. 
 	//If you want to play around with formatting input and stuff in UserInterface, you can, I just didn't think we needed it now.
 	ADD_EVENT("add_event"),
+	DELETE_EVENT("delete_event"),
 	DISPLAY_EVENTS("display_events"),
 	EXIT("exit"),
 	MENU("menu"),

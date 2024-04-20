@@ -45,6 +45,9 @@ public class UserInterface {
             case ADD_EVENT:
                 UIExecutionMethods.executeAddEvent();
                 break;
+            case DELETE_EVENT:
+            	UIExecutionMethods.executeDeleteEvent();
+            	break;
             case DISPLAY_EVENTS:
             	UIExecutionMethods.executeDisplayEvents();
             	break;

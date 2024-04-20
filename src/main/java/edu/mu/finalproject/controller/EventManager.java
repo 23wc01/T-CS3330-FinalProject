@@ -4,7 +4,6 @@ import java.time.MonthDay;
 import java.time.Year;
 import java.util.*;
 
-import edu.mu.finalproject.UserInterface;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.util.GetIntegerInput;
 
@@ -31,7 +30,7 @@ public class EventManager {
 	 
 	 
 	 
-	 
+//------------------------------------------------------------------------------------	 
 	 
 	 public void addEvent() {
 		 
@@ -96,7 +95,7 @@ public class EventManager {
 			 
 		 }
 		 finally {
-			 scanner.close();
+			 //scanner.close(); Doing this closes System.in
 		 }
 		 
 		System.out.println("Failed to create event.");
@@ -105,35 +104,37 @@ public class EventManager {
 	 
 	 
 	 
+//-------------------------------------------------------------------------------------------
 	 
-	 public void deleteEvent(Event myEvent) {
-		 // Code here
-	 }
-		
-	 //parameterized
 	 public void displayEventsByDate(Year startYear, MonthDay startDate, Year endYear, MonthDay endDate) {
 		
-		if(eventCollection.isEmpty()) {
-			System.out.println("You have no events!");
-			return;
-		}
-		
-		else {
-			for(Event event : eventCollection) {
+
+		for(Event event : eventCollection) {
+			
+			if(event.getEventYear().compareTo(startYear)>0 || (event.getEventYear().compareTo(startYear)==0 && event.getEventMonthDay().compareTo(startDate)>0)) {
 				
-				if(event.getEventYear().compareTo(startYear)>0 && event.getEventYear().compareTo(endYear)<0) {
-					if(event.getEventMonthDay().compareTo(startDate)>0 && event.getEventMonthDay().compareTo(endDate)<0) {
-						System.out.println(event.toString());
-					}
+				if(event.getEventYear().compareTo(endYear) < 0  ||  (event.getEventYear().compareTo(endYear)==0 && event.getEventMonthDay().compareTo(endDate) < 0) ) {
+					System.out.println(event.toString());
 				}
 			}
-
+			else {
+				System.out.println("No events in date range...");
+			}
 		}
+
 		
+		
+		System.out.println();
 		
 	 }
 	 
 	 public void getEventDisplayInfo() {
+		
+		 if(eventCollection.isEmpty()) {
+				System.out.println("You have no events!");
+				return;
+			}
+		 
 		 Scanner scanner = new Scanner(System.in);
 		 
 		 try {
@@ -189,13 +190,35 @@ public class EventManager {
 			 System.out.println("Type mismatch. Please enter a valid date. Valid dates have four integers for the year, and 1-2 integers for the month and day");
 			 
 		 }
-		 finally {
-			 scanner.close();
+		 
+	 }
+
+	 
+	 
+//-----------------------------------------------------------------------------------
+	 
+
+	 
+	 public void deleteEvent() {
+		
+		 if(eventCollection.isEmpty()) {
+			 System.out.println("You have no events!");
+			 return;
 		 }
 		 
-		System.out.println("Failed to display events.");
+		System.out.println("\nEnter information so we can find the event to delete\n ");
+		Event eventToBeDeleted = createEvent();
+		 
+		 for(Event traverseEvent : eventCollection) {
+			 
+			 if(traverseEvent.equals(eventToBeDeleted)) {
+				 eventCollection.remove(eventToBeDeleted);
+				 return;
+			 }
+			
+		 }
+		 
+		 System.out.println("No event with that information found"); 
 	 }
-	 
-	
 	 
 }
