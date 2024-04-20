@@ -10,14 +10,15 @@ import edu.mu.finalproject.controller.*;
 public class Main {
 
 	public static void main(String[] args) {
-		// Create some songs
-		Song song0 = new Song(0, "Gummy Bear", "Pop song", new Date(), false, 0, 0);
-		Song song1 = new Song(1, "Peanut Butter Jelly Time", "Pop song",new Date(), false, 0, 0);
-		Song song2 = new Song(2, "Peel the avocado", "R&B song", new Date(), false, 0, 0);
-		Song song3 = new Song(3, "Hot potato", "Pop song", new Date(), false, 0, 0);
+		
+		// Unofficially create some songs
+		Song song0 = new Song(0, "Gummy Bear", "gummy bear", new Date(), false, 3.2f, 0);
+		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, 2.1f, 0);
+		Song song2 = new Song(2, "Peel the avocado", "avocado", new Date(), false, 8.9f, 0);
+		Song song3 = new Song(3, "Hot potato", "potato", new Date(), false, 9f, 0);
 		
 		// Add songs to unorderedPlaylist
-		Playlist unorderedPlaylist = new Playlist(0, "Unordered songs", null, new Date(), false, 0, new ArrayList<Song>());		
+		Playlist unorderedPlaylist = new Playlist(0, "Songs that slap", null, new Date(), false, 0, new ArrayList<Song>());		
 		unorderedPlaylist.getSongs().add(song0);
 		unorderedPlaylist.getSongs().add(song1);
 		unorderedPlaylist.getSongs().add(song2);
@@ -30,10 +31,15 @@ public class Main {
 			catalog.add(song);
 		}
 		
+		
 
-		UserInterface ui = new UserInterface();
+		/* UserInterface ui = new UserInterface();
 		ui.start();
+		*/
 
+		// Download playlist & display playlist contents in html file
+		DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
+		downloadPlaylist.downloadPlaylist(unorderedPlaylist);
 		/*
 		// Search the catalog
 		SearchController searchController = new SearchController();

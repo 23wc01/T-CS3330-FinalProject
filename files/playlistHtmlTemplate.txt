@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  background-color: black;
+}
+body {
+ font-family: "Lucida Console", "Courier New", monospace;
+}
+.parallax {
+  background-image: url("https://source.unsplash.com/random/?music");
+  height: 100%; 
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.playlistInfo {
+ text-align: center;
+ height: auto;
+ color: white;
+}
+.playlistInfo h1 {
+	font-weight: bold;
+	font-size: 10vw;
+}
+.playlistInfo h3 {
+	font-size: 3vw;
+}
+.songs {
+  height: 0%;
+  margin-top: -35%;
+  background-color: rgba(0,0,0,0.2);
+}
+.flip-card {
+  background-color: transparent;
+  width: 18vw;
+  height: 30vh;
+  perspective: 1000px;
+  display: inline-block; /* Display cards in a row */
+  margin: 2vw; /* Add some margin between cards */
+}
+
+.flip-card-inner {
+  border-radius: 5%;
+  position: relative;
+  width: 18vw;
+  height: 30vh;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  background-color: transparent;
+  border-radius: 5%;
+  position: absolute;
+  width: 18vw;
+  height: 30vh;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front h1 {
+  position: absolute;
+  text-shadow: 0 0 5px #808080, 0 0 5px #000000;
+  left: 0;
+  top: 0;
+  padding: 2%;
+  width: 50%; /* optional: set the desired width */
+  color: #FFF;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+.flip-card-front img {
+   border-radius: 5%;
+   width: 18vw;
+   height: 30vh;
+}
+
+
+.flip-card-back {
+  background-color: #000000;
+  color: white;
+  transform: rotateY(180deg);
+}
+.flip-card-back h1 {
+  margin-top:20%;
+}
+.userInfo {
+  height: 0%;
+  margin-top: 5%;
+  background-color: rgba(0,0,0,0.5);
+  text-size: 10vw;
+  text-align: center;
+  text-shadow: 0 0 5px #808080, 0 0 5px #000000;
+  color: white;
+  font-weight: bold;
+}
+.glow {
+  font-size: 80px;
+  color: #FFF;
+  text-align: center;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #7b24ed, 0 0 40px #7b24ed, 0 0 50px #7b24ed, 0 0 60px #7b24ed, 0 0 70px #7b24ed;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #9d77fc, 0 0 50px #9d77fc, 0 0 60px #9d77fc, 0 0 70px #9d77fc, 0 0 80px #9d77fc;
+  }
+}
+</style>
+
+</style>
+</head>
+<body>
+<div class="playlistInfo">
+<h1 class="glow">@playlistName</h1>
+<p>@playlistDescription</p>
+<h3>@playlistSongsCount songs</h3>
+<h3>@playlistAddedDate</h3>
+</div>
+<div class="parallax"></div>
+<div class="songs">

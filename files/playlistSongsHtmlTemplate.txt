@@ -1,0 +1,14 @@
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://source.unsplash.com/random/?@songDescription" alt="@songDescription image" >
+      <h1>@songName</h1>
+    </div>
+    <div class="flip-card-back">
+      <h1>@songArtistName</h1> 
+      <p>Rating: @songRating</p>
+      <br> 
+      <p>@songAddedDate</p>
+    </div>
+  </div>
+</div>
