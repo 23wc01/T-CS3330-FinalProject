@@ -142,7 +142,6 @@ body {
 <body>
 <div class="playlistInfo">
 <h1 class="glow">@playlistName</h1>
-<p>@playlistDescription</p>
 <h3>@playlistSongsCount songs</h3>
 <h3>@playlistAddedDate</h3>
 </div>

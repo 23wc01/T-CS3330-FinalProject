@@ -12,7 +12,7 @@ public enum ECommands {
 	EXIT("exit"),
 	MENU("menu"),
 	//New commands here!
-	
+	SETUP_PREFERENCE("setup_preference"),
 	
 	INVALID("");
 	

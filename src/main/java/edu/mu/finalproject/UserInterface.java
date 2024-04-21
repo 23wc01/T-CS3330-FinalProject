@@ -6,6 +6,7 @@ import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventFileReader;
+import edu.mu.finalproject.model.Preference;
 import edu.mu.finalproject.controller.EventManager;
 
 
@@ -29,7 +30,6 @@ public class UserInterface {
 	
 	//Waits for a valid input and runs the method that aligns with what the user wants.
 	public void run() {
-		
 		
 		System.out.println("Welcome to Media Tracker! Type your command, or type \"menu\" to see options.");
 		Scanner scanner = new Scanner(System.in);
@@ -61,7 +61,10 @@ public class UserInterface {
             	break;
                 
               //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!
-                
+            case SETUP_PREFERENCE:
+            	UIExecutionMethods.excuteSetupPreference();
+            	break;
+            	
             case EXIT:
                 UIExecutionMethods.executeExit();
                 flag = false;

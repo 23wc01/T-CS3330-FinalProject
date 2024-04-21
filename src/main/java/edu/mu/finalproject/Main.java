@@ -12,10 +12,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// Unofficially create some songs
-		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, 3.2f, 0);
-		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, 2.1f, 0);
-		Song song2 = new Song(2, "The Guacamole Song", "avocado", new Date(), false, 8.9f, 0);
-		Song song3 = new Song(3, "Hot potato", "potato", new Date(), false, 9f, 0);
+		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, 3.2f, 0, Preference.EDM);
+		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, 2.1f, 0, Preference.RAP);
+		Song song2 = new Song(2, "The Guacamole Song", "avocado", new Date(), false, 8.9f, 0, Preference.POP);
+		Song song3 = new Song(3, "Hot potato", "potato", new Date(), false, 9f, 0, Preference.POP);
 		
 		// Add songs to unorderedPlaylist
 		Playlist unorderedPlaylist = new Playlist(0, "Songs that slap", null, new Date(), false, 0, new ArrayList<Song>());		
@@ -32,14 +32,23 @@ public class Main {
 		}
 		
 		
-
-		UserInterface ui = new UserInterface();
-		ui.start();
 		
-
+		UserInterface ui = new UserInterface();
+		ui.start();			
+		
+		/*
 		// Download playlist & display playlist contents in html file
-		//DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
-		//downloadPlaylist.downloadPlaylist(unorderedPlaylist);
+		DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
+		downloadPlaylist.downloadPlaylist(unorderedPlaylist, user);
+		
+		// Setup user's preferences
+		PreferenceController preferenceController = new PreferenceController();
+		// preferenceController.setupPreferences();
+		// Store all songs that match user's preferences in a Playlist 
+		Playlist recommenedSongs = preferenceController.recommendByPreference(Preference.POP, catalog);
+		downloadPlaylist.downloadPlaylist(recommenedSongs);
+		*/
+		
 		/*
 		// Search the catalog
 		SearchController searchController = new SearchController();

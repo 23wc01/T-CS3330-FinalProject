@@ -1,0 +1,50 @@
+{
+    "quiz": {
+      "questions": [
+        {
+          "question": "Which phrase would you most likely say?",
+          "choices": [
+            {"choice": "If my friends jump off a cliff, why wouldn't I jump off with them? Duh.", "preference": "Pop"},
+            {"choice": "I secretly look down on all of you", "preference": "Soul"},
+            {"choice": "I play songs that make my car shake.", "preference": "Rap"},
+            {"choice": "I enjoy touching grass", "preference": "Country"},
+            {"choice": "Gnarly, dude", "preference": "Rock"},
+            {"choice": "I hate myself", "preference": "EDM"}
+          ]
+        },
+        {
+          "question": "Which best describes your friday night?",
+          "choices": [
+            {"choice": "Reading over a cozy fire", "preference": "Soul"},
+            {"choice": "Waiting for that beat to drop", "preference": "EDM"},
+            {"choice": "Party. Blackout.", "preference": "Rap"},
+            {"choice": "Riding a horse off into the sunset", "preference": "Country"},
+            {"choice": "Hanging out with someone named Becky", "preference": "Pop"},
+            {"choice": "Overthrowing a government", "preference": "Rock"}
+          ]
+        },
+        {
+          "question": "When you tell people about your favorite artist, people usually reply with something like...",
+          "choices": [
+            {"choice": "'I love their music too.'", "preference": "Rap"},
+            {"choice": "'Nope, never heard of them.'", "preference": "Rock"},
+            {"choice": "'I know them from Disney/Nickelodeon/Tiktok/Vine.'", "preference": "Pop"},
+            {"choice": "'WHAT DID YOU SAY?! I can't hear you over this music!'", "preference": "EDM"},
+            {"choice": "'Oh, I only know the dude that's blind.'", "preference": "Soul"},
+            {"choice": "'Isn't that artist dead?'", "preference": "Country"}
+          ]
+        },
+        {
+          "question": "Complete this sentence: 'My funeral music better be...'",
+          "choices": [
+            {"choice": "Nostalgic", "preference": "Country"}
+            {"choice": "Emotional", "preference": "Soul"},
+            {"choice": "A bop", "preference": "Pop"},
+            {"choice": "Real Smoooooth", "preference": "Rap"},
+            {"choice": "Loud enough to get a noise complaint", "preference": "Rock"},
+            {"choice": "Something people can dance to", "preference": "EDM"}
+          ]
+        }
+      ]
+    }
+  }
