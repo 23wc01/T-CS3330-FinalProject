@@ -26,9 +26,9 @@ public class FavoritesManager {
 	 }
 	 
 	 public void favorite() {
-		 
-		 MediaObject objectToBeFavorited = FindObject.searchMediaCatalog();
-		 
+		                                                                //!!!
+		 MediaObject objectToBeFavorited = FindObject.searchMediaCatalog(null); //!!! Add real catalog here!
+		                                                                //!!!
 		 int result = objectToBeFavorited.toggleFavorite();
 		 
 		 if(result < 0) {

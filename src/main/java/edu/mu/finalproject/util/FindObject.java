@@ -1,5 +1,6 @@
 package edu.mu.finalproject.util;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import edu.mu.finalproject.model.MediaObject;
@@ -64,18 +65,18 @@ public class FindObject {
 		
 	}
 	
-	public static MediaObject searchMediaCatalog(){
+	public static MediaObject searchMediaCatalog(ArrayList <? extends MediaObject> catalog){
 		String userQuery = getInformationFromUser();
 		
 		if(userQuery == null) {
 			System.out.println("Failed to retieve information.");
 		}
 		
-//		for(MediaObject traverseObject : catalog) { //replace with real catalog when available
-//			if (traverseObject.getName().equalsIgnoreCase(userQuery)) {
-//				return traverseObject;
-//			}
-//		}
+		for(MediaObject traverseObject : catalog) { 
+			if (traverseObject.getName().equalsIgnoreCase(userQuery)) {
+				return traverseObject;
+			}
+		}
 			return null;
 	}
 	
