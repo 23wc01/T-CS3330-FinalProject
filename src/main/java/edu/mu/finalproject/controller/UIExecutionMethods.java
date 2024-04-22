@@ -22,12 +22,18 @@ public class UIExecutionMethods {
 		public static void executeExit() {
 			System.exit(0);//Could add more sophisticated exiting here later
 		}
+// WAITING FOR CATALOG:
+//		public static void executeFavorite() {
+//			UserInterface.TheFavoritesManager.favorite(); 
+//		}
 		
-		//!!!NEW METHODS HERE!!! try to put in alphabetical order
 		public static void excuteSetupPreference() {
 			PreferenceController preferenceController = new PreferenceController();
 			preferenceController.setupPreferences();
 		}
+		
+		//!!!NEW METHODS HERE!!! try to put in alphabetical order
+		
 		
 		// Display Menu------------------------------------------------
 		public static void executeMenu() {
@@ -44,7 +50,7 @@ public class UIExecutionMethods {
 * 
 * Template: 
 	public static void executeMyFunctionality() {
-			//Call your function here. 
+			//Call your function(s) here. 
 		} 
 
 */
