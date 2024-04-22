@@ -13,7 +13,9 @@ public enum ECommands {
 	MENU("menu"),
 	//New commands here!
 	SETUP_PREFERENCE("setup_preference"),
-	
+	//WAITING FOR CATALOG: SEARCH("search"),
+	//WAITING FOR CATALOG: DOWNLOAD_PLAYLIST("download_playlist"),
+	//WAITING FOR ACCOUNT: RECOMMEND_BY_PREFERENCE("recommend_by_preference),
 	INVALID("");
 	
 	private String description;

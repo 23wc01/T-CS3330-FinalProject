@@ -37,16 +37,16 @@ public class Main {
 		ui.start();			
 		
 		/*
-		// Download playlist & display playlist contents in html file
-		DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
-		downloadPlaylist.downloadPlaylist(unorderedPlaylist, user);
+		
 		
 		// Setup user's preferences
 		PreferenceController preferenceController = new PreferenceController();
 		// preferenceController.setupPreferences();
 		// Store all songs that match user's preferences in a Playlist 
 		Playlist recommenedSongs = preferenceController.recommendByPreference(Preference.POP, catalog);
-		downloadPlaylist.downloadPlaylist(recommenedSongs);
+		// Download playlist & display playlist contents in html file
+		DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
+		downloadPlaylist.downloadPlaylist(unorderedPlaylist, user);
 		*/
 		
 		/*

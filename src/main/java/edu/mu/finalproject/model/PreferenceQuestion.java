@@ -2,16 +2,13 @@ package edu.mu.finalproject.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class PreferenceQuestion {
 	private String question;
-	private HashMap<String, Preference> choicesToPreferences = new HashMap<String, Preference>();
+	private ArrayList<HashMap<String, String>> choicesToPrefs;
 	
-	public PreferenceQuestion(String question, HashMap<String, Preference> choicesToPreferences) {
-		super();
-		this.question = question;
-		this.choicesToPreferences = choicesToPreferences;
-	}
 	public String getQuestion() {
 		return question;
 	}
@@ -19,10 +16,24 @@ public class PreferenceQuestion {
 		this.question = question;
 	}
 
-	public HashMap<String, Preference> getChoiceToScoring() {
-		return choicesToPreferences;
+	public ArrayList<HashMap<String, String>> getChoiceToPreferences() {
+		return choicesToPrefs;
 	}
-	public void setChoiceToScoring(HashMap<String, Preference> choicesToPreferences) {
-		this.choicesToPreferences = choicesToPreferences;
+	public void setChoiceToPreferences(ArrayList<HashMap<String, String>> choicesToPrefs) {
+		this.choicesToPrefs = choicesToPrefs;
 	}
-}
+	public ArrayList<String> getChoices() {
+		ArrayList<String> choices = new ArrayList<String>();
+		for(Map<String, String> choiceToPreferences : choicesToPrefs) {
+			choices.add(choiceToPreferences.get("choice").toString());
+		}
+		return choices;
+	}
+	public ArrayList<String> getAnswerPreferences() {
+		ArrayList<String> answerPreferences = new ArrayList<String>();
+		for(Map<String, String> choiceToPreferences : choicesToPrefs) {
+			answerPreferences.add(choiceToPreferences.get("preference").toString());
+		}
+		return answerPreferences;
+	}
+ }
