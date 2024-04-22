@@ -8,12 +8,7 @@ import java.util.Map.Entry;
 public class PreferenceQuestion {
 	private String question;
 	private ArrayList<HashMap<String, String>> choicesToPrefs;
-	public PreferenceQuestion() {}
-	public PreferenceQuestion(String question, ArrayList<HashMap<String, String>> choicesToPrefs) {
-		super();
-		this.question = question;
-		this.choicesToPrefs = choicesToPrefs;
-	}
+	
 	public String getQuestion() {
 		return question;
 	}

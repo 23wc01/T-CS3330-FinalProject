@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
@@ -67,7 +69,8 @@ public class PreferenceController {
 				scoreQuestion(answer, preferenceQuestion);
 			}
 			Preference topPreference = getTopPreference();
-			setupPreferenceView.displayPreference(topPreference.toString().toLowerCase());
+			String preferenceStr = StringUtils.capitalize(topPreference.toString().toLowerCase());
+			setupPreferenceView.displayPreference(preferenceStr);
 		}
 		else {
 			System.out.println("Failed to read JSON file.");
@@ -106,7 +109,7 @@ public class PreferenceController {
 	
 	public Playlist recommendByPreference(Preference preference, ArrayList<MediaObject> catalog) {
 		if(preference != null) {
-			String preferenceStr = preference.toString().toLowerCase();
+			String preferenceStr = StringUtils.capitalize(preference.toString().toLowerCase());
 			ArrayList<Song> filteredCatalog = new ArrayList<Song>();
 			Playlist recommendedSongs = new Playlist(0, preferenceStr + " songs", preferenceStr, new Date(), false, -1f, filteredCatalog);
 			for (MediaObject obj : catalog) {

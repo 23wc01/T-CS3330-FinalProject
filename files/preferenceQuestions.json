@@ -2,12 +2,12 @@
   {
     "question": "Which phrase would you most likely say?",
     "choices": [
-      {"choice": "If my friends jump off a cliff, why wouldn't I jump off with them? Duh.", "preference": "Pop"},
-      {"choice": "I secretly look down on all of you", "preference": "Soul"},
-      {"choice": "I play songs that make my car shake.", "preference": "Rap"},
-      {"choice": "I enjoy touching grass", "preference": "Country"},
-      {"choice": "Gnarly, dude", "preference": "Rock"},
-      {"choice": "I hate myself", "preference": "EDM"}
+      {"choice": "'If my friends jump off a cliff, why wouldn't I jump off with them? Duh.'", "preference": "Pop"},
+      {"choice": "'I secretly look down on all of you'", "preference": "Soul"},
+      {"choice": "'I play songs that make my car shake.'", "preference": "Rap"},
+      {"choice": "'I enjoy touching grass'", "preference": "Country"},
+      {"choice": "'Gnarly, dude'", "preference": "Rock"},
+      {"choice": "'I hate myself'", "preference": "EDM"}
     ]
   },
   {

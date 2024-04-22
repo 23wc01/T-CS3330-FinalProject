@@ -26,7 +26,8 @@ public class UIExecutionMethods {
 		
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
 		public static void excuteSetupPreference() {
-			UserInterface.TheEventManager.getEventDisplayInfo(); // Not showing up in UI :(
+			PreferenceController preferenceController = new PreferenceController();
+			preferenceController.setupPreferences();
 		}
 		
 		// Display Menu------------------------------------------------
