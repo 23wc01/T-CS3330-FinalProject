@@ -35,6 +35,7 @@ public class FavoritesManager {
 			 System.out.println("You already favorited that!");
 		 }
 		 else {
+			 objectToBeFavorited.setIsFavorited(true);
 			 System.out.println("You favorited " + objectToBeFavorited.getName());
 		 }
 		 
