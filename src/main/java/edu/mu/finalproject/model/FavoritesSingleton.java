@@ -1,25 +1,24 @@
-package edu.mu.finalproject.controller;
+package edu.mu.finalproject.model;
 
 
 
 
-import edu.mu.finalproject.model.MediaObject;
-import edu.mu.finalproject.util.FindObject;
+import edu.mu.finalproject.view.FindObjectView;
 
-public class FavoritesManager {
+public class FavoritesSingleton {
 	
-	private static FavoritesManager instance;
+	private static FavoritesSingleton instance;
 	
 	//private constructor to prevent instantiation
-	private FavoritesManager() {
+	private FavoritesSingleton() {
 	}
 	
 	//Static method to provide access to the single instance
-	 public static FavoritesManager getInstance() {
+	 public static FavoritesSingleton getInstance() {
 	 
 	 	//create instance if it doesn't exist
 	 	if (instance == null){
-	 		instance = new FavoritesManager();
+	 		instance = new FavoritesSingleton();
 	 	}
 	 	
 	 	return instance;
@@ -27,7 +26,7 @@ public class FavoritesManager {
 	 
 	 public void favorite() {
 		                                                                //!!!
-		 MediaObject objectToBeFavorited = FindObject.searchMediaCatalog(null); //!!! Add real catalog here!
+		 MediaObject objectToBeFavorited = FindObjectView.searchMediaCatalog(null); //!!! Add real catalog here!
 		                                                                //!!!
 		 int result = objectToBeFavorited.toggleFavorite();
 		 

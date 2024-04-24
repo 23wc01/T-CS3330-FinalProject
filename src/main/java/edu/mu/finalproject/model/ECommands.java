@@ -9,14 +9,18 @@ public enum ECommands {
 	ADD_EVENT("add_event"),
 	DELETE_EVENT("delete_event"),
 	DISPLAY_EVENTS("display_events"),
-	EXIT("exit"),
-	//WAITING FOR CATALOG: FAVORITE("favorite"),
-	MENU("menu"),
-	//New commands here!
-	SETUP_PREFERENCE("setup_preference"),
-	//WAITING FOR CATALOG: SEARCH("search"),
+	//WAITING FOR CATALOG: DISPLAY_FAVORITES("display_favorites"),
 	//WAITING FOR CATALOG: DOWNLOAD_PLAYLIST("download_playlist"),
+	//WAITING FOR CATALOG: FAVORITE("favorite"),
 	//WAITING FOR ACCOUNT: RECOMMEND_BY_PREFERENCE("recommend_by_preference),
+	//WAITING FOR CATALOG: SEARCH("search"),
+	SETUP_PREFERENCE("setup_preference"),
+	//New commands here!
+	
+	
+	EXIT("exit"),
+	MENU("menu"),
+
 	INVALID("");
 	
 	private String description;

@@ -1,4 +1,4 @@
-package edu.mu.finalproject.util;
+package edu.mu.finalproject.view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,9 +6,9 @@ import java.util.Scanner;
 import edu.mu.finalproject.model.MediaObject;
 import edu.mu.finalproject.*;
 
-public class FindObject {
+public class FindObjectView {
 	
-	public static String getInformationFromUser() {
+	public static String getInformationFromUser() { //view
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("What type do you want? ");
@@ -64,28 +64,10 @@ public class FindObject {
 		return null;
 		
 	}
-	
-	public static MediaObject searchMediaCatalog(ArrayList <? extends MediaObject> catalog){
-		String userQuery = getInformationFromUser();
-		
-		if(userQuery == null) {
-			System.out.println("Failed to retieve information.");
-		}
-		
-		for(MediaObject traverseObject : catalog) { 
-			if (traverseObject.getName().equalsIgnoreCase(userQuery)) {
-				return traverseObject;
-			}
-		}
-			return null;
-	}
+
 	
 
 }
 
 
-/*System.out.println("What is the name of the artist?");
-			String userInput2 = scanner.nextLine().trim();
-			
-			userInput = userInput1 + ", " + userInput2;
-			*/
+

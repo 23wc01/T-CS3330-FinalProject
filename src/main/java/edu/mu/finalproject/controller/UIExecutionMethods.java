@@ -1,6 +1,10 @@
 package edu.mu.finalproject.controller;
 
 import edu.mu.finalproject.model.ECommands;
+import edu.mu.finalproject.view.FavoritesView;
+
+import java.util.Scanner;
+
 import edu.mu.finalproject.*;
 
 public class UIExecutionMethods {
@@ -14,12 +18,18 @@ public class UIExecutionMethods {
 		public static void executeDeleteEvent() {
 			UserInterface.TheEventManager.deleteEvent();
 		}
-		
+	
 		public static void executeDisplayEvents() {
 			UserInterface.TheEventManager.getEventDisplayInfo();
 		}
+//WAITING FOR CATALOG:	
+//		public static void executeDisplayFavorites() {
+//			FavoritesView.getFavInfo(); 
+//		} 
 		
 		public static void executeExit() {
+			Scanner scanner = new Scanner(System.in);
+			scanner.close();//Always close the stream from System.in
 			System.exit(0);//Could add more sophisticated exiting here later
 		}
 // WAITING FOR CATALOG:

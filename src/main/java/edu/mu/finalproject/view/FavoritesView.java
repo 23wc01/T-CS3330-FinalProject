@@ -11,9 +11,9 @@ import edu.mu.finalproject.model.Song;
 
 public class FavoritesView {
 	
-	String userInput = "";
+	static String userInput = "";
 	
-	public void getFavInfo() {
+	public static void getFavInfo() {
 		Scanner scanner =  new Scanner(System.in);
 		
 		//Continuously prompts user until a string matching the options is entered
@@ -50,7 +50,7 @@ public class FavoritesView {
 		
 	
 
-	public void displayFavoritesInfo(Class <? extends MediaObject> type){
+	public static void displayFavoritesInfo(Class <? extends MediaObject> type){
 		ArrayList <MediaObject> favorites = new ArrayList<MediaObject>();
 		favorites = FavoritesController.gatherFavorited(type);
 		
