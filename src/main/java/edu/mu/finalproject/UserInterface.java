@@ -6,9 +6,9 @@ import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventFileReader;
+import edu.mu.finalproject.model.EventManager;
 import edu.mu.finalproject.model.FavoritesSingleton;
 import edu.mu.finalproject.model.Preference;
-import edu.mu.finalproject.controller.EventManager;
 
 
 public class UserInterface {
@@ -29,7 +29,7 @@ public class UserInterface {
 	
 	
 	public void start() {
-		EventManager.eventCollection = EventFileReader.readEvents();
+		EventManager.setEventCollection(EventFileReader.readEvents());
 		//Read any other files here
 		run();
 	}
