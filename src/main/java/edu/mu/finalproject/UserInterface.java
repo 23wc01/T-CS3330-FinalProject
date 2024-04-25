@@ -6,14 +6,15 @@ import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventFileReader;
+import edu.mu.finalproject.model.EventManager;
+import edu.mu.finalproject.model.FavoritesSingleton;
 import edu.mu.finalproject.model.Preference;
-import edu.mu.finalproject.controller.EventManager;
 
 
 public class UserInterface {
 	
 	public static EventManager TheEventManager;
-	public static FavoritesManager TheFavoritesManager;
+	public static FavoritesSingleton TheFavoritesManager;
 	//fields to hold catalogs go here
 	//Any other fields go here (user?)
 	
@@ -21,14 +22,14 @@ public class UserInterface {
 	public UserInterface() {
 		
 		TheEventManager = EventManager.getInstance(); //Create an instance of EventManager
-		TheFavoritesManager = FavoritesManager.getInstance(); //Create an instance of Favorites Manager
+		TheFavoritesManager = FavoritesSingleton.getInstance(); //Create an instance of Favorites Manager
 		//Create a music catalog
 		
 	}
 	
 	
 	public void start() {
-		EventManager.eventCollection = EventFileReader.readEvents();
+		EventManager.setEventCollection(EventFileReader.readEvents());
 		//Read any other files here
 		run();
 	}
@@ -65,6 +66,10 @@ public class UserInterface {
             	UIExecutionMethods.executeDisplayEvents();
             	break;
 //WAITING FOR CATALOG:
+//            case DISPLAY_FAVORITES:
+//                UIExecutionMethods.executeDisplayFavorites();
+//                break;
+//WAITING FOR CATALOG:
 //            case FAVORITE:
 //            	UIExecutionMethods.executeFavorite();
 //            	break;
@@ -86,7 +91,7 @@ public class UserInterface {
 	        
 		    
 	    }
-	    scanner.close();
+	    //scanner.close();
 	
 	}
 	

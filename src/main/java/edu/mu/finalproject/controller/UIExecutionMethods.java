@@ -1,6 +1,11 @@
 package edu.mu.finalproject.controller;
 
 import edu.mu.finalproject.model.ECommands;
+import edu.mu.finalproject.view.EventView;
+import edu.mu.finalproject.view.FavoritesView;
+
+import java.util.Scanner;
+
 import edu.mu.finalproject.*;
 
 public class UIExecutionMethods {
@@ -8,18 +13,24 @@ public class UIExecutionMethods {
 	// Define methods to be called based on user input--------------------------------
 	
 		public static void executeAddEvent() {
-		    UserInterface.TheEventManager.addEvent();
+		    EventView.viewAddEvent();
 		}
 		
 		public static void executeDeleteEvent() {
-			UserInterface.TheEventManager.deleteEvent();
+			EventView.viewDeleteEvent();
 		}
-		
+	
 		public static void executeDisplayEvents() {
-			UserInterface.TheEventManager.getEventDisplayInfo();
+			EventView.getEventDisplayInfo();
 		}
+//WAITING FOR CATALOG:	
+//		public static void executeDisplayFavorites() {
+//			FavoritesView.getFavInfo(); 
+//		} 
 		
 		public static void executeExit() {
+			Scanner scanner = new Scanner(System.in);
+			scanner.close();//Always close the stream from System.in
 			System.exit(0);//Could add more sophisticated exiting here later
 		}
 // WAITING FOR CATALOG:
