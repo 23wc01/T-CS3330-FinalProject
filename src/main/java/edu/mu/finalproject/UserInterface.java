@@ -13,6 +13,7 @@ import edu.mu.finalproject.controller.EventManager;
 public class UserInterface {
 	
 	public static EventManager TheEventManager;
+	public static FavoritesManager TheFavoritesManager;
 	//fields to hold catalogs go here
 	//Any other fields go here (user?)
 	
@@ -20,11 +21,15 @@ public class UserInterface {
 	public UserInterface() {
 		
 		TheEventManager = EventManager.getInstance(); //Create an instance of EventManager
+		TheFavoritesManager = FavoritesManager.getInstance(); //Create an instance of Favorites Manager
 		//Create a music catalog
 		
 	}
+	
+	
 	public void start() {
 		EventManager.eventCollection = EventFileReader.readEvents();
+		//Read any other files here
 		run();
 	}
 	
@@ -59,11 +64,16 @@ public class UserInterface {
             case DISPLAY_EVENTS:
             	UIExecutionMethods.executeDisplayEvents();
             	break;
-                
-              //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!
+//WAITING FOR CATALOG:
+//            case FAVORITE:
+//            	UIExecutionMethods.executeFavorite();
+//            	break;
             case SETUP_PREFERENCE:
             	UIExecutionMethods.excuteSetupPreference();
             	break;
+                
+              //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!
+            
             	
             case EXIT:
                 UIExecutionMethods.executeExit();

@@ -10,6 +10,7 @@ public enum ECommands {
 	DELETE_EVENT("delete_event"),
 	DISPLAY_EVENTS("display_events"),
 	EXIT("exit"),
+	//WAITING FOR CATALOG: FAVORITE("favorite"),
 	MENU("menu"),
 	//New commands here!
 	SETUP_PREFERENCE("setup_preference"),

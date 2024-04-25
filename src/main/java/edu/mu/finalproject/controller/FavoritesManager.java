@@ -26,15 +26,16 @@ public class FavoritesManager {
 	 }
 	 
 	 public void favorite() {
-		 
-		 MediaObject objectToBeFavorited = FindObject.searchMediaCatalog();
-		 
+		                                                                //!!!
+		 MediaObject objectToBeFavorited = FindObject.searchMediaCatalog(null); //!!! Add real catalog here!
+		                                                                //!!!
 		 int result = objectToBeFavorited.toggleFavorite();
 		 
 		 if(result < 0) {
 			 System.out.println("You already favorited that!");
 		 }
 		 else {
+			 objectToBeFavorited.setIsFavorited(true);
 			 System.out.println("You favorited " + objectToBeFavorited.getName());
 		 }
 		 

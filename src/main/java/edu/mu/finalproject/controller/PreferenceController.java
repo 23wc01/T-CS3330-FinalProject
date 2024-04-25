@@ -24,13 +24,16 @@ import edu.mu.finalproject.view.SetupPreferenceView;
 import edu.mu.finalproject.view.RecommendByPreferenceView;
 
 public class PreferenceController {
-	private final static String jsonFilePath = "files/preferenceQuestions.json";
 	private SetupPreferenceView setupPreferenceView;
+	private Preference userPreference;
+	
+	private final static String jsonFilePath = "files/preferenceQuestions.json";
 	private static ArrayList<HashMap<String, ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>>>> json;
 	private HashMap<Preference, Integer> scoreboard;
 	
-	public PreferenceController() {
+	public PreferenceController(/* Account user*/) {
 		setupPreferenceView = new SetupPreferenceView();
+		// userPreference = user.getPreference();
 	}
 	
 	private Boolean readJson() {
@@ -53,27 +56,60 @@ public class PreferenceController {
 			return false;
 		}
 	}
-	public void setupPreferences(/*Account user*/) {
-		if (readJson()) {
-			setupPreferenceView.displaySetupIntro();
-			PreferenceQuestion preferenceQuestion;
-			scoreboard = createScoreboard();
-			
-			for (Map questionAndChoices : json) {
-				preferenceQuestion = new PreferenceQuestion();
-				preferenceQuestion.setQuestion(questionAndChoices.get("question").toString());
-				preferenceQuestion.setChoiceToPreferences((ArrayList<HashMap<String, String>>) questionAndChoices.get("choices"));
-				setupPreferenceView.displayQuestion(preferenceQuestion.getQuestion());
-				setupPreferenceView.displayChoices(preferenceQuestion.getChoices());
-				int answer = setupPreferenceView.getInputAnswer();
-				scoreQuestion(answer, preferenceQuestion);
+	
+	public boolean setupPreference(/*Account user*/) {
+		/*if (user == null) {
+			System.out.println("Must pass in a user account!");
+			return false;
+		}*/
+		setupPreferenceView.displaySetupIntro();
+		int answer = setupPreferenceView.getSetupAnswer();
+		boolean setupSuccess = false;
+		if (answer == 0) {
+			setupSuccess = preferenceQuiz();
+			if (!setupSuccess) {
+				setupPreferenceView.displayQuizError();
 			}
-			Preference topPreference = getTopPreference();
-			String preferenceStr = StringUtils.capitalize(topPreference.toString().toLowerCase());
-			setupPreferenceView.displayPreference(preferenceStr);
+		}
+		else if (answer == 1 || !setupSuccess) {
+			choosePreference();
+			setupSuccess = true;
+		}
+		else {
+			System.out.println("Failed to setup user's preference.");
+			setupSuccess = false;
+		}
+		return setupSuccess;
+	}
+	
+	public void choosePreference() {
+		setupPreferenceView.displayQuestion("What is your listening preference?");
+		ArrayList<String> choices = new ArrayList<String>();
+		for (Preference preference : Preference.values()) {
+			choices.add(preference.capitalizePreference());
+		}
+		setupPreferenceView.displayChoices(choices);
+		int preferenceAnswer = setupPreferenceView.getInputAnswer(choices.size());
+		--preferenceAnswer; // Answers are 1-based on UI, but need to get 0-based for ArrayList indexing
+		String preferenceStr = choices.get(preferenceAnswer);
+		userPreference = Preference.toPreference(preferenceStr);
+		setupPreferenceView.displayPreference(preferenceStr);
+		// user.setPreference(userPreference);
+	}
+	
+	public boolean preferenceQuiz() {
+		if (readJson()) {
+			setupPreferenceView.displayQuizIntro();
+			scoreboard = createScoreboard();
+			askQuestions();
+			userPreference = getTopPreference();
+			setupPreferenceView.displayPreference(userPreference.capitalizePreference());
+			// user.setPreference(userPreference);
+			return true;
 		}
 		else {
 			System.out.println("Failed to read JSON file.");
+			return false;
 		}
 	}
 	private HashMap<Preference, Integer> createScoreboard() {
@@ -83,15 +119,30 @@ public class PreferenceController {
 		}
 		return scoreboard;
 	}
+	
+	private void askQuestions() {
+		PreferenceQuestion preferenceQuestion;
+		for (Map questionAndChoices : json) {
+			preferenceQuestion = new PreferenceQuestion();
+			preferenceQuestion.setQuestion(questionAndChoices.get("question").toString());
+			preferenceQuestion.setChoiceToPreferences((ArrayList<HashMap<String, String>>) questionAndChoices.get("choices"));
+			setupPreferenceView.displayQuestion(preferenceQuestion.getQuestion());
+			setupPreferenceView.displayChoices(preferenceQuestion.getChoices());
+			int answer = setupPreferenceView.getInputAnswer(preferenceQuestion.getChoices().size());
+			scoreQuestion(answer, preferenceQuestion);
+		}
+	}
+	
 	private void scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
-		--answer; // Answers are 1-based. Decrement to get 0-based
+		--answer; // Answers are 1-based in UI. Decrement to get 0-based
 		ArrayList<String> answerPreferences = preferenceQuestion.getAnswerPreferences();
-		Preference answerPreference = Preference.valueOf(answerPreferences.get(answer).toUpperCase());
+		Preference answerPreference = Preference.toPreference(answerPreferences.get(answer));
 		recordScore(answerPreference);
 	}
 	
 	private void recordScore(Preference answerPreference) {
-		int newScore = scoreboard.get(answerPreference) + 1;
+		int newScore = scoreboard.get(answerPreference);
+		++newScore;
 		scoreboard.put(answerPreference, newScore);
 	}
 	
@@ -107,15 +158,15 @@ public class PreferenceController {
 		return topPreference;
 	}
 	
-	public Playlist recommendByPreference(Preference preference, ArrayList<MediaObject> catalog) {
-		if(preference != null) {
-			String preferenceStr = StringUtils.capitalize(preference.toString().toLowerCase());
+	public Playlist recommendByPreference(ArrayList<MediaObject> catalog) {
+		if(userPreference != null) {
+			String preferenceStr = userPreference.capitalizePreference();
 			ArrayList<Song> filteredCatalog = new ArrayList<Song>();
 			Playlist recommendedSongs = new Playlist(0, preferenceStr + " songs", preferenceStr, new Date(), false, -1f, filteredCatalog);
 			for (MediaObject obj : catalog) {
 				if(obj.getClass() == Song.class) {
 					Song song = (Song) obj;
-					if(song.getPreference() == preference) {
+					if(song.getPreference() == userPreference) {
 						recommendedSongs.getSongs().add(song);
 					}
 				}
@@ -126,8 +177,8 @@ public class PreferenceController {
 		}
 		
 		else {
-			setupPreferences();
-			return recommendByPreference(preference, catalog);
+			setupPreference();
+			return recommendByPreference(catalog);
 		}
 	}
 }
