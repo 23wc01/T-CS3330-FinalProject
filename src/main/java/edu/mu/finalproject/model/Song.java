@@ -7,14 +7,13 @@ public class Song extends MediaObject {
 	private Date releaseDate;
 	Preference preference;
 	
-	public Song(int id, String name, String description, Date addedDate, Boolean isFavorited, float rating, int artistID, Preference preference) {
+	public Song(int id, String name, String description, Date addedDate, Boolean isFavorited, int artistID, Preference preference) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.addedDate = addedDate;
 		this.isFavorited = isFavorited;
-		this.rating = rating;
 		this.artistID = artistID;
 		this.preference = preference;
 	}
@@ -34,7 +33,7 @@ public class Song extends MediaObject {
 	@Override
 	public String toString() {
 		return "Song [releaseDate=" + releaseDate + ", name=" + name + ", description=" + description + ", addedDate="
-				+ addedDate + ", isFavorited=" + isFavorited + ", rating=" + rating + "]";
+				+ addedDate + ", isFavorited=" + isFavorited + "]";
 	}
 
 	

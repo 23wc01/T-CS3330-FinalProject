@@ -30,7 +30,6 @@ public class DownloadPlaylistController {
 	private final static String[] songHtmlComponents = 
 		{"@songName",
 		"@songDescription",
-		"@songRating",
 		"@songAddedDate"
 		};
 	private final static String[] accountHtmlComponent = 
@@ -144,7 +143,6 @@ public class DownloadPlaylistController {
 	private Map<String, String> getSongDynamicValues(Song song) {
 		String songName = "";
 		String songDescription = "music";
-		String songRating = "None";
 		String songAddedDate = "";
 		if (song.getName() != null) {
 			songName = song.getName();
@@ -152,14 +150,12 @@ public class DownloadPlaylistController {
 		if (song.getDescription() != null) {
 			songDescription = song.getDescription();
 		}
-		if (song.getRating() != 0) {
-			songRating = Float.toString(song.getRating());
-		}
+		
 		if (song.getAddedDate() != null) {
 			songAddedDate = song.getAddedDate().toString();
 		}
 
-		String[] songInfo = {songName, songDescription, songRating, songAddedDate};
+		String[] songInfo = {songName, songDescription, songAddedDate};
 		return mapKeysToValues(songHtmlComponents, songInfo);
 	}
 	

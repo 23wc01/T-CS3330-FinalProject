@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import edu.mu.finalproject.model.MediaObject;
 
 public class FavoritesController {
-	
+
 	public static ArrayList<MediaObject> gatherFavorited(Class<? extends MediaObject> type) {
 		
 		ArrayList <MediaObject> favorites = new ArrayList<MediaObject>();

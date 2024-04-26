@@ -15,7 +15,6 @@ public class Artist extends MediaObject{
 			this.description = description;
 			this.addedDate = addedDate;
 			this.isFavorited = isFavorited;
-			this.rating = rating;
 			this.artistID = artistID;
 		}
 		
