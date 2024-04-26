@@ -65,7 +65,13 @@ public class PreferenceController {
 		return true;
 	}
 	
-	public Playlist recommendByPreference(ArrayList<MediaObject> catalog) {
+	public Playlist recommendByPreference(ArrayList<MediaObject> catalog/*, Account user*/) {
+		/*
+		if (user == null) {
+			System.out.println("We can't give you a recommendation. Please log in first!");
+			return null;
+		}
+		*/
 		if(userPreference != null) {
 			String preferenceStr = userPreference.capitalizePreference();
 			ArrayList<Song> filteredCatalog = new ArrayList<Song>();
