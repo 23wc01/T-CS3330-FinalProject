@@ -16,6 +16,7 @@ public class FindObjectController {
 		
 		if(userQuery == null) {
 			System.out.println("Failed to retieve information.");
+			return null;
 		}
 		
 		for(MediaObject traverseObject : catalog) { 
