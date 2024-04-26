@@ -87,13 +87,13 @@ public class MediaCatalogController {
     }
 
     // These methods will need to be filled in with logic to read from a database or file
-    public Playlist createPlaylistFromDatabase(String filePath) {
-        // Implement logic to read playlist data from a file and create a playlist object
-        return new Playlist(); // Placeholder return
-    }
-
-    public Playlist parsePlaylistJson(String json) {
-        // Implement logic to parse JSON into a playlist
-        return new Playlist(); // Placeholder return
-    }
+//    public Playlist createPlaylistFromDatabase(String filePath) {
+//        // Implement logic to read playlist data from a file and create a playlist object
+//        return new Playlist(); // Placeholder return
+//    }
+//
+//    public Playlist parsePlaylistJson(String json) {
+//        // Implement logic to parse JSON into a playlist
+//        return new Playlist(); // Placeholder return
+//    }
 }
