@@ -1,0 +1,74 @@
+[
+   {
+      "id":1,
+      "name":"God's Menu",
+      "description":"A powerful rap track with intense energy and aggressive beats.",
+      "isFavorited":false,
+      "artistName":"Stray Kids",
+      "preference": "RAP"
+   },
+   {
+      "id":2,
+      "name":"Feel Special",
+      "description":"A sweet and uplifting K-pop track about self-love and confidence.",
+      "isFavorited":true,
+      "artistName":"Twice",
+      "preference": "POP"
+   },
+   {
+      "id":3,
+      "name":"Pretty Savage",
+      "description":"A sassy EDM track with strong beats and confident vocals.",
+      "isFavorited":false,
+      "artistName":"BlackPink",
+      "preference": "EDM"
+   },
+   {
+      "id":4,
+      "name":"That's Amore",
+      "description":"A classic crooner tune made famous by Dean Martin, full of soulful charm and charisma.",
+      "isFavorited":false,
+      "artistName":"Dean Martin",
+      "preference": "SOUL"
+   },
+   {
+      "id":5,
+      "name":"Stand Out Fit In",
+      "description":"A hard-hitting rock anthem with soaring guitars and impassioned lyrics.",
+      "isFavorited":true,
+      "artistName":"ONEOKROCK",
+      "preference": "ROCK"
+   },
+   {
+      "id":6,
+      "name":"Peanut Butter Jelly Time",
+      "description":"A quirky and infectious novelty song about peanut butter and jelly sandwiches.",
+      "isFavorited":false,
+      "artistName":"Kids Tunez",
+      "preference": "POP"
+   },
+   {
+      "id":7,
+      "name":"The Guacamole Song",
+      "description":"A silly and lighthearted children's song about making guacamole, sung entirely in French.",
+      "isFavorited":true,
+      "artistName":"Dr. Jean",
+      "preference": "POP"
+   },
+   {
+      "id":8,
+      "name":"The Gummy Bear Song",
+      "description":"A catchy and cheerful pop song about gummy bears, guaranteed to put a smile on anyone's face.",
+      "isFavorited":false,
+      "artistName":"icanrockyourworld",
+      "preference": "POP"
+   },
+   {
+      "id":9,
+      "name":"Hot Potato",
+      "description":"A fast-paced and energetic children's song about playing hot potato, sure to get everyone moving and laughing.",
+      "isFavorited":false,
+      "artistName":"Patty Shukla",
+      "preference": "POP"
+   }
+]
