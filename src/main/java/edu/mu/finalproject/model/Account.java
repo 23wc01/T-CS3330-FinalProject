@@ -50,12 +50,6 @@ public class Account {
 	public void setSavedSongs(List<Song> savedSongs) {
 		this.savedSongs = savedSongs;
 	}
-	public List<Album> getSavedAlbums() {
-		return savedAlbums;
-	}
-	public void setSavedAlbums(List<Album> savedAlbums) {
-		this.savedAlbums = savedAlbums;
-	}
 	public List<String> getFollowers() {
 		return followers;
 	}
