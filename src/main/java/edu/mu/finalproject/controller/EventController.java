@@ -64,7 +64,9 @@ public class EventController {
 	 
 	 public static int deleteEvent(Event eventToBeDeleted) { 
 			
-		 
+		 if(EventManager.getEventCollection().isEmpty()) {
+			 return 0;
+		 }
 		 for(Event traverseEvent : EventManager.getEventCollection()) {
 			 
 			 if(traverseEvent.equals(eventToBeDeleted)) {
@@ -77,7 +79,7 @@ public class EventController {
 			
 		 }
 		 
-		 return 0; 
+		 return -1; 
 	 }
 
 }

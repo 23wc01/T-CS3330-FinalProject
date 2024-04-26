@@ -175,10 +175,6 @@ public class EventView {
 	 
 	 public static void viewDeleteEvent() { 
 			
-		 if(EventManager.getEventCollection().isEmpty()) {
-			 System.out.println("You have no events!");
-			 return;
-		 }
 		 
 		System.out.println("\nEnter information so we can find the event to delete\n ");
 		Event eventToBeDeleted = createEvent();
@@ -187,6 +183,9 @@ public class EventView {
 		
 		if (result > 0) {
 			System.out.println("Event successfully deleted!");
+		}
+		else if (result == 0) {
+			System.out.println("You have no events!");
 		}
 		else {
 			 System.out.println("No event with that information found");
