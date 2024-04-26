@@ -5,7 +5,7 @@ import java.util.Date;
 public class Song extends MediaObject {
 	private int artistID;
 	private Date releaseDate;
-	Preference preference;
+	private Preference preference;
 	
 	public Song(int id, String name, String description, Date addedDate, Boolean isFavorited, float rating, int artistID, Preference preference) {
 		super();
