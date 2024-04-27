@@ -13,7 +13,7 @@ public class FavoritesView {
 	
 	static String userInput = "";
 	
-	public static void getFavInfo() {
+	public static String getFavInfo() {
 		Scanner scanner =  new Scanner(System.in);
 		
 		//Continuously prompts user until a string matching the options is entered
@@ -45,20 +45,41 @@ public class FavoritesView {
             }
         }
 
-       
+       return userInput;
     }
 		
 	
 
-	public static void displayFavoritesInfo(Class <? extends MediaObject> type){
+	public static ArrayList <MediaObject> displayFavoritesInfo(Class <? extends MediaObject> type){
 		ArrayList <MediaObject> favorites = new ArrayList<MediaObject>();
 		favorites = FavoritesController.gatherFavorited(type);
 		
-		System.out.println("Favorites summary for " + userInput.toLowerCase());
+		System.out.println("Favorites summary for " + userInput);
 		System.out.println("You have " + favorites.size() + " favorites.");
 		for(MediaObject myObject : favorites) {
 			System.out.println(myObject.getName());
 		}
+		
+		return favorites;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public static boolean displayFavoriteResult(boolean favoriteResult, MediaObject objectToBeFavorited) {
+		
+		if(favoriteResult == false) {
+			 System.out.println("You un-favorited " + objectToBeFavorited.getName());
+			 return false;
+		 }
+		 else {
+			 System.out.println("You favorited " + objectToBeFavorited.getName());
+			 return true;
+		 }
 	}
 	
 }

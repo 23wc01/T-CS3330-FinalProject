@@ -1,6 +1,8 @@
 package edu.mu.finalproject.controller;
 
 import edu.mu.finalproject.model.ECommands;
+import edu.mu.finalproject.model.Event;
+import edu.mu.finalproject.model.MediaObject;
 import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
 
@@ -13,13 +15,17 @@ public class UIExecutionMethods {
 	// Define methods to be called based on user input--------------------------------
 	
 		public static void executeAddEvent() {
-		    EventView.viewAddEvent();
+			Event myEvent = EventView.createEvent();
+		    EventView.viewAddEvent(myEvent);
 		}
 		
+		
 		public static void executeDeleteEvent() {
-			EventView.viewDeleteEvent();
+			System.out.println("\nEnter information so we can find the event to delete\n ");
+			Event eventToBeDeleted = EventView.createEvent(); 
+			EventView.viewDeleteEvent(eventToBeDeleted);
 		}
-	
+		
 		public static void executeDisplayEvents() {
 			EventView.getEventDisplayInfo();
 		}
@@ -35,7 +41,8 @@ public class UIExecutionMethods {
 		}
 // WAITING FOR CATALOG:
 //		public static void executeFavorite() {
-//			UserInterface.TheFavoritesManager.favorite(); 
+//			MediaObject objectToBeFavorited = FindObjectController.searchMediaCatalog(null); //!!! Add real catalog here!
+//			boolean result = FavoritesController.favorite(objectToBeFavorited);														
 //		}
 		
 		public static void excuteSetupPreference() {

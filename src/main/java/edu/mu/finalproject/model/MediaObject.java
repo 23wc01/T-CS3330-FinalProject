@@ -49,14 +49,15 @@ public abstract class MediaObject {
 	}
 	
 	
-	public int toggleFavorite() {
+	public boolean toggleFavorite() {
 		
 		if(this.isFavorited == true) {
-			return -1;
+			this.setIsFavorited(false);
+			return false;
 		}
 		else {
-			this.isFavorited = true;
-			return 1;
+			this.setIsFavorited(true);
+			return true;
 		}
 
 		

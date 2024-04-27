@@ -8,7 +8,7 @@ import edu.mu.finalproject.*;
 
 public class FindObjectView {
 	
-	public static String getInformationFromUser() { //view
+	public static String getInformationFromUser() { 
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("What type do you want? ");

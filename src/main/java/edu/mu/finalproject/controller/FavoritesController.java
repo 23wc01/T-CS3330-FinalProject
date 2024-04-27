@@ -3,6 +3,8 @@ package edu.mu.finalproject.controller;
 import java.util.ArrayList;
 
 import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.view.FavoritesView;
+import edu.mu.finalproject.view.FindObjectView;
 
 public class FavoritesController {
 	
@@ -19,7 +21,18 @@ public class FavoritesController {
 		}
 		
 		return favorites;
+	}
+	
+	
+	
+	
+	
+	public static boolean favorite(MediaObject objectToBeFavorited) {
+	
+		boolean result = objectToBeFavorited.toggleFavorite();
 		
+		FavoritesView.displayFavoriteResult(result, objectToBeFavorited);
+		return result; //true if favorited, false if unfavorited
 	}
 
 }

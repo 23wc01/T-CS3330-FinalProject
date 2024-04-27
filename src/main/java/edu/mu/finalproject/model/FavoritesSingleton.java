@@ -23,22 +23,7 @@ public class FavoritesSingleton {
 	 	
 	 	return instance;
 	 }
-	 
-	 public void favorite() {
-		                                                                //!!!
-		 MediaObject objectToBeFavorited = FindObjectView.searchMediaCatalog(null); //!!! Add real catalog here!
-		                                                                //!!!
-		 int result = objectToBeFavorited.toggleFavorite();
-		 
-		 if(result < 0) {
-			 System.out.println("You already favorited that!");
-		 }
-		 else {
-			 objectToBeFavorited.setIsFavorited(true);
-			 System.out.println("You favorited " + objectToBeFavorited.getName());
-		 }
-		 
-	 }
+	
 	 
 	 
 
