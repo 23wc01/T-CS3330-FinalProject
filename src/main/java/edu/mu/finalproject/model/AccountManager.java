@@ -20,7 +20,9 @@ public class AccountManager {
 	// Store the file path to the JSON file and a List of all accounts
 	static String path = "files/accounts.json";
 	private List<Account> activeAccounts;
-
+	private int accountCounter;
+	
+	
 	public AccountManager() {
 		this.activeAccounts = loadAccounts();
 	}
@@ -28,6 +30,8 @@ public class AccountManager {
 	public List<Account> loadAccounts() {
 		return activeAccounts;
 	}
+	
+	
 	
 	// This method uses a hash function to protect the user passwords
 	private String hashPassword(String passwordToHash) {
@@ -70,6 +74,7 @@ public class AccountManager {
 		return 0; //on success
 	}
 	
+	// This method returns a JSON array of the IDs of a list of MediaObjects.
 	private JSONArray extractIDs(List<? extends MediaObject> objects) {
 		JSONArray IDs = new JSONArray();
 		for (MediaObject object : objects) {
@@ -78,6 +83,7 @@ public class AccountManager {
 		return IDs;
 	}
 	
+	// This method returns a JSON array of the IDs of a list of Accounts.
 	private JSONArray extractAccountIDs(List<Account> accounts) {
 		JSONArray IDs = new JSONArray();
 		for (Account account : accounts) {
@@ -86,7 +92,7 @@ public class AccountManager {
 		return IDs;
 	}
 	
-	// This method will write all account information to the accounts.json file.
+	// This method will write all account information from the activeAccounts field to the accounts.json file.
 	public int saveChanges() {
 		
 		// Create a new JSON array to add Account objects to
