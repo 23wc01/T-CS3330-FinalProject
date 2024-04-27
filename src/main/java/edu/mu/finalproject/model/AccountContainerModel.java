@@ -41,6 +41,16 @@ public class AccountContainerModel {
 		return hashedPassword;
 	}
 	
+	public boolean authenticateUser(String username, String password) {
+		String hashedPassword = hashPassword(password);
+		for (Account account : activeAccounts) {
+			if (account.getUsername().equals(username) && account.getPassword().equals(hashedPassword)) {
+				return true;
+			}
+		}
+		return false; 
+	}
+	
 	public int createAccount() {
 		
 		return 0;
