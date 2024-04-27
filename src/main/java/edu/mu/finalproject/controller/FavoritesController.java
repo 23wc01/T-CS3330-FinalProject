@@ -7,7 +7,7 @@ import edu.mu.finalproject.view.FavoritesView;
 import edu.mu.finalproject.view.FindObjectView;
 
 public class FavoritesController {
-	
+
 	public static ArrayList<MediaObject> gatherFavorited(Class<? extends MediaObject> type) {
 		
 		ArrayList <MediaObject> favorites = new ArrayList<MediaObject>();

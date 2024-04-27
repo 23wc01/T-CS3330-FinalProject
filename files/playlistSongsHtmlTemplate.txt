@@ -6,7 +6,6 @@
     </div>
     <div class="flip-card-back">
       <a href="https://www.youtube.com/results?search_query=@songName" target="_blank" class="fa fa-youtube"></a> 
-      <p>Rating: @songRating</p>
       <br> 
       <p>@songAddedDate</p>
     </div>

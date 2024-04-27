@@ -7,33 +7,45 @@ import edu.mu.finalproject.util.GetIntegerInput;
 
 public class SetupPreferenceView {
 	/** 
-	 * Displays @introStr with a * divider line below it
+	 * Displays @introStr with a * divider line below it. Returns false if @param question is null
 	 * @param introStr
+	 * @return
 	 */
-	public void displayIntro(String introStr) {
+	public Boolean displayIntro(String introStr) {
+		if(introStr == null) {
+			return false;
+		}
 		System.out.println();
 		System.out.println(introStr);
 		System.out.println("*******************************\n");
+		return true;
 	}
 	
 	/**
-	 * Displays @param question with a - divider line below it
+	 * Displays @param question with a - divider line below it. Returns false if @param question is null
 	 * @param question
+	 * @return
 	 */
-	public void displayQuestion(String question) {
+	public Boolean displayQuestion(String question) {
+		if (question == null) {
+			return false;
+		}
 		System.out.println();
 		System.out.println(question);
 		System.out.println("-------------------------------");
+		return true;
 	}
 	
 	/**
 	 * Prompts user if they'll like to setup their own preference or take a quiz & let quiz scores setup preference
+	 * @return
 	 */
-	public void displaySetupIntro() {
-		displayIntro("Let's setup your listening preference...");
+	public Boolean displaySetupIntro() {
+		Boolean displayIntroSuccess = displayIntro("Let's setup your listening preference...");
 		displayQuestion("Determine how you'll setup your listening preference:");
 		System.out.println("0 - Take a quiz to determine my preference");
 		System.out.println("1 - Choose my own preference");
+		return displayIntroSuccess;
 	}
 	
 	/**
@@ -52,21 +64,28 @@ public class SetupPreferenceView {
 	
 	/**
 	 * Displays the introduction to the quiz option of setting up preferences
+	 * @return
 	 */
-	public void displayQuizIntro() {
-		displayIntro("Here's a multiple choice quiz to help determine your preference as a listener!");
+	public Boolean displayQuizIntro() {
+		Boolean displayIntroSuccess = displayIntro("Here's a multiple choice quiz to help determine your preference as a listener!");
+		return displayIntroSuccess;
 	}
 	
 	/**
 	 * Displays each choice in @choices on seperate lines with numerical labels (1-based indexing)
 	 * @param choices
+	 * @return
 	 */
-	public void displayChoices(ArrayList<String> choices) {
+	public Boolean displayChoices(ArrayList<String> choices) {
+		if(choices == null) {
+			return false;
+		}
 		int choiceNum = 1;
 		for (String choice : choices) {
 			System.out.println(choiceNum + " - " + choice);
 			++choiceNum;
 		}
+		return true;
 	}
 	
 	/** 
@@ -86,19 +105,26 @@ public class SetupPreferenceView {
 	
 	/**
 	 * Displays error message if error occurs in quiz setup 
+	 * @return
 	 */
-	public void displayQuizError() {
+	public Boolean displayQuizError() {
 		System.out.println("\nSorry, there's an error in displaying the quiz right now.");
+		return true;
 	}
 	
 	/**
 	 * Displays preference with * divider line below it
 	 * @param preference
+	 * @return
 	 */
-	public void displayPreference(String preference) {
-		displayIntro("\nYour preference is...");
+	public Boolean displayPreference(String preference) {
+		if(preference == null) {
+			return false;
+		}
+		Boolean displayIntroSuccess = displayIntro("\nYour preference is...");
 		System.out.println("You're a(n) " + preference + " lover!");
 		displayIntro("");
+		return displayIntroSuccess;
 	}
 }
  

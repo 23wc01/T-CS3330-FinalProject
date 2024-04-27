@@ -12,13 +12,13 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// Unofficially create some songs
-		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, 3.2f, 0, Preference.EDM);
-		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, 2.1f, 0, Preference.RAP);
-		Song song2 = new Song(2, "The Guacamole Song", "avocado", new Date(), false, 8.9f, 0, Preference.POP);
-		Song song3 = new Song(3, "Hot potato", "potato", new Date(), false, 9f, 0, Preference.POP);
+		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, "icanrockyourworld", Preference.EDM);
+		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, "Kids Tunez", Preference.RAP);
+		Song song2 = new Song(2, "The Guacamole Song", "avocado", new Date(), false, "Dr. Jean", Preference.POP);
+		Song song3 = new Song(3, "Hot potato", "potato", new Date(), false, "Patty Shukla", Preference.POP);
 		
 		// Add songs to unorderedPlaylist
-		Playlist unorderedPlaylist = new Playlist(0, "Songs that slap", null, new Date(), false, 0, new ArrayList<Song>());		
+		Playlist unorderedPlaylist = new Playlist(0, "Songs that slap", null, new Date(), false, new ArrayList<Song>());		
 		unorderedPlaylist.getSongs().add(song0);
 		unorderedPlaylist.getSongs().add(song1);
 		unorderedPlaylist.getSongs().add(song2);
@@ -37,8 +37,6 @@ public class Main {
 		ui.start();			
 		
 		/*
-		
-		
 		// Setup user's preferences
 		PreferenceController preferenceController = new PreferenceController();
 		// preferenceController.setupPreferences();
@@ -54,8 +52,6 @@ public class Main {
 		SearchController searchController = new SearchController();
 		searchController.search(catalog);	
 		*/
-		
-
 		
 	}
 	

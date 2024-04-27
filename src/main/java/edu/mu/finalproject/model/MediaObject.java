@@ -9,7 +9,6 @@ public abstract class MediaObject {
 	protected String description;
 	protected Date addedDate;
 	protected Boolean isFavorited = false;
-	protected float rating;
 	
 	public int getId() {
 		return id;
@@ -41,12 +40,6 @@ public abstract class MediaObject {
 	public void setIsFavorited(Boolean isFavorited) {
 		this.isFavorited = isFavorited;
 	}
-	public float getRating() {
-		return rating;
-	}
-	public void setRating(float rating) {
-		this.rating = rating;
-	}
 	
 	
 	public boolean toggleFavorite() {
@@ -65,7 +58,7 @@ public abstract class MediaObject {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(addedDate, description, id, isFavorited, name, rating);
+		return Objects.hash(addedDate, description, id, isFavorited, name);
 	}
 	
 	
@@ -79,8 +72,7 @@ public abstract class MediaObject {
 			return false;
 		MediaObject other = (MediaObject) obj;
 		return Objects.equals(addedDate, other.addedDate) && Objects.equals(description, other.description)
-				&& id == other.id && Objects.equals(isFavorited, other.isFavorited) && Objects.equals(name, other.name)
-				&& Float.floatToIntBits(rating) == Float.floatToIntBits(other.rating);
+				&& id == other.id && Objects.equals(isFavorited, other.isFavorited) && Objects.equals(name, other.name);
 	}
 	
 	

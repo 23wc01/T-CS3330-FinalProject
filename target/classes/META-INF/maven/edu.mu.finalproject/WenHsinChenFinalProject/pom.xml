@@ -3,7 +3,11 @@
   <groupId>edu.mu.finalproject</groupId>
   <artifactId>WenHsinChenFinalProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <build>
+    <defaultGoal>test</defaultGoal>
+  </build>
   <dependencies>
+<<<<<<< HEAD
 	<dependency>
     	<groupId>org.apache.commons</groupId>
     	<artifactId>commons-text</artifactId>
@@ -31,4 +35,22 @@
     </plugins>
   </build>
   
+=======
+        <dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-text</artifactId>
+		    <version>1.12.0</version>
+        </dependency>
+        <dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.8.9</version>
+        </dependency>
+        <dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20210307</version>
+        </dependency>
+  </dependencies>
+>>>>>>> 178dec9c702f3d320d444a36c0da59ee75e9d8a9
 </project>

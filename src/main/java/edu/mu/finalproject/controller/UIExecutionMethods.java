@@ -47,7 +47,7 @@ public class UIExecutionMethods {
 		
 		public static void excuteSetupPreference() {
 			PreferenceController preferenceController = new PreferenceController();
-			preferenceController.setupPreference();
+			preferenceController.modifyPreference();
 		}
 		
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order

@@ -30,7 +30,6 @@ public class DownloadPlaylistController {
 	private final static String[] songHtmlComponents = 
 		{"@songName",
 		"@songDescription",
-		"@songRating",
 		"@songAddedDate"
 		};
 	private final static String[] accountHtmlComponent = 
@@ -76,8 +75,15 @@ public class DownloadPlaylistController {
 	 * Controlling method. Gets & Writes the "dynamic values" in Playlist, Playlist's songs, and Account into html file
 	 * @param playlist
 	 * @param account
+	 * @return
 	 */
-	public void downloadPlaylist(Playlist playlist/*, Account account*/) {	
+	public Boolean downloadRecommendedPlaylist(/*Account user*/) {	
+		/*if ( || account == null) {
+			System.out.println("To download playlist, you must login to an account");
+			return false;
+		}
+		*/
+		/*Playlist playlist = user.getUserPreference();*/
 		Map<String, String> playlistDynamicValues = getPlaylistDynamicValues(playlist);
 		String playlistHtml = createHtml(playlistDynamicValues, playlistHtmlTemplate);
 		
@@ -91,7 +97,7 @@ public class DownloadPlaylistController {
 		String html = playlistHtml + songsHtml + accountHtmlTemplate; // Change to accountHtml when Account implementation is done
 		Boolean writeIsSuccess = writeHtmlToFile(playlist.getName(), html);
 		DownloadPlaylistView view = new DownloadPlaylistView();
-		view.displayDownloadMessage(htmlOutputFilepath, writeIsSuccess);
+		return view.displayDownloadMessage(htmlOutputFilepath, writeIsSuccess);
 	}
 	
 	/**
@@ -144,7 +150,6 @@ public class DownloadPlaylistController {
 	private Map<String, String> getSongDynamicValues(Song song) {
 		String songName = "";
 		String songDescription = "music";
-		String songRating = "None";
 		String songAddedDate = "";
 		if (song.getName() != null) {
 			songName = song.getName();
@@ -152,14 +157,12 @@ public class DownloadPlaylistController {
 		if (song.getDescription() != null) {
 			songDescription = song.getDescription();
 		}
-		if (song.getRating() != 0) {
-			songRating = Float.toString(song.getRating());
-		}
+		
 		if (song.getAddedDate() != null) {
 			songAddedDate = song.getAddedDate().toString();
 		}
 
-		String[] songInfo = {songName, songDescription, songRating, songAddedDate};
+		String[] songInfo = {songName, songDescription, songAddedDate};
 		return mapKeysToValues(songHtmlComponents, songInfo);
 	}
 	

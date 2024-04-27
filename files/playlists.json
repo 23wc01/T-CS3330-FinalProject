@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Upbeat Hits",
+        "description": "A playlist featuring some of the catchiest and high-energy tracks from various artists.",
+        "isFavorited": true,
+        "songNames": [
+            "God's Menu",
+            "Feel Special",
+            "Pretty Savage"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Classic Crooner Tunes",
+        "description": "A collection of timeless classics from the legendary Dean Martin.",
+        "isFavorited": false,
+        "songNames": [
+            "That's Amore",
+            "Volare",
+            "Mambo Italiano"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Foodie and Rock",
+        "description": "Some of the most energetic and inspiring tracks from ONEOKROCK and other artists.",
+        "isFavorited": true,
+        "songNames": [
+            "Stand Out Fit In",
+            "The Gummy Bear Song",
+            "Hot potato song",
+            "Peanut Butter Jelly Time",
+            "The Guacomole Song"
+        ]
+    }
+]
