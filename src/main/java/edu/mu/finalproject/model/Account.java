@@ -9,8 +9,8 @@ public class Account {
 	String password;
 	List<Playlist> savedPlaylists;
 	List<Song> savedSongs;
-	List<String> followers;
-	List<String> following;
+	List<Artist> followedArtists;
+	List<Account> followedUsers;
 	Preference userPreference;
 	
 	// CONSTRUCTOR
@@ -50,18 +50,22 @@ public class Account {
 	public void setSavedSongs(List<Song> savedSongs) {
 		this.savedSongs = savedSongs;
 	}
-	public List<String> getFollowers() {
-		return followers;
+	public List<Artist> getFollowedArtists() {
+		return followedArtists;
 	}
-	public void setFollowers(List<String> followers) {
-		this.followers = followers;
+
+	public void setFollowedArtists(List<Artist> followedArtists) {
+		this.followedArtists = followedArtists;
 	}
-	public List<String> getFollowing() {
-		return following;
+
+	public List<Account> getFollowedUsers() {
+		return followedUsers;
 	}
-	public void setFollowing(List<String> following) {
-		this.following = following;
+
+	public void setFollowedUsers(List<Account> followedUsers) {
+		this.followedUsers = followedUsers;
 	}
+
 	public Preference getUserPreference() {
 		return userPreference;
 	}
