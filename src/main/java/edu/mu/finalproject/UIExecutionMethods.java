@@ -1,5 +1,6 @@
-package edu.mu.finalproject.controller;
+package edu.mu.finalproject;
 
+import edu.mu.finalproject.controller.PreferenceController;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.MediaObject;
@@ -7,8 +8,6 @@ import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
 
 import java.util.Scanner;
-
-import edu.mu.finalproject.*;
 
 public class UIExecutionMethods {
 	

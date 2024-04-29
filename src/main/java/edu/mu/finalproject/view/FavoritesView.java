@@ -15,6 +15,7 @@ public class FavoritesView {
 	
 	public static String getFavInfo() {
 		Scanner scanner =  new Scanner(System.in);
+        ArrayList <MediaObject> favorites = new ArrayList<MediaObject>();
 		
 		//Continuously prompts user until a string matching the options is entered
 		while (true) {
@@ -24,19 +25,19 @@ public class FavoritesView {
             userInput = userInput.trim().toLowerCase();
             
             if (userInput.equals("artists")) {
-                displayFavoritesInfo(Artist.class);
+            	favorites = FavoritesController.gatherFavorited(Artist.class);
                 break;
             }
                 else if (userInput.equals("songs")) {
-                	displayFavoritesInfo(Song.class);
+                	favorites = FavoritesController.gatherFavorited(Song.class);
                     break;
                 }
                 else if (userInput.equals("playlists")) {
-                	displayFavoritesInfo(Playlist.class);
+                	favorites = FavoritesController.gatherFavorited(Playlist.class);
                     break;
                 }
                 else if (userInput.equals("all")) {
-                	displayFavoritesInfo(MediaObject.class);
+                	favorites = FavoritesController.gatherFavorited(MediaObject.class);
                     break;
                 }
                 
@@ -45,14 +46,13 @@ public class FavoritesView {
             }
         }
 
+	   displayFavoritesInfo(favorites);
        return userInput;
     }
 		
 	
 
-	public static ArrayList <MediaObject> displayFavoritesInfo(Class <? extends MediaObject> type){
-		ArrayList <MediaObject> favorites = new ArrayList<MediaObject>();
-		favorites = FavoritesController.gatherFavorited(type);
+	public static ArrayList <? extends MediaObject> displayFavoritesInfo(ArrayList <? extends MediaObject> favorites){
 		
 		System.out.println("Favorites summary for " + userInput);
 		System.out.println("You have " + favorites.size() + " favorites.");
