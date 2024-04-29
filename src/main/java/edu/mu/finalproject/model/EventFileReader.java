@@ -73,8 +73,7 @@ public class EventFileReader {
 	public static int deleteEventFromFile(MonthDay monthDate, Year year, String artistName) {
 		try {
 			
-			System.out.println("" + monthDate +" "+ year +" "+ artistName);
-	
+
 			String jsonText = new String(Files.readAllBytes(Paths.get(path)));//Read original JSON array
 			JSONArray jsonArray = new JSONArray(jsonText);
 			JSONArray updatedJsonArray = new JSONArray();

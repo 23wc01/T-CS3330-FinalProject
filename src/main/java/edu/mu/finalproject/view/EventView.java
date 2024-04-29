@@ -202,6 +202,7 @@ public class EventView {
 		int result = EventController.deleteEvent(eventToBeDeleted);
 		
 		if (result > 0) {
+			System.out.println("" + eventToBeDeleted.getEventMonthDay() +" "+ eventToBeDeleted.getEventYear() +" "+ eventToBeDeleted.getArtistName());
 			System.out.println("Event successfully deleted!");
 			return result;
 		}
