@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import edu.mu.finalproject.controller.FavoritesController;
 import edu.mu.finalproject.model.Artist;
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;
 
@@ -15,7 +15,7 @@ public class FavoritesView {
 	
 	public static String getFavInfo() {
 		Scanner scanner =  new Scanner(System.in);
-        ArrayList <MediaObject> favorites = new ArrayList<MediaObject>();
+        ArrayList <MediaProduct> favorites = new ArrayList<MediaProduct>();
 		
 		//Continuously prompts user until a string matching the options is entered
 		while (true) {
@@ -37,7 +37,7 @@ public class FavoritesView {
                     break;
                 }
                 else if (userInput.equals("all")) {
-                	favorites = FavoritesController.gatherFavorited(MediaObject.class);
+                	favorites = FavoritesController.gatherFavorited(MediaProduct.class);
                     break;
                 }
                 
@@ -52,11 +52,11 @@ public class FavoritesView {
 		
 	
 
-	public static ArrayList <? extends MediaObject> displayFavoritesInfo(ArrayList <? extends MediaObject> favorites){
+	public static ArrayList <? extends MediaProduct> displayFavoritesInfo(ArrayList <? extends MediaProduct> favorites){
 		
 		System.out.println("Favorites summary for " + userInput);
 		System.out.println("You have " + favorites.size() + " favorites.");
-		for(MediaObject myObject : favorites) {
+		for(MediaProduct myObject : favorites) {
 			System.out.println(myObject.getName());
 		}
 		
@@ -70,7 +70,7 @@ public class FavoritesView {
 	
 	
 	
-	public static boolean displayFavoriteResult(boolean favoriteResult, MediaObject objectToBeFavorited) {
+	public static boolean displayFavoriteResult(boolean favoriteResult, MediaProduct objectToBeFavorited) {
 		
 		if(favoriteResult == false) {
 			 System.out.println("You un-favorited " + objectToBeFavorited.getName());

@@ -4,7 +4,7 @@ package edu.mu.finalproject.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 
 public class SearchView {
 	private final static int  MAX_SEARCH_CHARS = 50;
@@ -25,10 +25,10 @@ public class SearchView {
 	 * @param queryString
 	 * @param sortedCatalog
 	 */
-	public void DisplaySearchResultsView(String queryString, ArrayList<MediaObject> sortedCatalog) {
+	public void DisplaySearchResultsView(String queryString, ArrayList<MediaProduct> sortedCatalog) {
 		System.out.println("\nSearch results for '"+ queryString + "'");
 		System.out.println("-------------------------------");
-		for (MediaObject mediaObj : sortedCatalog) {
+		for (MediaProduct mediaObj : sortedCatalog) {
 			System.out.println(mediaObj.toString());
 		}
 		System.out.println("-------------------------------\n");

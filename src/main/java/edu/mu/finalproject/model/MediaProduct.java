@@ -3,7 +3,7 @@ package edu.mu.finalproject.model;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class MediaObject {
+public abstract class MediaProduct {
 	protected int id;
 	protected String name;
 	protected String description;
@@ -70,7 +70,7 @@ public abstract class MediaObject {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MediaObject other = (MediaObject) obj;
+		MediaProduct other = (MediaProduct) obj;
 		return Objects.equals(addedDate, other.addedDate) && Objects.equals(description, other.description)
 				&& id == other.id && Objects.equals(isFavorited, other.isFavorited) && Objects.equals(name, other.name);
 	}

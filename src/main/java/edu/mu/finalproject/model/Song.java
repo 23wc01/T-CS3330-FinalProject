@@ -2,7 +2,7 @@ package edu.mu.finalproject.model;
 
 import java.util.Date;
 
-public class Song extends MediaObject {
+public class Song extends MediaProduct {
 	private String artistName;
 	private Date releaseDate;
 	Preference preference;

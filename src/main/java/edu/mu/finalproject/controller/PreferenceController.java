@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Preference;
 import edu.mu.finalproject.model.PreferenceQuestion;
@@ -65,7 +65,7 @@ public class PreferenceController {
 		return true;
 	}
 	
-	public Playlist recommendByPreference(ArrayList<MediaObject> catalog/*, Account user*/) {
+	public Playlist recommendByPreference(ArrayList<MediaProduct> catalog/*, Account user*/) {
 		/*
 		if (user == null) {
 			System.out.println("We can't give you a recommendation. Please log in first!");
@@ -76,7 +76,7 @@ public class PreferenceController {
 			String preferenceStr = userPreference.capitalizePreference();
 			ArrayList<Song> filteredCatalog = new ArrayList<Song>();
 			Playlist recommendedSongs = new Playlist(0, preferenceStr + " songs", preferenceStr, new Date(), false, filteredCatalog);
-			for (MediaObject obj : catalog) {
+			for (MediaProduct obj : catalog) {
 				if(obj.getClass() == Song.class) {
 					Song song = (Song) obj;
 					if(song.getPreference() == userPreference) {

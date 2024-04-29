@@ -2,7 +2,7 @@ package edu.mu.finalproject.view;
 
 import java.util.ArrayList;
 
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Song;
 
 public class RecommendByPreferenceView {
