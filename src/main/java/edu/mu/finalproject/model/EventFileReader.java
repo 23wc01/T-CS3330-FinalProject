@@ -49,7 +49,7 @@ public class EventFileReader {
 	}
 	
 	
-	public static void appendEvent(Event myEvent) {
+	public static int appendEvent(Event myEvent) {
 		try {
             // Read the existing JSON file
             String content = new String(Files.readAllBytes(Paths.get(path)));
@@ -61,16 +61,19 @@ public class EventFileReader {
 
             // Write the updated array back to the file
             Files.write(Paths.get(path), jsonArray.toString(4).getBytes());  // Beautified print, indent 4
+            return 1;
         } catch (IOException e) {
             e.printStackTrace();
+            return -1;
         }
 	}
 	
-	public static void deleteEvent(MonthDay monthDate, Year year, String artistName) {
+	
+	
+	public static int deleteEventFromFile(MonthDay monthDate, Year year, String artistName) {
 		try {
 			
-			System.out.println("" + monthDate +" "+ year +" "+ artistName);
-	
+
 			String jsonText = new String(Files.readAllBytes(Paths.get(path)));//Read original JSON array
 			JSONArray jsonArray = new JSONArray(jsonText);
 			JSONArray updatedJsonArray = new JSONArray();
@@ -90,9 +93,11 @@ public class EventFileReader {
 			
 			//Write new array to the file
 			Files.write(Paths.get(path), updatedJsonArray.toString(4).getBytes());
+			return 1;
 		}
 		catch(IOException e) {
 			e.printStackTrace();
+			return -1;
 		}
 	}
 

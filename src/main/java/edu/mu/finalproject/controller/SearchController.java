@@ -23,13 +23,11 @@ public class SearchController {
 	 * @param catalog
 	 * @param searchView
 	 */
-	private void searchSort(String name, ArrayList<MediaProduct> catalog, SearchView searchView) {
-		SearchComparator songSearch = new SearchComparator(name);
+	private void searchSort(String queryString, ArrayList<MediaProduct> catalog, SearchView searchView) {
+		SearchComparator songSearch = new SearchComparator(queryString);
 		Collections.sort(catalog, songSearch);
-		searchView.DisplaySearchResultsView(name, catalog);
+		searchView.DisplaySearchResultsView(queryString, catalog);
 		return;
 	}
-	public MediaProduct searchAndGetMediaProduct(String queryString, ArrayList<MediaProduct> catalog) {
-		catalog.
-	}
+	
 }

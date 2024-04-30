@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import edu.mu.finalproject.model.MediaProduct;
 
+import edu.mu.finalproject.view.FavoritesView;
+import edu.mu.finalproject.view.FindObjectView;
+
 public class FavoritesController {
 
 	public static ArrayList<MediaProduct> gatherFavorited(Class<? extends MediaProduct> type) {
@@ -19,7 +22,18 @@ public class FavoritesController {
 		}
 		
 		return favorites;
+	}
+	
+	
+	
+	
+	
+	public static boolean favorite(MediaProduct objectToBeFavorited) {
+	
+		boolean result = objectToBeFavorited.toggleFavorite();
 		
+		FavoritesView.displayFavoriteResult(result, objectToBeFavorited);
+		return result; //true if favorited, false if unfavorited
 	}
 
 }

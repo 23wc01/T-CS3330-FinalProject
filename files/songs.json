@@ -2,72 +2,81 @@
    {
       "id":1,
       "name":"God's Menu",
-      "description":"A powerful rap track with intense energy and aggressive beats.",
+      "imgDescription":"rap",
       "isFavorited":false,
+      "addedDate": "06-26-2020",
       "artistName":"Stray Kids",
       "preference": "RAP"
    },
    {
       "id":2,
       "name":"Feel Special",
-      "description":"A sweet and uplifting K-pop track about self-love and confidence.",
+      "imgDescription":"pink",
       "isFavorited":true,
+      "addedDate": "09-12-2019",
       "artistName":"Twice",
       "preference": "POP"
    },
    {
       "id":3,
       "name":"Pretty Savage",
-      "description":"A sassy EDM track with strong beats and confident vocals.",
+      "imgDescription":"kpop",
       "isFavorited":false,
+      "addedDate": "06-26-2020",
       "artistName":"BlackPink",
       "preference": "EDM"
    },
    {
       "id":4,
       "name":"That's Amore",
-      "description":"A classic crooner tune made famous by Dean Martin, full of soulful charm and charisma.",
+      "imgDescription":"love",
       "isFavorited":false,
+      "addedDate": "12-10-1953",
       "artistName":"Dean Martin",
       "preference": "SOUL"
    },
    {
       "id":5,
       "name":"Stand Out Fit In",
-      "description":"A hard-hitting rock anthem with soaring guitars and impassioned lyrics.",
+      "imgDescription":"12-10-1953",
       "isFavorited":true,
+      "addedDate": "01-13-2016",
       "artistName":"ONEOKROCK",
       "preference": "ROCK"
    },
    {
       "id":6,
       "name":"Peanut Butter Jelly Time",
-      "description":"A quirky and infectious novelty song about peanut butter and jelly sandwiches.",
+      "imgDescription":"Peanut butter",
       "isFavorited":false,
+      "addedDate": "01-01-2000",
       "artistName":"Kids Tunez",
       "preference": "POP"
    },
    {
       "id":7,
       "name":"The Guacamole Song",
-      "description":"A silly and lighthearted children's song about making guacamole, sung entirely in French.",
+      "imgDescription":"Avocado",
       "isFavorited":true,
+      "addedDate": "01-01-2010",
       "artistName":"Dr. Jean",
       "preference": "POP"
    },
    {
       "id":8,
       "name":"The Gummy Bear Song",
-      "description":"A catchy and cheerful pop song about gummy bears, guaranteed to put a smile on anyone's face.",
-      "isFavorited":false,
+      "imgDescription":"gummy bear",
+      "isFavorited":false,      
+      "addedDate": "01-01-2007",
       "artistName":"icanrockyourworld",
       "preference": "POP"
    },
    {
       "id":9,
       "name":"Hot Potato",
-      "description":"A fast-paced and energetic children's song about playing hot potato, sure to get everyone moving and laughing.",
+      "imgDescription":"potato",
       "isFavorited":false,
+      "addedDate": "01-01-1991",
       "artistName":"Patty Shukla",
       "preference": "POP"
    }

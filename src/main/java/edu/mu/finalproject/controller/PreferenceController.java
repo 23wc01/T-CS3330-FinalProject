@@ -4,6 +4,15 @@ package edu.mu.finalproject.controller;
 import java.util.ArrayList;
 import java.util.Date;
 
+<<<<<<< HEAD
+=======
+import org.apache.commons.lang3.StringUtils;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
+
+>>>>>>> 475be702a3656ac66b37a9ccbfbc9b1e966d0f23
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Preference;
@@ -50,6 +59,7 @@ public class PreferenceController {
 		return userPreference;
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Create a playlist storing only songs in @param catalog that match @param preference
 	 * @param catalog
@@ -63,6 +73,21 @@ public class PreferenceController {
 			Playlist recommendedSongs = new Playlist(0, preferenceStr + " songs", preferenceStr, new Date(), false, filteredCatalog);
 			for (MediaProduct obj : catalog) {
 				if (obj instanceof Song) {
+=======
+	public Playlist recommendByPreference(ArrayList<MediaProduct> catalog/*, Account user*/) {
+		/*
+		if (user == null) {
+			System.out.println("We can't give you a recommendation. Please log in first!");
+			return null;
+		}
+		*/
+		if(userPreference != null) {
+			String preferenceStr = userPreference.capitalizePreference();
+			ArrayList<Song> filteredCatalog = new ArrayList<Song>();
+			Playlist recommendedSongs = new Playlist(0, preferenceStr + " songs", preferenceStr, new Date(), false, filteredCatalog);
+			for (MediaProduct obj : catalog) {
+				if(obj.getClass() == Song.class) {
+>>>>>>> 475be702a3656ac66b37a9ccbfbc9b1e966d0f23
 					Song song = (Song) obj;
 					if(song.getPreference() == preference) {
 						recommendedSongs.getSongs().add(song);

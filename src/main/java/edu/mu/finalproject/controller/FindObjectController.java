@@ -11,7 +11,7 @@ import edu.mu.finalproject.view.FindObjectView;
  */
 public class FindObjectController {
 	
-	public static MediaProduct searchMediaCatalog(ArrayList <? extends MediaProduct> catalog){ //controller
+	public static MediaProduct searchMediaCatalog(ArrayList <? extends MediaProduct> catalog){ 
 		String userQuery = FindObjectView.getInformationFromUser();
 		
 		if(userQuery == null) {

@@ -7,25 +7,40 @@ import java.util.Scanner;
 
 import edu.mu.finalproject.controller.EventController;
 import edu.mu.finalproject.model.Event;
-import edu.mu.finalproject.model.EventManager;
+import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.util.GetIntegerInput;
 
 public class EventView {
 	
 	
-	 public static void viewAddEvent() { 
-		 
-		 Event myEvent = EventController.addEvent();
+	 public static int viewAddEvent(Event myEvent) { 
 		 
 		 if(myEvent == null) {
-			 System.out.println("You already added that event!");
-			 return;
+			 System.out.println("Something went wrong..."); //To get here, something would have needed to fail in createEvent
+			 return -1;
 		 }
 		 
-		 else {
+		 
+		 int result = EventController.addEvent(myEvent);
+		 
+		 
+		 
+		 if(result == 0) { //Already has event
+			 System.out.println("You already added that event!");
+			 return 0;
+		 }
+		 
+		 else if(result < 0){ //FileReader fail
+			 System.out.println("We couldn't add your item to the catalog");
+			 return -1;
+		 }
+		 
+		 else { //Success
 			  
 			 System.out.println("Added new Event! " + myEvent.getArtistName() + " on " + myEvent.getEventMonthDay() + ", " + myEvent.getEventYear());
-		 } 
+			 return 1;
+		 }
+		 
 		 
 	 }
 	 
@@ -86,11 +101,11 @@ public class EventView {
 	 
 	 
 	 
-	 public static void getEventDisplayInfo() { 
+	 public static int getEventDisplayInfo() { 
 			
-		 if(EventManager.getEventCollection().isEmpty()) {
-				System.out.println("You have no events!");
-				return;
+		 if(EventSingleton.getEventCollection().isEmpty()) {
+				displayEventsByDate(null);
+				return 0;
 			}
 		 
 		 Scanner scanner = new Scanner(System.in);
@@ -138,15 +153,16 @@ public class EventView {
 		 
 	
 		 
-		 //Using the information to call displayEvent
-		 EventController.getEventsToDispalyByDate(yearStart, monthdayStart, yearEnd, monthdayEnd);
-		 
+		 //Using the information to call displayEvent and displayEventsInRange
+		 ArrayList <Event> eventsInRange = EventController.getEventsToDispalyByDate(yearStart, monthdayStart, yearEnd, monthdayEnd);
+		 displayEventsByDate(eventsInRange);
+		 return 1;
 		 }
 		 
 		 
 		 catch(Exception e){
 			 System.out.println("Type mismatch. Please enter a valid date. Valid dates have four integers for the year, and 1-2 integers for the month and day");
-			 
+			 return -1;
 		 }
 		 
 	 }
@@ -154,10 +170,16 @@ public class EventView {
 	 
 	 
 	 
-	 public static void displayEventsByDate(ArrayList <Event> eventsInRange) {
+	 public static int displayEventsByDate(ArrayList <Event> eventsInRange) {
+		 
+		 	if(eventsInRange == null) {
+		 		System.out.println("You have no events!");
+		 		return 0;
+		 	}
 			
 		 	if(eventsInRange.isEmpty()) {
 		 		System.out.println("No events in date range...");
+		 		return -1;
 		 	}
 		 	
 		 	
@@ -168,27 +190,29 @@ public class EventView {
 			}
 			
 			System.out.println();
+			return 1;
 			
 		 }
 	 
 	 
 	 
-	 public static void viewDeleteEvent() { 
+	 public static int viewDeleteEvent(Event eventToBeDeleted) { 
 			
-		 
-		System.out.println("\nEnter information so we can find the event to delete\n ");
-		Event eventToBeDeleted = createEvent();
 		 
 		int result = EventController.deleteEvent(eventToBeDeleted);
 		
 		if (result > 0) {
+			System.out.println("" + eventToBeDeleted.getEventMonthDay() +" "+ eventToBeDeleted.getEventYear() +" "+ eventToBeDeleted.getArtistName());
 			System.out.println("Event successfully deleted!");
+			return result;
 		}
 		else if (result == 0) {
 			System.out.println("You have no events!");
+			return result;
 		}
 		else {
 			 System.out.println("No event with that information found");
+			 return result;
 		}
 			
 		 	 

@@ -3,23 +3,23 @@ package edu.mu.finalproject.model;
 import java.util.*;
 
 
-public class EventManager {
+public class EventSingleton {
 
-	private static EventManager instance;
+	private static EventSingleton instance;
 	public static ArrayList <Event> eventCollection = new ArrayList<Event>();
 	
 	//private constructor to prevent instantiation
-	private EventManager() {
+	private EventSingleton() {
 	}
 	
 	//Static method to provide access to the single instance
-	 public static EventManager getInstance() {
+	 public static EventSingleton getInstance() {
 	 
 	 	/*
 	 	 * create instance if it doesn't exist
 	 	 */
 	 	if (instance == null){
-	 		instance = new EventManager();
+	 		instance = new EventSingleton();
 	 	}
 	 	
 	 	return instance;
@@ -30,7 +30,7 @@ public class EventManager {
 		}
 
 	public static void setEventCollection(ArrayList<Event> eventCollection) {
-			EventManager.eventCollection = eventCollection;
+			EventSingleton.eventCollection = eventCollection;
 		}
 	 
 	 
