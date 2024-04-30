@@ -12,7 +12,8 @@ public enum ECommands {
 	//WAITING FOR CATALOG: DISPLAY_FAVORITES("display_favorites"),
 	//WAITING FOR CATALOG: DOWNLOAD_PLAYLIST("download_playlist"),
 	//WAITING FOR CATALOG: FAVORITE("favorite"),
-	//WAITING FOR ACCOUNT: RECOMMEND_BY_PREFERENCE("recommend_by_preference),
+	//WAITING FOR ACCOUNT: DOWNLOAD_RECOMMENDED_PLAYLIST("download_recommended_playlist"),
+	//
 	//WAITING FOR CATALOG: SEARCH("search"),
 	SETUP_PREFERENCE("setup_preference"),
 	//New commands here!

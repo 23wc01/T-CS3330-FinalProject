@@ -81,12 +81,7 @@ public class UserInterface {
  * 				break;              
  */
 /*WAITING FOR CATALOG
-* 			case SEARCH_CATALOG:
-* 				UIExecutionMethods.executeSearchCatalog(); 
-* 				break;              
-*/
-/*WAITING FOR CATALOG
-* 			case SEARCH_CATALOG:
+* 			case SEARCH:
 * 				UIExecutionMethods.executeSearchCatalog(); 
 * 				break;              
 */
@@ -100,9 +95,7 @@ public class UserInterface {
             case INVALID:
                 System.out.println("Invalid command. Please try again.");
                 break;
-	        }
-	        
-		    
+	        } 
 	    }
 	    //scanner.close();
 	
