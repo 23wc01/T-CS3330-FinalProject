@@ -3,9 +3,7 @@ package edu.mu.finalproject;
 import java.util.ArrayList;
 import java.util.Date;
 
-import edu.mu.finalproject.controller.DownloadPlaylistController;
-import edu.mu.finalproject.controller.PreferenceController;
-import edu.mu.finalproject.controller.SearchController;
+import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.*;
 
 
@@ -35,10 +33,10 @@ public class Main {
 		}
 		
 		
-		UserInterface ui = new UserInterface();
+		/*UserInterface ui = new UserInterface();
 		ui.start();			
+		*/
 		
-		/*
 		// Unofficially create new user
 		Account user = new Account("blobby", "secret"); //!!!!!!!! Store global user field in this class
 		
@@ -49,13 +47,13 @@ public class Main {
 		// Download recommended playlist
 		DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
 		if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
-			System.out.println("*Refresh folder if html file doesn't appear immidiately*");
+			System.out.println("*Refresh folder if html file doesn't appear immidiately*\n\n");
 		}
 
 		// Search for anything 
 		SearchController searchController = new SearchController();
 		searchController.search(catalog);	
-		*/
+		
 		
 	}
 	

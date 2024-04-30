@@ -9,6 +9,11 @@ public class ManualSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	private SetupPreferenceView view;	
 	private Preference userPreference;
 
+	/**
+	 * Prompts for user preference based & assigns preference based on user's 1 choice. Returns the preference matching user’s answer
+	 * @param view
+	 * @return 
+	 */
 	@Override
 	public Preference setupPreference(SetupPreferenceView view) {
 		if (setView(view)) {

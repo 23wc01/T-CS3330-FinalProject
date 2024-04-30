@@ -31,25 +31,6 @@ public class DownloadPlaylistController {
 		view = new DownloadPlaylistView();
 	}
 	
-	/**
-	 * Creates controller to create playlist of recommended songs
-	 * @param account
-	 * @param catalog
-	 * @return
-	 */
-	public Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
-		if (account == null || catalog == null) {
-			System.out.println("\nParameter(s) passed into createPlaylist() are null");
-			return false;
-		}
-		PreferenceController preferenceController = new PreferenceController();
-		setRecommendedPlaylist(preferenceController.recommendPlaylist(account.getUserPreference(), catalog));
-		if (getRecommendedPlaylist() == null) {
-			return false;
-		}
-		return true;
-	}
-	
 	/** 
 	 * Controlling method. Gets & Writes the "dynamic values" in Playlist, Playlist's songs, and Account into html file
 	 * @param account
@@ -76,6 +57,26 @@ public class DownloadPlaylistController {
 		Boolean writeIsSuccess = writeHtmlToFile(getRecommendedPlaylist().getName(), combinedStr);
 		
 		return view.displayDownloadMessage(htmlOutputFilepath, writeIsSuccess);
+	}
+	
+// HELPER FUNCTIONS
+	/**
+	 * Creates controller to create playlist of recommended songs
+	 * @param account
+	 * @param catalog
+	 * @return
+	 */
+	public Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
+		if (account == null || catalog == null) {
+			System.out.println("\nParameter(s) passed into createPlaylist() are null");
+			return false;
+		}
+		RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
+		setRecommendedPlaylist(recommendPlaylistController.recommendPlaylist(account.getUserPreference(), catalog));
+		if (getRecommendedPlaylist() == null) {
+			return false;
+		}
+		return true;
 	}
 	
 	/**
@@ -116,7 +117,7 @@ public class DownloadPlaylistController {
 		}
 	}
 	
-	// Getters & Setters;
+// GETTERS & SETTERS
 	public Playlist getRecommendedPlaylist() {
 		return recommendedPlaylist;
 	}
