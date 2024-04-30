@@ -17,7 +17,7 @@ public class SearchView {
 		System.out.print("Enter search (max char = " + MAX_SEARCH_CHARS + "): ");
 		Scanner scanner = new Scanner(System.in);
 		String searchQuery = scanner.nextLine();
-		searchQuery = searchQuery.substring(0, Math.min(queryString.length(), MAX_SEARCH_CHARS));
+		searchQuery = searchQuery.substring(0, Math.min(searchQuery.length(), MAX_SEARCH_CHARS));
 		return searchQuery;
 	}
 	/**
