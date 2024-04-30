@@ -43,8 +43,8 @@ public class SongHtmlBuilder extends HtmlBuilder {
 		if (song.getName() != null) {
 			getModelFields().set(0, song.getName());
 		}
-		if (song.getDescription() != null) {
-			getModelFields().set(1, song.getDescription());
+		if (song.getImgDescription() != null) {
+			getModelFields().set(1, song.getImgDescription());
 		}
 		if (song.getAddedDate() != null) {
 			getModelFields().set(2, song.getAddedDate().toString());

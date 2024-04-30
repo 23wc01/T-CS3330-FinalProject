@@ -71,7 +71,7 @@ public class UserInterface {
 //            case FAVORITE:
 //            	UIExecutionMethods.executeFavorite();
 //            	break;
-// WAITING FOR CATALOG
+// WAITING FOR ACCOUNT
             case SETUP_PREFERENCE:
             	UIExecutionMethods.executeSetupPreference();
             	break;

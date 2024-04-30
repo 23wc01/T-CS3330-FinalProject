@@ -11,7 +11,7 @@ public class Song extends MediaProduct {
 		super();
 		this.id = id;
 		this.name = name;
-		this.description = description;
+		this.imgDescription = description;
 		this.addedDate = addedDate;
 		this.isFavorited = isFavorited;
 		this.artistName = artistName;
@@ -32,7 +32,7 @@ public class Song extends MediaProduct {
 	}
 	@Override
 	public String toString() {
-		return "Song [releaseDate=" + releaseDate + ", name=" + name + ", description=" + description + ", addedDate="
+		return "Song [releaseDate=" + releaseDate + ", name=" + name + ", description=" + imgDescription + ", addedDate="
 				+ addedDate + ", isFavorited=" + isFavorited +", artistName=" + artistName + ", Preference: " + preference.capitalizePreference() + "]";
 	}
 

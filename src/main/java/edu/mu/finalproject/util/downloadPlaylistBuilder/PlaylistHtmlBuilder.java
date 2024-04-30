@@ -46,8 +46,8 @@ public class PlaylistHtmlBuilder extends HtmlBuilder {
 		if (playlist.getName() != null && playlist.getName() != "") {
 			this.getModelFields().set(0, playlist.getName());
 		}
-		if (playlist.getDescription() != null && playlist.getDescription() != "") {
-			this.getModelFields().set(1, playlist.getDescription());
+		if (playlist.getImgDescription() != null && playlist.getImgDescription() != "") {
+			this.getModelFields().set(1, playlist.getImgDescription());
 		}
 		if (playlist.getSongs().size() != 0) {
 			this.getModelFields().set(2, Integer.toString(playlist.getSongs().size()));

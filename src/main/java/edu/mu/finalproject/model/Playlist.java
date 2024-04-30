@@ -10,7 +10,7 @@ public class Playlist extends MediaProduct {
 		super();
 		this.id = id;
 		this.name = name;
-		this.description = description;
+		this.imgDescription = description;
 		this.addedDate = addedDate; 
 		this.isFavorited = isFavorited;
 		this.songs = songs;
@@ -26,7 +26,7 @@ public class Playlist extends MediaProduct {
 
 	@Override
 	public String toString() {
-		return "Playlist [name=" + name + ", description=" + description + ", addedDate="
+		return "Playlist [name=" + name + ", description=" + imgDescription + ", addedDate="
 				+ addedDate + ", isFavorited=" + isFavorited + "\nPlaylist " + name + " contains: " + songs + "]";
 	}
 
