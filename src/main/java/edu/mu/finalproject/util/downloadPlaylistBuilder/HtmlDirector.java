@@ -2,8 +2,6 @@ package edu.mu.finalproject.util.downloadPlaylistBuilder;
 
 import java.util.ArrayList;
 
-import edu.mu.finalproject.model.Account;
-
 public class HtmlDirector {
 	ArrayList<Boolean> constructionSuccess;
 

@@ -20,7 +20,7 @@
    {
       "id":3,
       "name":"Pretty Savage",
-      "imgDescription":"kpop",
+      "imgDescription":"pink",
       "isFavorited":false,
       "addedDate": "06-26-2020",
       "artistName":"BlackPink",
@@ -49,7 +49,7 @@
       "name":"Peanut Butter Jelly Time",
       "imgDescription":"Peanut butter",
       "isFavorited":false,
-      "addedDate": "01-01-2000",
+      "addedDate": "07-20-2020",
       "artistName":"Kids Tunez",
       "preference": "POP"
    },
@@ -58,7 +58,7 @@
       "name":"The Guacamole Song",
       "imgDescription":"Avocado",
       "isFavorited":true,
-      "addedDate": "01-01-2010",
+      "addedDate": "04-30-2010",
       "artistName":"Dr. Jean",
       "preference": "POP"
    },
@@ -67,7 +67,7 @@
       "name":"The Gummy Bear Song",
       "imgDescription":"gummy bear",
       "isFavorited":false,      
-      "addedDate": "01-01-2007",
+      "addedDate": "10-09-2007",
       "artistName":"icanrockyourworld",
       "preference": "POP"
    },
@@ -76,7 +76,7 @@
       "name":"Hot Potato",
       "imgDescription":"potato",
       "isFavorited":false,
-      "addedDate": "01-01-1991",
+      "addedDate": "08-16-2021",
       "artistName":"Patty Shukla",
       "preference": "POP"
    }

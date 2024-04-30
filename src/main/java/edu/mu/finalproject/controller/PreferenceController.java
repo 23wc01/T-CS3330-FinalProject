@@ -12,16 +12,20 @@ import edu.mu.finalproject.util.ManualSetupPreferenceStrategy;
 import edu.mu.finalproject.util.QuizSetupPreferenceStrategy;
 import edu.mu.finalproject.util.SetupPreferenceContext;
 import edu.mu.finalproject.view.SetupPreferenceView;
-import edu.mu.finalproject.view.RecommendByPreferenceView;
+import edu.mu.finalproject.view.PreferencePlaylistView;
 
 public class PreferenceController {
 	private SetupPreferenceView setupPreferenceView;
+	private PreferencePlaylistView recommendedView;
+
 	private Preference userPreference;
 
 	
 	public PreferenceController() {
 		this.setupPreferenceView = new SetupPreferenceView();	
+		this.recommendedView = new PreferencePlaylistView();
 	}
+	
 	/**
 	 * Setup user listening preference in 1 of 2 strategies
 	 * @return
@@ -69,7 +73,6 @@ public class PreferenceController {
 					}
 				}
 			}
-			RecommendByPreferenceView recommendedView = new RecommendByPreferenceView();
 			recommendedView.displaySongRecommendations(preferenceStr, recommendedSongs.getSongs());
 			System.out.println(recommendedSongs.getName());
 			return recommendedSongs;

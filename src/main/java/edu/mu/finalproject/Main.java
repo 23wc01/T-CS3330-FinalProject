@@ -3,6 +3,9 @@ package edu.mu.finalproject;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.mu.finalproject.controller.DownloadPlaylistController;
+import edu.mu.finalproject.controller.PreferenceController;
+import edu.mu.finalproject.controller.SearchController;
 import edu.mu.finalproject.model.*;
 
 
@@ -32,23 +35,24 @@ public class Main {
 		}
 		
 		
-		
 		UserInterface ui = new UserInterface();
 		ui.start();			
 		
 		/*
-		// Setup user's preferences
-		PreferenceController preferenceController = new PreferenceController();
-		// preferenceController.setupPreferences();
-		// Store all songs that match user's preferences in a Playlist 
-		Playlist recommenedSongs = preferenceController.recommendByPreference(Preference.POP, catalog);
-		// Download playlist & display playlist contents in html file
-		DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
-		downloadPlaylist.downloadPlaylist(unorderedPlaylist, user);
-		*/
+		// Unofficially create new user
+		Account user = new Account("blobby", "secret"); //!!!!!!!! Store global user field in this class
 		
-		/*
-		// Search the catalog
+		// Setup user's preference in 1 of 2 ways
+		PreferenceController prefController = new PreferenceController();
+		user.setUserPreference(prefController.newPreference());
+
+		// Download recommended playlist
+		DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
+		if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
+			System.out.println("*Refresh folder if html file doesn't appear immidiately*");
+		}
+
+		// Search for anything 
 		SearchController searchController = new SearchController();
 		searchController.search(catalog);	
 		*/

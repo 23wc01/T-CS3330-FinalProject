@@ -47,8 +47,8 @@ public class UIExecutionMethods {
 		
 		public static void executeSetupPreference() {
 			Account user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
-			PreferenceController prefController = new PreferenceController();
-			user.setUserPreference(prefController.newPreference());
+			PreferenceController preferenceController = new PreferenceController();
+			user.setUserPreference(preferenceController.newPreference());
 		}
 		
 		public static void executeDownloadRecommendedPlaylist() {
@@ -61,7 +61,7 @@ public class UIExecutionMethods {
 		}
 		public static void executeSearchCatalog() {
 			SearchController searchController = new SearchController();
-			searchController.search(catalog);	
+			searchController.search(catalog); // !!!!! GET CATALOG!
 		}
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
 		
