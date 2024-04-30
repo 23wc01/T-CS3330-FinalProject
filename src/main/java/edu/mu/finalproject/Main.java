@@ -33,11 +33,12 @@ public class Main {
 		}
 		
 		
-		/*UserInterface ui = new UserInterface();
+		UserInterface ui = new UserInterface();
 		ui.start();			
-		*/
 		
-		// Unofficially create new user
+		
+		
+		/*// Unofficially create new user
 		Account user = new Account("blobby", "secret"); //!!!!!!!! Store global user field in this class
 		
 		// Setup user's preference in 1 of 2 ways
@@ -54,7 +55,7 @@ public class Main {
 		SearchController searchController = new SearchController();
 		searchController.search(catalog);	
 		
-		
+		*/
 	}
 	
 
