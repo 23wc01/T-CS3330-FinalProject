@@ -17,21 +17,76 @@ import org.json.JSONObject;
 // It is used to create new accounts, load in the accounts, and to append or delete accounts.
 public class AccountManager {
 	
-	// Store the file path to the JSON file and a List of all accounts
-	static String path = "files/accounts.json";
-	private List<Account> activeAccounts;
-	private int accountCounter;
+	
+	static String path = "files/accounts.json"; // file path to JSON file
+	private List<Account> accounts;				// List of all application accounts
+	private int accountCounter;					// Increments with creation of each new account
 	
 	
+	// CONSTRUCTOR 
 	public AccountManager() {
-		this.activeAccounts = loadAccounts();
+		this.accounts = loadAccounts();
+		this.accountCounter = getLastAccountID(this.accounts) + 1;
 	}
 	
+	// This method will load in any accounts stored in the JSON file and place them in an Account List
 	public List<Account> loadAccounts() {
-		return activeAccounts;
+		
+		List<Account> accounts = new ArrayList<Account>();
+		
+		try {
+			String accountInformation = new String(Files.readAllBytes(Paths.get(path)));
+			JSONArray accountsJSON = new JSONArray(accountInformation);
+			
+			for (int i = 0; i<accountsJSON.length(); i++) {
+				
+				// Get account fields stored in each JSON object 
+				JSONObject accountJSON = accountsJSON.getJSONObject(i);
+				int accountID = accountJSON.getInt("accountID");
+				String username = accountJSON.getString("username");
+				String password = accountJSON.getString("password");
+				JSONArray savedPlaylistsJSON = accountJSON.getJSONArray("savedPlaylistIDs");
+				JSONArray savedSongsJSON = accountJSON.getJSONArray("savedSongIDs");
+				JSONArray followedArtistsJSON = accountJSON.getJSONArray("followedArtistIDs");
+				JSONArray followedUsersJSON = accountJSON.getJSONArray("followedUserIDs");
+				String preference = accountJSON.getString("Preference");
+				Preference userPreference = Preference.valueOf(preference);
+				
+				List<String> savedPlaylists = loadStringArray(savedPlaylistsJSON);
+				List<String> savedSongs = loadStringArray(savedSongsJSON);
+				List<String> followedArtists = loadStringArray(followedArtistsJSON);
+				List<String> followedUsers = loadStringArray(followedUsersJSON);
+				
+				// Create a new account object from information in JSON file and add it to the accounts List
+				Account account = new Account(accountID, username, password, savedPlaylists, savedSongs, followedArtists, followedUsers, userPreference);
+				accounts.add(account);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+		
+		return accounts;
 	}
 	
+	// This method returns the account ID of the most recently created account.
+	// If there have not been any accounts created, it returns 0.
+	private int getLastAccountID(List<Account> accounts) {
+		if (accounts.size() == 0) {
+			return 0;
+		}
+		int lastAccountIndex = accounts.size()-1;
+		return accounts.get(lastAccountIndex).getAccountID();
+	}
 	
+	// This method returns a List of Strings given a JSON array of strings.
+	public List<String> loadStringArray(JSONArray stringsJSON) {
+		List<String> strings = new ArrayList<String>();
+		for (int i = 0; i < stringsJSON.length(); i++) {
+			String string = stringsJSON.getString(i);
+			strings.add(string);
+		}
+		return strings;
+	}
 	
 	// This method uses a hash function to protect the user passwords
 	private String hashPassword(String passwordToHash) {
@@ -56,7 +111,7 @@ public class AccountManager {
 	// If the user successfully logs in, it returns their account object, otherwise it returns null.
 	public Account authenticateUser(String username, String password) {
 		String hashedPassword = hashPassword(password);
-		for (Account account : activeAccounts) {
+		for (Account account : this.accounts) {
 			if (account.getUsername().equals(username) && account.getPassword().equals(hashedPassword)) {
 				return account;
 			}
@@ -64,54 +119,66 @@ public class AccountManager {
 		return null; 
 	}
 	
-	public int createAccount() {
-		
-		return 0;
+	// This method adds a new account to the accounts List.
+	public Account createAccount(String username, String password) {
+		Account account = new Account(this.accountCounter, username, password);
+		this.accountCounter++; 		
+		this.accounts.add(account);
+		return account;
 	}
 	
+	// This method checks if a username is already taken
+	public boolean isUsernameTaken(String username) {
+		for (Account account: this.accounts) {
+			if (account.getUsername().equals(username)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	// This method deletes an account with a given username from the accounts List.
+	// It returns 0 on success and 1 on failure.
 	public int deleteAccount(String username) {
-		
-		return 0; //on success
+		for (int i = 0; i < this.accounts.size(); i++) {
+	        Account account = this.accounts.get(i);
+	        if (account.getUsername().equals(username)) {
+	            this.accounts.remove(i);
+	            return 0;
+	        }
+	    }
+	    return 1;
 	}
 	
-	// This method returns a JSON array of the IDs of a list of MediaObjects.
-	private JSONArray extractIDs(List<? extends MediaObject> objects) {
-		JSONArray IDs = new JSONArray();
-		for (MediaObject object : objects) {
-			IDs.put(object.getId());
+	// This method returns a JSON array of the names of a list of MediaObjects.
+	public JSONArray stringToJSON(List<String> strings) {
+		JSONArray stringsJSON = new JSONArray();
+		for (String string : strings) {
+			stringsJSON.put(string);
 		}
-		return IDs;
+		return stringsJSON;
 	}
 	
-	// This method returns a JSON array of the IDs of a list of Accounts.
-	private JSONArray extractAccountIDs(List<Account> accounts) {
-		JSONArray IDs = new JSONArray();
-		for (Account account : accounts) {
-			IDs.put(account.getAccountID());
-		}
-		return IDs;
-	}
-	
-	// This method will write all account information from the activeAccounts field to the accounts.json file.
-	public int saveChanges() {
+	// This method will write all account information from the accounts field to the accounts.json file.
+	public int saveAccounts() {
 		
 		// Create a new JSON array to add Account objects to
-		JSONArray accounts = new JSONArray();
+		JSONArray accountsJSON = new JSONArray();
 		
 		// For each account, save all account information into a JSON object and add it to the JSON array.
 		// For array list fields, save another JSON array containing the IDs of each object.
-		for (Account account : activeAccounts) {
+		for (Account account : accounts) {
 			
 			JSONObject a = new JSONObject();
 			a.put("accountID", account.getAccountID());
 			a.put("username", account.getUsername());
 			a.put("password", account.getPassword());
-			a.put("savedPlaylistIDs", extractIDs(account.getSavedPlaylists()));
-			a.put("savedSongIDs", extractIDs(account.getSavedSongs()));
-			a.put("followedArtistIDs", extractIDs(account.getFollowedArtists()));
-			a.put("followedUserIDs", extractAccountIDs(account.getFollowedUsers()));
+			a.put("savedPlaylistIDs", stringToJSON(account.getSavedPlaylists()));
+			a.put("savedSongIDs", stringToJSON(account.getSavedSongs()));
+			a.put("followedArtistIDs", stringToJSON(account.getFollowedArtists()));
+			a.put("followedUserIDs", stringToJSON(account.getFollowedUsers()));
 			a.put("preference", account.getUserPreference());
-			accounts.put(a);
+			accountsJSON.put(a);
 		}
 		
 		try {
