@@ -19,8 +19,8 @@ public class SearchController {
 	 * @return false if search
 	 */
 	public Boolean search(ArrayList<MediaProduct> catalog) {
-		String queryString = view.getSearchQuery();
-		return searchSort(queryString, catalog);
+		String searchQuery = view.getSearchQuery();
+		return searchSort(searchQuery, catalog);
 	}
 	
 
@@ -34,14 +34,14 @@ public class SearchController {
 	 * @param searchView
 	 * @return false if queryString is null, else true
 	 */
-	private Boolean searchSort(String queryString, ArrayList<MediaProduct> catalog) {
-		if (queryString == null) {
+	private Boolean searchSort(String searchQuery, ArrayList<MediaProduct> catalog) {
+		if (searchQuery == null) {
 			System.out.println("Did not enter a query.");
 			return false;
 		}
-		SearchComparator songSearch = new SearchComparator(queryString);
+		SearchComparator songSearch = new SearchComparator(searchQuery);
 		Collections.sort(catalog, songSearch);
-		view.DisplaySearchResultsView(queryString, catalog);
+		view.DisplaySearchResultsView(searchQuery, catalog);
 		return true;
 	}
 	
