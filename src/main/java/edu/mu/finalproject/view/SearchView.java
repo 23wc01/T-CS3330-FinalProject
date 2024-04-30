@@ -16,9 +16,9 @@ public class SearchView {
 		System.out.println("Search anything/anyone based on their name...");
 		System.out.print("Enter search (max char = " + MAX_SEARCH_CHARS + "): ");
 		Scanner scanner = new Scanner(System.in);
-		String queryString = scanner.nextLine();
-		queryString = queryString.substring(0, Math.min(queryString.length(), MAX_SEARCH_CHARS));
-		return queryString;
+		String searchQuery = scanner.nextLine();
+		searchQuery = searchQuery.substring(0, Math.min(queryString.length(), MAX_SEARCH_CHARS));
+		return searchQuery;
 	}
 	/**
 	 * Displays @param catalog with all MediaObjects inside sorted in descending order of fuzzyscore similarity to @param queryString
