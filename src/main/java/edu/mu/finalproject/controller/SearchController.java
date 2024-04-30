@@ -1,3 +1,4 @@
+
 package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
@@ -8,12 +9,16 @@ import edu.mu.finalproject.util.SearchComparator;
 
 public class SearchController {
 	SearchView view;
+	public SearchController() {
+		view = new SearchView();
+	}
+	
 	/**
 	 * Prompts user for query, sorts, then displays all MediaObjects in @param catalog 
 	 * @param catalog
+	 * @return false if search
 	 */
 	public Boolean search(ArrayList<MediaProduct> catalog) {
-		view = new SearchView();
 		String queryString = view.getSearchQuery();
 		return searchSort(queryString, catalog);
 	}
@@ -27,6 +32,7 @@ public class SearchController {
 	 * @param queryString
 	 * @param catalog
 	 * @param searchView
+	 * @return false if queryString is null, else true
 	 */
 	private Boolean searchSort(String queryString, ArrayList<MediaProduct> catalog) {
 		if (queryString == null) {

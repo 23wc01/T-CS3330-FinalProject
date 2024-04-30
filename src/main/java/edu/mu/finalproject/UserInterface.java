@@ -1,6 +1,8 @@
 package edu.mu.finalproject;
 
 import java.util.Scanner;
+
+import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
@@ -13,6 +15,7 @@ public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
 	public static FavoritesSingleton TheFavoritesManager;
+	public static Account user;
 	//fields to hold catalogs go here
 	//Any other fields go here (user?)
 	
@@ -73,11 +76,11 @@ public class UserInterface {
 //            	break;
 // WAITING FOR ACCOUNT
             case SETUP_PREFERENCE:
-            	UIExecutionMethods.executeSetupPreference();
+            	UIExecutionMethods.executeSetupPreference(user);
             	break;
 /*WAITING FOR CATALOG
  * 			case DOWNLOAD_RECOMMENDED_PLAYLIST:
- * 				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
+ * 				UIExecutionMethods.executeDownloadRecommendedPlaylist(user); 
  * 				break;              
  */
 /*WAITING FOR CATALOG

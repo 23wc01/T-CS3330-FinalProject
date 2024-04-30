@@ -14,7 +14,7 @@ public class SearchView {
 	 */
 	public String getSearchQuery() {
 		System.out.println("Search anything/anyone based on their name...");
-		System.out.print("Enter search (max char = 50): ");
+		System.out.print("Enter search (max char = " + MAX_SEARCH_CHARS + "): ");
 		Scanner scanner = new Scanner(System.in);
 		String queryString = scanner.nextLine();
 		queryString = queryString.substring(0, Math.min(queryString.length(), MAX_SEARCH_CHARS));
@@ -24,13 +24,18 @@ public class SearchView {
 	 * Displays @param catalog with all MediaObjects inside sorted in descending order of fuzzyscore similarity to @param queryString
 	 * @param queryString
 	 * @param sortedCatalog
+	 * @return false if parameters are null, else true
 	 */
-	public void DisplaySearchResultsView(String queryString, ArrayList<MediaProduct> sortedCatalog) {
+	public Boolean DisplaySearchResultsView(String queryString, ArrayList<MediaProduct> sortedCatalog) {
+		if (queryString == null || sortedCatalog == null) {
+			return false;
+		}
 		System.out.println("\nSearch results for '"+ queryString + "'");
 		System.out.println("-------------------------------");
 		for (MediaProduct mediaObj : sortedCatalog) {
 			System.out.println(mediaObj.toString());
 		}
 		System.out.println("-------------------------------\n");
+		return true;
 	}
 }

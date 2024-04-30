@@ -45,14 +45,14 @@ public class UIExecutionMethods {
 //			boolean result = FavoritesController.favorite(objectToBeFavorited);														
 //		}
 		
-		public static void executeSetupPreference() {
-			Account user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
+		public static void executeSetupPreference(Account user) {
+			user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
 			PreferenceController preferenceController = new PreferenceController();
 			user.setUserPreference(preferenceController.newPreference());
 		}
 		
-		public static void executeDownloadRecommendedPlaylist() {
-			Account user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
+		public static void executeDownloadRecommendedPlaylist(Account user) {
+			user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
 
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
 			if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
