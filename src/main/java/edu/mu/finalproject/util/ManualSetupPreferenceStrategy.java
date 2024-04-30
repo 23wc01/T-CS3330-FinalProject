@@ -11,8 +11,7 @@ public class ManualSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 
 	@Override
 	public Preference setupPreference(SetupPreferenceView view) {
-		if (view != null) {
-			setView(view);
+		if (setView(view)) {
 			view.displayQuestion("What is your listening preference?");
 			ArrayList<String> choices = new ArrayList<String>();
 			for (Preference preference : Preference.values()) {
@@ -29,7 +28,14 @@ public class ManualSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		}
 		return null;
 	}
-	private void setView(SetupPreferenceView view) {
+	private Boolean setView(SetupPreferenceView view) {
+		if(view == null) {
+			return false;
+		}
 		this.view = view;
+		return true;
+	}
+	private SetupPreferenceView getView() {
+		return view;
 	}
 }

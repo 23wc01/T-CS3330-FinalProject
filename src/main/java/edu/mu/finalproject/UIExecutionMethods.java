@@ -57,7 +57,7 @@ public class UIExecutionMethods {
 
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
 			if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
-				System.out.println("Download success");
+				System.out.println("Refresh folder if html file doesn't appear immidiately");
 			}
 		}
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order

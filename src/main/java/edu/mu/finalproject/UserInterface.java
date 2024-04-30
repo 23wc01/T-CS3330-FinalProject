@@ -1,15 +1,12 @@
 package edu.mu.finalproject;
 
 import java.util.Scanner;
-import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
-import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.model.FavoritesSingleton;
 
-import edu.mu.finalproject.model.Preference;
-import edu.mu.finalproject.view.EventView;
+
 
 
 public class UserInterface {
@@ -74,10 +71,25 @@ public class UserInterface {
 //            case FAVORITE:
 //            	UIExecutionMethods.executeFavorite();
 //            	break;
+// WAITING FOR CATALOG
             case SETUP_PREFERENCE:
             	UIExecutionMethods.executeSetupPreference();
             	break;
-                
+/*WAITING FOR CATALOG
+ * 			case DOWNLOAD_RECOMMENDED_PLAYLIST:
+ * 				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
+ * 				break;              
+ */
+/*WAITING FOR CATALOG
+* 			case SEARCH_CATALOG:
+* 				UIExecutionMethods.executeSearchCatalog(); 
+* 				break;              
+*/
+/*WAITING FOR CATALOG
+* 			case SEARCH_CATALOG:
+* 				UIExecutionMethods.executeSearchCatalog(); 
+* 				break;              
+*/
               //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!
             
             	
