@@ -3,14 +3,14 @@ package edu.mu.finalproject.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Playlist extends MediaObject {
+public class Playlist extends MediaProduct {
 	ArrayList<Song> songs = new ArrayList<Song>();
 
 	public Playlist(int id, String name, String description, Date addedDate, Boolean isFavorited,  ArrayList<Song> songs) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.description = description;
+		this.imgDescription = description;
 		this.addedDate = addedDate; 
 		this.isFavorited = isFavorited;
 		this.songs = songs;
@@ -26,7 +26,7 @@ public class Playlist extends MediaObject {
 
 	@Override
 	public String toString() {
-		return "Playlist [name=" + name + ", description=" + description + ", addedDate="
+		return "Playlist [name=" + name + ", description=" + imgDescription + ", addedDate="
 				+ addedDate + ", isFavorited=" + isFavorited + "\nPlaylist " + name + " contains: " + songs + "]";
 	}
 

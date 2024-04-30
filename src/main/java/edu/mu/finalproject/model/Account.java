@@ -97,4 +97,11 @@ public class Account {
 	public int getAccountID() {
 		return accountID;
 	}
+	
+	@Override
+	public String toString() {
+		return "Account [accountID=" + accountID + ", username=" + username + ", savedPlaylists=" + savedPlaylists
+				+ ", savedSongs=" + savedSongs + ", followedArtists=" + followedArtists
+				+ ", followedUsers=" + followedUsers + ", userPreference=" + userPreference + "]";
+	}
 }

@@ -9,10 +9,14 @@ public class ManualSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	private SetupPreferenceView view;	
 	private Preference userPreference;
 
+	/**
+	 * Prompts for user preference based & assigns preference based on user's 1 choice. Returns the preference matching user’s answer
+	 * @param view
+	 * @return 
+	 */
 	@Override
 	public Preference setupPreference(SetupPreferenceView view) {
-		if (view != null) {
-			setView(view);
+		if (setView(view)) {
 			view.displayQuestion("What is your listening preference?");
 			ArrayList<String> choices = new ArrayList<String>();
 			for (Preference preference : Preference.values()) {
@@ -29,7 +33,14 @@ public class ManualSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		}
 		return null;
 	}
-	private void setView(SetupPreferenceView view) {
+	private Boolean setView(SetupPreferenceView view) {
+		if(view == null) {
+			return false;
+		}
 		this.view = view;
+		return true;
+	}
+	private SetupPreferenceView getView() {
+		return view;
 	}
 }

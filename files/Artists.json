@@ -2,63 +2,63 @@
     {
     "id": 1,
     "name": "Stray Kids",
-    "description": "A South Korean boy band formed by JYP Entertainment through the 2017 reality show of the same name.",
+    "imgDescription": "music",
     "isFavorited": false,
     "playlistNames": ["I Am NOT", "I Am WHO", "I Am YOU", "Clé 1: Miroh", "Clé 2: Yellow Wood"]
     },
     {
     "id": 2,
     "name": "Twice",
-    "description": "A South Korean girl group formed by JYP Entertainment through the 2015 survival reality show Sixteen.",
+    "imgDescription": "sixteen",
     "isFavorited": true,
     "playlistNames": ["The Story Begins", "Page Two", "Signal", "What Is Love?", "Yes or Yes"]
     },
     {
     "id": 3,
     "name": "BlackPink",
-    "description": "A South Korean girl group formed by YG Entertainment, consisting of members Jennie, Lisa, Jisoo and Rosé.",
+    "imgDescription": "music",
     "isFavorited": false,
     "playlistNames": ["Square One", "Square Up", "Kill This Love", "How You Like That", "The Album"]
     },
     {
     "id": 4,
     "name": "Dean Martin",
-    "description": "An American singer, actor, comedian and film producer who was one of the most popular and enduring American entertainers of the mid-20th century.",
+    "imgDescription": "guitar",
     "isFavorited": false,
     "playlistNames": ["This Time I'm Swingin'", "Dino: The Essential Dean Martin", "Houston", "Everybody Loves Somebody", "Capitol Collector's Series"]
     },
     {
     "id": 5,
     "name": "ONE OK ROCK",
-    "description": "A Japanese rock band formed in Tokyo, Japan in 2005.",
+    "imgDescription": "tokyo",
     "isFavorited": true,
     "playlistNames": ["Nine Needles", "Zankyo Reference", "JINSEI×BGM", "35xxxv", "Ambitions"]
     },
     {
     "id": 6,
     "name": "Kids Tunez",
-    "description": "A children's music group that produces educational songs for kids.",
+    "imgDescription": "kids.",
     "isFavorited": false,
     "playlistNames": ["Alphabet Song Collection", "Numbers Song Collection", "Shapes and Colors", "Animals Collection", "Seasons Collection"]
     },
     {
     "id": 7,
     "name": "Dr. Jean",
-    "description": "A Canadian musician known for creating fun and educational French language music for children.",
+    "imgDescription": "french",
     "isFavorited": false,
     "playlistNames": ["Le Rock de la ferme", "La Surprise", "Les Chansons du camion poubelle", "Chu pas un monstre!", "En forme avec le Doc"]
     },
     {
     "id": 8,
     "name": "icanrockyourworld",
-    "description": "An independent artist who creates upbeat pop music with positive messages.",
+    "imgDescription": "happy",
     "isFavorited": false,
     "playlistNames": ["Brand New Day", "Unstoppable", "Rise Above", "Believe in Yourself", "Breakthrough"]
     },
     {
     "id": 9,
     "name": "Patty Shukla",
-    "description": "A Canadian kindie (kids' indie) musician who has been performing since 2004 and specializes in original English and Hindi songs for children.",
+    "imgDescription": "children",
     "isFavorited": true,
     "playlistNames": ["Let's Play & Learn", "Wiggle, Giggle & Groove", "We All Sing Together", "India's Best Children's Songs", "Come Out and Play"]
     }

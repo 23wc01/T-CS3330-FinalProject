@@ -2,201 +2,108 @@
 // https://www.educative.io/answers/what-is-the-stringutilsreplace-method-in-java
 // https://www.w3schools.com/howto/howto_css_social_media_buttons.asp
 package edu.mu.finalproject.controller;
-import java.io.File;
 import java.io.FileWriter;
 
-import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.ArrayList;
+
+import edu.mu.finalproject.model.Account;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;
+import edu.mu.finalproject.util.downloadPlaylistBuilder.HtmlDirector;
 import edu.mu.finalproject.view.DownloadPlaylistView;
 
 
 public class DownloadPlaylistController {
-	private final static String htmlPlaylistTemplateFilePath = "files/playlistHtmlTemplate.txt";
-	private final static String htmlSongsTemplateFilePath = "files/playlistSongsHtmlTemplate.txt";
-	private final static String htmlAccountTemplateFilePath = "files/playlistAccountHtmlTemplate.txt";
 	private final static String htmlOutputFolder = "outputs/";
+	private ArrayList<String> htmlStrs;
 	private String htmlOutputFilepath;
-	private final static String[] playlistHtmlComponents = 
-		{"@playlistName",
-		"@playlistDescription",
-		"@playlistSongsCount",
-		"@playlistAddedDate"
-		};
-	private final static String[] songHtmlComponents = 
-		{"@songName",
-		"@songDescription",
-		"@songAddedDate"
-		};
-	private final static String[] accountHtmlComponent = 
-		{"@accountUsername"
-		};
-	private static String playlistHtmlTemplate;
-	private static String songsHtmlTemplate;
-	private static String accountHtmlTemplate;
-	
-	/**
-	 * Reads from /files folder html template specified in @param filepath
-	 * @param filepath
-	 * @return
-	 */
-	private static String readHtmlTemplate(String filepath) {
-		String html = "";
-		Scanner fileInput = null;
-		try {
-			File htmlTemplate = new File(filepath);
-			fileInput = new Scanner(htmlTemplate);
-			while(fileInput.hasNextLine()) {
-				html += fileInput.nextLine() + "\n";
-			}
-			fileInput.close();
-			return html;
-		}
-		catch (IOException error) {
-			error.printStackTrace();
-			return null;
-		}
-	}
+	private Playlist recommendedPlaylist;
+	private DownloadPlaylistView view;
 	
 	/** 
 	 * Constructor fetches 3 parts of html template & stores them in String vars
 	 */
 	public DownloadPlaylistController() {
-		playlistHtmlTemplate = readHtmlTemplate(htmlPlaylistTemplateFilePath);
-		songsHtmlTemplate = readHtmlTemplate(htmlSongsTemplateFilePath);
-		accountHtmlTemplate = readHtmlTemplate(htmlAccountTemplateFilePath);
+		htmlStrs = new ArrayList<String>();
+		htmlOutputFilepath = htmlOutputFolder;
+		view = new DownloadPlaylistView();
 	}
 	
-	/**
+	/** 
 	 * Controlling method. Gets & Writes the "dynamic values" in Playlist, Playlist's songs, and Account into html file
-	 * @param playlist
 	 * @param account
+	 * @param catalog
+	 * @return
 	 */
-	public void downloadPlaylist(Playlist playlist/*, Account account*/) {	
-		Map<String, String> playlistDynamicValues = getPlaylistDynamicValues(playlist);
-		String playlistHtml = createHtml(playlistDynamicValues, playlistHtmlTemplate);
-		
-		String songsHtml = "";
-		for (Song song : playlist.getSongs()) {
-			Map<String, String> songsDynamicValues = getSongDynamicValues(song);
-			songsHtml += createHtml(songsDynamicValues, songsHtmlTemplate);
-		}
-		//Map<String, String> accountDynamicValues = GetAccountDynamicValues(account);
-		//String accountHtml = CreateHtml(accountDynamicValues, accountHtmlTemplate);
-		String html = playlistHtml + songsHtml + accountHtmlTemplate; // Change to accountHtml when Account implementation is done
-		Boolean writeIsSuccess = writeHtmlToFile(playlist.getName(), html);
-		DownloadPlaylistView view = new DownloadPlaylistView();
-		view.displayDownloadMessage(htmlOutputFilepath, writeIsSuccess);
-	}
-	
-	/**
-	 * Given list static HtmlComponents & list of dynamic values that'll replace the HtmlComponents, create a HashMap to map them together
-	 * @param keys
-	 * @param values
-	 * @return static HtmlComponents mapped to their respective class's dynamic fields
-	 */
-	private Map<String, String> mapKeysToValues(String[] keys, String[] values) {
-		Map<String, String> dynamicHtmlValues = new HashMap<String, String>();
-		int index = 0;
-		for(String key : keys) {
-			dynamicHtmlValues.put(keys[index], values[index]);
-			++index;
-		}
-		return dynamicHtmlValues;	
-	}
-	
-	/**
-	 * Gets desired playlist's info, stores info in list to be mapped against their static counterparts 
-	 * @param playlist
-	 * @return list of @param playlist's fields
-	 */
-	private Map<String, String> getPlaylistDynamicValues(Playlist playlist) {
-		String playlistName = "";
-		String playlistDescription = "";
-		String playlistSongsCount = "0";
-		String playlistAddedDate = "";
-		
-		if (playlist.getName() != null) {
-			playlistName = playlist.getName();
-		}
-		if (playlist.getDescription() != null) {
-			playlistDescription = playlist.getDescription();
-		}
-		if (playlist.getSongs().size() != 0) {
-			playlistSongsCount = Integer.toString(playlist.getSongs().size());
-		}
-		if (playlist.getAddedDate() != null) {
-			playlistAddedDate = playlist.getAddedDate().toString();
-		}
-		String[] playlistInfo = {playlistName, playlistDescription, playlistSongsCount, playlistAddedDate};
-		return mapKeysToValues(playlistHtmlComponents, playlistInfo);
-	}
-	/**
-	 * Gets desired song's info, stores info in list to be mapped against their static counterparts 
-	 * @param song
-	 * @return list of @param song's fields
-	 */
-	private Map<String, String> getSongDynamicValues(Song song) {
-		String songName = "";
-		String songDescription = "music";
-		String songAddedDate = "";
-		if (song.getName() != null) {
-			songName = song.getName();
-		}
-		if (song.getDescription() != null) {
-			songDescription = song.getDescription();
+	public Boolean downloadRecommendedPlaylist(Account account, ArrayList<MediaProduct> catalog) {	
+		if (!createPlaylist(account, catalog)) {
+			System.err.println("Couldn't create playlist for downloadRecommendedPlaylist()");
+			return false;
 		}
 		
-		if (song.getAddedDate() != null) {
-			songAddedDate = song.getAddedDate().toString();
+		HtmlDirector director = new HtmlDirector();
+		
+		htmlStrs.add(director.constructPlaylistHtml(getRecommendedPlaylist()));
+		for (Song song : getRecommendedPlaylist().getSongs()) {
+			htmlStrs.add(director.constructSongHtml(song));
 		}
-
-		String[] songInfo = {songName, songDescription, songAddedDate};
-		return mapKeysToValues(songHtmlComponents, songInfo);
+		htmlStrs.add(director.constructAccountHtml(account));		
+		String combinedStr = combineHtmlStrs();
+		if (combinedStr == null) {
+			return false;
+		}
+		Boolean writeIsSuccess = writeHtmlToFile(getRecommendedPlaylist().getName(), combinedStr);
+		
+		return view.displayDownloadMessage(htmlOutputFilepath, writeIsSuccess);
 	}
 	
+// HELPER FUNCTIONS
 	/**
-	 * Gets account's info, stores account in list to be mapped against their static counterparts 
-	 * @param song
-	 * @return list of @param user's fields
+	 * Creates controller to create playlist of recommended songs
+	 * @param account
+	 * @param catalog
+	 * @return
 	 */
-	private Map<String, String> getAccountDynamicValues(/*, Account user*/) {
-		String username = "";
-		/*
-		if (playlist.getArtistID() != null) {
-			username = user.getUsername();
+	public Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
+		if (account == null || catalog == null) {
+			System.out.println("\nParameter(s) passed into createPlaylist() are null");
+			return false;
 		}
-		*/
-		String[] accountInfo = {username};
-		return mapKeysToValues(accountHtmlComponent, accountInfo); 
+		RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
+		setRecommendedPlaylist(recommendPlaylistController.recommendPlaylist(account.getUserPreference(), catalog));
+		if (getRecommendedPlaylist() == null) {
+			return false;
+		}
+		return true;
 	}
 	
 	/**
-	 * Finds & Replace htmlComponents with their dynamic values
-	 * @param dynamicHtmlValues
-	 * @param html
-	 * @return html populated with dynamic fields
+	 * For all htmlStrs in htmlStrs, combine them into 1 string. 
+	 * @return null if any constructed htmlStr == null
 	 */
-	private String createHtml(Map<String, String> dynamicHtmlValues, String html) {
-		for (Map.Entry<String, String> htmlComponent : dynamicHtmlValues.entrySet()) {
-			html = StringUtils.replace(html, htmlComponent.getKey(), htmlComponent.getValue(), 3);
+	private String combineHtmlStrs() {
+		String combinedStr = "";
+		if(htmlStrs.contains(null)) {
+			return null;
 		}
-		return html;
+		for (String htmlStr : htmlStrs) {
+			combinedStr += htmlStr;
+		}
+		return combinedStr;
 	}
 	
 	/**
-	 * Write to @param filename.html the string html
+	 * Write to @param filename.html combined htmlStrs
 	 * @param filename
 	 * @param html
 	 * @return Boolean indicating success/failure to write html file
 	 */
 	private Boolean writeHtmlToFile(String filename, String html) {
-		htmlOutputFilepath = htmlOutputFolder + filename + ".html";
-		htmlOutputFilepath = htmlOutputFilepath.replaceAll(" ", "_");
+		filename = filename.replaceAll(" ", "_");
+		htmlOutputFilepath += filename + ".html";
+
 		try {
 			FileWriter writer = new FileWriter(htmlOutputFilepath);
 			writer.write(html);
@@ -208,5 +115,13 @@ public class DownloadPlaylistController {
 			// e.printStackTrace();
 			return false;
 		}
+	}
+	
+// GETTERS & SETTERS
+	public Playlist getRecommendedPlaylist() {
+		return recommendedPlaylist;
+	}
+	public void setRecommendedPlaylist(Playlist recommendedPlaylist) {
+		this.recommendedPlaylist = recommendedPlaylist;
 	}
 }

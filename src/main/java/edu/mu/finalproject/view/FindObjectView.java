@@ -3,12 +3,12 @@ package edu.mu.finalproject.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.*;
 
 public class FindObjectView {
 	
-	public static String getInformationFromUser() { //view
+	public static String getInformationFromUser() { 
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("What type do you want? ");

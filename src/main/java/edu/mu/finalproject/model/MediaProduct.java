@@ -3,10 +3,10 @@ package edu.mu.finalproject.model;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class MediaObject {
+public abstract class MediaProduct {
 	protected int id;
 	protected String name;
-	protected String description;
+	protected String imgDescription;
 	protected Date addedDate;
 	protected Boolean isFavorited = false;
 	
@@ -22,11 +22,11 @@ public abstract class MediaObject {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
-		return description;
+	public String getImgDescription() {
+		return imgDescription;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setImgDescription(String description) {
+		this.imgDescription = description;
 	}
 	public Date getAddedDate() {
 		return addedDate;
@@ -42,14 +42,15 @@ public abstract class MediaObject {
 	}
 	
 	
-	public int toggleFavorite() {
+	public boolean toggleFavorite() {
 		
 		if(this.isFavorited == true) {
-			return -1;
+			this.setIsFavorited(false);
+			return false;
 		}
 		else {
-			this.isFavorited = true;
-			return 1;
+			this.setIsFavorited(true);
+			return true;
 		}
 
 		
@@ -57,7 +58,7 @@ public abstract class MediaObject {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(addedDate, description, id, isFavorited, name);
+		return Objects.hash(addedDate, imgDescription, id, isFavorited, name);
 	}
 	
 	
@@ -69,8 +70,8 @@ public abstract class MediaObject {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MediaObject other = (MediaObject) obj;
-		return Objects.equals(addedDate, other.addedDate) && Objects.equals(description, other.description)
+		MediaProduct other = (MediaProduct) obj;
+		return Objects.equals(addedDate, other.addedDate) && Objects.equals(imgDescription, other.imgDescription)
 				&& id == other.id && Objects.equals(isFavorited, other.isFavorited) && Objects.equals(name, other.name);
 	}
 	

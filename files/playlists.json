@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Upbeat Hits",
-        "description": "A playlist featuring some of the catchiest and high-energy tracks from various artists.",
+        "imgDescription": "kpop",
         "isFavorited": true,
         "songNames": [
             "God's Menu",
@@ -13,7 +13,7 @@
     {
         "id": 2,
         "name": "Classic Crooner Tunes",
-        "description": "A collection of timeless classics from the legendary Dean Martin.",
+        "imgDescription": "Guitar",
         "isFavorited": false,
         "songNames": [
             "That's Amore",
@@ -24,7 +24,7 @@
     {
         "id": 3,
         "name": "Foodie and Rock",
-        "description": "Some of the most energetic and inspiring tracks from ONEOKROCK and other artists.",
+        "imgDescription": "Eat",
         "isFavorited": true,
         "songNames": [
             "Stand Out Fit In",

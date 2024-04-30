@@ -150,7 +150,7 @@ public class AccountManager {
 	    return 1;
 	}
 	
-	// This method returns a JSON array of the names of a list of MediaObjects.
+	// This method returns a JSON array of the names of a list of Strings.
 	public JSONArray stringToJSON(List<String> strings) {
 		JSONArray stringsJSON = new JSONArray();
 		for (String string : strings) {

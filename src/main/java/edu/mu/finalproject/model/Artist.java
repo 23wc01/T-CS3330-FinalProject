@@ -3,7 +3,7 @@ package edu.mu.finalproject.model;
 import java.util.Date;
 import java.util.List;
 
-public class Artist extends MediaObject{
+public class Artist extends MediaProduct{
 
 		protected int artistID;
 		//Album list?
@@ -12,7 +12,7 @@ public class Artist extends MediaObject{
 			super();
 			this.id = id;
 			this.name = name;
-			this.description = description;
+			this.imgDescription = description;
 			this.addedDate = addedDate;
 			this.isFavorited = isFavorited;
 			this.artistID = artistID;

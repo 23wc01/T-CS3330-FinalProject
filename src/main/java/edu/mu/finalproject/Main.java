@@ -3,8 +3,9 @@ package edu.mu.finalproject;
 import java.util.ArrayList;
 import java.util.Date;
 
-import edu.mu.finalproject.model.*;
 import edu.mu.finalproject.controller.*;
+import edu.mu.finalproject.model.*;
+
 
 
 public class Main {
@@ -25,34 +26,36 @@ public class Main {
 		unorderedPlaylist.getSongs().add(song3);
 		
 		// Add unorderedPlaylist & all individual songs to catalog
-		ArrayList<MediaObject> catalog = new ArrayList<MediaObject>();
+		ArrayList<MediaProduct> catalog = new ArrayList<MediaProduct>();
 		catalog.add(unorderedPlaylist);
 		for (Song song : unorderedPlaylist.getSongs()) {
 			catalog.add(song);
 		}
 		
 		
-		
 		UserInterface ui = new UserInterface();
 		ui.start();			
 		
-		/*
-		// Setup user's preferences
-		PreferenceController preferenceController = new PreferenceController();
-		// preferenceController.setupPreferences();
-		// Store all songs that match user's preferences in a Playlist 
-		Playlist recommenedSongs = preferenceController.recommendByPreference(Preference.POP, catalog);
-		// Download playlist & display playlist contents in html file
-		DownloadPlaylistController downloadPlaylist = new DownloadPlaylistController();
-		downloadPlaylist.downloadPlaylist(unorderedPlaylist, user);
-		*/
 		
-		/*
-		// Search the catalog
+		
+		/*// Unofficially create new user
+		Account user = new Account("blobby", "secret"); //!!!!!!!! Store global user field in this class
+		
+		// Setup user's preference in 1 of 2 ways
+		PreferenceController prefController = new PreferenceController();
+		user.setUserPreference(prefController.newPreference());
+
+		// Download recommended playlist
+		DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
+		if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
+			System.out.println("*Refresh folder if html file doesn't appear immidiately*\n\n");
+		}
+
+		// Search for anything 
 		SearchController searchController = new SearchController();
 		searchController.search(catalog);	
-		*/
 		
+		*/
 	}
 	
 

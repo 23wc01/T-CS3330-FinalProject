@@ -3,7 +3,6 @@ package edu.mu.finalproject.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class PreferenceQuestion {
 	private String question;

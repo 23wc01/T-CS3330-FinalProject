@@ -2,20 +2,25 @@ package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.view.SearchView;
 import edu.mu.finalproject.util.SearchComparator;
 
 public class SearchController {
+	SearchView view;
 	/**
 	 * Prompts user for query, sorts, then displays all MediaObjects in @param catalog 
 	 * @param catalog
 	 */
-	public void search(ArrayList<MediaObject> catalog) {
-		SearchView searchView = new SearchView();
-		String queryString = searchView.getSearchQuery();
-		searchSort(queryString, catalog, searchView);
+	public Boolean search(ArrayList<MediaProduct> catalog) {
+		view = new SearchView();
+		String queryString = view.getSearchQuery();
+		return searchSort(queryString, catalog);
 	}
+	
+
+// HELPER FUNCTION(S)	
+	
 	/**
 	 * Searches through all MediaObjects in @param catalog for MediaObjects with names similar to user's queryString 
 	 * Passes sorted @param catalog to SearchView for display.
@@ -23,11 +28,15 @@ public class SearchController {
 	 * @param catalog
 	 * @param searchView
 	 */
-	private void searchSort(String queryString, ArrayList<MediaObject> catalog, SearchView searchView) {
+	private Boolean searchSort(String queryString, ArrayList<MediaProduct> catalog) {
+		if (queryString == null) {
+			System.out.println("Did not enter a query.");
+			return false;
+		}
 		SearchComparator songSearch = new SearchComparator(queryString);
 		Collections.sort(catalog, songSearch);
-		searchView.DisplaySearchResultsView(queryString, catalog);
-		return;
+		view.DisplaySearchResultsView(queryString, catalog);
+		return true;
 	}
 	
 }
