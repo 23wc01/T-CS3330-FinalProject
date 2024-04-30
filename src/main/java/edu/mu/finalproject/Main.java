@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import edu.mu.finalproject.model.*;
+import edu.mu.finalproject.util.downloadPlaylistBuilder.HtmlBuilder;
+import edu.mu.finalproject.util.downloadPlaylistBuilder.HtmlDirector;
+import edu.mu.finalproject.util.downloadPlaylistBuilder.PlaylistHtmlBuilder;
 import edu.mu.finalproject.controller.*;
 
 
@@ -25,7 +28,7 @@ public class Main {
 		unorderedPlaylist.getSongs().add(song3);
 		
 		// Add unorderedPlaylist & all individual songs to catalog
-		ArrayList<MediaObject> catalog = new ArrayList<MediaObject>();
+		ArrayList<MediaProduct> catalog = new ArrayList<MediaProduct>();
 		catalog.add(unorderedPlaylist);
 		for (Song song : unorderedPlaylist.getSongs()) {
 			catalog.add(song);

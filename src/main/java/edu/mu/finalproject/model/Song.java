@@ -2,7 +2,7 @@ package edu.mu.finalproject.model;
 
 import java.util.Date;
 
-public class Song extends MediaObject {
+public class Song extends MediaProduct {
 	private String artistName;
 	private Date releaseDate;
 	Preference preference;
@@ -33,7 +33,7 @@ public class Song extends MediaObject {
 	@Override
 	public String toString() {
 		return "Song [releaseDate=" + releaseDate + ", name=" + name + ", description=" + description + ", addedDate="
-				+ addedDate + ", isFavorited=" + isFavorited +", artistName=" + artistName + preference.capitalizePreference() + "]";
+				+ addedDate + ", isFavorited=" + isFavorited +", artistName=" + artistName + ", Preference: " + preference.capitalizePreference() + "]";
 	}
 
 	

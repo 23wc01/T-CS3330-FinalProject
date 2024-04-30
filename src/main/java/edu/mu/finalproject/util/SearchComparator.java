@@ -5,13 +5,13 @@
 package edu.mu.finalproject.util;
 
 import java.util.Comparator;
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 
 import java.util.Locale;
 import org.apache.commons.text.similarity.*;
 
 
-	public class SearchComparator implements Comparator<MediaObject> {
+	public class SearchComparator implements Comparator<MediaProduct> {
 	private final String queryString; 
 	
 	public SearchComparator(String queryName) {
@@ -25,7 +25,7 @@ import org.apache.commons.text.similarity.*;
 	 * @return fuzzyScoresComparison (1 = obj2's name more similar to queryString than obj1's name)
 	 */
 	@Override
-	public int compare(MediaObject obj1, MediaObject obj2) {
+	public int compare(MediaProduct obj1, MediaProduct obj2) {
 		try { // Ensure no null values passed into FuzzyScore()
 			int similarity1 = new FuzzyScore(Locale.getDefault()).fuzzyScore(obj1.getName(), queryString);
 			int similarity2 = new FuzzyScore(Locale.getDefault()).fuzzyScore(obj2.getName(), queryString);

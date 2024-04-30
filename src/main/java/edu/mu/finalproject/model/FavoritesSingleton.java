@@ -26,7 +26,7 @@ public class FavoritesSingleton {
 	 
 	 public void favorite() {
 		                                                                //!!!
-		 MediaObject objectToBeFavorited = FindObjectView.searchMediaCatalog(null); //!!! Add real catalog here!
+		 MediaProduct objectToBeFavorited = FindObjectView.searchMediaCatalog(null); //!!! Add real catalog here!
 		                                                                //!!!
 		 int result = objectToBeFavorited.toggleFavorite();
 		 

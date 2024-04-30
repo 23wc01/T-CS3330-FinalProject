@@ -2,7 +2,7 @@ package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
 
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.view.FindObjectView;
 
 
@@ -11,7 +11,7 @@ import edu.mu.finalproject.view.FindObjectView;
  */
 public class FindObjectController {
 	
-	public static MediaObject searchMediaCatalog(ArrayList <? extends MediaObject> catalog){ //controller
+	public static MediaProduct searchMediaCatalog(ArrayList <? extends MediaProduct> catalog){ //controller
 		String userQuery = FindObjectView.getInformationFromUser();
 		
 		if(userQuery == null) {
@@ -19,7 +19,7 @@ public class FindObjectController {
 			return null;
 		}
 		
-		for(MediaObject traverseObject : catalog) { 
+		for(MediaProduct traverseObject : catalog) { 
 			if (traverseObject.getName().equalsIgnoreCase(userQuery)) {
 				return traverseObject;
 			}

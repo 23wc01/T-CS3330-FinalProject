@@ -3,7 +3,7 @@ package edu.mu.finalproject.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.*;
 
 public class FindObjectView {

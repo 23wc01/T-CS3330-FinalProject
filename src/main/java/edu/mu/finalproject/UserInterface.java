@@ -1,6 +1,5 @@
 package edu.mu.finalproject;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
@@ -8,7 +7,6 @@ import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventManager;
 import edu.mu.finalproject.model.FavoritesSingleton;
-import edu.mu.finalproject.model.Preference;
 
 
 public class UserInterface {
@@ -74,7 +72,7 @@ public class UserInterface {
 //            	UIExecutionMethods.executeFavorite();
 //            	break;
             case SETUP_PREFERENCE:
-            	UIExecutionMethods.excuteSetupPreference();
+            	UIExecutionMethods.executeSetupPreference();
             	break;
                 
               //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!

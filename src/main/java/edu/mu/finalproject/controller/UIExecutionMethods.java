@@ -1,5 +1,6 @@
 package edu.mu.finalproject.controller;
 
+import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
@@ -38,11 +39,20 @@ public class UIExecutionMethods {
 //			UserInterface.TheFavoritesManager.favorite(); 
 //		}
 		
-		public static void excuteSetupPreference() {
-			PreferenceController preferenceController = new PreferenceController();
-			preferenceController.modifyPreference();
+		public static void executeSetupPreference() {
+			Account user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
+			PreferenceController prefController = new PreferenceController();
+			user.setUserPreference(prefController.newPreference());
 		}
 		
+		public static void executeDownloadRecommendedPlaylist() {
+			Account user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
+
+			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
+			if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
+				System.out.println("Download success");
+			}
+		}
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
 		
 		

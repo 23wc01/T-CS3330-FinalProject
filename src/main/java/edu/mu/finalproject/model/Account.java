@@ -76,8 +76,8 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [accountID=" + accountID + ", username=" + username + ", savedPlaylists=" + savedPlaylists
-				+ ", savedSongs=" + savedSongs + ", followers=" + followers
-				+ ", following=" + following + ", userPreference=" + userPreference + "]";
+				+ ", savedSongs=" + savedSongs + ", followedArtists=" + followedArtists
+				+ ", followedUsers=" + followedUsers + ", userPreference=" + userPreference + "]";
 	}
 	
 }

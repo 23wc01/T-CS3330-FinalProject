@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import edu.mu.finalproject.controller.FavoritesController;
 import edu.mu.finalproject.model.Artist;
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;
 
@@ -36,7 +36,7 @@ public class FavoritesView {
                     break;
                 }
                 else if (userInput.equals("all")) {
-                	displayFavoritesInfo(MediaObject.class);
+                	displayFavoritesInfo(MediaProduct.class);
                     break;
                 }
                 
@@ -50,13 +50,13 @@ public class FavoritesView {
 		
 	
 
-	public static void displayFavoritesInfo(Class <? extends MediaObject> type){
-		ArrayList <MediaObject> favorites = new ArrayList<MediaObject>();
+	public static void displayFavoritesInfo(Class <? extends MediaProduct> type){
+		ArrayList <MediaProduct> favorites = new ArrayList<MediaProduct>();
 		favorites = FavoritesController.gatherFavorited(type);
 		
 		System.out.println("Favorites summary for " + userInput.toLowerCase());
 		System.out.println("You have " + favorites.size() + " favorites.");
-		for(MediaObject myObject : favorites) {
+		for(MediaProduct myObject : favorites) {
 			System.out.println(myObject.getName());
 		}
 	}

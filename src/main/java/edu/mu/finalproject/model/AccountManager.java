@@ -75,9 +75,9 @@ public class AccountManager {
 	}
 	
 	// This method returns a JSON array of the IDs of a list of MediaObjects.
-	private JSONArray extractIDs(List<? extends MediaObject> objects) {
+	private JSONArray extractIDs(List<? extends MediaProduct> objects) {
 		JSONArray IDs = new JSONArray();
-		for (MediaObject object : objects) {
+		for (MediaProduct object : objects) {
 			IDs.put(object.getId());
 		}
 		return IDs;

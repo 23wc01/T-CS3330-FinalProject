@@ -2,7 +2,7 @@ package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import edu.mu.finalproject.model.MediaObject;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.view.SearchView;
 import edu.mu.finalproject.util.SearchComparator;
 
@@ -11,7 +11,7 @@ public class SearchController {
 	 * Prompts user for query, sorts, then displays all MediaObjects in @param catalog 
 	 * @param catalog
 	 */
-	public void search(ArrayList<MediaObject> catalog) {
+	public void search(ArrayList<MediaProduct> catalog) {
 		SearchView searchView = new SearchView();
 		String queryString = searchView.getSearchQuery();
 		searchSort(queryString, catalog, searchView);
@@ -23,11 +23,13 @@ public class SearchController {
 	 * @param catalog
 	 * @param searchView
 	 */
-	private void searchSort(String queryString, ArrayList<MediaObject> catalog, SearchView searchView) {
-		SearchComparator songSearch = new SearchComparator(queryString);
+	private void searchSort(String name, ArrayList<MediaProduct> catalog, SearchView searchView) {
+		SearchComparator songSearch = new SearchComparator(name);
 		Collections.sort(catalog, songSearch);
-		searchView.DisplaySearchResultsView(queryString, catalog);
+		searchView.DisplaySearchResultsView(name, catalog);
 		return;
 	}
-	
+	public MediaProduct searchAndGetMediaProduct(String queryString, ArrayList<MediaProduct> catalog) {
+		catalog.
+	}
 }

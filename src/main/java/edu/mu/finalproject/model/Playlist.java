@@ -3,7 +3,7 @@ package edu.mu.finalproject.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Playlist extends MediaObject {
+public class Playlist extends MediaProduct {
 	ArrayList<Song> songs = new ArrayList<Song>();
 
 	public Playlist(int id, String name, String description, Date addedDate, Boolean isFavorited,  ArrayList<Song> songs) {

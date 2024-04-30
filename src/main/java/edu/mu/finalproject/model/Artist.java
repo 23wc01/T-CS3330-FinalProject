@@ -3,7 +3,7 @@ package edu.mu.finalproject.model;
 import java.util.Date;
 import java.util.List;
 
-public class Artist extends MediaObject{
+public class Artist extends MediaProduct{
 
 		protected int artistID;
 		//Album list?
