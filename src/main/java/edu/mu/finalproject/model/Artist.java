@@ -13,7 +13,7 @@ public class Artist extends MediaProduct{
 			this.id = id;
 			this.name = name;
 			this.imgDescription = description;
-			this.addedDate = addedDate;
+			this.releaseDate = addedDate;
 			this.isFavorited = isFavorited;
 			this.artistID = artistID;
 		}
