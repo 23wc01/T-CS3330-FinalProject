@@ -12,9 +12,7 @@ public class FavoritesController {
 	public ArrayList<MediaProduct> gatherFavorited(Class<? extends MediaProduct> type, ArrayList<MediaProduct> catalog) {
 		
 		ArrayList <MediaProduct> favorites = new ArrayList<MediaProduct>();
-		System.out.println("In gatherFavorited");
 		if (catalog.isEmpty() || catalog == null ) {
-			System.out.println("Its empty");
 			return favorites;
 		}
 		
@@ -24,23 +22,19 @@ public class FavoritesController {
 				if (media.getIsFavorited()) {
 					favorites.add(media);
 				}
-				System.out.println("FL favorites is empty: " + favorites.isEmpty());
 			}
 		}
 		
 		//To get certain types of favorited
 		else {
 			for (MediaProduct media : catalog) { 
-				System.out.println("In gatherFavorited for loop");
 				if (media.getClass() == type) { //Use .getClass() not instanceOf because we don't want to count subclasses
 					if (media.getIsFavorited()) {
 						favorites.add(media);
 					}
 				}
-				System.out.println("FL favorites is empty: " + favorites.isEmpty());
 			}
 		}
-		System.out.println("favorites is empty: " + favorites.isEmpty());
 		return favorites;
 	}
 	

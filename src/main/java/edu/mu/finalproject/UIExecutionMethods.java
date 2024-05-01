@@ -22,7 +22,7 @@ public class UIExecutionMethods {
 		    EventView.viewAddEvent(myEvent);
 		}
 		
-		
+		  
 		public static void executeDeleteEvent() {
 			System.out.println("\nEnter information so we can find the event to delete\n ");
 			Event eventToBeDeleted = eventview.createEvent(); 

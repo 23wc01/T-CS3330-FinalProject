@@ -6,7 +6,6 @@ import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
-import edu.mu.finalproject.model.FavoritesSingleton;
 
 
 
@@ -14,7 +13,6 @@ import edu.mu.finalproject.model.FavoritesSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
-	public static FavoritesSingleton TheFavoritesManager;
 	public static Account user;
 	//fields to hold catalogs go here
 	//Any other fields go here (user?)

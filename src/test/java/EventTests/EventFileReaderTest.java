@@ -72,7 +72,6 @@ public class EventFileReaderTest {
     
     @Test
     public void testAppendEventException() {
-    	System.out.println("in test append");
     	
         // Arrange
 //        Event myEvent = new Event(MonthDay.of(8, 8), Year.of(2024), "TestIVE");
