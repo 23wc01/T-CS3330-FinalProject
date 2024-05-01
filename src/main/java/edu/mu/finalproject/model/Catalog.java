@@ -14,12 +14,12 @@ public class Catalog {
         mediaProducts.add(mediaProduct);
     }
 
-    public boolean removeMediaProduct(int id) {
-        return mediaProducts.removeIf(m -> m.getId() == id);
+    public void removeMediaProduct(int id) {
+        mediaProducts.removeIf(m -> m.getId() == id);
     }
 
     public List<MediaProduct> getMediaProducts() {
-        return new ArrayList<>(mediaProducts); // Return a copy to ensure encapsulation
+        return new ArrayList<>(mediaProducts);
     }
 
     public void displayAll() {
