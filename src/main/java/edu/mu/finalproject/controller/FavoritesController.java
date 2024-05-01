@@ -39,13 +39,21 @@ public class FavoritesController {
 	}
 	
 	
-	public boolean favorite(MediaProduct objectToBeFavorited) {
+	public int favorite(MediaProduct objectToBeFavorited) {
+		
+		if (objectToBeFavorited == null) {
+			return 0;
+		}
 	
 		boolean result = objectToBeFavorited.toggleFavorite();
-		
-		FavoritesView favoritesView = new FavoritesView();
-		favoritesView.displayFavoriteResult(result, objectToBeFavorited);
-		return result; //true if favorited, false if unfavorited
+
+		if (result == true) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
 	}
+
 
 }

@@ -26,12 +26,12 @@ public class FavoriteTest {
 		FavoritesController favoritesController = new FavoritesController();
 		
 		//Act
-		boolean testResult1 = favoritesController.favorite(testSongFavorite);
-		boolean testResult2 = favoritesController.favorite(testSongUnfavorite);
+		int testResult1 = favoritesController.favorite(testSongFavorite);
+		int testResult2 = favoritesController.favorite(testSongUnfavorite);
 		
 		//Assert
-		assertTrue(testResult1);
-		assertFalse(testResult2);
+		assertEquals(1, testResult1);
+		assertEquals(-1, testResult2);
 	}
 	
 	@Test
@@ -52,28 +52,40 @@ public class FavoriteTest {
 		FavoritesController favoritesController = new FavoritesController();
 		
 		//Act
-		boolean testResult1 = favoritesController.favorite(testPlaylistFavorite);
-		boolean testResult2 = favoritesController.favorite(testPlaylistUnfavorite);
+		int testResult1 = favoritesController.favorite(testPlaylistFavorite);
+		int testResult2 = favoritesController.favorite(testPlaylistUnfavorite);
 		
 		//Assert
-		assertTrue(testResult1);
-		assertFalse(testResult2);
+		assertEquals(1, testResult1);
+		assertEquals(-1, testResult2);
 	}
 	
 	@Test
 	public void testFavoriteArtist() {
 		//Arrange
-		Artist testArtistFavorite = new Artist(1, "jack", "bad", new Date(), false, (float) 12.2, 3);
-		Artist testArtistUnfavorite = new Artist(3, "max", "good", new Date(), true, (float) 12.3, 2);
+		Artist testArtistFavorite = new Artist(1, "jack", "bad", new Date(), false, (float) 12.2);
+		Artist testArtistUnfavorite = new Artist(3, "max", "good", new Date(), true, (float) 12.3);
 		FavoritesController favoritesController = new FavoritesController();
 		
 		//Act
-		boolean testResult1 = favoritesController.favorite(testArtistFavorite);
-		boolean testResult2 = favoritesController.favorite(testArtistUnfavorite);
+		int testResult1 = favoritesController.favorite(testArtistFavorite);
+		int testResult2 = favoritesController.favorite(testArtistUnfavorite);
 		
 		//Assert
-		assertTrue(testResult1);
-		assertFalse(testResult2);
+		assertEquals(1, testResult1);
+		assertEquals(-1, testResult2);
+	}
+	
+	@Test 
+	public void testFavorite_ObjectNotFound() {
+		//Arrange
+		FavoritesController favoritesController = new FavoritesController();
+		
+		//Act
+		int testResult = favoritesController.favorite(null);
+		
+		//Assert
+		assertEquals(0, testResult);
 	}
 	
 	@Test
@@ -100,12 +112,14 @@ public class FavoriteTest {
 		FavoritesView favoritesview = new FavoritesView();
 		
 		//Act
-		boolean testResult1 = favoritesview.displayFavoriteResult(true, testSongUnfavorite);
-		boolean testResult2 = favoritesview.displayFavoriteResult(false, testSongFavorite);
+		int testResult1 = favoritesview.displayFavoriteResult(testSongUnfavorite);
+		int testResult2 = favoritesview.displayFavoriteResult(testSongFavorite);
+		int testResult3 = favoritesview.displayFavoriteResult(null);
 		
 		//Assert
-		assertTrue(testResult1);
-		assertFalse(testResult2);
+		assertEquals(-1, testResult1);
+		assertEquals(1, testResult2);
+		assertEquals(0, testResult3);
 		
 	}
 	

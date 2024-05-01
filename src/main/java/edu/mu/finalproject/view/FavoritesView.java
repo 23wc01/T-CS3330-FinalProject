@@ -56,7 +56,7 @@ public class FavoritesView {
 
 	public ArrayList <? extends MediaProduct> displayFavoritesInfo(ArrayList <? extends MediaProduct> favorites){
 		
-		if (favorites == null) {
+		if (favorites.isEmpty()) {
 			System.out.println("You have no favorites!");
 			return null;
 		}
@@ -76,15 +76,22 @@ public class FavoritesView {
 	
 	
 	
-	public boolean displayFavoriteResult(boolean favoriteResult, MediaProduct objectToBeFavorited) {
+	public int displayFavoriteResult(MediaProduct objectToBeFavorited) {
 		
-		if(favoriteResult == false) {
+		FavoritesController favoritescontroller = new FavoritesController();
+		int favoriteResult = favoritescontroller.favorite(objectToBeFavorited);
+		
+		if (favoriteResult == 0) {
+			System.out.println("Not found!");
+			return 0;
+		}
+		else if(favoriteResult == -1) {
 			 System.out.println("You un-favorited " + objectToBeFavorited.getName());
-			 return false;
+			 return -1;
 		 }
-		 else {
+		else {
 			 System.out.println("You favorited " + objectToBeFavorited.getName());
-			 return true;
+			 return 1;
 		 }
 	}
 	

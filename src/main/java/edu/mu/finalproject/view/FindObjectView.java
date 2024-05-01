@@ -41,7 +41,7 @@ public class FindObjectView {
 			}
 		}
 		
-		//Uses the name as a unique key to find objects. Can modify later
+		//Uses the name as a unique key to find objects
 		String userInput;
 		switch (type) {
 		case ("artist"):
