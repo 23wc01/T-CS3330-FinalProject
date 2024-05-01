@@ -13,7 +13,6 @@ import edu.mu.finalproject.model.EventSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
-	public static FavoritesSingleton TheFavoritesManager;
 	private Account user;
 	//public static CatalogSingleton CatalogSingleton;
 	//Any other fields go here (user?)

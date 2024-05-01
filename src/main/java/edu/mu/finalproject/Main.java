@@ -62,7 +62,7 @@ public class Main {
 		*/
 		
 		UserInterface ui = new UserInterface();
-		ui.start();			
+		ui.start();	
 		
 		
 		MediaCatalogController mediaCatalog = new MediaCatalogController();
