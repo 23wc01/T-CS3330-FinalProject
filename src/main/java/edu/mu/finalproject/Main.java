@@ -7,11 +7,9 @@ import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.*;
 
 
-
 public class Main {
 
 	public static void main(String[] args) {
-		
 		// Unofficially create some songs
 		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, "icanrockyourworld", Preference.EDM);
 		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, "Kids Tunez", Preference.RAP);
@@ -31,18 +29,49 @@ public class Main {
 		for (Song song : unorderedPlaylist.getSongs()) {
 			catalog.add(song);
 		}
+
+		/* !!!THOMAS!!! USE THIS TO SEARCH FOR SONG BY NAME
+		 * 
+		 * SearchController searchController = new SearchController();
+		 * searchController.searchSongName(playlistJsonSongNamesList1SongName);
+		 */
 		
+		
+		/*
+		// // Path to your playlist JSON file
+		String filePath = "files/playlists.json";
+
+		// // Create a playlist from the JSON file
+		mediaCatalog.createPlaylistFromFile(filePath);
+
+		// Display all media in the catalog
+		System.out.println("Displaying all media in the catalog:");
+		mediaCatalog.displayAll();
+
+		// Test deletion of a specific song
+		System.out.println("Deleting 'The Guacamole Song'...");
+		mediaCatalog.deleteMedia(song2.getId());
+
+		// Display all media after deletion
+		System.out.println("Displaying all media after deletion of one song:");
+		mediaCatalog.displayAll();
+
+		// Shuffle and display to ensure shuffle functionality works
+		System.out.println("Displaying shuffled media:");
+		mediaCatalog.displayShuffle();
+		*/
 		
 		UserInterface ui = new UserInterface();
-		ui.start();			
+		ui.start();	
 		
 		
-		
-		/*// Unofficially create new user
-		Account user = new Account("blobby", "secret"); //!!!!!!!! Store global user field in this class
+		MediaCatalogController mediaCatalog = new MediaCatalogController();
+		/*
+		// Unofficially create new user
+		Account user = new Account(0, "blobby", "secret"); //!!!!!!!! Store global user field in this class
 		
 		// Setup user's preference in 1 of 2 ways
-		PreferenceController prefController = new PreferenceController();
+		SetupPreferenceController prefController = new SetupPreferenceController();
 		user.setUserPreference(prefController.newPreference());
 
 		// Download recommended playlist
@@ -54,8 +83,8 @@ public class Main {
 		// Search for anything 
 		SearchController searchController = new SearchController();
 		searchController.search(catalog);	
-		
 		*/
+		
 	}
 	
 

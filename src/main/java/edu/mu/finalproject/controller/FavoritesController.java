@@ -9,31 +9,51 @@ import edu.mu.finalproject.view.FindObjectView;
 
 public class FavoritesController {
 
-	public static ArrayList<MediaProduct> gatherFavorited(Class<? extends MediaProduct> type) {
+	public ArrayList<MediaProduct> gatherFavorited(Class<? extends MediaProduct> type, ArrayList<MediaProduct> catalog) {
 		
 		ArrayList <MediaProduct> favorites = new ArrayList<MediaProduct>();
+		if (catalog.isEmpty() || catalog == null ) {
+			return favorites;
+		}
 		
-		for (MediaProduct media : catalog) { //REPLACE CATALOG
-			if (media.getClass() == type) { //Use .getClass() not instanceOf because we don't want to count subclasses
+		//To get all favorited
+		if (type == MediaProduct.class) {
+			for (MediaProduct media : catalog) {
 				if (media.getIsFavorited()) {
 					favorites.add(media);
 				}
 			}
 		}
 		
+		//To get certain types of favorited
+		else {
+			for (MediaProduct media : catalog) { 
+				if (media.getClass() == type) { //Use .getClass() not instanceOf because we don't want to count subclasses
+					if (media.getIsFavorited()) {
+						favorites.add(media);
+					}
+				}
+			}
+		}
 		return favorites;
 	}
 	
 	
-	
-	
-	
-	public static boolean favorite(MediaProduct objectToBeFavorited) {
+	public int favorite(MediaProduct objectToBeFavorited) {
+		
+		if (objectToBeFavorited == null) {
+			return 0;
+		}
 	
 		boolean result = objectToBeFavorited.toggleFavorite();
-		
-		FavoritesView.displayFavoriteResult(result, objectToBeFavorited);
-		return result; //true if favorited, false if unfavorited
+
+		if (result == true) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
 	}
+
 
 }

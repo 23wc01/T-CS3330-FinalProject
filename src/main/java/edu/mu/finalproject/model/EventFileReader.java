@@ -15,14 +15,18 @@ import org.json.JSONObject;
 
 public class EventFileReader {
 	
-	static String path = "files/events.json";
+	private static String path = "files/events.json";
 
-	public static ArrayList<Event> readEvents() {
+	public static ArrayList<Event> readEvents(String filePath) {
 		 
 		 ArrayList<Event> eventsCollection = new ArrayList<>();
+
+	     if (filePath == null) {
+	            filePath = path;
+	     }
 		 
 	     try {
-	         String jsonText = new String(Files.readAllBytes(Paths.get(path)));
+	         String jsonText = new String(Files.readAllBytes(Paths.get(filePath)));
 	         JSONArray jsonArray = new JSONArray(jsonText);
 	     
 	
@@ -51,6 +55,13 @@ public class EventFileReader {
 	
 	public static int appendEvent(Event myEvent) {
 		try {
+			
+//			String filePath = System.getenv("EVENTS_FILE_PATH");
+//		     if (filePath == null) {
+//		            filePath = path;
+//		     }
+		     
+		     
             // Read the existing JSON file
             String content = new String(Files.readAllBytes(Paths.get(path)));
             JSONArray jsonArray = new JSONArray(content);
@@ -62,7 +73,7 @@ public class EventFileReader {
             // Write the updated array back to the file
             Files.write(Paths.get(path), jsonArray.toString(4).getBytes());  // Beautified print, indent 4
             return 1;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
@@ -73,7 +84,11 @@ public class EventFileReader {
 	public static int deleteEventFromFile(MonthDay monthDate, Year year, String artistName) {
 		try {
 			
-
+//			String filePath = System.getenv("EVENTS_FILE_PATH");
+//		     if (filePath == null) {
+//		            filePath = path;
+//		     }
+//		     
 			String jsonText = new String(Files.readAllBytes(Paths.get(path)));//Read original JSON array
 			JSONArray jsonArray = new JSONArray(jsonText);
 			JSONArray updatedJsonArray = new JSONArray();
@@ -100,5 +115,8 @@ public class EventFileReader {
 			return -1;
 		}
 	}
+
+
+
 
 }

@@ -4,34 +4,39 @@ import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
+import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
+import edu.mu.finalproject.view.FindObjectView;
 
 import java.util.Scanner;
 
 public class UIExecutionMethods {
+	//Instances here
+	static EventView eventview = new EventView();
 	
 	// Define methods to be called based on user input--------------------------------
 	
 		public static void executeAddEvent() {
-			Event myEvent = EventView.createEvent();
+			Event myEvent = eventview.createEvent();
 		    EventView.viewAddEvent(myEvent);
 		}
 		
-		
+		  
 		public static void executeDeleteEvent() {
 			System.out.println("\nEnter information so we can find the event to delete\n ");
-			Event eventToBeDeleted = EventView.createEvent(); 
+			Event eventToBeDeleted = eventview.createEvent(); 
 			EventView.viewDeleteEvent(eventToBeDeleted);
 		}
 		
 		public static void executeDisplayEvents() {
-			EventView.getEventDisplayInfo();
+			eventview.getEventDisplayInfo(EventSingleton.getInstance().getEventCollection());
 		}
 //WAITING FOR CATALOG:	
 //		public static void executeDisplayFavorites() {
-//			FavoritesView.getFavInfo(); 
+//			FavoritesView favoritesview = new FavoritesView();
+//			favoritesview.getFavInfo(); 
 //		} 
 		
 		public static void executeExit() {
@@ -41,27 +46,31 @@ public class UIExecutionMethods {
 		}
 // WAITING FOR CATALOG:
 //		public static void executeFavorite() {
-//			MediaObject objectToBeFavorited = FindObjectController.searchMediaCatalog(null); //!!! Add real catalog here!
-//			boolean result = FavoritesController.favorite(objectToBeFavorited);														
+//			FindObjectController findobjectcontroller = new FindObjectController();
+//			FavoritesView favoritesview = new FavoritesView();
+//		    String userQuery = FindObjectView.getInformationFromUser();
+//		
+//			MediaObject objectToBeFavorited = findobjectcontroller.searchMediaCatalog(null, userQuery); //!!! Add real catalog here!
+//			favoritesview.displayFavoriteResult(objectToBeFavorited);														
 //		}
 		
-		public static void executeSetupPreference() {
-			Account user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
-			PreferenceController preferenceController = new PreferenceController();
-			user.setUserPreference(preferenceController.newPreference());
+		public static void executeSetupPreference(Account user) {
+			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
+			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
+			user.setUserPreference(setupPreferenceController.newPreference());
 		}
 		
-		public static void executeDownloadRecommendedPlaylist() {
-			Account user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
+		public static void executeDownloadRecommendedPlaylist(Account user) {
+			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
 
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
-			if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
+			if (downloadPlaylistController.downloadRecommendedPlaylist(user, CatalogSingleton)) {	
 				System.out.println("Refresh folder if html file doesn't appear immidiately");
 			}
 		}
 		public static void executeSearchCatalog() {
 			SearchController searchController = new SearchController();
-			searchController.search(catalog); // !!!!! GET CATALOG!
+			searchController.search(CatalogSingleton); // !!!!! GET CATALOG!
 		}
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
 		

@@ -1,10 +1,11 @@
 package edu.mu.finalproject;
 
 import java.util.Scanner;
+
+import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
-import edu.mu.finalproject.model.FavoritesSingleton;
 
 
 
@@ -12,22 +13,30 @@ import edu.mu.finalproject.model.FavoritesSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
-	public static FavoritesSingleton TheFavoritesManager;
-	//fields to hold catalogs go here
+	private Account user;
+	//public static CatalogSingleton CatalogSingleton;
 	//Any other fields go here (user?)
 	
+	public Account getUser() {
+		return user;
+	}
+
+	public void setUser(Account user) {
+		this.user = user;
+	}
+
+
 	//Constructor
 	public UserInterface() {
 		
 		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
-		TheFavoritesManager = FavoritesSingleton.getInstance(); //Create an instance of Favorites Manager
 		//Create a music catalog
 		
 	}
 	
 	
 	public void start() {
-		EventSingleton.setEventCollection(EventFileReader.readEvents()); 
+		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
 		//Read any other files here
 		run();
 	}
@@ -73,11 +82,11 @@ public class UserInterface {
 //            	break;
 // WAITING FOR ACCOUNT
             case SETUP_PREFERENCE:
-            	UIExecutionMethods.executeSetupPreference();
+            	UIExecutionMethods.executeSetupPreference(user);
             	break;
 /*WAITING FOR CATALOG
  * 			case DOWNLOAD_RECOMMENDED_PLAYLIST:
- * 				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
+ * 				UIExecutionMethods.executeDownloadRecommendedPlaylist(user); 
  * 				break;              
  */
 /*WAITING FOR CATALOG

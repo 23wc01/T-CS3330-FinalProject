@@ -12,6 +12,9 @@ import edu.mu.finalproject.util.GetIntegerInput;
 
 public class EventView {
 	
+	//Instantiation
+	static EventSingleton theEventSingleton = EventSingleton.getInstance();
+	
 	
 	 public static int viewAddEvent(Event myEvent) { 
 		 
@@ -47,7 +50,7 @@ public class EventView {
 	 
 	 
 	
-	 public static Event createEvent() { 
+	 public Event createEvent() { 
 			 
 			 Scanner scanner = new Scanner(System.in);
 			 
@@ -101,10 +104,12 @@ public class EventView {
 	 
 	 
 	 
-	 public static int getEventDisplayInfo() { 
+	 public int getEventDisplayInfo(ArrayList<Event>catalog) {
+		 
+		 EventView eventview = new EventView();
 			
-		 if(EventSingleton.getEventCollection().isEmpty()) {
-				displayEventsByDate(null);
+		 if(theEventSingleton.getEventCollection().isEmpty()) {
+				eventview.displayEventsByDate(null);
 				return 0;
 			}
 		 
@@ -154,8 +159,9 @@ public class EventView {
 	
 		 
 		 //Using the information to call displayEvent and displayEventsInRange
-		 ArrayList <Event> eventsInRange = EventController.getEventsToDispalyByDate(yearStart, monthdayStart, yearEnd, monthdayEnd);
-		 displayEventsByDate(eventsInRange);
+		 EventController eventcontroller = new EventController();
+		 ArrayList <Event> eventsInRange = eventcontroller.getEventsToDispalyByDate(yearStart, monthdayStart, yearEnd, monthdayEnd, catalog);
+		 eventview.displayEventsByDate(eventsInRange);
 		 return 1;
 		 }
 		 
@@ -170,7 +176,7 @@ public class EventView {
 	 
 	 
 	 
-	 public static int displayEventsByDate(ArrayList <Event> eventsInRange) {
+	 public int displayEventsByDate(ArrayList <Event> eventsInRange) {
 		 
 		 	if(eventsInRange == null) {
 		 		System.out.println("You have no events!");

@@ -39,7 +39,7 @@ public class DownloadPlaylistController {
 	 */
 	public Boolean downloadRecommendedPlaylist(Account account, ArrayList<MediaProduct> catalog) {	
 		if (!createPlaylist(account, catalog)) {
-			System.err.println("Couldn't create playlist for downloadRecommendedPlaylist()");
+			System.err.println("Can't create playlist\n\n");
 			return false;
 		}
 		
@@ -66,14 +66,14 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	public Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
+	private Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
 		if (account == null || catalog == null) {
 			System.out.println("\nParameter(s) passed into createPlaylist() are null");
 			return false;
 		}
 		RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
 		setRecommendedPlaylist(recommendPlaylistController.recommendPlaylist(account.getUserPreference(), catalog));
-		if (getRecommendedPlaylist() == null) {
+		if (getRecommendedPlaylist() == null || getRecommendedPlaylist().getSongs().size() == 0) {
 			return false;
 		}
 		return true;

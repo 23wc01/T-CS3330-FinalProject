@@ -1,23 +1,29 @@
+
 package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import edu.mu.finalproject.model.MediaProduct;
+import edu.mu.finalproject.model.Song;
 import edu.mu.finalproject.view.SearchView;
 import edu.mu.finalproject.util.SearchComparator;
 
 public class SearchController {
-	SearchView view;
+	private SearchView view;
+	public SearchController() {
+		view = new SearchView();
+	}
+	
 	/**
 	 * Prompts user for query, sorts, then displays all MediaObjects in @param catalog 
 	 * @param catalog
+	 * @return false if search
 	 */
 	public Boolean search(ArrayList<MediaProduct> catalog) {
-		view = new SearchView();
-		String queryString = view.getSearchQuery();
-		return searchSort(queryString, catalog);
+		String searchQuery = view.getSearchQuery();
+		return searchSort(searchQuery, catalog);
 	}
-	
+
 
 // HELPER FUNCTION(S)	
 	
@@ -27,16 +33,40 @@ public class SearchController {
 	 * @param queryString
 	 * @param catalog
 	 * @param searchView
+	 * @return false if queryString is null, else true
 	 */
-	private Boolean searchSort(String queryString, ArrayList<MediaProduct> catalog) {
-		if (queryString == null) {
+	private Boolean searchSort(String searchQuery, ArrayList<MediaProduct> catalog) {
+		if (searchQuery == null) {
 			System.out.println("Did not enter a query.");
 			return false;
 		}
-		SearchComparator songSearch = new SearchComparator(queryString);
+		SearchComparator songSearch = new SearchComparator(searchQuery);
 		Collections.sort(catalog, songSearch);
-		view.DisplaySearchResultsView(queryString, catalog);
+		view.DisplaySearchResultsView(searchQuery, catalog);
 		return true;
 	}
-	
+
+// EXTRA FEATURES 
+/*
+	/**
+	 * This functionality/feature is used to find Song in CatalogSingleton given precise song's name 
+	 * @param songName
+	 * @return
+	 
+	public Song searchSongName(String songName) {
+		if(songName == null || songName == "") {
+			System.err.println("Failed to retieve song because songName = " + songName);
+			return null;
+		}
+
+		for(MediaProduct traverseObject : CatalogSingleton) { 
+			if (traverseObject.getName().equalsIgnoreCase(songName)) {
+				if(traverseObject instanceof Song) {
+					return (Song) traverseObject;
+				}
+			}
+		}
+		return null;
+	}
+*/
 }

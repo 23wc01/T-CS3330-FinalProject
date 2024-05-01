@@ -11,11 +11,10 @@ import edu.mu.finalproject.view.FindObjectView;
  */
 public class FindObjectController {
 	
-	public static MediaProduct searchMediaCatalog(ArrayList <? extends MediaProduct> catalog){ 
-		String userQuery = FindObjectView.getInformationFromUser();
+	public MediaProduct searchMediaCatalog(ArrayList <? extends MediaProduct> catalog, String userQuery){ 
 		
 		if(userQuery == null) {
-			System.out.println("Failed to retieve information.");
+			System.out.println("Failed to retrieve information.");
 			return null;
 		}
 		
