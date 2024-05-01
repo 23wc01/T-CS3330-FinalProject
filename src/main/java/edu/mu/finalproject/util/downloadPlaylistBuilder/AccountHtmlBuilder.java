@@ -34,7 +34,7 @@ public class AccountHtmlBuilder extends HtmlBuilder {
 	}
 
 	@Override
-	public Boolean getDynamicFields() {
+	protected Boolean getDynamicFields() {
 		if(account == null) {
 			return false;
 		}

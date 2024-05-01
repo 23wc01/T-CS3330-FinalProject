@@ -35,7 +35,7 @@ public class SongHtmlBuilder extends HtmlBuilder {
 	}
 
 	@Override
-	public Boolean getDynamicFields() {
+	protected Boolean getDynamicFields() {
 		if (song == null) {
 			System.err.println("Song can't be " + song);
 			return false;
