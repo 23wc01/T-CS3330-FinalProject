@@ -17,17 +17,17 @@ public class ManualSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	@Override
 	public Preference setupPreference(SetupPreferenceView view) {
 		if (setView(view)) {
-			view.displayQuestion("What is your listening preference?");
+			getView().displayQuestion("What is your listening preference?");
 			ArrayList<String> choices = new ArrayList<String>();
 			for (Preference preference : Preference.values()) {
 				choices.add(preference.capitalizePreference());
 			}
-			view.displayChoices(choices);
-			int preferenceAnswer = view.getInputAnswer(choices.size());
+			getView().displayChoices(choices);
+			int preferenceAnswer = getView().getInputAnswer(choices.size());
 			--preferenceAnswer; // Answers are 1-based on UI, but need to get 0-based for ArrayList indexing
 			String preferenceStr = choices.get(preferenceAnswer);
 			userPreference = Preference.toPreference(preferenceStr);
-			view.displayPreference(preferenceStr);
+			getView().displayPreference(preferenceStr);
 			// user.setPreference(userPreference);
 			return userPreference;
 		}
