@@ -40,29 +40,29 @@ public class MediaCatalogController {
         shuffledMedia.forEach(System.out::println);
     }
 
-
+/*
     // In here, should I create a parameter as createPlaylistFromFile?
-//    public void createPlaylistFromFile(String files/playlists.json) {
-//        try (Stream<String> stream = Files.lines(Paths.get(files/playlists.json))) {
-//            StringBuilder data = new StringBuilder();
-//            stream.forEach(data::append);
-//            JSONObject jsonObject = new JSONObject(data.toString());
-//            JSONArray songs = jsonObject.getJSONArray("songs");
-//            List<Song> songList = new ArrayList<>();
-//            for (int i = 0; i < songs.length(); i++) {
-//                JSONObject songObj = songs.getJSONObject(i);
-//                Song song = new Song(
-//                        songObj.getInt("id"),
-//                        songObj.getString("name"),
-//                        songObj.getString("imgdescription"),
-//                        songObj.getBoolean("isFavorited"),
-//                        dateFormatter.parse(songObj.getString("addedDate")),
-//                        songObj.getString("artistName"),
-//                        Preference.valueOf(songObj.getString("preference").toUpperCase())
-//                );
-//                songList.add(song);
-//            }
-//            Playlist playlist = new Playlist(
+    public void createPlaylistFromFile(String files/playlists.json) {
+        try (Stream<String> stream = Files.lines(Paths.get(files/playlists.json))) {
+           StringBuilder data = new StringBuilder();
+           stream.forEach(data::append);
+           JSONObject jsonObject = new JSONObject(data.toString());
+           JSONArray songs = jsonObject.getJSONArray("songs");
+           List<Song> songList = new ArrayList<>();
+           for (int i = 0; i < songs.length(); i++) {
+                JSONObject songObj = songs.getJSONObject(i);
+                Song song = new Song(
+                       songObj.getInt("id"),
+                       songObj.getString("name"),
+                        songObj.getString("imgdescription"),
+                        songObj.getBoolean("isFavorited"),
+                        dateFormatter.parse(songObj.getString("addedDate")),
+                        songObj.getString("artistName"),
+                        Preference.valueOf(songObj.getString("preference").toUpperCase())
+                );
+               songList.add(song);
+            }
+            Playlist playlist = new Playlist(
 //                    jsonObject.getInt("id"),
 //                    jsonObject.getString("name"),
 //                    jsonObject.getString("description"),
@@ -75,4 +75,6 @@ public class MediaCatalogController {
 //            LOGGER.log(Level.SEVERE, "Error reading playlist from file", e);
 //        }
 //    }
+
+ */
 }

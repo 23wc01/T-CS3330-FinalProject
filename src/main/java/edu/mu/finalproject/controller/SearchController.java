@@ -4,6 +4,7 @@ package edu.mu.finalproject.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import edu.mu.finalproject.model.MediaProduct;
+import edu.mu.finalproject.model.Song;
 import edu.mu.finalproject.view.SearchView;
 import edu.mu.finalproject.util.SearchComparator;
 
@@ -22,7 +23,7 @@ public class SearchController {
 		String searchQuery = view.getSearchQuery();
 		return searchSort(searchQuery, catalog);
 	}
-	
+
 
 // HELPER FUNCTION(S)	
 	
@@ -44,5 +45,28 @@ public class SearchController {
 		view.DisplaySearchResultsView(searchQuery, catalog);
 		return true;
 	}
-	
+
+// EXTRA FEATURES 
+/*
+	/**
+	 * This functionality/feature is used to find Song in CatalogSingleton given precise song's name 
+	 * @param songName
+	 * @return
+	 
+	public Song searchSongName(String songName) {
+		if(songName == null || songName == "") {
+			System.err.println("Failed to retieve song because songName = " + songName);
+			return null;
+		}
+
+		for(MediaProduct traverseObject : CatalogSingleton) { 
+			if (traverseObject.getName().equalsIgnoreCase(songName)) {
+				if(traverseObject instanceof Song) {
+					return (Song) traverseObject;
+				}
+			}
+		}
+		return null;
+	}
+*/
 }

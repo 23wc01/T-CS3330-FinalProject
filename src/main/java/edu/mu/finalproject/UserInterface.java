@@ -15,13 +15,12 @@ public class UserInterface {
 	public static EventSingleton TheEventManager;
 	public static FavoritesSingleton TheFavoritesManager;
 	private Account user;
-	//fields to hold catalogs go here
+	//public static CatalogSingleton CatalogSingleton;
 	//Any other fields go here (user?)
 	
 	public Account getUser() {
 		return user;
 	}
-
 
 	public void setUser(Account user) {
 		this.user = user;

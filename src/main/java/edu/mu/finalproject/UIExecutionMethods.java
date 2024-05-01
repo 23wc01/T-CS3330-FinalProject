@@ -59,13 +59,13 @@ public class UIExecutionMethods {
 			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
 
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
-			if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
+			if (downloadPlaylistController.downloadRecommendedPlaylist(user, CatalogSingleton)) {	
 				System.out.println("Refresh folder if html file doesn't appear immidiately");
 			}
 		}
 		public static void executeSearchCatalog() {
 			SearchController searchController = new SearchController();
-			searchController.search(catalog); // !!!!! GET CATALOG!
+			searchController.search(CatalogSingleton); // !!!!! GET CATALOG!
 		}
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
 		
