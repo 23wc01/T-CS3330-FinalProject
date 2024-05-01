@@ -13,9 +13,11 @@ public class FavoritesView {
 	
 	static String userInput = "";
 	
-	public static String getFavInfo() {
+	
+	public String getFavInfo(ArrayList<MediaProduct> catalog) {
 		Scanner scanner =  new Scanner(System.in);
         ArrayList <MediaProduct> favorites = new ArrayList<MediaProduct>();
+        FavoritesController favoritesControllerO = new FavoritesController();
 		
 		//Continuously prompts user until a string matching the options is entered
 		while (true) {
@@ -25,19 +27,19 @@ public class FavoritesView {
             userInput = userInput.trim().toLowerCase();
             
             if (userInput.equals("artists")) {
-            	favorites = FavoritesController.gatherFavorited(Artist.class);
+            	favorites = favoritesControllerO.gatherFavorited(Artist.class, catalog);
                 break;
             }
                 else if (userInput.equals("songs")) {
-                	favorites = FavoritesController.gatherFavorited(Song.class);
+                	favorites = favoritesControllerO.gatherFavorited(Song.class, catalog);
                     break;
                 }
                 else if (userInput.equals("playlists")) {
-                	favorites = FavoritesController.gatherFavorited(Playlist.class);
+                	favorites = favoritesControllerO.gatherFavorited(Playlist.class, catalog);
                     break;
                 }
                 else if (userInput.equals("all")) {
-                	favorites = FavoritesController.gatherFavorited(MediaProduct.class);
+                	favorites = favoritesControllerO.gatherFavorited(MediaProduct.class, catalog);
                     break;
                 }
                 
@@ -52,8 +54,12 @@ public class FavoritesView {
 		
 	
 
-	public static ArrayList <? extends MediaProduct> displayFavoritesInfo(ArrayList <? extends MediaProduct> favorites){
+	public ArrayList <? extends MediaProduct> displayFavoritesInfo(ArrayList <? extends MediaProduct> favorites){
 		
+		if (favorites == null) {
+			System.out.println("You have no favorites!");
+			return null;
+		}
 		System.out.println("Favorites summary for " + userInput);
 		System.out.println("You have " + favorites.size() + " favorites.");
 		for(MediaProduct myObject : favorites) {
@@ -70,7 +76,7 @@ public class FavoritesView {
 	
 	
 	
-	public static boolean displayFavoriteResult(boolean favoriteResult, MediaProduct objectToBeFavorited) {
+	public boolean displayFavoriteResult(boolean favoriteResult, MediaProduct objectToBeFavorited) {
 		
 		if(favoriteResult == false) {
 			 System.out.println("You un-favorited " + objectToBeFavorited.getName());

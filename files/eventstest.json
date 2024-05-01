@@ -1,0 +1,12 @@
+[
+	{
+        "eventMonthDay": "12-31",
+        "eventYear": 2026,
+        "artistName": "Test artist 1"
+    },
+    {
+        "eventMonthDay": "01-01",
+        "eventYear": 2025,
+        "artistName": "Test artist 2"
+    }
+]

@@ -11,12 +11,14 @@ import edu.mu.finalproject.view.EventView;
 
 public class EventController {
 	
+	static EventSingleton theEventSingleton = EventSingleton.getInstance();
+	
 	 public static int addEvent(Event myEvent) { //controller
 		 
 		
 		 //If event is already added
 		EventSingleton.getInstance();
-		for(Event event : EventSingleton.getEventCollection()) {
+		for(Event event : theEventSingleton.getEventCollection()) {
 			 if (event.equals(myEvent)) {
 				 return 0;
 			 }
@@ -24,7 +26,7 @@ public class EventController {
 		 
 		 
 		//If event is added successfully
-		 EventSingleton.getEventCollection().add(myEvent); 
+		 theEventSingleton.getEventCollection().add(myEvent); 
 		 int result = EventFileReader.appendEvent(myEvent);
 		 
 		 if (result < 0) {
@@ -41,10 +43,10 @@ public class EventController {
 	 
 	 
 	 
-	 public static ArrayList <Event> getEventsToDispalyByDate(Year startYear, MonthDay startDate, Year endYear, MonthDay endDate) { 
+	 public ArrayList <Event> getEventsToDispalyByDate(Year startYear, MonthDay startDate, Year endYear, MonthDay endDate, ArrayList<Event> catalog) { 
 			
 			ArrayList <Event> eventsInRange = new ArrayList<Event>();
-			for(Event event : EventSingleton.getEventCollection()) {
+			for(Event event : catalog) {
 				
 				if(event.getEventYear().compareTo(startYear)>0 || (event.getEventYear().compareTo(startYear)==0 && event.getEventMonthDay().compareTo(startDate)>0)) {
 					
@@ -53,6 +55,7 @@ public class EventController {
 					}
 				}
 			}
+			
 			
 			return eventsInRange;
 			
@@ -64,20 +67,18 @@ public class EventController {
 
 	 public static int deleteEvent(Event eventToBeDeleted) { 
 			
-		 if(EventSingleton.getEventCollection().isEmpty()) {
+		 if(theEventSingleton.getEventCollection().isEmpty()) {
 			 return 0;
 		 }
-		 for(Event traverseEvent : EventSingleton.getEventCollection()) {
+		 for(Event traverseEvent : theEventSingleton.getEventCollection()) {
 			 
 			 if(traverseEvent.equals(eventToBeDeleted)) {
-				 EventSingleton.getEventCollection().remove(eventToBeDeleted);
-				 int result = EventFileReader.deleteEventFromFile(traverseEvent.getEventMonthDay(),
+				 theEventSingleton.getEventCollection().remove(eventToBeDeleted);
+				 EventFileReader.deleteEventFromFile(traverseEvent.getEventMonthDay(),
 						 					 traverseEvent.getEventYear(),
 						 					 traverseEvent.getArtistName()); //eventToBeDeleted is a "fake" event just for comparisons
 				 
-				 if (result == -1) { //If an error occurred in deleteEventFromFile
-					 return -1;
-				 }
+
 				 return 1;
 			 }
 			
