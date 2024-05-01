@@ -39,9 +39,6 @@ public class FavoritesController {
 	}
 	
 	
-	
-	
-	
 	public boolean favorite(MediaProduct objectToBeFavorited) {
 	
 		boolean result = objectToBeFavorited.toggleFavorite();

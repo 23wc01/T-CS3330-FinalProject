@@ -3,8 +3,8 @@ package edu.mu.finalproject.util.downloadPlaylistBuilder;
 import edu.mu.finalproject.model.Playlist;
 
 public class PlaylistHtmlBuilder extends HtmlBuilder {
-	Playlist playlist;
-
+	private Playlist playlist;
+	
 	public PlaylistHtmlBuilder(Object model) {
 		super();
 		Boolean success = setModel(model);

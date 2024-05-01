@@ -13,10 +13,19 @@ import edu.mu.finalproject.model.EventSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
-	public static Account user;
-	//fields to hold catalogs go here
+	private Account user;
+	//public static CatalogSingleton CatalogSingleton;
 	//Any other fields go here (user?)
 	
+	public Account getUser() {
+		return user;
+	}
+
+	public void setUser(Account user) {
+		this.user = user;
+	}
+
+
 	//Constructor
 	public UserInterface() {
 		
