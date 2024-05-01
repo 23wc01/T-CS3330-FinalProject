@@ -11,7 +11,7 @@ import edu.mu.finalproject.model.*;
 public class Main {
 
 	public static void main(String[] args) {
-		
+		MediaCatalogController mediaCatalog = new MediaCatalogController();
 		// Unofficially create some songs
 		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, "icanrockyourworld", Preference.EDM);
 		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, "Kids Tunez", Preference.RAP);
@@ -31,7 +31,28 @@ public class Main {
 		for (Song song : unorderedPlaylist.getSongs()) {
 			catalog.add(song);
 		}
-		
+
+		// // Path to your playlist JSON file
+		// String filePath = files/playlists.json;
+
+		// // Create a playlist from the JSON file
+		// mediaCatalog.createPlaylistFromFile(filePath);
+
+		// Display all media in the catalog
+		System.out.println("Displaying all media in the catalog:");
+		mediaCatalog.displayAll();
+
+		// Test deletion of a specific song
+		System.out.println("Deleting 'The Guacamole Song'...");
+		mediaCatalog.deleteMedia(song2.getId());
+
+		// Display all media after deletion
+		System.out.println("Displaying all media after deletion of one song:");
+		mediaCatalog.displayAll();
+
+		// Shuffle and display to ensure shuffle functionality works
+		System.out.println("Displaying shuffled media:");
+		mediaCatalog.displayShuffle();
 		
 		UserInterface ui = new UserInterface();
 		ui.start();			

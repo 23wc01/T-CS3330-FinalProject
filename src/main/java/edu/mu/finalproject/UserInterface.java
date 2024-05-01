@@ -6,7 +6,6 @@ import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
-import edu.mu.finalproject.model.FavoritesSingleton;
 
 
 
@@ -33,14 +32,13 @@ public class UserInterface {
 	public UserInterface() {
 		
 		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
-		TheFavoritesManager = FavoritesSingleton.getInstance(); //Create an instance of Favorites Manager
 		//Create a music catalog
 		
 	}
 	
 	
 	public void start() {
-		EventSingleton.setEventCollection(EventFileReader.readEvents()); 
+		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
 		//Read any other files here
 		run();
 	}

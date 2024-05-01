@@ -21,13 +21,6 @@ public class Event {
 		this.artistName = artistName;
 	}
 	
-	//Parameterized Constructor for parsing strings into Date objects
-	//Decided not to use for now, consider for deletion
-	public Event(String eventMonthDay, int eventYear, String artistName) {
-	    this.eventMonthDay = MonthDay.parse("--" + eventMonthDay); // ensure the string is in MM-DD format coming in
-	    this.eventYear = Year.of(eventYear);
-	    this.artistName = artistName;
-	}
 	
 	//No use for copy constructor
 	
@@ -36,27 +29,27 @@ public class Event {
 	public MonthDay getEventMonthDay() {
 		return eventMonthDay;
 	}
-	public void setEventMonthDay(MonthDay eventMonthDay) {
-		this.eventMonthDay = eventMonthDay;
-	}
-	
+//	public void setEventMonthDay(MonthDay eventMonthDay) {
+//		this.eventMonthDay = eventMonthDay;
+//	}
+//	
 	
 
 	public Year getEventYear() {
 		return eventYear;
 	}
-	public void setEventYear(Year eventYear) {
-		this.eventYear = eventYear;
-	}
+//	public void setEventYear(Year eventYear) {
+//		this.eventYear = eventYear;
+//	}
 	
 	
 
 	public String getArtistName() {
 		return artistName;
 	}
-	public void setArtistName(String artistName) {
-		this.artistName = artistName;
-	}
+//	public void setArtistName(String artistName) {
+//		this.artistName = artistName;
+//	}
 
 	@Override
 	public String toString() {
