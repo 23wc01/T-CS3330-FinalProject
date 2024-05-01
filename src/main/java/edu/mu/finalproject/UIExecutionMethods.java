@@ -3,6 +3,7 @@ package edu.mu.finalproject;
 import edu.mu.finalproject.controller.PreferenceController;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
+import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
@@ -10,27 +11,30 @@ import edu.mu.finalproject.view.FavoritesView;
 import java.util.Scanner;
 
 public class UIExecutionMethods {
+	//Instances here
+	static EventView eventview = new EventView();
 	
 	// Define methods to be called based on user input--------------------------------
 	
 		public static void executeAddEvent() {
-			Event myEvent = EventView.createEvent();
+			Event myEvent = eventview.createEvent();
 		    EventView.viewAddEvent(myEvent);
 		}
 		
 		
 		public static void executeDeleteEvent() {
 			System.out.println("\nEnter information so we can find the event to delete\n ");
-			Event eventToBeDeleted = EventView.createEvent(); 
+			Event eventToBeDeleted = eventview.createEvent(); 
 			EventView.viewDeleteEvent(eventToBeDeleted);
 		}
 		
 		public static void executeDisplayEvents() {
-			EventView.getEventDisplayInfo();
+			eventview.getEventDisplayInfo(EventSingleton.getInstance().getEventCollection());
 		}
 //WAITING FOR CATALOG:	
 //		public static void executeDisplayFavorites() {
-//			FavoritesView.getFavInfo(); 
+//			FavoritesView favoritesview = new FavoritesView();
+//			favoritesview.getFavInfo(); 
 //		} 
 		
 		public static void executeExit() {

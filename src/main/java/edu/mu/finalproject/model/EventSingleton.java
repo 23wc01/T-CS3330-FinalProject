@@ -25,7 +25,7 @@ public class EventSingleton {
 	 	return instance;
 	 }
 	 
-	 public static ArrayList<Event> getEventCollection() {
+	 public ArrayList<Event> getEventCollection() {
 			return eventCollection;
 		}
 

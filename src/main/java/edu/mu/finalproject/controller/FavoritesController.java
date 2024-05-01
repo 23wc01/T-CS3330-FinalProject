@@ -8,18 +8,38 @@ import edu.mu.finalproject.view.FindObjectView;
 
 public class FavoritesController {
 
-	public static ArrayList<MediaProduct> gatherFavorited(Class<? extends MediaProduct> type) {
+	public ArrayList<MediaProduct> gatherFavorited(Class<? extends MediaProduct> type, ArrayList<MediaProduct> catalog) {
 		
 		ArrayList <MediaProduct> favorites = new ArrayList<MediaProduct>();
+		System.out.println("In gatherFavorited");
+		if (catalog.isEmpty() || catalog == null ) {
+			System.out.println("Its empty");
+			return favorites;
+		}
 		
-		for (MediaProduct media : catalog) { //REPLACE CATALOG
-			if (media.getClass() == type) { //Use .getClass() not instanceOf because we don't want to count subclasses
+		//To get all favorited
+		if (type == MediaProduct.class) {
+			for (MediaProduct media : catalog) {
 				if (media.getIsFavorited()) {
 					favorites.add(media);
 				}
+				System.out.println("FL favorites is empty: " + favorites.isEmpty());
 			}
 		}
 		
+		//To get certain types of favorited
+		else {
+			for (MediaProduct media : catalog) { 
+				System.out.println("In gatherFavorited for loop");
+				if (media.getClass() == type) { //Use .getClass() not instanceOf because we don't want to count subclasses
+					if (media.getIsFavorited()) {
+						favorites.add(media);
+					}
+				}
+				System.out.println("FL favorites is empty: " + favorites.isEmpty());
+			}
+		}
+		System.out.println("favorites is empty: " + favorites.isEmpty());
 		return favorites;
 	}
 	
@@ -27,11 +47,12 @@ public class FavoritesController {
 	
 	
 	
-	public static boolean favorite(MediaProduct objectToBeFavorited) {
+	public boolean favorite(MediaProduct objectToBeFavorited) {
 	
 		boolean result = objectToBeFavorited.toggleFavorite();
 		
-		FavoritesView.displayFavoriteResult(result, objectToBeFavorited);
+		FavoritesView favoritesView = new FavoritesView();
+		favoritesView.displayFavoriteResult(result, objectToBeFavorited);
 		return result; //true if favorited, false if unfavorited
 	}
 
