@@ -43,6 +43,7 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 			return null;
 		}
 	}
+	
 	private Boolean readJson() {
 		Gson gson = new Gson();
 		json = new ArrayList<HashMap<String, ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>>>>();
@@ -110,7 +111,7 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return topPreference;
 	}
 	
-	public void setView(SetupPreferenceView view) {
+	private void setView(SetupPreferenceView view) {
 		this.view = view;
 	}
 	

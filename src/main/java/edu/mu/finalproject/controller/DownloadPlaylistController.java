@@ -66,7 +66,7 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	public Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
+	private Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
 		if (account == null || catalog == null) {
 			System.out.println("\nParameter(s) passed into createPlaylist() are null");
 			return false;
