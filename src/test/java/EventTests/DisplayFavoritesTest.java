@@ -19,7 +19,6 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import EventTests.DisplayFavoritesTest.MockMediaProduct;
-import EventTests.DisplayFavoritesTest.MockSubMediaProduct;
 import edu.mu.finalproject.controller.FavoritesController;
 import edu.mu.finalproject.model.Artist;
 import edu.mu.finalproject.model.MediaProduct;
@@ -48,12 +47,7 @@ public class DisplayFavoritesTest {
         }
     }
 
-    // Mock class for a subclass of MediaProduct
-    static class MockSubMediaProduct extends MockMediaProduct {
-        public MockSubMediaProduct(String name) {
-            super(name);
-        }
-    }
+
 
     private ArrayList<MediaProduct> favorites;
     private ArrayList<MediaProduct> catalog;
@@ -70,11 +64,19 @@ public class DisplayFavoritesTest {
 
         assertEquals(favorites, tFavoritesView.displayFavoritesInfo(favorites));
     }
+    
+    @Test
+    public void testDisplayFavoritesInfo_NoEvents() {
+    	//Arrange
+    	favorites = new ArrayList<>();
+    	
+    	//Act/Assert
+    	assertEquals(null, tFavoritesView.displayFavoritesInfo(favorites));
+    }
 
     
     @Test
     public void testGatherFavorited_All() {  //Doesn't work, not quite matching at the very end
-    	System.out.println("-----------------------------");
     	//Arrange
     	  //Set up fake catalog
     	catalog = new ArrayList<>();
@@ -86,7 +88,7 @@ public class DisplayFavoritesTest {
     	
 		  //Test media products
     	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM);
-    	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2, 3);
+    	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
     	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
     	  //Add to fake catalog
         catalog.add(testSong);
@@ -97,7 +99,7 @@ public class DisplayFavoritesTest {
           //Set up expected catalog to test against
         ArrayList<MediaProduct> expected = new ArrayList<>(); 
         expected.add(new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM));
-        expected.add(new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2, 3));
+        expected.add(new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2));
         //could uncomment to test with playlist favorited
         //expected.add(new Playlist(0, "Playlist one", "chill", new Date(0), true, testPlaylistSongArray));
         
@@ -142,26 +144,6 @@ public class DisplayFavoritesTest {
     }
     
 
-//    @Test
-//    public void testGatherFavorited() {
-//    	catalog = new ArrayList<>();
-//    	
-//        catalog.add(new MockMediaProduct("Product 1"));
-//        catalog.add(new MockSubMediaProduct("Product 2"));
-//        catalog.add(new MockMediaProduct("Product 3"));
-//
-//        MockMediaProduct mockMediaProduct = new MockMediaProduct(null);
-//        MockSubMediaProduct mockSubMediaProduct = new MockSubMediaProduct(null);
-//        
-//		  mockMediaProduct.setIsFavorited(true);
-//		  mockSubMediaProduct.setIsFavorited(true);
-//
-//        ArrayList<MediaProduct> expected = new ArrayList<>(); 
-//        expected.add(new MockMediaProduct("Product 1"));
-//        expected.add(new MockSubMediaProduct("Product 2"));
-//
-//        assertEquals(expected, tFavoritesController.gatherFavorited(MockMediaProduct.class, catalog));
-//    }
     
     
     

@@ -8,6 +8,7 @@ import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
+import edu.mu.finalproject.view.FindObjectView;
 
 import java.util.Scanner;
 
@@ -45,8 +46,12 @@ public class UIExecutionMethods {
 		}
 // WAITING FOR CATALOG:
 //		public static void executeFavorite() {
-//			MediaObject objectToBeFavorited = FindObjectController.searchMediaCatalog(null); //!!! Add real catalog here!
-//			boolean result = FavoritesController.favorite(objectToBeFavorited);														
+//			FindObjectController findobjectcontroller = new FindObjectController();
+//			FavoritesView favoritesview = new FavoritesView();
+//		    String userQuery = FindObjectView.getInformationFromUser();
+//		
+//			MediaObject objectToBeFavorited = findobjectcontroller.searchMediaCatalog(null, userQuery); //!!! Add real catalog here!
+//			favoritesview.displayFavoriteResult(objectToBeFavorited);														
 //		}
 		
 		public static void executeSetupPreference(Account user) {
