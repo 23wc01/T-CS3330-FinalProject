@@ -1,6 +1,7 @@
 package edu.mu.finalproject;
 
-import edu.mu.finalproject.controller.PreferenceController;
+import edu.mu.finalproject.model.Account;
+import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventSingleton;
@@ -48,11 +49,24 @@ public class UIExecutionMethods {
 //			boolean result = FavoritesController.favorite(objectToBeFavorited);														
 //		}
 		
-		public static void excuteSetupPreference() {
-			PreferenceController preferenceController = new PreferenceController();
-			preferenceController.modifyPreference();
+		public static void executeSetupPreference(Account user) {
+			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
+			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
+			user.setUserPreference(setupPreferenceController.newPreference());
 		}
 		
+		public static void executeDownloadRecommendedPlaylist(Account user) {
+			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
+
+			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
+			if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
+				System.out.println("Refresh folder if html file doesn't appear immidiately");
+			}
+		}
+		public static void executeSearchCatalog() {
+			SearchController searchController = new SearchController();
+			searchController.search(catalog); // !!!!! GET CATALOG!
+		}
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
 		
 		

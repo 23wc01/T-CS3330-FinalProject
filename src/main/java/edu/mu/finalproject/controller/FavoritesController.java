@@ -3,6 +3,7 @@ package edu.mu.finalproject.controller;
 import java.util.ArrayList;
 
 import edu.mu.finalproject.model.MediaProduct;
+
 import edu.mu.finalproject.view.FavoritesView;
 import edu.mu.finalproject.view.FindObjectView;
 

@@ -1,21 +1,21 @@
 package edu.mu.finalproject;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import edu.mu.finalproject.controller.*;
+
+import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.ECommands;
-import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.model.FavoritesSingleton;
-import edu.mu.finalproject.model.Preference;
-import edu.mu.finalproject.view.EventView;
+
+
 
 
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
 	public static FavoritesSingleton TheFavoritesManager;
+	public static Account user;
 	//fields to hold catalogs go here
 	//Any other fields go here (user?)
 	
@@ -73,10 +73,20 @@ public class UserInterface {
 //            case FAVORITE:
 //            	UIExecutionMethods.executeFavorite();
 //            	break;
+// WAITING FOR ACCOUNT
             case SETUP_PREFERENCE:
-            	UIExecutionMethods.excuteSetupPreference();
+            	UIExecutionMethods.executeSetupPreference(user);
             	break;
-                
+/*WAITING FOR CATALOG
+ * 			case DOWNLOAD_RECOMMENDED_PLAYLIST:
+ * 				UIExecutionMethods.executeDownloadRecommendedPlaylist(user); 
+ * 				break;              
+ */
+/*WAITING FOR CATALOG
+* 			case SEARCH:
+* 				UIExecutionMethods.executeSearchCatalog(); 
+* 				break;              
+*/
               //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!
             
             	
@@ -87,9 +97,7 @@ public class UserInterface {
             case INVALID:
                 System.out.println("Invalid command. Please try again.");
                 break;
-	        }
-	        
-		    
+	        } 
 	    }
 	    //scanner.close();
 	

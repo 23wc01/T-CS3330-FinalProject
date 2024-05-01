@@ -6,7 +6,7 @@ import java.util.Objects;
 public abstract class MediaProduct {
 	protected int id;
 	protected String name;
-	protected String description;
+	protected String imgDescription;
 	protected Date addedDate;
 	protected Boolean isFavorited = false;
 	
@@ -22,11 +22,11 @@ public abstract class MediaProduct {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
-		return description;
+	public String getImgDescription() {
+		return imgDescription;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setImgDescription(String description) {
+		this.imgDescription = description;
 	}
 	public Date getAddedDate() {
 		return addedDate;
@@ -58,7 +58,7 @@ public abstract class MediaProduct {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(addedDate, description, id, isFavorited, name);
+		return Objects.hash(addedDate, imgDescription, id, isFavorited, name);
 	}
 	
 	
@@ -71,7 +71,7 @@ public abstract class MediaProduct {
 		if (getClass() != obj.getClass())
 			return false;
 		MediaProduct other = (MediaProduct) obj;
-		return Objects.equals(addedDate, other.addedDate) && Objects.equals(description, other.description)
+		return Objects.equals(addedDate, other.addedDate) && Objects.equals(imgDescription, other.imgDescription)
 				&& id == other.id && Objects.equals(isFavorited, other.isFavorited) && Objects.equals(name, other.name);
 	}
 	

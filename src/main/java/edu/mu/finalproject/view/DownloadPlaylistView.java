@@ -21,4 +21,8 @@ public class DownloadPlaylistView {
 			return false;
 		}
 	}
+	public Boolean displayChangeToSetup() {
+		System.out.println("Hmmmm...\nCan't download recommended playlist unless we know your preference.\n\n");
+		return true;
+	}
 }

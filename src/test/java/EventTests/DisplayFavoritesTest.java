@@ -98,6 +98,7 @@ public class DisplayFavoritesTest {
         ArrayList<MediaProduct> expected = new ArrayList<>(); 
         expected.add(new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM));
         expected.add(new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2, 3));
+        //could uncomment to test with playlist favorited
         //expected.add(new Playlist(0, "Playlist one", "chill", new Date(0), true, testPlaylistSongArray));
         
         //Act
