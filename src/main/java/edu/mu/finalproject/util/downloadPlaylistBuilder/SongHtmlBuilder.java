@@ -21,7 +21,7 @@ public class SongHtmlBuilder extends HtmlBuilder {
 		setTemplateFileLocation("files/playlistSongsHtmlTemplate.txt");
 	}
 	@Override
-	public Boolean setModel(Object model) {
+	protected Boolean setModel(Object model) {
 		if (model == null) {
 			System.err.println("Parameter passed into setModel() is null");
 			return false;

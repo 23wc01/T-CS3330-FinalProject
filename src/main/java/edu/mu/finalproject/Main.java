@@ -60,13 +60,13 @@ public class Main {
 		System.out.println("Displaying shuffled media:");
 		mediaCatalog.displayShuffle();
 		*/
-		/*
+		
 		UserInterface ui = new UserInterface();
 		ui.start();			
-		*/
+		
 		
 		MediaCatalogController mediaCatalog = new MediaCatalogController();
-
+		/*
 		// Unofficially create new user
 		Account user = new Account(0, "blobby", "secret"); //!!!!!!!! Store global user field in this class
 		
@@ -83,7 +83,7 @@ public class Main {
 		// Search for anything 
 		SearchController searchController = new SearchController();
 		searchController.search(catalog);	
-		
+		*/
 		
 	}
 	
