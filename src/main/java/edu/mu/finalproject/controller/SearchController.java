@@ -8,7 +8,7 @@ import edu.mu.finalproject.view.SearchView;
 import edu.mu.finalproject.util.SearchComparator;
 
 public class SearchController {
-	SearchView view;
+	private SearchView view;
 	public SearchController() {
 		view = new SearchView();
 	}

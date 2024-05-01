@@ -46,13 +46,13 @@ public class UIExecutionMethods {
 //		}
 		
 		public static void executeSetupPreference(Account user) {
-			user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
-			PreferenceController preferenceController = new PreferenceController();
-			user.setUserPreference(preferenceController.newPreference());
+			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
+			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
+			user.setUserPreference(setupPreferenceController.newPreference());
 		}
 		
 		public static void executeDownloadRecommendedPlaylist(Account user) {
-			user = new Account("23wc01", "secret"); //!!!!!!!! Store global user field in this class
+			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
 
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
 			if (downloadPlaylistController.downloadRecommendedPlaylist(user, catalog)) {	
