@@ -28,20 +28,21 @@ public class SearchView {
 	}
 	
 	/**
-	 * Displays @param catalog with all MediaObjects inside sorted in descending order of fuzzyscore similarity to @param queryString
+	 * Displays @param topNResults of MediaObjects in @param catalog sorted in descending order of fuzzyscore similarity to @param queryString
 	 * @param queryString
+	 * @param topNResults
 	 * @param sortedCatalog
 	 * @return false if parameters are null, else true
 	 */
-	public Boolean DisplaySearchResultsView(String queryString, int topNSearch, ArrayList<MediaProduct> sortedCatalog) {
+	public Boolean DisplaySearchResultsView(String queryString, int topNResults, ArrayList<MediaProduct> sortedCatalog) {
 		if (queryString == null || sortedCatalog == null) {
 			return false;
 		}
-		System.out.println("\nTop " + topNSearch + " search results for '"+ queryString + "'");
+		System.out.println("\nTop " + topNResults + " search results for '"+ queryString + "'");
 		System.out.println("-------------------------------");
 		int resultCount = 0;
 		for (MediaProduct mediaObj : sortedCatalog) {
-			if(resultCount == topNSearch) {
+			if(resultCount == topNResults) {
 				break;
 			}
 			System.out.println(mediaObj.toString());
