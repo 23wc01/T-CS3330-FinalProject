@@ -68,8 +68,9 @@ public class EventFileReader {
 	/**
 	 * Appends specified Event to the end of the default file
 	 * @param myEvent - the event that is to be appended to the file
-	 * @return 1 for success
-	 * @return -1 for Exception, failure within the json.org or java library
+	 * @return and integer representing the result of the operation
+	 * 		1 for success
+	 *     -1 for Exception, failure within the json.org or java library
 	 * @author etwil
 	 */
 	public static int appendEvent(Event myEvent) {
@@ -98,8 +99,9 @@ public class EventFileReader {
 	 * @param MonthDay monthDate
 	 * @param Year year
 	 * @param String artistName
-	 * @return 1 for success
-	 * @return -1 for Exception, failure within the json.org or java library
+	 * @return and integer representing the result of the operation
+	 * 		1 for success
+	 *     -1 for Exception, failure within the json.org or java library
 	 * @author etwil
 	 */
 	public static int deleteEventFromFile(MonthDay monthDate, Year year, String artistName) {

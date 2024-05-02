@@ -57,9 +57,10 @@ public class FavoritesController {
 	/**
 	 * 
 	 * @param MediaProduct objectToBeFavorited 
-	 * @return 0 for null object parameter 
-	 * @return 1 for object favorited
-	 * @return -1 for object unfavorited
+	 * @return an int representing if the product was favorited or unfavorited
+	 * 		1 for object favorited
+	 * 	   -1 for object unfavorited
+	 *      0 for null object parameter 
 	 * @author etwil
 	 */
 	public int favorite(MediaProduct objectToBeFavorited) {

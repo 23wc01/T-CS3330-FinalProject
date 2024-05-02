@@ -19,8 +19,9 @@ public class FindObjectController {
 	 * 
 	 * @param ArrayList catalog
 	 * @param String userQuery
-	 * @return null - if the user query is null or if object is not found
-	 * @return MediaProduct object - the object who's name matches the userQuery
+	 * @return result of query
+	 * 		null - if the user query is null or if object is not found
+	 *      MediaProduct object - the object who's name matches the userQuery
 	 * @author etwil
 	 */
 	public MediaProduct searchMediaCatalog(ArrayList <? extends MediaProduct> catalog, String userQuery){ 
