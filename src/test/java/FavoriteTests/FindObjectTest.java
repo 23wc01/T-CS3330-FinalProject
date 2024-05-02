@@ -1,4 +1,4 @@
-package EventTests;
+package FavoriteTests;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import edu.mu.finalproject.controller.FindObjectController;
-import edu.mu.finalproject.model.Artist;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Preference;
@@ -32,12 +31,10 @@ public class FindObjectTest {
     	
 		  //Test media products
     	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
-    	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
     	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
     	  //Add to fake catalog
         catalog.add(testSong);
         catalog.add(testPlaylist);
-        catalog.add(testArtist);
 		
 		//Act
         MediaProduct testProduct = findobjectcontroller.searchMediaCatalog(catalog, "The Gummy Bear Song");
@@ -62,12 +59,10 @@ public class FindObjectTest {
     	
 		  //Test media products
     	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
-    	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
     	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
     	  //Add to fake catalog
         catalog.add(testSong);
         catalog.add(testPlaylist);
-        catalog.add(testArtist); 
         
 		
 		//Act
@@ -93,12 +88,10 @@ public class FindObjectTest {
     	
 		  //Test media products
     	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
-    	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
     	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
     	  //Add to fake catalog
         catalog.add(testSong);
         catalog.add(testPlaylist);
-        catalog.add(testArtist); 
         
 		
 		//Act

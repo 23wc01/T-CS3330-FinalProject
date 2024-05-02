@@ -9,7 +9,7 @@ import edu.mu.finalproject.view.FindObjectView;
 /**
  * The FavoritesController class handles logic for favoriting media products and gathering favorited products
  * 
- * It works closely with FavoritesView, MediaProduct, Song, Playlist, and Artist classes. 
+ * It works closely with FavoritesView, MediaProduct, Song, and Playlist classes. 
  * It uses the media product catalog from CatalogSingleton
  * 
  * @author etwil
