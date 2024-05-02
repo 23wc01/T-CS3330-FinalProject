@@ -45,8 +45,8 @@ public class DownloadPlaylistController {
 		
 		HtmlDirector director = new HtmlDirector();
 		
-		htmlStrs.add(director.constructPlaylistHtml(getRecommendedPlaylist()));
-		for (Song song : getRecommendedPlaylist().getSongs()) {
+		htmlStrs.add(director.constructPlaylistHtml(recommendedPlaylist));
+		for (Song song : recommendedPlaylist.getSongs()) {
 			htmlStrs.add(director.constructSongHtml(song));
 		}
 		htmlStrs.add(director.constructAccountHtml(account));		
@@ -54,7 +54,7 @@ public class DownloadPlaylistController {
 		if (combinedStr == null) {
 			return false;
 		}
-		Boolean writeIsSuccess = writeHtmlToFile(getRecommendedPlaylist().getName(), combinedStr);
+		Boolean writeIsSuccess = writeHtmlToFile(recommendedPlaylist.getName(), combinedStr);
 		
 		return view.displayDownloadMessage(htmlOutputFilepath, writeIsSuccess);
 	}
@@ -72,8 +72,8 @@ public class DownloadPlaylistController {
 			return false;
 		}
 		RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
-		setRecommendedPlaylist(recommendPlaylistController.recommendPlaylist(account.getUserPreference(), catalog));
-		if (getRecommendedPlaylist() == null || getRecommendedPlaylist().getSongs().size() == 0) {
+		recommendedPlaylist = recommendPlaylistController.recommendPlaylist(account.getUserPreference(), catalog);
+		if (recommendedPlaylist == null || recommendedPlaylist.getSongs().size() == 0) {
 			return false;
 		}
 		return true;
@@ -115,13 +115,5 @@ public class DownloadPlaylistController {
 			// e.printStackTrace();
 			return false;
 		}
-	}
-	
-// GETTERS & SETTERS
-	public Playlist getRecommendedPlaylist() {
-		return recommendedPlaylist;
-	}
-	public void setRecommendedPlaylist(Playlist recommendedPlaylist) {
-		this.recommendedPlaylist = recommendedPlaylist;
 	}
 }
