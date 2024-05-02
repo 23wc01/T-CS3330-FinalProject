@@ -30,11 +30,10 @@ public class Main {
 			catalog.add(song);
 		}
 
-		/* !!!THOMAS!!! USE THIS TO SEARCH FOR SONG BY NAME
-		 * 
-		 * SearchController searchController = new SearchController();
-		 * searchController.searchSongName(playlistJsonSongNamesList1SongName);
-		 */
+		// !!!THOMAS!!! USE THIS TO SEARCH FOR SONG BY NAME
+		SearchController searchController = new SearchController();
+		searchController.searchSongName("The Guacomole Song");
+		 
 		
 		
 		/*
@@ -60,7 +59,7 @@ public class Main {
 		System.out.println("Displaying shuffled media:");
 		mediaCatalog.displayShuffle();
 		*/
-		
+		/*
 		UserInterface ui = new UserInterface();
 		ui.start();	
 		

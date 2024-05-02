@@ -78,7 +78,4 @@ public class CatalogSingleton {
     public void displayAll() {
         mediaProducts.forEach(System.out::println);
     }
-
-
-
 }

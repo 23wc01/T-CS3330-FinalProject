@@ -3,6 +3,8 @@ package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Song;
 import edu.mu.finalproject.view.SearchView;
@@ -47,19 +49,17 @@ public class SearchController {
 	}
 
 // EXTRA FEATURES 
-/*
+
 	/**
 	 * This functionality/feature is used to find Song in CatalogSingleton given precise song's name 
 	 * @param songName
-	 * @return
-	 
+	 */
 	public Song searchSongName(String songName) {
 		if(songName == null || songName == "") {
 			System.err.println("Failed to retieve song because songName = " + songName);
 			return null;
 		}
-
-		for(MediaProduct traverseObject : CatalogSingleton) { 
+		for(MediaProduct traverseObject : CatalogSingleton.getInstance().getMediaProducts()) { 
 			if (traverseObject.getName().equalsIgnoreCase(songName)) {
 				if(traverseObject instanceof Song) {
 					return (Song) traverseObject;
@@ -68,5 +68,5 @@ public class SearchController {
 		}
 		return null;
 	}
-*/
+
 }

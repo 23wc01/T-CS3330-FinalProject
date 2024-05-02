@@ -32,8 +32,7 @@ public class MediaCatalogController {
     public void displayAll() {
         catalogSingleton.displayAll();
     }
-
-    public void displayShuffle() {
+    void displayShuffle() {
         List<MediaProduct> shuffledMedia = new ArrayList<>(catalogSingleton.getMediaProducts());
         Collections.shuffle(shuffledMedia, random);
         shuffledMedia.forEach(System.out::println);
