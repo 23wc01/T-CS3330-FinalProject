@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.mu.finalproject.model.Account;
-import edu.mu.finalproject.model.MediaProduct;
+import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;
 import edu.mu.finalproject.util.downloadPlaylistBuilder.HtmlDirector;
@@ -37,9 +37,8 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	public Boolean downloadRecommendedPlaylist(Account account, ArrayList<MediaProduct> catalog) {	
-		if (!createPlaylist(account, catalog)) {
-			System.err.println("Can't create playlist\n\n");
+	public Boolean downloadRecommendedPlaylist(Account account) {	
+		if (!createPlaylist(account)) {
 			return false;
 		}
 		
@@ -66,13 +65,12 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	private Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
-		if (account == null || catalog == null) {
-			System.out.println("\nParameter(s) passed into createPlaylist() are null");
+	private Boolean createPlaylist(Account account) {
+		if (account == null || CatalogSingleton.getCatalogArrayList() == null) {
 			return false;
 		}
 		RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
-		recommendedPlaylist = recommendPlaylistController.recommendPlaylist(account.getUserPreference(), catalog);
+		recommendedPlaylist = recommendPlaylistController.recommendPlaylist(account.getUserPreference());
 		if (recommendedPlaylist == null || recommendedPlaylist.getSongs().size() == 0) {
 			return false;
 		}
@@ -111,8 +109,7 @@ public class DownloadPlaylistController {
 			return true;
 	    }
 		catch (IOException e) {
-			// Uncomment if debugging needed
-			// e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
 	}

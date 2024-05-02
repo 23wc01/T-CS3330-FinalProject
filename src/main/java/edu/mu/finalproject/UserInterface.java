@@ -6,6 +6,7 @@ import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
+import edu.mu.finalproject.model.CatalogSingleton;
 
 /**
  * The UserInterface class handles starting the program, reading the user input from the console,
@@ -18,9 +19,10 @@ import edu.mu.finalproject.model.EventSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
+	public static CatalogSingleton TheCatalogSingleton;
+
+
 	private Account user;
-	//public static CatalogSingleton CatalogSingleton;
-	//Any other fields go here (user?)
 	
 	public Account getUser() {
 		return user;
@@ -37,10 +39,8 @@ public class UserInterface {
 	 * 
 	 */
 	public UserInterface() {
-		
 		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
-		//Create a music catalog instance here
-		
+		TheCatalogSingleton = TheCatalogSingleton.getInstance();
 	}
 	
 	/**
@@ -98,19 +98,20 @@ public class UserInterface {
 //            	UIExecutionMethods.executeFavorite();
 //            	break;
 // WAITING FOR ACCOUNT
+            case SEARCH:
+ 				UIExecutionMethods.executeSearchCatalog(); 
+ 				break; 
             case SETUP_PREFERENCE:
             	UIExecutionMethods.executeSetupPreference(user);
             	break;
-/*WAITING FOR CATALOG
- * 			case DOWNLOAD_RECOMMENDED_PLAYLIST:
- * 				UIExecutionMethods.executeDownloadRecommendedPlaylist(user); 
- * 				break;              
- */
-/*WAITING FOR CATALOG
-* 			case SEARCH:
-* 				UIExecutionMethods.executeSearchCatalog(); 
-* 				break;              
-*/
+            case RECOMMEND_PLAYLIST:
+ 				UIExecutionMethods.executeRecommendPlaylist(user); 
+ 				break; 
+  			case DOWNLOAD_RECOMMENDED_PLAYLIST:
+  				UIExecutionMethods.executeDownloadRecommendedPlaylist(user); 
+  				break;              
+  			             
+
               //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!
             
             	

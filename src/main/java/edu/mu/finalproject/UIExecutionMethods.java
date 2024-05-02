@@ -1,15 +1,18 @@
 package edu.mu.finalproject;
 
 import edu.mu.finalproject.model.Account;
+import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.model.MediaProduct;
+import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
 import edu.mu.finalproject.view.FindObjectView;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  * The UIExecutionMethods class manages flow from the switch statement in UserInterface.
@@ -60,24 +63,31 @@ public class UIExecutionMethods {
 			favoritesview.displayFavoriteResult(objectToBeFavorited);														
 		}
 		
+		public static void executeSearchCatalog() {
+			SearchController searchController = new SearchController();
+			searchController.search();
+		}
 		public static void executeSetupPreference(Account user) {
 			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
 			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
 			user.setUserPreference(setupPreferenceController.newPreference());
 		}
-		
+		public static void executeRecommendPlaylist(Account account) {
+			if (account == null || CatalogSingleton.getCatalogArrayList() == null) {
+				System.out.println("\nParameter(s) passed into createPlaylist() are null");
+			}
+			RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
+			recommendPlaylistController.recommendPlaylist(account.getUserPreference());
+		}
 		public static void executeDownloadRecommendedPlaylist(Account user) {
 			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
 
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
-			if (downloadPlaylistController.downloadRecommendedPlaylist(user, CatalogSingleton)) {	
+			if (downloadPlaylistController.downloadRecommendedPlaylist(user)) {	
 				System.out.println("Refresh folder if html file doesn't appear immidiately");
 			}
 		}
-		public static void executeSearchCatalog() {
-			SearchController searchController = new SearchController();
-			searchController.search(CatalogSingleton); // !!!!! GET CATALOG!
-		}
+		
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
 		
 		

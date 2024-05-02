@@ -41,7 +41,7 @@ public class Song extends MediaProduct {
 	}
 	@Override
 	public String toString() {
-		return "Song [releaseDate=" + releaseDate + ", name=" + name + ", description=" + imgDescription + ", addedDate="
+		return "Song [Name=" + name + ", description=" + imgDescription + ", addedDate="
 				+ addedDate + ", isFavorited=" + isFavorited +", artistName=" + artistName + ", Preference: " + preference.capitalizePreference() + "]";
 	}
 

@@ -30,10 +30,6 @@ public class Main {
 			catalog.add(song);
 		}
 
-		// !!!THOMAS!!! USE THIS TO SEARCH FOR SONG BY NAME
-		CatalogSingleton catalogSingleton = CatalogSingleton.getInstance();
-		MediaCatalogController mediaCatalogController = new MediaCatalogController();
-		
 		
 		/*
 		// // Path to your playlist JSON file
@@ -58,12 +54,10 @@ public class Main {
 		System.out.println("Displaying shuffled media:");
 		mediaCatalog.displayShuffle();
 		*/
-		/*
+		
 		UserInterface ui = new UserInterface();
 		ui.start();	
 		
-		
-		MediaCatalogController mediaCatalog = new MediaCatalogController();
 		/*
 		// Unofficially create new user
 		Account user = new Account(0, "blobby", "secret"); //!!!!!!!! Store global user field in this class
