@@ -1,4 +1,4 @@
-package EventTests;
+package FavoriteTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -18,9 +18,8 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import EventTests.DisplayFavoritesTest.MockMediaProduct;
+import FavoriteTests.DisplayFavoritesTest.MockMediaProduct;
 import edu.mu.finalproject.controller.FavoritesController;
-import edu.mu.finalproject.model.Artist;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Preference;
@@ -88,21 +87,20 @@ public class DisplayFavoritesTest {
     	
 		  //Test media products
     	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
-    	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
-    	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
+    	Song testSong1 = new Song(1, "The Avocado song", "avocado", true, new Date(0), "meme song", Preference.POP);
+    	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), true, testPlaylistSongArray);
     	  //Add to fake catalog
+    	catalog.add(testPlaylist);
         catalog.add(testSong);
-        catalog.add(testPlaylist);
-        catalog.add(testArtist);
+        catalog.add(testSong1);
 
   
           //Set up expected catalog to test against
         ArrayList<MediaProduct> expected = new ArrayList<>(); 
+        expected.add(new Playlist(0, "Playlist one", "chill", new Date(0), true, testPlaylistSongArray));
         expected.add(new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM));
-        expected.add(new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2));
-        //could uncomment to test with playlist favorited
-        //expected.add(new Playlist(0, "Playlist one", "chill", new Date(0), true, testPlaylistSongArray));
-        
+        expected.add(new Song(1, "The Avocado song", "avocado", true, new Date(0), "meme song", Preference.POP));
+
         //Act
         ArrayList <MediaProduct> result = tFavoritesController.gatherFavorited(MediaProduct.class, catalog);
         
@@ -113,7 +111,7 @@ public class DisplayFavoritesTest {
     
     
     @Test
-    public void testGatherFavorited_OneType() {  //Doesn't work, not quite matching at the very end
+    public void testGatherFavorited_OneType() {  
     	System.out.println("-----------------------------");
     	//Arrange
     	  //Set up fake catalog
@@ -150,28 +148,28 @@ public class DisplayFavoritesTest {
     
     
 
-    @Test
-    public void testGetFavInfo_Artists() {
-        // Arrange
-        String simulatedInput = "artists"; // Simulating user input for "artists"
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
-        System.setIn(inputStream);
-
-        
-     // Mock catalog
-        ArrayList<MediaProduct> testCatalog = new ArrayList<>();
-     // Mocking the FavoritesController.gatherFavorited method
-        FavoritesController favoritesControllerMock = mock(FavoritesController.class);
-        ArrayList<MediaProduct> mockResult = new ArrayList<>();
-        when(favoritesControllerMock.gatherFavorited(Artist.class, testCatalog)).thenReturn(mockResult);
-
-        // Act
-        String result = tFavoritesView.getFavInfo(testCatalog);
-
-        // Assert
-        assertEquals("artists", result);
-
-    }
+//    @Test
+//    public void testGetFavInfo_Artists() {
+//        // Arrange
+//        String simulatedInput = "artists"; // Simulating user input for "artists"
+//        ByteArrayInputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
+//        System.setIn(inputStream);
+//
+//        
+//     // Mock catalog
+//        ArrayList<MediaProduct> testCatalog = new ArrayList<>();
+//     // Mocking the FavoritesController.gatherFavorited method
+//        FavoritesController favoritesControllerMock = mock(FavoritesController.class);
+//        ArrayList<MediaProduct> mockResult = new ArrayList<>();
+//        when(favoritesControllerMock.gatherFavorited(Artist.class, testCatalog)).thenReturn(mockResult);
+//
+//        // Act
+//        String result = tFavoritesView.getFavInfo(testCatalog);
+//
+//        // Assert
+//        assertEquals("artists", result);
+//
+//    }
     
     @Test
     public void testGetFavInfo_Songs() {

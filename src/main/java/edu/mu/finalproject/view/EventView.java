@@ -69,7 +69,17 @@ public class EventView {
 	 
 	 
 	 
-	
+	/**
+	 * Gets information for the event from the user, and calls the Event constructor to make a new event.
+	 * Used for adding and event, and is part of the logic for deleting an event.
+	 * Uses GetInutInteger from the class of the same name.
+	 * 
+	 * Catches type errors when an invalid date is entered
+	 * 
+	 * @return Event made with the parameters specified by user
+	 * 			Event myEvent
+	 * @author etwil
+	 */
 	 public Event createEvent() { 
 			 
 			 Scanner scanner = new Scanner(System.in);
@@ -120,7 +130,18 @@ public class EventView {
 	 
 	 
 	 
-	 
+	 /**
+	  * Gets information about the bounds of the display from the user. Gets the date to start the display from, and the date to end the display on.
+	  * 
+	  * Calls getEventsToDisplayByDate from EventController 
+	  * Calls displayEventsByDate in this class 
+	  * 
+	  * @param ArrayList eventCatalog
+	  * @return integer representing success or failure
+	  * 		-1 for invalid dates
+	  * 		 1 for success
+	  * @author etwil
+	  */
 	 public int getEventDisplayInfo(ArrayList<Event>catalog) {
 		 
 		 EventView eventview = new EventView();
@@ -192,7 +213,15 @@ public class EventView {
 	 
 	 
 	 
-	 
+	 /**
+	  * Given an array of events, this method prints those events to the console, or prints a message if no events were found.
+	  * @param ArrayList eventsInRange - Array of all the events in the range specified by getEventDisplayInfo
+	  * @return integer representing result of operation
+	  * 		0 for if there are no events in the events collection
+	  * 		-1 for if there were no events in range
+	  * 		1 for success
+	  * @author etwil
+	  */
 	 public int displayEventsByDate(ArrayList <Event> eventsInRange) {
 		 
 		 	if(eventsInRange == null) {
@@ -218,7 +247,15 @@ public class EventView {
 		 }
 	 
 	 
-	 
+	 /**
+	  * This method prints the result of the delete operation to the console. 
+	  * @param Event eventToBeDeleted
+	  * @return integer representing result of the operation
+	  * 		0 for no events exist in the collection
+	  * 		-1 for event not found
+	  * 		1 for success
+	  * @author etwil
+	  */
 	 public static int viewDeleteEvent(Event eventToBeDeleted) { 
 			
 		 

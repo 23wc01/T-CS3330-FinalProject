@@ -6,8 +6,22 @@ import java.util.Scanner;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.*;
 
+/**
+ * FindObjectView is a class that handles user input and formats it to be used as a query in searchMediaCatalog
+ * Includes a method that gets information about the query object to be used in searching the catalog for an item
+ * 
+ * Helper class for FindObjectController 
+ * @author etwil
+ */
 public class FindObjectView {
 	
+	/**
+	 * Prompts user and gets information for a media product query.
+	 * @param none
+	 * @return String userInput representing the name of the object
+	 * 
+	 * @author etwil
+	 */
 	public static String getInformationFromUser() { 
 		
 		Scanner scanner = new Scanner(System.in);
@@ -19,13 +33,14 @@ public class FindObjectView {
 		//Keeps prompting until proper input is entered
 		while(true) {
 			String userInput = scanner.nextLine().trim();
-			
-			if (userInput.equalsIgnoreCase("artist")) {
-				
-				type = "artist";
-				break;
-			}
-			else if (userInput.equalsIgnoreCase("song")) {
+
+//Old code for when artist was in use
+//			if (userInput.equalsIgnoreCase("artist")) {
+//				
+//				type = "artist";
+//				break;
+//			}
+			if (userInput.equalsIgnoreCase("song")) {
 				type = "song";
 				break;
 				
@@ -36,7 +51,7 @@ public class FindObjectView {
 				
 			}
 			else {
-				System.out.println("Type not recognized. Choose from: artist, song, playlist");
+				System.out.println("Type not recognized. Choose from: song, playlist");
 				
 			}
 		}
@@ -44,10 +59,11 @@ public class FindObjectView {
 		//Uses the name as a unique key to find objects
 		String userInput;
 		switch (type) {
-		case ("artist"):
-			System.out.println("What is the name of the artist?");
-			userInput = scanner.nextLine().trim();
-			return userInput;
+//Old code for when artist was in use
+//		case ("artist"):
+//			System.out.println("What is the name of the artist?");
+//			userInput = scanner.nextLine().trim();
+//			return userInput;
 			
 		case ("song"):
 			System.out.println("What is the name of the song?");
