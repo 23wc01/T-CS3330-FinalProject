@@ -23,7 +23,7 @@ public class DownloadPlaylistController {
 	private DownloadPlaylistView view;
 	
 	/** 
-	 * Constructor fetches 3 parts of html template & stores them in String vars
+	 * Constructor initializes some members automatically
 	 */
 	public DownloadPlaylistController() {
 		htmlStrs = new ArrayList<String>();

@@ -13,11 +13,14 @@ import edu.mu.finalproject.util.SearchComparator;
 
 public class SearchController {
 	private SearchView view;
-	static public int topNSearch;
+	private static int topNResults;
 
+	/**
+	 * Constructor Auto-intializes its members.
+	 */
 	public SearchController() {
 		view = new SearchView();
-		setTopNSearch(5);
+		setTopNResults(5);
 	}
 	
 	/**
@@ -49,7 +52,7 @@ public class SearchController {
 		}
 		SearchComparator songSearch = new SearchComparator(searchQuery);
 		Collections.sort(catalog, songSearch);
-		view.DisplaySearchResultsView(searchQuery, getTopNSearch(), catalog);
+		view.DisplaySearchResultsView(searchQuery, getTopNResults(), catalog);
 		return true;
 	}
 
@@ -74,15 +77,15 @@ public class SearchController {
 		return null;
 	}
 // GETTER & SETTER
-	public static int getTopNSearch() {
-		return topNSearch;
+	public static int getTopNResults() {
+		return topNResults;
 	}
 
-	public static Boolean setTopNSearch(int topSearch) {
-		if (topSearch < 1) {
+	public static Boolean setTopNResults(int topNResults) {
+		if (topNResults < 1) {
 			return false;
 		}
-		SearchController.topNSearch = topSearch;
+		SearchController.topNResults = topNResults;
 		return true;
 	}
 }
