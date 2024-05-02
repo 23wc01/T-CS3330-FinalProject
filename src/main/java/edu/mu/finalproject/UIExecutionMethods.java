@@ -28,8 +28,6 @@ public class UIExecutionMethods {
 	static FindObjectController findobjectcontroller = new FindObjectController();
 	
 	//Define methods to be called based on user input--------------------------------
-	 
-	
 		public static void executeAddEvent() {
 			Event myEvent = eventview.createEvent();
 		    EventView.viewAddEvent(myEvent);
