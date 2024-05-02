@@ -11,15 +11,23 @@ public class PreferenceQuestion {
 	public String getQuestion() {
 		return question;
 	}
-	public void setQuestion(String question) {
+	public Boolean setQuestion(String question) {
+		if(question == null) {
+			return false;
+		}
 		this.question = question;
+		return true;
 	}
 
 	public ArrayList<HashMap<String, String>> getChoiceToPreferences() {
 		return choicesToPrefs;
 	}
-	public void setChoiceToPreferences(ArrayList<HashMap<String, String>> choicesToPrefs) {
+	public Boolean setChoiceToPreferences(ArrayList<HashMap<String, String>> choicesToPrefs) {
+		if(choicesToPrefs == null) {
+				return false;
+		}
 		this.choicesToPrefs = choicesToPrefs;
+		return true;
 	}
 	public ArrayList<String> getChoices() {
 		ArrayList<String> choices = new ArrayList<String>();

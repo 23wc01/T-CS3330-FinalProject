@@ -73,7 +73,8 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return scoreboard;
 	}
 	
-	private void askQuestions() {
+	private Boolean askQuestions() {
+		ArrayList<Boolean> successes = new ArrayList<Boolean>();
 		PreferenceQuestion preferenceQuestion;
 		for (Map questionAndChoices : json) {
 			preferenceQuestion = new PreferenceQuestion();
@@ -82,21 +83,33 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 			getView().displayQuestion(preferenceQuestion.getQuestion());
 			getView().displayChoices(preferenceQuestion.getChoices());
 			int answer = view.getInputAnswer(preferenceQuestion.getChoices().size());
-			scoreQuestion(answer, preferenceQuestion);
+			successes.add(scoreQuestion(answer, preferenceQuestion));
 		}
+		if (successes.contains(false)) {
+			return false;
+		}
+		return true;
 	}
 	
-	private void scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
+	private Boolean scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
+		if (answer <= 0 || preferenceQuestion == null) {
+			return false;
+		}
 		--answer; // Answers are 1-based in UI. Decrement to get 0-based
 		ArrayList<String> answerPreferences = preferenceQuestion.getAnswerPreferences();
 		Preference answerPreference = Preference.toPreference(answerPreferences.get(answer));
 		recordScore(answerPreference);
+		return true;
 	}
 	
-	private void recordScore(Preference answerPreference) {
+	private Boolean recordScore(Preference answerPreference) {
+		if (answerPreference == null) {
+			return false;
+		}
 		int newScore = scoreboard.get(answerPreference);
 		++newScore;
 		scoreboard.put(answerPreference, newScore);
+		return true;
 	}
 	
 	private Preference getTopPreference() {
