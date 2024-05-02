@@ -26,12 +26,12 @@ public class FindObjectTest {
     	catalog = new ArrayList<>();
     	
     	  //Fake playlist
-		Song testSongforPlaylist = new Song(3, "Hot potato", "potato", new Date(0), true, "Patty Shukla", Preference.POP);
+		Song testSongforPlaylist = new Song(3, "Hot potato", "potato", true, new Date(0), "Patty Shukla", Preference.POP);
 		ArrayList<Song> testPlaylistSongArray = new ArrayList<>();
 		testPlaylistSongArray.add(testSongforPlaylist);
     	
 		  //Test media products
-    	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM);
+    	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
     	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
     	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
     	  //Add to fake catalog
@@ -56,12 +56,12 @@ public class FindObjectTest {
     	catalog = new ArrayList<>();
     	
     	  //Fake playlist
-		Song testSongforPlaylist = new Song(3, "Hot potato", "potato", new Date(0), true, "Patty Shukla", Preference.POP);
+		Song testSongforPlaylist = new Song(3, "Hot potato", "potato", true, new Date(0), "Patty Shukla", Preference.POP);
 		ArrayList<Song> testPlaylistSongArray = new ArrayList<>();
 		testPlaylistSongArray.add(testSongforPlaylist);
     	
 		  //Test media products
-    	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM);
+    	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
     	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
     	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
     	  //Add to fake catalog
@@ -87,12 +87,12 @@ public class FindObjectTest {
     	catalog = new ArrayList<>();
     	
     	  //Fake playlist
-		Song testSongforPlaylist = new Song(3, "Hot potato", "potato", new Date(0), true, "Patty Shukla", Preference.POP);
+		Song testSongforPlaylist = new Song(3, "Hot potato", "potato", true, new Date(0), "Patty Shukla", Preference.POP);
 		ArrayList<Song> testPlaylistSongArray = new ArrayList<>();
 		testPlaylistSongArray.add(testSongforPlaylist);
     	
 		  //Test media products
-    	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM);
+    	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
     	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
     	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
     	  //Add to fake catalog
