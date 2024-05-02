@@ -6,12 +6,28 @@ import edu.mu.finalproject.model.MediaProduct;
 
 import edu.mu.finalproject.view.FavoritesView;
 import edu.mu.finalproject.view.FindObjectView;
-
+/**
+ * The FavoritesController class handles logic for favoriting media products and gathering favorited products
+ * 
+ * It works closely with FavoritesView, MediaProduct, Song, Playlist, and Artist classes. 
+ * It uses the media product catalog from CatalogSingleton
+ * 
+ * @author etwil
+ */
 public class FavoritesController {
 
+	/**
+	 * Checks if catalog is null or empty, then iterates through catalog and checks if object is favorited
+	 * If favorited, it is added to array favorites to be returned.
+	 * @param Class<? extends MediaProduct> type - class of media product
+	 * @param ArrayList catalog - the catalog of media
+	 * @return ArrayList favorites - the favorited items
+	 * @author etwil
+	 */
 	public ArrayList<MediaProduct> gatherFavorited(Class<? extends MediaProduct> type, ArrayList<MediaProduct> catalog) {
 		
 		ArrayList <MediaProduct> favorites = new ArrayList<MediaProduct>();
+		//For an empty or null list
 		if (catalog.isEmpty() || catalog == null ) {
 			return favorites;
 		}
@@ -38,7 +54,14 @@ public class FavoritesController {
 		return favorites;
 	}
 	
-	
+	/**
+	 * 
+	 * @param MediaProduct objectToBeFavorited 
+	 * @return 0 for null object parameter 
+	 * @return 1 for object favorited
+	 * @return -1 for object unfavorited
+	 * @author etwil
+	 */
 	public int favorite(MediaProduct objectToBeFavorited) {
 		
 		if (objectToBeFavorited == null) {

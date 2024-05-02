@@ -12,15 +12,28 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
+/**
+ * This class handles logic related to reading and writing to the file that stores event catalog information
+ * 
+ * This class is used in UserInterface, and EventController
+ * It utilizes the json.org library
+ * @author etwil
+ */
 public class EventFileReader {
 	
 	private static String path = "files/events.json";
 
+	/**
+	 * Reads events from a file
+	 * @param filePath
+	 * @return ArrayList eventsCollection - an array of all the Events read from the file
+	 * @author etwil
+	 */
 	public static ArrayList<Event> readEvents(String filePath) {
 		 
 		 ArrayList<Event> eventsCollection = new ArrayList<>();
 
+		 // If no file path is specified, use the default
 	     if (filePath == null) {
 	            filePath = path;
 	     }
@@ -52,15 +65,15 @@ public class EventFileReader {
      
 	}
 	
-	
+	/**
+	 * Appends specified Event to the end of the default file
+	 * @param myEvent - the event that is to be appended to the file
+	 * @return 1 for success
+	 * @return -1 for Exception, failure within the json.org or java library
+	 * @author etwil
+	 */
 	public static int appendEvent(Event myEvent) {
 		try {
-			
-//			String filePath = System.getenv("EVENTS_FILE_PATH");
-//		     if (filePath == null) {
-//		            filePath = path;
-//		     }
-		     
 		     
             // Read the existing JSON file
             String content = new String(Files.readAllBytes(Paths.get(path)));
@@ -80,15 +93,18 @@ public class EventFileReader {
 	}
 	
 	
-	
+	/**
+	 * Overwrites the old file without specified event. Uses fields of the Event object to check if objects are the same
+	 * @param MonthDay monthDate
+	 * @param Year year
+	 * @param String artistName
+	 * @return 1 for success
+	 * @return -1 for Exception, failure within the json.org or java library
+	 * @author etwil
+	 */
 	public static int deleteEventFromFile(MonthDay monthDate, Year year, String artistName) {
 		try {
 			
-//			String filePath = System.getenv("EVENTS_FILE_PATH");
-//		     if (filePath == null) {
-//		            filePath = path;
-//		     }
-//		     
 			String jsonText = new String(Files.readAllBytes(Paths.get(path)));//Read original JSON array
 			JSONArray jsonArray = new JSONArray(jsonText);
 			JSONArray updatedJsonArray = new JSONArray();

@@ -7,8 +7,13 @@ import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
 
-
-
+/**
+ * The UserInterface class handles starting the program, reading the user input from the console,
+ * and directing the flow of control to the proper execution method based on the input
+ * 
+ * This class works closely with UIExecutionMethods class as it sends the flow of control to that class.
+ * This class works  closely with ECommands in matching user input with commands
+ */
 
 public class UserInterface {
 	
@@ -26,22 +31,34 @@ public class UserInterface {
 	}
 
 
-	//Constructor
+	/**
+	 * Constructor for UserInterface, called in main
+	 * @param none
+	 * 
+	 */
 	public UserInterface() {
 		
 		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
-		//Create a music catalog
+		//Create a music catalog instance here
 		
 	}
 	
-	
+	/**
+	 * Handles anything that needs to be done to set up for the program, like file reading
+	 * Starts the main portion of the program.
+	 * @param none
+	 */
 	public void start() {
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
 		//Read any other files here
 		run();
 	}
 	
-	//Waits for a valid input and runs the method that aligns with what the user wants.
+	/**
+	 * Waits for a valid input and runs the method that aligns with what the user wants.
+	 * @param none
+	 * @return none
+	 */
 	public void run() {
 		
 		System.out.println("Welcome to Media Tracker! Type your command, or type \"menu\" to see options.");
@@ -106,12 +123,17 @@ public class UserInterface {
                 break;
 	        } 
 	    }
-	    //scanner.close();
+	   
 	
 	}
 	
 	
-	//Helper for getting command in enum form
+	/**
+	 * Helper for getting command in enum form to use in the switch case
+	 * @param none
+	 * @return Ecommands Command to be used in switch case
+	 * @author etwil
+	 */
 	private ECommands getCommand(String userInput) {
 		try {
 			return ECommands.valueOf(userInput.toUpperCase());

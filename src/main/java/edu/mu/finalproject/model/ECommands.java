@@ -1,5 +1,11 @@
 package edu.mu.finalproject.model;
 
+/**
+ * This enum stores all commands and corresponding descriptions
+ * The descriptions are to match user input with one of the enum values
+ * 
+ *  Works closely with class UserInterface
+ */
 public enum ECommands {
 	
 	//Add your commands to the enum as you go along! Try to put it in alphabetical so its easier to look through, but leave invalid at the bottom
@@ -31,6 +37,7 @@ public enum ECommands {
 		this.description = description;
 	}
 	
+	//Getter
 	public String getDescription() {
 		return description;
 	}

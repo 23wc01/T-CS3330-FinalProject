@@ -2,6 +2,15 @@ package edu.mu.finalproject.model;
 
 import java.util.Date;
 
+/**
+ * The Song class represents a song in a media library and extends the MediaProduct class.
+ * It includes attributes specific to songs like the artist's name and the song's release date.
+ * Used to manage song data like preferences associated with the song.
+ * 
+ * This class provides necessary getter and setter functions, as well as a toString
+ * 
+ * It works closely with Preference
+ */
 public class Song extends MediaProduct {
 	private String artistName;
 	private Date releaseDate;
