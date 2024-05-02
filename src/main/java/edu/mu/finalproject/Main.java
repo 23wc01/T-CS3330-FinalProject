@@ -31,9 +31,8 @@ public class Main {
 		}
 
 		// !!!THOMAS!!! USE THIS TO SEARCH FOR SONG BY NAME
-		SearchController searchController = new SearchController();
-		searchController.searchSongName("The Guacomole Song");
-		 
+		CatalogSingleton catalogSingleton = CatalogSingleton.getInstance();
+		MediaCatalogController mediaCatalogController = new MediaCatalogController();
 		
 		
 		/*

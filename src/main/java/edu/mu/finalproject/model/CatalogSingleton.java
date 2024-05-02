@@ -3,6 +3,8 @@ package edu.mu.finalproject.model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import edu.mu.finalproject.controller.SearchController;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -53,14 +55,8 @@ public class CatalogSingleton {
         return instance;
     }
 // do we have search yet?
-    public List<MediaProduct> searchMedia(String query) {
-        List<MediaProduct> results = new ArrayList<>();
-        for (MediaProduct media : mediaProducts) {
-            if (media.getName().toLowerCase().contains(query.toLowerCase())) {
-                results.add(media);
-            }
-        }
-    return results;
+    public Song searchMedia(String query) {
+    	return SearchController.searchSongName(query, mediaProducts);
     }
 
     public void addMediaProduct(MediaProduct mediaProduct) {
