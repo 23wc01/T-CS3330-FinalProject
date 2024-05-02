@@ -11,10 +11,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Unofficially create some songs
-		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, "icanrockyourworld", Preference.EDM);
-		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(), false, "Kids Tunez", Preference.RAP);
-		Song song2 = new Song(2, "The Guacamole Song", "avocado", new Date(), false, "Dr. Jean", Preference.POP);
-		Song song3 = new Song(3, "Hot potato", "potato", new Date(), false, "Patty Shukla", Preference.POP);
+		Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", false, new Date(), "icanrockyourworld", Preference.EDM);
+		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",false, new Date(), "Kids Tunez", Preference.RAP);
+		Song song2 = new Song(2, "The Guacamole Song", "avocado", false, new Date(), "Dr. Jean", Preference.POP);
+		Song song3 = new Song(3, "Hot potato", "potato", false, new Date(), "Patty Shukla", Preference.POP);
 		
 		// Add songs to unorderedPlaylist
 		Playlist unorderedPlaylist = new Playlist(0, "Songs that slap", null, new Date(), false, new ArrayList<Song>());		

@@ -7,7 +7,7 @@ public class Song extends MediaProduct {
 	private Date releaseDate;
 	Preference preference;
 	
-	public Song(int id, String name, String description, Date addedDate, Boolean isFavorited, String artistName, Preference preference) {
+	public Song(int id, String name, String description, Boolean isFavorited, Date addedDate, String artistName, Preference preference) {
 		super();
 		this.id = id;
 		this.name = name;
