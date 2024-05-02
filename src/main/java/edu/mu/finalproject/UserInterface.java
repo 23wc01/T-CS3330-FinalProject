@@ -3,6 +3,7 @@ package edu.mu.finalproject;
 import java.util.Scanner;
 
 import edu.mu.finalproject.model.Account;
+import edu.mu.finalproject.model.AccountSingleton;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
@@ -13,6 +14,7 @@ import edu.mu.finalproject.model.EventSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
+	public static AccountSingleton TheAccountManager;
 	private Account user;
 	//public static CatalogSingleton CatalogSingleton;
 	//Any other fields go here (user?)
@@ -30,6 +32,7 @@ public class UserInterface {
 	public UserInterface() {
 		
 		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
+		TheAccountManager = AccountSingleton.getInstance();
 		//Create a music catalog
 		
 	}
