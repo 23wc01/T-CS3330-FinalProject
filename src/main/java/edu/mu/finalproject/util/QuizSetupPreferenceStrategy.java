@@ -25,16 +25,16 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	@Override
 	public Preference setupPreference(SetupPreferenceView view) {
 		setView(view);
-		if (view == null) {
+		if (getView() == null) {
 			System.out.println("View not visible");
 			return null;
 		}
 		if (readJson()) {
-			view.displayQuizIntro();
+			getView().displayQuizIntro();
 			scoreboard = createScoreboard();
 			askQuestions();
 			userPreference = getTopPreference();
-			view.displayPreference(userPreference.capitalizePreference());
+			getView().displayPreference(userPreference.capitalizePreference());
 			// user.setPreference(userPreference);
 			return userPreference;
 		}
@@ -79,8 +79,8 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 			preferenceQuestion = new PreferenceQuestion();
 			preferenceQuestion.setQuestion(questionAndChoices.get("question").toString());
 			preferenceQuestion.setChoiceToPreferences((ArrayList<HashMap<String, String>>) questionAndChoices.get("choices"));
-			view.displayQuestion(preferenceQuestion.getQuestion());
-			view.displayChoices(preferenceQuestion.getChoices());
+			getView().displayQuestion(preferenceQuestion.getQuestion());
+			getView().displayChoices(preferenceQuestion.getChoices());
 			int answer = view.getInputAnswer(preferenceQuestion.getChoices().size());
 			scoreQuestion(answer, preferenceQuestion);
 		}
@@ -111,8 +111,15 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return topPreference;
 	}
 	
-	private void setView(SetupPreferenceView view) {
+	private Boolean setView(SetupPreferenceView view) {
+		if(view == null) {
+			return false;
+		}
 		this.view = view;
+		return true;
+	}
+	private SetupPreferenceView getView() {
+		return view;
 	}
 	
 }
