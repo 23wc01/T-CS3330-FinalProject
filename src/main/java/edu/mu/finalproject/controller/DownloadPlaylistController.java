@@ -39,7 +39,7 @@ public class DownloadPlaylistController {
 	 */
 	public Boolean downloadRecommendedPlaylist(Account account) {	
 		if (!createPlaylist(account)) {
-			return false;
+			return view.displayMissingStepsError();
 		}
 		
 		HtmlDirector director = new HtmlDirector();

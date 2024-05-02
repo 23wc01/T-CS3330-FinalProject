@@ -67,25 +67,21 @@ public class UIExecutionMethods {
 			SearchController searchController = new SearchController();
 			searchController.search();
 		}
-		public static void executeSetupPreference(Account user) {
-			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
+		public static void executeSetupPreference() {
+			UserInterface.setUser(new Account(0, "23wc01", "secret")); //!!!!!!!! Store global user field in this class
 			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
-			user.setUserPreference(setupPreferenceController.newPreference());
+			UserInterface.getUser().setUserPreference(setupPreferenceController.newPreference());
 		}
-		public static void executeRecommendPlaylist(Account account) {
-			if (account == null || CatalogSingleton.getCatalogArrayList() == null) {
+		public static void executeRecommendPlaylist() {			
+			if (UserInterface.getUser() == null || CatalogSingleton.getCatalogArrayList() == null) {
 				System.out.println("\nParameter(s) passed into createPlaylist() are null");
 			}
 			RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
-			recommendPlaylistController.recommendPlaylist(account.getUserPreference());
+			recommendPlaylistController.recommendPlaylist(UserInterface.getUser().getUserPreference());
 		}
-		public static void executeDownloadRecommendedPlaylist(Account user) {
-			user = new Account(0, "23wc01", "secret"); //!!!!!!!! Store global user field in this class
-
+		public static void executeDownloadRecommendedPlaylist() {
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
-			if (downloadPlaylistController.downloadRecommendedPlaylist(user)) {	
-				System.out.println("Refresh folder if html file doesn't appear immidiately");
-			}
+			downloadPlaylistController.downloadRecommendedPlaylist(UserInterface.getUser());
 		}
 		
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order

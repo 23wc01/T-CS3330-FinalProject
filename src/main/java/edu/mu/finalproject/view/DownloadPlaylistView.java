@@ -14,6 +14,7 @@ public class DownloadPlaylistView {
 		}
 		if (writeIsSuccess) {
 			System.out.println("Saved playlist's html file to '" + outputFilepath + "'");
+			System.out.println("Refresh folder if html file doesn't appear immidiately");
 			return true;
 		}
 		else {
@@ -21,8 +22,8 @@ public class DownloadPlaylistView {
 			return false;
 		}
 	}
-	public Boolean displayChangeToSetup() {
-		System.out.println("Hmmmm...\nCan't download recommended playlist unless we know your preference.\n\n");
-		return true;
+	public Boolean displayMissingStepsError() {
+		System.err.println("Try 'login' and or 'setup_preference' first!");
+		return false;
 	}
 }

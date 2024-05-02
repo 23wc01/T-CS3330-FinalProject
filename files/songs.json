@@ -24,7 +24,7 @@
       "isFavorited":false,
       "addedDate": "06-26-2020",
       "artistName":"BlackPink",
-      "preference": "EDM"
+      "preference": "POP"
    },
    {
       "id":4,
@@ -33,7 +33,7 @@
       "isFavorited":false,
       "addedDate": "12-10-1953",
       "artistName":"Dean Martin",
-      "preference": "SOUL"
+      "preference": "COUNTRY"
    },
    {
       "id":5,
@@ -50,8 +50,8 @@
       "imgDescription":"Peanut butter",
       "isFavorited":false,
       "addedDate": "07-20-2020",
-      "artistName":"Kids Tunez",
-      "preference": "POP"
+      "artistName":"Dj Chipman",
+      "preference": "RAP"
    },
    {
       "id":7,
@@ -68,8 +68,8 @@
       "imgDescription":"gummy bear",
       "isFavorited":false,      
       "addedDate": "10-09-2007",
-      "artistName":"icanrockyourworld",
-      "preference": "POP"
+      "artistName":"Christian Schneider",
+      "preference": "EDM"
    },
    {
       "id":9,
@@ -79,5 +79,14 @@
       "addedDate": "08-16-2021",
       "artistName":"Patty Shukla",
       "preference": "POP"
+   },
+   {
+      "id":10,
+      "name":"Isn't She Lovely",
+      "imgDescription":"love",
+      "isFavorited":false,
+      "addedDate": "08-7-2018",
+      "artistName":"Stevie Wonder",
+      "preference": "SOUL"
    }
 ]

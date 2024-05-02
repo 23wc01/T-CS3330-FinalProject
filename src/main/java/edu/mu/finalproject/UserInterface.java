@@ -20,16 +20,14 @@ public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
 	public static CatalogSingleton TheCatalogSingleton;
-
-
-	private Account user;
+	private static Account user;
 	
-	public Account getUser() {
+	public static Account getUser() {
 		return user;
 	}
 
-	public void setUser(Account user) {
-		this.user = user;
+	public static void setUser(Account user) {
+		UserInterface.user = user;
 	}
 
 
@@ -102,13 +100,13 @@ public class UserInterface {
  				UIExecutionMethods.executeSearchCatalog(); 
  				break; 
             case SETUP_PREFERENCE:
-            	UIExecutionMethods.executeSetupPreference(user);
+            	UIExecutionMethods.executeSetupPreference();
             	break;
             case RECOMMEND_PLAYLIST:
- 				UIExecutionMethods.executeRecommendPlaylist(user); 
+ 				UIExecutionMethods.executeRecommendPlaylist(); 
  				break; 
   			case DOWNLOAD_RECOMMENDED_PLAYLIST:
-  				UIExecutionMethods.executeDownloadRecommendedPlaylist(user); 
+  				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
   				break;              
   			             
 
