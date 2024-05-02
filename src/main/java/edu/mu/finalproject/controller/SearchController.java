@@ -44,9 +44,9 @@ public class SearchController {
 	 * @param searchView
 	 * @return false if queryString is null, else true
 	 */
-	private Boolean searchSort(String searchQuery) {
+	public Boolean searchSort(String searchQuery) {
 		ArrayList<MediaProduct> catalog = CatalogSingleton.getCatalogArrayList();
-		if (searchQuery == null || catalog == null) {
+		if (searchQuery == null || searchQuery == "") {
 			System.out.println("Did not enter a query.");
 			return false;
 		}
@@ -63,8 +63,12 @@ public class SearchController {
 	 * @param songName
 	 */
 	public static Song searchSongName(String songName, List<MediaProduct> mediaProducts) {
-		if(mediaProducts == null || songName == null || songName == "") {
-			System.err.println("Failed to retieve song because songName = " + songName);
+		if(mediaProducts == null) {
+			System.err.println("Failed to retrieve song because mediaProduct = " + mediaProducts);
+			return null;
+		}
+		if(songName == null || songName == "") {
+			System.err.println("Failed to retrieve song because songName searched was = '" + songName + "' (which is invalid)");
 			return null;
 		}
 		for(MediaProduct traverseObject : mediaProducts) { 

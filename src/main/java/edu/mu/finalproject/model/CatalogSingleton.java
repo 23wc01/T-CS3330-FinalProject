@@ -20,7 +20,6 @@ public class CatalogSingleton {
     
     private static final String SONGS_JSON_PATH = "files/songs.json";
     private static final String PLAYLISTS_JSON_PATH = "files/playlists.json";
-    private static final String ARTISTS_JSON_PATH = "files/artists.json";
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
     public CatalogSingleton() {
         mediaProducts = new ArrayList<>();
