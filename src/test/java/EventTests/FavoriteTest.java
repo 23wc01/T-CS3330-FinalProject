@@ -21,8 +21,8 @@ public class FavoriteTest {
 	@Test
 	public void testFavoriteSong() {
 		//Arrange
-		Song testSongFavorite = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, "icanrockyourworld", Preference.EDM);
-		Song testSongUnfavorite = new Song(3, "Hot potato", "potato", new Date(), true, "Patty Shukla", Preference.POP);
+		Song testSongFavorite = new Song(0, "The Gummy Bear Song", "gummy bear", false, new Date(), "icanrockyourworld", Preference.EDM);
+		Song testSongUnfavorite = new Song(3, "Hot potato", "potato", true, new Date(), "Patty Shukla", Preference.POP);
 		FavoritesController favoritesController = new FavoritesController();
 		
 		//Act
@@ -38,8 +38,8 @@ public class FavoriteTest {
 	public void testFavoritePlaylist() {
 		//Arrange
 		//Songs for playlists
-		Song testSongFavorite = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, "icanrockyourworld", Preference.EDM);
-		Song testSongUnfavorite = new Song(3, "Hot potato", "potato", new Date(), true, "Patty Shukla", Preference.POP);
+		Song testSongFavorite = new Song(0, "The Gummy Bear Song", "gummy bear", false, new Date(), "icanrockyourworld", Preference.EDM);
+		Song testSongUnfavorite = new Song(3, "Hot potato", "potato", true, new Date(), "Patty Shukla", Preference.POP);
 		
 		ArrayList<Song> playlist1 = new ArrayList<>();
 		ArrayList<Song> playlist2 = new ArrayList<>();
@@ -91,8 +91,8 @@ public class FavoriteTest {
 	@Test
 	public void testToggleFavorite() {
 		//Arrange
-		Song testSongFavorite = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, "icanrockyourworld", Preference.EDM);
-		Song testSongUnfavorite = new Song(3, "Hot potato", "potato", new Date(), true, "Patty Shukla", Preference.POP);
+		Song testSongFavorite = new Song(0, "The Gummy Bear Song", "gummy bear", false, new Date(), "icanrockyourworld", Preference.EDM);
+		Song testSongUnfavorite = new Song(3, "Hot potato", "potato", true, new Date(), "Patty Shukla", Preference.POP);
 		
 		//Act
 		boolean testResult1 = testSongFavorite.toggleFavorite();
@@ -107,8 +107,8 @@ public class FavoriteTest {
 	@Test
 	public void testDisplayFavoriteResult() {
 		//Arrange
-		Song testSongFavorite = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(), false, "icanrockyourworld", Preference.EDM);
-		Song testSongUnfavorite = new Song(3, "Hot potato", "potato", new Date(), true, "Patty Shukla", Preference.POP);
+		Song testSongFavorite = new Song(0, "The Gummy Bear Song", "gummy bear", false, new Date(), "icanrockyourworld", Preference.EDM);
+		Song testSongUnfavorite = new Song(3, "Hot potato", "potato", true, new Date(), "Patty Shukla", Preference.POP);
 		FavoritesView favoritesview = new FavoritesView();
 		
 		//Act

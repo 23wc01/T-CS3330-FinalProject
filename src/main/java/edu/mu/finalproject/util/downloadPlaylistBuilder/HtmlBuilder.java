@@ -114,44 +114,68 @@ public abstract class HtmlBuilder {
 		return templateFileLocation;
 	}
 
-	public void setTemplateFileLocation(String templateFileLocation) {
+	public Boolean setTemplateFileLocation(String templateFileLocation) {
+		if (templateFileLocation == null) {
+			return false;
+		}
 		this.templateFileLocation = templateFileLocation;
+		return true;
 	}
 
 	public String getHtmlTemplate() {
 		return htmlTemplate;
 	}
 
-	public void setHtmlTemplate(String htmlTemplate) {
+	public Boolean setHtmlTemplate(String htmlTemplate) {
+		if (htmlTemplate == null) {
+			return false;
+		}
 		this.htmlTemplate = htmlTemplate;
+		return true;
 	}
 
 	public ArrayList<String> getReplaceHtml() {
 		return replaceHtml;
 	}
 
-	public void setReplaceHtml(ArrayList<String> replaceHtml) {
+	public Boolean setReplaceHtml(ArrayList<String> replaceHtml) {
+		if (replaceHtml == null) {
+			return false;
+		}
 		this.replaceHtml = replaceHtml;
+		return true;
 	}
 
 	public ArrayList<String> getModelFields() {
 		return modelFields;
 	}
 
-	public void setModelFields(ArrayList<String> modelFields) {
+	public Boolean setModelFields(ArrayList<String> modelFields) {
+		if (modelFields == null) {
+			return false;
+		}
 		this.modelFields = modelFields;
+		return true;
 	}
 
 	public HashMap<String, String> getHtmlMapModelFields() {
 		return htmlMapModelFields;
 	}
 
-	public void setHtmlMapModelFields(HashMap<String, String> htmlMapModelFields) {
+	public Boolean setHtmlMapModelFields(HashMap<String, String> htmlMapModelFields) {
+		if (htmlMapModelFields == null) {
+			return false;
+		}
 		this.htmlMapModelFields = htmlMapModelFields;
+		return true;
 	}
 
-	public void setHtmlStr(String htmlStr) {
+	public Boolean setHtmlStr(String htmlStr) {
+		if (htmlStr == null) {
+			return false;
+		}
 		this.htmlStr = htmlStr;
+		return true;
 	}
 	
 	public String getHtmlStr() {

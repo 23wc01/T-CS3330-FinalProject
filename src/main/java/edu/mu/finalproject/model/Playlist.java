@@ -26,8 +26,16 @@ public class Playlist extends MediaProduct {
 
 	@Override
 	public String toString() {
-		return "Playlist [name=" + name + ", description=" + imgDescription + ", addedDate="
-				+ addedDate + ", isFavorited=" + isFavorited + "\nPlaylist " + name + " contains: " + songs + "]";
+		String playlistStr = "Playlist [name=" + name + ", description=" + imgDescription + ", addedDate="
+				+ addedDate.toString() + ", isFavorited=" + isFavorited + "\n\tContains: ";
+		if(getSongs() != null) {
+			for (Song song : getSongs()) {
+				playlistStr += "\n\t";
+				playlistStr += song;
+			}
+		}
+		playlistStr += "\n\t]";
+		return playlistStr;
 	}
 
 	

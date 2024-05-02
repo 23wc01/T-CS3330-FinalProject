@@ -2,6 +2,14 @@ package edu.mu.finalproject.util;
 
 import java.util.Scanner;
 
+/**
+ * This class provides a method for getting an integer input from the console
+ * 
+ * Used as a helper method for whenever an integer needs to be inputed
+ * 
+ * Used in class EventView
+ * @author etwil
+ */
 public class GetIntegerInput {
 	
 	public static int getInputInteger(Scanner scanner) {

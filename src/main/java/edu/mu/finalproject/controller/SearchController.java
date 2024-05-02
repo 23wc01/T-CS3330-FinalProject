@@ -3,6 +3,9 @@ package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+
+import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Song;
 import edu.mu.finalproject.view.SearchView;
@@ -10,8 +13,14 @@ import edu.mu.finalproject.util.SearchComparator;
 
 public class SearchController {
 	private SearchView view;
+	private static int topNResults;
+
+	/**
+	 * Constructor Auto-intializes its members.
+	 */
 	public SearchController() {
 		view = new SearchView();
+		setTopNResults(5);
 	}
 	
 	/**
@@ -19,9 +28,9 @@ public class SearchController {
 	 * @param catalog
 	 * @return false if search
 	 */
-	public Boolean search(ArrayList<MediaProduct> catalog) {
+	public Boolean search() {
 		String searchQuery = view.getSearchQuery();
-		return searchSort(searchQuery, catalog);
+		return searchSort(searchQuery);
 	}
 
 
@@ -35,31 +44,30 @@ public class SearchController {
 	 * @param searchView
 	 * @return false if queryString is null, else true
 	 */
-	private Boolean searchSort(String searchQuery, ArrayList<MediaProduct> catalog) {
-		if (searchQuery == null) {
+	private Boolean searchSort(String searchQuery) {
+		ArrayList<MediaProduct> catalog = CatalogSingleton.getCatalogArrayList();
+		if (searchQuery == null || catalog == null) {
 			System.out.println("Did not enter a query.");
 			return false;
 		}
 		SearchComparator songSearch = new SearchComparator(searchQuery);
 		Collections.sort(catalog, songSearch);
-		view.DisplaySearchResultsView(searchQuery, catalog);
+		view.DisplaySearchResultsView(searchQuery, getTopNResults(), catalog);
 		return true;
 	}
 
 // EXTRA FEATURES 
-/*
+
 	/**
-	 * This functionality/feature is used to find Song in CatalogSingleton given precise song's name 
+	 * This functionality/feature is used to find Song in CatalogSingleton given PRECISE song's name 
 	 * @param songName
-	 * @return
-	 
-	public Song searchSongName(String songName) {
-		if(songName == null || songName == "") {
+	 */
+	public static Song searchSongName(String songName, List<MediaProduct> mediaProducts) {
+		if(mediaProducts == null || songName == null || songName == "") {
 			System.err.println("Failed to retieve song because songName = " + songName);
 			return null;
 		}
-
-		for(MediaProduct traverseObject : CatalogSingleton) { 
+		for(MediaProduct traverseObject : mediaProducts) { 
 			if (traverseObject.getName().equalsIgnoreCase(songName)) {
 				if(traverseObject instanceof Song) {
 					return (Song) traverseObject;
@@ -68,5 +76,16 @@ public class SearchController {
 		}
 		return null;
 	}
-*/
+// GETTER & SETTER
+	public static int getTopNResults() {
+		return topNResults;
+	}
+
+	public static Boolean setTopNResults(int topNResults) {
+		if (topNResults < 1) {
+			return false;
+		}
+		SearchController.topNResults = topNResults;
+		return true;
+	}
 }

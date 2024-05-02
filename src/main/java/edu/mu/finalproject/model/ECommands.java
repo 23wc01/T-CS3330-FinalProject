@@ -1,5 +1,11 @@
 package edu.mu.finalproject.model;
 
+/**
+ * This enum stores all commands and corresponding descriptions
+ * The descriptions are to match user input with one of the enum values
+ * 
+ *  Works closely with class UserInterface
+ */
 public enum ECommands {
 	
 	//Add your commands to the enum as you go along! Try to put it in alphabetical so its easier to look through, but leave invalid at the bottom
@@ -12,10 +18,10 @@ public enum ECommands {
 	//WAITING FOR CATALOG: DISPLAY_FAVORITES("display_favorites"),
 	//WAITING FOR CATALOG: DOWNLOAD_PLAYLIST("download_playlist"),
 	//WAITING FOR CATALOG: FAVORITE("favorite"),
-	//WAITING FOR ACCOUNT: DOWNLOAD_RECOMMENDED_PLAYLIST("download_recommended_playlist"),
-	//
-	//WAITING FOR CATALOG: SEARCH("search"),
+	SEARCH("search"),
 	SETUP_PREFERENCE("setup_preference"),
+	RECOMMEND_PLAYLIST("recommend_playlist"),
+	DOWNLOAD_RECOMMENDED_PLAYLIST("download_recommended_playlist"),
 	//New commands here!
 	
 	
@@ -31,6 +37,7 @@ public enum ECommands {
 		this.description = description;
 	}
 	
+	//Getter
 	public String getDescription() {
 		return description;
 	}

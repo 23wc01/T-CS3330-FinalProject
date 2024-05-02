@@ -82,12 +82,12 @@ public class DisplayFavoritesTest {
     	catalog = new ArrayList<>();
     	
     	  //Fake playlist
-		Song testSongforPlaylist = new Song(3, "Hot potato", "potato", new Date(0), true, "Patty Shukla", Preference.POP);
+		Song testSongforPlaylist = new Song(3, "Hot potato", "potato", true, new Date(0), "Patty Shukla", Preference.POP);
 		ArrayList<Song> testPlaylistSongArray = new ArrayList<>();
 		testPlaylistSongArray.add(testSongforPlaylist);
     	
 		  //Test media products
-    	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM);
+    	Song testSong = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
     	Artist testArtist = new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2);
     	Playlist testPlaylist = new Playlist(0, "Playlist one", "chill", new Date(0), false, testPlaylistSongArray);
     	  //Add to fake catalog
@@ -98,7 +98,7 @@ public class DisplayFavoritesTest {
   
           //Set up expected catalog to test against
         ArrayList<MediaProduct> expected = new ArrayList<>(); 
-        expected.add(new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM));
+        expected.add(new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM));
         expected.add(new Artist(1, "jack", "bad", new Date(0), true, (float) 12.2));
         //could uncomment to test with playlist favorited
         //expected.add(new Playlist(0, "Playlist one", "chill", new Date(0), true, testPlaylistSongArray));
@@ -121,9 +121,9 @@ public class DisplayFavoritesTest {
     	
     	
 		  //Test songs 
-    	Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM);
-		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(0), true, "Kids Tunez", Preference.RAP);
-		Song song2 = new Song(2, "The Guacamole Song", "avocado", new Date(0), false, "Dr. Jean", Preference.POP);
+    	Song song0 = new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM);
+		Song song1 = new Song(1, "Peanut Butter Jelly Time", "peanut",true, new Date(0), "Kids Tunez", Preference.RAP);
+		Song song2 = new Song(2, "The Guacamole Song", "avocado", false, new Date(0), "Dr. Jean", Preference.POP);
     	
     	  //Add to fake catalog
         catalog.add(song0);
@@ -133,8 +133,8 @@ public class DisplayFavoritesTest {
   
           //Set up expected catalog to test against
         ArrayList<MediaProduct> expected = new ArrayList<>(); 
-        expected.add(new Song(0, "The Gummy Bear Song", "gummy bear", new Date(0), true, "icanrockyourworld", Preference.EDM));
-        expected.add(new Song(1, "Peanut Butter Jelly Time", "peanut",new Date(0), true, "Kids Tunez", Preference.RAP));
+        expected.add(new Song(0, "The Gummy Bear Song", "gummy bear", true, new Date(0), "icanrockyourworld", Preference.EDM));
+        expected.add(new Song(1, "Peanut Butter Jelly Time", "peanut",true, new Date(0), "Kids Tunez", Preference.RAP));
         
         //Act
         ArrayList <MediaProduct> result = tFavoritesController.gatherFavorited(Song.class, catalog);

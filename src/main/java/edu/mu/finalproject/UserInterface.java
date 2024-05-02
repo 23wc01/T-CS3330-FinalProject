@@ -7,44 +7,70 @@ import edu.mu.finalproject.model.AccountSingleton;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
+import edu.mu.finalproject.model.CatalogSingleton;
 
-
-
+/**
+ * The UserInterface class handles starting the program, reading the user input from the console,
+ * and directing the flow of control to the proper execution method based on the input
+ * 
+ * This class works closely with UIExecutionMethods class as it sends the flow of control to that class.
+ * This class works  closely with ECommands in matching user input with commands
+ */
 
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
+<<<<<<< HEAD
 	public static AccountSingleton TheAccountManager;
 	private Account user;
 	//public static CatalogSingleton CatalogSingleton;
 	//Any other fields go here (user?)
+=======
+	public static CatalogSingleton TheCatalogSingleton;
+	private static Account user;
+>>>>>>> 178301d3260a5fde6c8221f498fdb4b6b9e9e0b3
 	
-	public Account getUser() {
+	public static Account getUser() {
 		return user;
 	}
 
-	public void setUser(Account user) {
-		this.user = user;
+	public static void setUser(Account user) {
+		UserInterface.user = user;
 	}
 
 
-	//Constructor
+	/**
+	 * Constructor for UserInterface, called in main
+	 * @param none
+	 * 
+	 */
 	public UserInterface() {
-		
 		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
+<<<<<<< HEAD
 		TheAccountManager = AccountSingleton.getInstance();
 		//Create a music catalog
 		
+=======
+		TheCatalogSingleton = TheCatalogSingleton.getInstance();
+>>>>>>> 178301d3260a5fde6c8221f498fdb4b6b9e9e0b3
 	}
 	
-	
+	/**
+	 * Handles anything that needs to be done to set up for the program, like file reading
+	 * Starts the main portion of the program.
+	 * @param none
+	 */
 	public void start() {
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
 		//Read any other files here
 		run();
 	}
 	
-	//Waits for a valid input and runs the method that aligns with what the user wants.
+	/**
+	 * Waits for a valid input and runs the method that aligns with what the user wants.
+	 * @param none
+	 * @return none
+	 */
 	public void run() {
 		
 		System.out.println("Welcome to Media Tracker! Type your command, or type \"menu\" to see options.");
@@ -84,19 +110,20 @@ public class UserInterface {
 //            	UIExecutionMethods.executeFavorite();
 //            	break;
 // WAITING FOR ACCOUNT
+            case SEARCH:
+ 				UIExecutionMethods.executeSearchCatalog(); 
+ 				break; 
             case SETUP_PREFERENCE:
-            	UIExecutionMethods.executeSetupPreference(user);
+            	UIExecutionMethods.executeSetupPreference();
             	break;
-/*WAITING FOR CATALOG
- * 			case DOWNLOAD_RECOMMENDED_PLAYLIST:
- * 				UIExecutionMethods.executeDownloadRecommendedPlaylist(user); 
- * 				break;              
- */
-/*WAITING FOR CATALOG
-* 			case SEARCH:
-* 				UIExecutionMethods.executeSearchCatalog(); 
-* 				break;              
-*/
+            case RECOMMEND_PLAYLIST:
+ 				UIExecutionMethods.executeRecommendPlaylist(); 
+ 				break; 
+  			case DOWNLOAD_RECOMMENDED_PLAYLIST:
+  				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
+  				break;              
+  			             
+
               //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!
             
             	
@@ -109,12 +136,17 @@ public class UserInterface {
                 break;
 	        } 
 	    }
-	    //scanner.close();
+	   
 	
 	}
 	
 	
-	//Helper for getting command in enum form
+	/**
+	 * Helper for getting command in enum form to use in the switch case
+	 * @param none
+	 * @return Ecommands Command to be used in switch case
+	 * @author etwil
+	 */
 	private ECommands getCommand(String userInput) {
 		try {
 			return ECommands.valueOf(userInput.toUpperCase());

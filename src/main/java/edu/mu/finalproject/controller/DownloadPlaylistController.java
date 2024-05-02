@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.mu.finalproject.model.Account;
-import edu.mu.finalproject.model.MediaProduct;
+import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;
 import edu.mu.finalproject.util.downloadPlaylistBuilder.HtmlDirector;
@@ -23,7 +23,7 @@ public class DownloadPlaylistController {
 	private DownloadPlaylistView view;
 	
 	/** 
-	 * Constructor fetches 3 parts of html template & stores them in String vars
+	 * Constructor initializes some members automatically
 	 */
 	public DownloadPlaylistController() {
 		htmlStrs = new ArrayList<String>();
@@ -37,16 +37,15 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	public Boolean downloadRecommendedPlaylist(Account account, ArrayList<MediaProduct> catalog) {	
-		if (!createPlaylist(account, catalog)) {
-			System.err.println("Can't create playlist\n\n");
-			return false;
+	public Boolean downloadRecommendedPlaylist(Account account) {	
+		if (!createPlaylist(account)) {
+			return view.displayMissingStepsError();
 		}
 		
 		HtmlDirector director = new HtmlDirector();
 		
-		htmlStrs.add(director.constructPlaylistHtml(getRecommendedPlaylist()));
-		for (Song song : getRecommendedPlaylist().getSongs()) {
+		htmlStrs.add(director.constructPlaylistHtml(recommendedPlaylist));
+		for (Song song : recommendedPlaylist.getSongs()) {
 			htmlStrs.add(director.constructSongHtml(song));
 		}
 		htmlStrs.add(director.constructAccountHtml(account));		
@@ -54,7 +53,7 @@ public class DownloadPlaylistController {
 		if (combinedStr == null) {
 			return false;
 		}
-		Boolean writeIsSuccess = writeHtmlToFile(getRecommendedPlaylist().getName(), combinedStr);
+		Boolean writeIsSuccess = writeHtmlToFile(recommendedPlaylist.getName(), combinedStr);
 		
 		return view.displayDownloadMessage(htmlOutputFilepath, writeIsSuccess);
 	}
@@ -66,14 +65,13 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	private Boolean createPlaylist(Account account, ArrayList<MediaProduct> catalog) {
-		if (account == null || catalog == null) {
-			System.out.println("\nParameter(s) passed into createPlaylist() are null");
+	private Boolean createPlaylist(Account account) {
+		if (account == null || CatalogSingleton.getCatalogArrayList() == null) {
 			return false;
 		}
 		RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
-		setRecommendedPlaylist(recommendPlaylistController.recommendPlaylist(account.getUserPreference(), catalog));
-		if (getRecommendedPlaylist() == null || getRecommendedPlaylist().getSongs().size() == 0) {
+		recommendedPlaylist = recommendPlaylistController.recommendPlaylist(account.getUserPreference());
+		if (recommendedPlaylist == null || recommendedPlaylist.getSongs().size() == 0) {
 			return false;
 		}
 		return true;
@@ -111,17 +109,8 @@ public class DownloadPlaylistController {
 			return true;
 	    }
 		catch (IOException e) {
-			// Uncomment if debugging needed
-			// e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
-	}
-	
-// GETTERS & SETTERS
-	public Playlist getRecommendedPlaylist() {
-		return recommendedPlaylist;
-	}
-	public void setRecommendedPlaylist(Playlist recommendedPlaylist) {
-		this.recommendedPlaylist = recommendedPlaylist;
 	}
 }

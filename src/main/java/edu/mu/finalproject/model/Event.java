@@ -6,6 +6,12 @@ import java.util.Collection;
 
 import org.json.JSONObject;
 
+/**
+ * The Event class represents a music event, such as a concert. It holds details like
+ * the date of the event and artist's name
+ * 
+ * It works closely with EventView.
+ */
 public class Event {
 	
 	
@@ -29,27 +35,20 @@ public class Event {
 	public MonthDay getEventMonthDay() {
 		return eventMonthDay;
 	}
-//	public void setEventMonthDay(MonthDay eventMonthDay) {
-//		this.eventMonthDay = eventMonthDay;
-//	}
-//	
+	
 	
 
 	public Year getEventYear() {
 		return eventYear;
 	}
-//	public void setEventYear(Year eventYear) {
-//		this.eventYear = eventYear;
-//	}
+
 	
 	
 
 	public String getArtistName() {
 		return artistName;
 	}
-//	public void setArtistName(String artistName) {
-//		this.artistName = artistName;
-//	}
+
 
 	@Override
 	public String toString() {
@@ -71,6 +70,12 @@ public class Event {
                 artistName.equalsIgnoreCase(other.artistName);
     }
 
+	/**
+	 * Creates a new json object, and copies info from the Event object's fields to the json object
+	 * @param none
+	 * @return jsonObject 
+	 * @author etwil
+	 */
 	 public JSONObject toJSON() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("eventMonthDay", eventMonthDay.toString().replace("--", "")); // Format "MM-DD"

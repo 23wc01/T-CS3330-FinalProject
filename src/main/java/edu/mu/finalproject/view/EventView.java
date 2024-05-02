@@ -9,13 +9,34 @@ import edu.mu.finalproject.controller.EventController;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.util.GetIntegerInput;
-
+/**
+ * The EventView class handles receiving input from a user, as well as displaying results of operations
+ * relating to Event.
+ * 
+ * Provides methods for viewing the results of adding and deleting an event, and viewing a display based on the user input
+ * Methods also exists for collecting bounds for the display from the user, as well as an interface for creating an event object.
+ * 
+ * Accesses the eventCollection through EventSingleton
+ * Works closely with EventController and UIExecutionMethods
+ */
 public class EventView {
 	
 	//Instantiation
 	static EventSingleton theEventSingleton = EventSingleton.getInstance();
 	
-	
+	/**
+	 * Attempts to add an Event to the event catalog and provides feedback through the console
+	 * It first checks that the provided event is not null, which would indicate a failure in event creation
+	 * It tries to add event to the catalog
+	 * 
+	 * @param myEvent - event to add
+	 * @return an integer representing the result of the operation
+	 * 		-1 for errors or if event is null
+	 * 		0 if the event is already added
+	 * 		1 for success
+	 * 
+	 * @author etwil
+	 */
 	 public static int viewAddEvent(Event myEvent) { 
 		 
 		 if(myEvent == null) {
@@ -23,9 +44,8 @@ public class EventView {
 			 return -1;
 		 }
 		 
-		 
+		
 		 int result = EventController.addEvent(myEvent);
-		 
 		 
 		 
 		 if(result == 0) { //Already has event
@@ -89,9 +109,6 @@ public class EventView {
 			 catch(Exception e){
 				 System.out.println("Type mismatch. Please enter a valid date. Valid dates have four integers for the year, and 1-2 integers for the month and day");
 				 
-			 }
-			 finally {
-				 //scanner.close(); Doing this closes System.in
 			 }
 			 
 			System.out.println("Failed to create event.");

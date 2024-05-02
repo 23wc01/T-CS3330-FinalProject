@@ -25,16 +25,16 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	@Override
 	public Preference setupPreference(SetupPreferenceView view) {
 		setView(view);
-		if (view == null) {
+		if (getView() == null) {
 			System.out.println("View not visible");
 			return null;
 		}
 		if (readJson()) {
-			view.displayQuizIntro();
+			getView().displayQuizIntro();
 			scoreboard = createScoreboard();
 			askQuestions();
 			userPreference = getTopPreference();
-			view.displayPreference(userPreference.capitalizePreference());
+			getView().displayPreference(userPreference.capitalizePreference());
 			// user.setPreference(userPreference);
 			return userPreference;
 		}
@@ -73,30 +73,43 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return scoreboard;
 	}
 	
-	private void askQuestions() {
+	private Boolean askQuestions() {
+		ArrayList<Boolean> successes = new ArrayList<Boolean>();
 		PreferenceQuestion preferenceQuestion;
 		for (Map questionAndChoices : json) {
 			preferenceQuestion = new PreferenceQuestion();
 			preferenceQuestion.setQuestion(questionAndChoices.get("question").toString());
 			preferenceQuestion.setChoiceToPreferences((ArrayList<HashMap<String, String>>) questionAndChoices.get("choices"));
-			view.displayQuestion(preferenceQuestion.getQuestion());
-			view.displayChoices(preferenceQuestion.getChoices());
+			getView().displayQuestion(preferenceQuestion.getQuestion());
+			getView().displayChoices(preferenceQuestion.getChoices());
 			int answer = view.getInputAnswer(preferenceQuestion.getChoices().size());
-			scoreQuestion(answer, preferenceQuestion);
+			successes.add(scoreQuestion(answer, preferenceQuestion));
 		}
+		if (successes.contains(false)) {
+			return false;
+		}
+		return true;
 	}
 	
-	private void scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
+	private Boolean scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
+		if (answer <= 0 || preferenceQuestion == null) {
+			return false;
+		}
 		--answer; // Answers are 1-based in UI. Decrement to get 0-based
 		ArrayList<String> answerPreferences = preferenceQuestion.getAnswerPreferences();
 		Preference answerPreference = Preference.toPreference(answerPreferences.get(answer));
 		recordScore(answerPreference);
+		return true;
 	}
 	
-	private void recordScore(Preference answerPreference) {
+	private Boolean recordScore(Preference answerPreference) {
+		if (answerPreference == null) {
+			return false;
+		}
 		int newScore = scoreboard.get(answerPreference);
 		++newScore;
 		scoreboard.put(answerPreference, newScore);
+		return true;
 	}
 	
 	private Preference getTopPreference() {
@@ -111,8 +124,15 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return topPreference;
 	}
 	
-	private void setView(SetupPreferenceView view) {
+	private Boolean setView(SetupPreferenceView view) {
+		if(view == null) {
+			return false;
+		}
 		this.view = view;
+		return true;
+	}
+	private SetupPreferenceView getView() {
+		return view;
 	}
 	
 }

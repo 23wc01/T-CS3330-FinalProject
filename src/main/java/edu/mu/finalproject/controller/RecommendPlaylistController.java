@@ -3,18 +3,19 @@ package edu.mu.finalproject.controller;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Preference;
 import edu.mu.finalproject.model.Song;
-import edu.mu.finalproject.view.PreferencePlaylistView;
+import edu.mu.finalproject.view.RecommendPlaylistView;
 
 public class RecommendPlaylistController {
-	private PreferencePlaylistView recommendedView;
+	private RecommendPlaylistView recommendedView;
 	private Playlist recommendedPlaylist;
 
 	public RecommendPlaylistController() {
-		this.recommendedView = new PreferencePlaylistView();
+		this.recommendedView = new RecommendPlaylistView();
 	}
 	
  	/**
@@ -23,9 +24,9 @@ public class RecommendPlaylistController {
 	 * @param preference
 	 * @return
 	 */
-	public Playlist recommendPlaylist(Preference preference, ArrayList<MediaProduct> catalog) {
+	public Playlist recommendPlaylist(Preference preference) {
 		if (initializeRecommendedPlaylist(preference)) {
-			for (MediaProduct obj : catalog) {
+			for (MediaProduct obj : CatalogSingleton.getCatalogArrayList()) {
 				if (obj instanceof Song) {
 					Song song = (Song) obj;
 					if(song.getPreference() == preference) {
@@ -39,7 +40,7 @@ public class RecommendPlaylistController {
 		}
 		
 		else {
-			System.err.println("Parameter(s) passed into recommendPlaylist() are null. Check that you've setup a preference");
+			System.err.println("Setup a preference first with 'setup_preference'! (Parameter(s) passed into recommendPlaylist() are null)");
 			return null;
 		}
 	}
