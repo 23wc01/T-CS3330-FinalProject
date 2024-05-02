@@ -16,17 +16,14 @@ public class SearchView {
 	public String getSearchQuery() {
 		System.out.println("Search anything/anyone based on their name...");
 		System.out.print("Enter search (max char = " + MAX_SEARCH_CHARS + "): ");
-		Scanner scanner = new Scanner(System.in);
+		Scanner searchScanner = new Scanner(System.in);
 		try {
-			String searchQuery = scanner.nextLine();
+			String searchQuery = searchScanner.nextLine();
 			searchQuery = searchQuery.substring(0, Math.min(searchQuery.length(), MAX_SEARCH_CHARS));
 			return searchQuery;
 		}
 		catch (InputMismatchException e){
 			return null;
-		}
-		finally {
-			scanner.close();
 		}
 	}
 	

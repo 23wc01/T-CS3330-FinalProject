@@ -8,14 +8,14 @@ import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Preference;
 import edu.mu.finalproject.model.Song;
-import edu.mu.finalproject.view.PreferencePlaylistView;
+import edu.mu.finalproject.view.RecommendPlaylistView;
 
 public class RecommendPlaylistController {
-	private PreferencePlaylistView recommendedView;
+	private RecommendPlaylistView recommendedView;
 	private Playlist recommendedPlaylist;
 
 	public RecommendPlaylistController() {
-		this.recommendedView = new PreferencePlaylistView();
+		this.recommendedView = new RecommendPlaylistView();
 	}
 	
  	/**

@@ -22,7 +22,7 @@
     },
     {
         "id": 3,
-        "name": "Foodie and Rock",
+        "name": "Foodie",
         "imgDescription": "Eat",
         "isFavorited": true,
         "songNames": [

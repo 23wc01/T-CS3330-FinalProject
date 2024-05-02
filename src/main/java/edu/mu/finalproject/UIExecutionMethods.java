@@ -74,7 +74,7 @@ public class UIExecutionMethods {
 		}
 		public static void executeRecommendPlaylist() {			
 			if (UserInterface.getUser() == null || CatalogSingleton.getCatalogArrayList() == null) {
-				System.out.println("\nParameter(s) passed into createPlaylist() are null");
+				System.err.println("'login' first or check CatalogSingleton is not null!");
 			}
 			RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
 			recommendPlaylistController.recommendPlaylist(UserInterface.getUser().getUserPreference());

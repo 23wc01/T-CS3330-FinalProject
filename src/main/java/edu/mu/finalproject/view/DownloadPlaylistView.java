@@ -14,7 +14,7 @@ public class DownloadPlaylistView {
 		}
 		if (writeIsSuccess) {
 			System.out.println("Saved playlist's html file to '" + outputFilepath + "'");
-			System.out.println("Refresh folder if html file doesn't appear immidiately");
+			System.out.println("(Refresh folder if html file doesn't appear immidiately)\n");
 			return true;
 		}
 		else {
