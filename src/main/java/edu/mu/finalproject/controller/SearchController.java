@@ -45,7 +45,7 @@ public class SearchController {
 	 * @return false if queryString is null, else true
 	 */
 	public Boolean searchSort(String searchQuery) {
-		ArrayList<MediaProduct> catalog = CatalogSingleton.getCatalogArrayList();
+		ArrayList<MediaProduct> catalog = CatalogSingleton.getInstance().getMediaProductCollection();
 		if (searchQuery == null || searchQuery == "") {
 			System.out.println("Did not enter a query.");
 			return false;
@@ -62,7 +62,7 @@ public class SearchController {
 	 * This functionality/feature is used to find Song in CatalogSingleton given PRECISE song's name 
 	 * @param songName
 	 */
-	public static Song searchSongName(String songName, List<MediaProduct> mediaProducts) {
+	public static Song searchSongName(String songName, ArrayList<MediaProduct> mediaProducts) {
 		if(mediaProducts == null) {
 			System.err.println("Failed to retrieve song because mediaProduct = " + mediaProducts);
 			return null;

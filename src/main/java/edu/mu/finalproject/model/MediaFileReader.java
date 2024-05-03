@@ -10,6 +10,8 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import edu.mu.finalproject.controller.SearchController;
+
 public class MediaFileReader {
     private static final String SONGS_JSON_PATH = "files/songs.json";
     private static final String PLAYLISTS_JSON_PATH = "files/playlists.json";
@@ -47,9 +49,9 @@ public class MediaFileReader {
             for (int i = 0; i < playlistsArray.length(); i++) {
                 JSONObject playlistObj = playlistsArray.getJSONObject(i);
                 JSONArray songNamesArray = playlistObj.getJSONArray("songNames");
-                List<Song> songs = new ArrayList<>();
+                ArrayList<Song> songs = new ArrayList<Song>();
                 for (int j = 0; j < songNamesArray.length(); j++) {
-                    Song song = CatalogSingleton.getInstance().searchMedia(songNamesArray.getString(j));
+                    Song song = SearchController.searchSongName(songNamesArray.getString(j), CatalogSingleton.getInstance().getMediaProductCollection());
                     if (song != null) {
                         songs.add(song);
                     }
@@ -60,7 +62,7 @@ public class MediaFileReader {
                         playlistObj.getString("imgDescription"),
                         new Date(),
                         playlistObj.getBoolean("isFavorited"),
-                        songs
+                        (ArrayList)songs
                 );
                 playlists.add(playlist);
             }

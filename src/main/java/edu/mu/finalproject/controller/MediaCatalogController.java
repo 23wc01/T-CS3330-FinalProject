@@ -18,6 +18,7 @@ public class MediaCatalogController {
     }
 
     public void addMedia(MediaProduct mediaProduct) {
+    	
         catalogSingleton.addMediaProduct(mediaProduct);
     }
 

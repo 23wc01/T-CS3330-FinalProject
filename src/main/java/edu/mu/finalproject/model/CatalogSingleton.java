@@ -1,11 +1,12 @@
 package edu.mu.finalproject.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class CatalogSingleton extends MediaCatalog {
+public class CatalogSingleton {
     private static CatalogSingleton instance;
+    public static ArrayList <MediaProduct> mediaProductCollection = new ArrayList<MediaProduct>(); 
 
-    public static synchronized CatalogSingleton getInstance() {
+    public static CatalogSingleton getInstance() {
         if (instance == null) {
             instance = new CatalogSingleton();
         }
@@ -13,6 +14,15 @@ public class CatalogSingleton extends MediaCatalog {
     }
 
     private CatalogSingleton() {
-        super();
+    }
+    public ArrayList<MediaProduct> getMediaProductCollection() {
+		return mediaProductCollection;
+	}
+    public static boolean setMediaProductCollection(ArrayList<MediaProduct> mediaProductCollection) {
+		if (mediaProductCollection == null) {
+			return false;
+		}
+		CatalogSingleton.mediaProductCollection = mediaProductCollection;
+		return true;
     }
 }
