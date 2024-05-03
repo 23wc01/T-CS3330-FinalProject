@@ -11,42 +11,61 @@ import java.util.List;
 import java.util.Random;
 
 public class MediaCatalogController {
-    private final CatalogSingleton catalogSingleton;
-    private final ArrayList<MediaProduct> catalogSingleton_Collection;
+    private static CatalogSingleton catalogSingleton;
+    private static ArrayList<MediaProduct> catalogSingleton_Collection;
     private final Random random = new Random();
 
     public MediaCatalogController() {
         catalogSingleton = CatalogSingleton.getInstance();
         catalogSingleton_Collection = catalogSingleton.getMediaProductCollection();
+        loadMediaFromFiles(MediaFileReader.readSongs(), MediaFileReader.readPlaylists());
     }
 
-    public void addMedia(MediaProduct mediaProduct) {
+    public static Boolean addMedia(MediaProduct mediaProduct) {
+    	if (mediaProduct == null || catalogSingleton_Collection == null) {
+    		return false;
+    	}
     	catalogSingleton_Collection.add(mediaProduct);
+    	return true;
     }
 
-    public void deleteMedia(int id) {
+    public static Boolean deleteMedia(int id) {
+    	if (id < 0 || catalogSingleton_Collection == null) {
+    		return false;
+    	}
     	catalogSingleton_Collection.remove(id);
+    	return true;
     }
 
-    public void displayAll() {
+    public static Boolean displayAll() {
+    	if (catalogSingleton_Collection == null) {
+    		return false;
+    	}
         for (MediaProduct mediaProduct : catalogSingleton_Collection) {
         	System.out.println(mediaProduct);
         }
+        return true;
     }
 
-    public void displayShuffle() {
+    public Boolean displayShuffle() {
+    	if (catalogSingleton_Collection == null) {
+    		return false;
+    	}
     	catalogSingleton_Collection.displayShuffle();
+    	return true;
     }
 
-    public void loadMediaFromFiles() {
-        List<Song> songs = MediaFileReader.readSongs();
-        List<Playlist> playlists = MediaFileReader.readPlaylists();
+    public Boolean loadMediaFromFiles(List<Song> songs, List<Playlist> playlists) {
+    	if (songs == null || playlists == null) {
+    		System.err.println("Argument(s) passed to loadMediaFromFiles() are null");
+    	}
         for (Song song : songs) {
         	addMedia(song);
         }
         for (Playlist playlist : playlists) {
         	addMedia(playlist);
         }
+        return true;
     }
 
  
