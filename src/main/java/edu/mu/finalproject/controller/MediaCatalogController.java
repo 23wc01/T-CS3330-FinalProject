@@ -51,7 +51,7 @@ public class MediaCatalogController {
     	if (catalogSingleton_Collection == null) {
     		return false;
     	}
-    	catalogSingleton_Collection.displayShuffle();
+    	//catalogSingleton_Collection.displayShuffle();
     	return true;
     }
 

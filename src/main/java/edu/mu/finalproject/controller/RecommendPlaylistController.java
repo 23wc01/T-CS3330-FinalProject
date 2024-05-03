@@ -3,7 +3,6 @@ package edu.mu.finalproject.controller;
 import java.util.ArrayList;
 import java.util.Date;
 
-import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Preference;
@@ -24,9 +23,9 @@ public class RecommendPlaylistController {
 	 * @param preference
 	 * @return
 	 */
-	public Playlist recommendPlaylist(Preference preference) {
-		if (initializeRecommendedPlaylist(preference)) {
-			for (MediaProduct obj : CatalogSingleton.getInstance().getMediaProductCollection()) {
+	public Playlist recommendPlaylist(Preference preference, ArrayList<MediaProduct> CatalogSingletonArray) {
+		if (initializeRecommendedPlaylist(preference) && CatalogSingletonArray != null) {
+			for (MediaProduct obj : CatalogSingletonArray) {
 				if (obj instanceof Song) {
 					Song song = (Song) obj;
 					if(song.getPreference() == preference) {
@@ -52,7 +51,7 @@ public class RecommendPlaylistController {
 	 * @param preference
 	 * @return false if preference = null, else true
 	 */
-	private Boolean initializeRecommendedPlaylist(Preference preference) {
+	public Boolean initializeRecommendedPlaylist(Preference preference) {
 		if(preference == null) {
 			return false;
 		}

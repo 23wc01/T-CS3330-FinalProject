@@ -78,7 +78,7 @@ public class UIExecutionMethods {
         	mediaCatalogController.addMedia(newPlaylist);
 
 		// Check if there are stil media items in Catalog, if not add to display
-		if (!CatalogSingleton.getInstance().getMediaProducts().isEmpty()) {
+		if (!CatalogSingleton.getInstance().getMediaProductCollection().isEmpty()) {
            		System.out.println("Catalog still contains media items!");
             		mediaCatalogController.displayAll();
         	} else {
@@ -127,11 +127,11 @@ public class UIExecutionMethods {
 		}
 		
 		public static void executeRecommendPlaylist() {			
-			if (UserInterface.getUser() == null || CatalogSingleton.getInstance().getMediaProductCollection() == null) {
-				System.err.println("'login' first or check CatalogSingleton is not null!");
+			if (UserInterface.getUser() == null || CatalogSingleton.getInstance() == null) {
+				System.err.println("'login' first or check CatalogSingleton instance is not null!");
 			}
 			RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
-			recommendPlaylistController.recommendPlaylist(UserInterface.getUser().getUserPreference());
+			recommendPlaylistController.recommendPlaylist(UserInterface.getUser().getUserPreference(), CatalogSingleton.getInstance().getMediaProductCollection());
 		}
 		
 		public static void executeDownloadRecommendedPlaylist() {
