@@ -136,7 +136,7 @@ public class UIExecutionMethods {
 		
 		public static void executeDownloadRecommendedPlaylist() {
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
-			downloadPlaylistController.downloadRecommendedPlaylist(UserInterface.getUser());
+			downloadPlaylistController.downloadRecommendedPlaylist(UserInterface.getUser(), CatalogSingleton.getInstance().getMediaProductCollection());
 		}
 		
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
