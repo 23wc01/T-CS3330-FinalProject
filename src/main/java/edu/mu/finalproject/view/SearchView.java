@@ -17,12 +17,22 @@ public class SearchView {
 		System.out.println("Search for any media product based on their name...");
 		System.out.print("Enter search (max char = " + MAX_SEARCH_CHARS + "): ");
 		Scanner searchScanner = new Scanner(System.in);
+		return scanQuery(searchScanner);
+	}
+	
+	/**
+	 * Scan in user's input query
+	 * @param searchScanner
+	 * @return
+	 */
+	public String scanQuery(Scanner searchScanner) {
 		try {
 			String searchQuery = searchScanner.nextLine();
 			searchQuery = searchQuery.substring(0, Math.min(searchQuery.length(), MAX_SEARCH_CHARS));
 			return searchQuery;
 		}
-		catch (InputMismatchException e){
+		catch (Exception e){
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -34,8 +44,8 @@ public class SearchView {
 	 * @param sortedCatalog
 	 * @return false if parameters are null, else true
 	 */
-	public Boolean DisplaySearchResultsView(String queryString, int topNResults, ArrayList<MediaProduct> sortedCatalog) {
-		if (queryString == null || sortedCatalog == null) {
+	public Boolean displaySearchResults(String queryString, int topNResults, ArrayList<MediaProduct> sortedCatalog) {
+		if (sortedCatalog == null || queryString == null || topNResults < 1) {
 			return false;
 		}
 		System.out.println("\nTop " + topNResults + " search results for '"+ queryString + "'");

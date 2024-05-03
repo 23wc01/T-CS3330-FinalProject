@@ -52,7 +52,7 @@ public class SearchController {
 		}
 		SearchComparator songSearch = new SearchComparator(searchQuery);
 		Collections.sort(catalog, songSearch);
-		view.DisplaySearchResultsView(searchQuery, getTopNResults(), catalog);
+		view.displaySearchResults(searchQuery, getTopNResults(), catalog);
 		return true;
 	}
 
