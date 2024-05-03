@@ -48,6 +48,24 @@ public class UIExecutionMethods {
 		public static void executeDisplayFavorites() {
 			favoritesview.getFavInfo(null); //!!!!ADD REAL CATALOG HERE
 		} 
+
+ 		public static void executeSearchCatalog() {
+        		SearchController searchController = new SearchController();
+        		searchController.search();
+    		}
+
+	
+
+    public static void executeSetupPreference() {
+        UserInterface.setUser(new Account(0, "23wc01", "secret")); // Store global user field in this class
+        SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
+        UserInterface.getUser().setUserPreference(setupPreferenceController.newPreference());
+    }
+    public static void executeSetupPreference() {
+        UserInterface.setUser(new Account(0, "23wc01", "secret")); // Store global user field in this class
+        SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
+        UserInterface.getUser().setUserPreference(setupPreferenceController.newPreference());
+    }
 		
 		public static void executeExit() {
 			Scanner scanner = new Scanner(System.in);
@@ -55,6 +73,61 @@ public class UIExecutionMethods {
 			System.exit(0);//Could add more sophisticated exiting here later
 		}
  //WAITING FOR CATALOG:
+		// New method to test catalog functionality
+    		public static void executeTestCatalogFunctionality() {
+        	System.out.println("Starting catalog functionality tests...");
+
+        	// Load media into the catalog
+        	System.out.println("Loading media from files...");
+        	mediaCatalogController.loadMediaFromFiles();
+
+        	// Display all media in the catalog
+        	System.out.println("Displaying all media:");
+        	mediaCatalogController.displayAll();
+
+        	// Search for a specific song
+	        String searchQuery = "God's Menu"; // Example song name, change as needed
+        	System.out.println("Searching for song: " + searchQuery);
+        	mediaCatalogController.findAndDisplaySongs(searchQuery);
+
+        	// Add a new playlist 
+        	Playlist newPlaylist = new Playlist(1, "Test Playlist", "Description", new Date(), false, new ArrayList<>());
+        	System.out.println("Adding a new playlist...");
+        	mediaCatalogController.addMedia(newPlaylist);
+
+		Playlist newPlaylist = new Playlist(2, "Test Playlist", "Description", new Date(), false, new ArrayList<>());
+        	System.out.println("Adding a new playlist...");
+        	mediaCatalogController.addMedia(newPlaylist);
+
+		// Check if there are stil media items in Catalog, if not add to display
+		if (!CatalogSingleton.getInstance().getMediaProducts().isEmpty()) {
+           		System.out.println("Catalog still contains media items!");
+            		mediaCatalogController.displayAll();
+        	} else {
+            		System.out.println("Catalog is empty after deletion.");
+        	}
+
+        	// Display all media after adding new playlist
+        	System.out.println("Displaying all media after adding a new playlist:");
+        	mediaCatalogController.displayAll();
+
+        	// Delete a media item 
+	        int mediaIdToDelete = 2; 
+	        System.out.println("Deleting media with ID: " + mediaIdToDelete);
+	        mediaCatalogController.deleteMedia(mediaIdToDelete);
+
+		
+	        // Display all media after deletion
+	        System.out.println("Displaying all media after deletion:");
+	        mediaCatalogController.displayAll();
+	
+	        // Shuffle and display the catalog to ensure shuffle functionality
+		// Not sure about this one. I will ask Prof about this more. Playing by string or better randint id
+	        System.out.println("Displaying shuffled media:");
+	        mediaCatalogController.displayShuffle();
+		}
+
+
 		public static void executeFavorite() {
 		    String userQuery = FindObjectView.getInformationFromUser();
 		
@@ -66,6 +139,9 @@ public class UIExecutionMethods {
 			SearchController searchController = new SearchController();
 			searchController.search();
 		}
+
+		
+	
 		public static void executeSetupPreference() {
 			UserInterface.setUser(new Account(0, "23wc01", "secret")); //!!!!!!!! Store global user field in this class
 			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
