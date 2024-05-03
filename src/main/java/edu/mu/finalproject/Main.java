@@ -1,7 +1,5 @@
 package edu.mu.finalproject;
 
-
-
 public class Main {
 
 	public static void main(String[] args) {
