@@ -132,8 +132,12 @@ public class UserInterface {
             case INVALID:
                 System.out.println("Invalid command. Please try again.");
                 break;
+	    default:
+                System.out.println("Command not recognized. Please try again.");
+                break;
 	        } 
 	    }
+	    scanner.close();
 	   
 	
 	}
@@ -146,8 +150,8 @@ public class UserInterface {
 	 * @author etwil
 	 */
 	private ECommands getCommand(String userInput) {
-		try {
-			return ECommands.valueOf(userInput.toUpperCase());
+		try { // Try to test with spaces such as user input "TEST CATALOG"
+			return ECommands.valueOf(userInput.replace(" ", "_").toUpperCase());
 		} 
 		catch (IllegalArgumentException e) {
 			return ECommands.INVALID;
