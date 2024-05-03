@@ -48,33 +48,11 @@ public class UIExecutionMethods {
 		public static void executeDisplayFavorites() {
 			favoritesview.getFavInfo(null); //!!!!ADD REAL CATALOG HERE
 		} 
-
- 		public static void executeSearchCatalog() {
-        		SearchController searchController = new SearchController();
-        		searchController.search();
-    		}
-
 	
 
-    public static void executeSetupPreference() {
-        UserInterface.setUser(new Account(0, "23wc01", "secret")); // Store global user field in this class
-        SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
-        UserInterface.getUser().setUserPreference(setupPreferenceController.newPreference());
-    }
-    public static void executeSetupPreference() {
-        UserInterface.setUser(new Account(0, "23wc01", "secret")); // Store global user field in this class
-        SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
-        UserInterface.getUser().setUserPreference(setupPreferenceController.newPreference());
-    }
-		
-		public static void executeExit() {
-			Scanner scanner = new Scanner(System.in);
-			scanner.close();//Always close the stream from System.in
-			System.exit(0);//Could add more sophisticated exiting here later
-		}
- //WAITING FOR CATALOG:
+ 
 		// New method to test catalog functionality
-    		public static void executeTestCatalogFunctionality() {
+    	public static void executeTestCatalogFunctionality() {
         	System.out.println("Starting catalog functionality tests...");
 
         	// Load media into the catalog
@@ -127,7 +105,7 @@ public class UIExecutionMethods {
 	        mediaCatalogController.displayShuffle();
 		}
 
-
+ //WAITING FOR CATALOG:
 		public static void executeFavorite() {
 		    String userQuery = FindObjectView.getInformationFromUser();
 		
@@ -147,6 +125,7 @@ public class UIExecutionMethods {
 			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
 			UserInterface.getUser().setUserPreference(setupPreferenceController.newPreference());
 		}
+		
 		public static void executeRecommendPlaylist() {			
 			if (UserInterface.getUser() == null || CatalogSingleton.getInstance().getMediaProductCollection() == null) {
 				System.err.println("'login' first or check CatalogSingleton is not null!");
@@ -154,6 +133,7 @@ public class UIExecutionMethods {
 			RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
 			recommendPlaylistController.recommendPlaylist(UserInterface.getUser().getUserPreference());
 		}
+		
 		public static void executeDownloadRecommendedPlaylist() {
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
 			downloadPlaylistController.downloadRecommendedPlaylist(UserInterface.getUser());
@@ -168,6 +148,13 @@ public class UIExecutionMethods {
 			for (ECommands command : ECommands.values()) {
 			    System.out.println(command.getDescription());
 			}
+		}
+		
+		//Exit---------------------------------------------------------
+		public static void executeExit() {
+			Scanner scanner = new Scanner(System.in);
+			scanner.close();//Always close the stream from System.in
+			System.exit(0);//Could add more sophisticated exiting here later
 		}
 
 }

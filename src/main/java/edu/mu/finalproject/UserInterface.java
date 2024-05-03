@@ -120,9 +120,9 @@ public class UserInterface {
   				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
   				break;              
   	    // Add case for catalog	             
-	    case TEST_CATALOG:
-        	UIExecutionMethods.executeTestCatalogFunctionality();
-        	break;
+  			case TEST_CATALOG:
+  				UIExecutionMethods.executeTestCatalogFunctionality();
+  				break;
             
             	
             case EXIT:
@@ -132,10 +132,7 @@ public class UserInterface {
             case INVALID:
                 System.out.println("Invalid command. Please try again.");
                 break;
-	    default:
-                System.out.println("Command not recognized. Please try again.");
-                break;
-	        } 
+	        }
 	    }
 	    scanner.close();
 	   
