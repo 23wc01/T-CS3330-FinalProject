@@ -119,9 +119,10 @@ public class UserInterface {
   			case DOWNLOAD_RECOMMENDED_PLAYLIST:
   				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
   				break;              
-  			             
-
-              //!!!PUT YOUR NEW COMMAND CASE HERE (FIND TEMPLATE BELOW)!!!
+  	    // Add case for catalog	             
+	    case TEST_CATALOG:
+        	UIExecutionMethods.executeTestCatalogFunctionality();
+        	break;
             
             	
             case EXIT:
