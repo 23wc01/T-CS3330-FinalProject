@@ -16,12 +16,12 @@ public class Main {
 		controller.displayAll();
 
 		// Test search functionality
-		String searchQuery = "God's Menu";
+		String searchQuery = "Gummy";
 		System.out.println("Searching for '" + searchQuery + "'...");
 		controller.findAndDisplaySongs(searchQuery);
 
-		// Test deletion of a specific media (e.g., by ID)
-		int mediaIdToDelete = 1; // Replace with the ID of the media you want to delete
+		// Test deletion of a specific media ID
+		int mediaIdToDelete = 1; 
 		System.out.println("Deleting media with ID: " + mediaIdToDelete);
 		controller.deleteMedia(mediaIdToDelete);
 
