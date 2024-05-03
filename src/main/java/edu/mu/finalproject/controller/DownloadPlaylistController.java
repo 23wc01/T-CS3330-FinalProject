@@ -66,7 +66,7 @@ public class DownloadPlaylistController {
 	 * @return
 	 */
 	private Boolean createPlaylist(Account account) {
-		if (account == null || CatalogSingleton.getCatalogArrayList() == null) {
+		if (account == null || CatalogSingleton.getInstance().getMediaProductCollection() == null) {
 			return false;
 		}
 		RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();

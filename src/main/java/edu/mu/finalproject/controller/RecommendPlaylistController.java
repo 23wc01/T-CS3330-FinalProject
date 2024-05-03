@@ -26,7 +26,7 @@ public class RecommendPlaylistController {
 	 */
 	public Playlist recommendPlaylist(Preference preference) {
 		if (initializeRecommendedPlaylist(preference)) {
-			for (MediaProduct obj : CatalogSingleton.getCatalogArrayList()) {
+			for (MediaProduct obj : CatalogSingleton.getInstance().getMediaProductCollection()) {
 				if (obj instanceof Song) {
 					Song song = (Song) obj;
 					if(song.getPreference() == preference) {

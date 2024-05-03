@@ -14,7 +14,7 @@ public class SearchView {
 	 * @return queryString, will be null if input mismatch detected
 	 */
 	public String getSearchQuery() {
-		System.out.println("Search anything/anyone based on their name...");
+		System.out.println("Search for any media product based on their name...");
 		System.out.print("Enter search (max char = " + MAX_SEARCH_CHARS + "): ");
 		Scanner searchScanner = new Scanner(System.in);
 		try {
