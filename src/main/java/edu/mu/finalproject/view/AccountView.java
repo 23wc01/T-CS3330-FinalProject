@@ -18,29 +18,19 @@ public class AccountView {
 	static AccountController controller = new AccountController();
 	
 	public static Account viewLogin() {
-        Scanner scanner = new Scanner(System.in);
-        String username;
-        String password;
+        String usernameMessage = "Enter username: ";
+        String passwordMessage = "Enter password: ";
         
-        // Keep prompting the user until both username and password are provided
-        do {
-            System.out.print("Enter username: ");
-            username = scanner.nextLine().trim();
-        } while (username.isEmpty());
-
-        do {
-            System.out.print("Enter password: ");
-            password = scanner.nextLine().trim();
-        } while (password.isEmpty());
-
-        scanner.close();
+        String username = getStringInput(usernameMessage);
+        String password = getStringInput(passwordMessage);
+        
         
         Account account = controller.loginUser(username, password);
         if (account == null) {
         	System.out.println("Login unsuccessful. Please try again.");
         }
         else {
-        	System.out.println("Welcome " + account.getUsername() + "!");
+        	System.out.println("Welcome back " + account.getUsername() + "!");
         }
 
         return account;
@@ -48,40 +38,15 @@ public class AccountView {
 	}
 	
 	public static Account viewCreateAccount() {
-		Scanner scanner = new Scanner(System.in);
-        String username;
-        String password;
-        boolean isUsernameTaken = false;
-
-        do {
-            System.out.print("Enter username: ");
-            username = scanner.nextLine().trim();
-
-            if (username.isEmpty()) {
-                System.out.println("Username cannot be empty.");
-                continue;
-            }
-
-            isUsernameTaken = controller.isUsernameTaken(username);
-            if (isUsernameTaken) {
-                System.out.println("Username is already taken. Please choose another one.");
-            }
-        } while (username.isEmpty() || isUsernameTaken);
-
-        do {
-            System.out.print("Enter password: ");
-            password = scanner.nextLine().trim();
-
-            if (password.isEmpty()) {
-                System.out.println("Password cannot be empty.");
-            }
-        } while (password.isEmpty());
+        String usernameMessage = "Enter desired username: ";
+        String passwordMessage = "Enter desired password: ";
         
-        scanner.close();
+        String username = getStringInput(usernameMessage);
+        String password = getStringInput(passwordMessage);
         
         Account account = controller.createAccount(username, password);
         if (account == null) {
-        	System.out.println("Account creation unsuccessful.");
+        	System.out.println("Username already taken. Could not create account.");
         }
         else {
         	System.out.println("Welcome " + account.getUsername() + "! Your account was successfully created.");
@@ -102,19 +67,9 @@ public class AccountView {
 	}
 	
 	public static int viewFollowUser(Account account) {
-		Scanner scanner = new Scanner(System.in);
-		String userToFollow;
 		
-		 do {
-	            System.out.print("Who would you like to follow? Enter their username: ");
-	            userToFollow = scanner.nextLine().trim();
-
-	            if (userToFollow.isEmpty()) {
-	                System.out.println("Username cannot be empty.");
-	                continue;
-	            }
-		 } while (userToFollow.isEmpty());
-		 scanner.close();
+		String userToFollowMessage = "Who would you like to follow? Enter their username: ";
+		String userToFollow = getStringInput(userToFollowMessage);
 	    
 		int isFollowed = controller.followUser(account.getUsername(), userToFollow);
 		if (isFollowed == -1) {
@@ -131,19 +86,78 @@ public class AccountView {
 		return isFollowed;
 	}
 	
-	public static int viewChangeUsername() {
+	public static int viewChangeUsername(Account account) {
+		
+        String usernameMessage = "Enter new username: ";
+        String username = getStringInput(usernameMessage);
+        
+        int usernameChanged = controller.changeUsername(account.getUsername(), username);
+        if (usernameChanged == -1) {
+        	System.out.println("Could not change username. Desired username already taken.");
+        	return 1;
+        }
+        else if (usernameChanged == 1) {
+        	System.out.println("ERROR: Could not update username.");
+        }
+        else {
+        	System.out.println("Good news " + account.getUsername() + "! Your username has been changed.");
+        }
+        return usernameChanged;
+	}
+	
+	public static int viewChangePassword(Account account) {
+		String passwordMessage = "Enter new password: ";
+		String password = getStringInput(passwordMessage);
+		
+		int passwordChanged = controller.changePassword(account.getUsername(), account.getPassword(), password);
+		if (passwordChanged == 1) {
+			System.out.println("Could not change password. Please try again.");
+		}
+		else {
+			System.out.println("Good news " + account.getPassword() + "! Your password has been changed.");
+		}
+		return passwordChanged;
+	}
+	
+	public static int viewSaveSong(Account account, String song) {
+		int songSaved = controller.saveSong(song, account.getUsername());
+		if (songSaved == 1) {
+			System.out.println("Error saving song. Please try again.");
+		}
+		else {
+			System.out.println("Song successfully saved to " + account.getUsername() + "'s account.");
+		}
+		return songSaved;
+	}
+	
+	public static int viewSavePlaylist(Account account, String playlist) {
+		int playlistSaved = controller.savePlaylist(playlist, account.getUsername());
+		if (playlistSaved == 1) {
+			System.out.println("Error saving playlist. Please try again.");
+		}
+		else {
+			System.out.println("Playlist successfully saved to " + account.getUsername() + "'s account.");
+		}
 		return 0;
 	}
 	
-	public static int viewChangePassword() {
-		return 0;
+	private static String getStringInput(String message) {
+		Scanner scanner = new Scanner(System.in);
+	    String string;
+	        
+	    // Keep prompting the user until non-empty input is entered
+	    do {
+            System.out.print(message);
+            string = scanner.nextLine().trim();
+
+            if (string.isEmpty()) {
+                System.out.println("Input cannot be empty. Please try again.");
+                continue;
+            }
+	    }
+	    while (string.isEmpty() == true);
+	    scanner.close();
+	    return string;
 	}
 	
-	public static int viewSaveSong() {
-		return 0;
-	}
-	
-	public static int viewSavePlaylist() {
-		return 0;
-	}
 }
