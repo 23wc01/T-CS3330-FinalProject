@@ -10,6 +10,9 @@ public class SetupPreferenceContext {
 		this.strategy = strategy;
 	}
 	public Preference updatePreference(SetupPreferenceView view) {
-		  return strategy.setupPreference(view);
+		if (view == null) {
+			return null;
+		}
+		return strategy.setupPreference(view);
 	}
 }

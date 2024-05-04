@@ -13,8 +13,7 @@ import java.util.Date;
  */
 public class Song extends MediaProduct {
 	private String artistName;
-	private Date releaseDate;
-	Preference preference;
+	private Preference preference;
 	
 	public Song(int id, String name, String description, Boolean isFavorited, Date addedDate, String artistName, Preference preference) {
 		super();

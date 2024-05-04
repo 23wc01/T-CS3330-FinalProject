@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.mu.finalproject.model.Account;
-import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;

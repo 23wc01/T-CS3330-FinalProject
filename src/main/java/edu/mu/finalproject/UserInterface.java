@@ -20,19 +20,14 @@ import edu.mu.finalproject.model.CatalogSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
-<<<<<<< HEAD
 	public static CatalogSingleton TheCatalogSingleton;
 	private static Account user;
-=======
+
 
 	public static AccountSingleton TheAccountManager;
 	//public static CatalogSingleton CatalogSingleton;
 	//Any other fields go here (user?)
 
-	public static CatalogSingleton TheCatalogSingleton;
-	private static Account user;
-
->>>>>>> 4aea5ada45b953812644a08d02ee5a556c9264f8
 	
 	public static Account getUser() {
 		return user;
@@ -99,14 +94,12 @@ public class UserInterface {
             case DISPLAY_EVENTS:
             	UIExecutionMethods.executeDisplayEvents();
             	break;
-//WAITING FOR CATALOG:
-//            case DISPLAY_FAVORITES:
-//                UIExecutionMethods.executeDisplayFavorites();
-//                break;
-//WAITING FOR CATALOG:
-//            case FAVORITE:
-//            	UIExecutionMethods.executeFavorite();
-//            	break;
+            case DISPLAY_FAVORITES:
+                UIExecutionMethods.executeDisplayFavorites();
+                break;
+            case FAVORITE:
+            	UIExecutionMethods.executeFavorite();
+            	break;
 // WAITING FOR ACCOUNT
             case SEARCH:
  				UIExecutionMethods.executeSearchCatalog(); 

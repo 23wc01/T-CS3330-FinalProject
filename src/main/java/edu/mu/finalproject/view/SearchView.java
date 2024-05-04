@@ -32,7 +32,7 @@ public class SearchView {
 			return searchQuery;
 		}
 		catch (Exception e){
-			e.printStackTrace();
+			System.out.println("Error with passed in scanner");
 			return null;
 		}
 	}
