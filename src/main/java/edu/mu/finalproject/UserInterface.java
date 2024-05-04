@@ -20,15 +20,8 @@ import edu.mu.finalproject.model.CatalogSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
-<<<<<<< HEAD
-	public static AccountSingleton TheAccountManager;
-	private Account user;
-	//public static CatalogSingleton CatalogSingleton;
-	//Any other fields go here (user?)
-=======
 	public static CatalogSingleton TheCatalogSingleton;
 	private static Account user;
->>>>>>> 178301d3260a5fde6c8221f498fdb4b6b9e9e0b3
 	
 	public static Account getUser() {
 		return user;
@@ -46,13 +39,7 @@ public class UserInterface {
 	 */
 	public UserInterface() {
 		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
-<<<<<<< HEAD
-		TheAccountManager = AccountSingleton.getInstance();
-		//Create a music catalog
-		
-=======
 		TheCatalogSingleton = TheCatalogSingleton.getInstance();
->>>>>>> 178301d3260a5fde6c8221f498fdb4b6b9e9e0b3
 	}
 	
 	/**
