@@ -105,8 +105,18 @@ public class AccountView {
         return usernameChanged;
 	}
 	
-	public static int viewChangePassword() {
-		return 0;
+	public static int viewChangePassword(Account account) {
+		String passwordMessage = "Enter new password: ";
+		String password = getStringInput(passwordMessage);
+		
+		int passwordChanged = controller.changePassword(account.getUsername(), account.getPassword(), password);
+		if (passwordChanged == 1) {
+			System.out.println("Could not change password. Please try again.");
+		}
+		else {
+			System.out.println("Good news " + account.getPassword() + "! Your password has been changed.");
+		}
+		return passwordChanged;
 	}
 	
 	public static int viewSaveSong() {
