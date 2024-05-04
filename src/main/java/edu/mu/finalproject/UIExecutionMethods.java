@@ -50,9 +50,9 @@ public class UIExecutionMethods {
 		public static void executeDisplayEvents() {
 			eventview.getEventDisplayInfo(EventSingleton.getInstance().getEventCollection());
 		}
-//WAITING FOR CATALOG:	
+	
 		public static void executeDisplayFavorites() {
-			favoritesview.getFavInfo(null); //!!!!ADD REAL CATALOG HERE
+			favoritesview.getFavInfo(CatalogSingleton.getInstance().getMediaProductCollection()); //!!!!ADD REAL CATALOG HERE
 		} 
 	
 
@@ -111,11 +111,11 @@ public class UIExecutionMethods {
 	        mediaCatalogController.displayShuffle();
 		}
 
- //WAITING FOR CATALOG:
+ 
 		public static void executeFavorite() {
 		    String userQuery = FindObjectView.getInformationFromUser();
 		
-			MediaProduct objectToBeFavorited = findobjectcontroller.searchMediaCatalog(null, userQuery); //!!! Add real catalog here!
+			MediaProduct objectToBeFavorited = findobjectcontroller.searchMediaCatalog(CatalogSingleton.getInstance().getMediaProductCollection(), userQuery); //!!! Add real catalog here!
 			favoritesview.displayFavoriteResult(objectToBeFavorited);														
 		}
 		
