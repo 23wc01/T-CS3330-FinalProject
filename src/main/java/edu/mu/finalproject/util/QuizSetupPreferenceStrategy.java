@@ -91,7 +91,7 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return true;
 	}
 	
-	private Boolean scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
+	public Boolean scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
 		if (answer <= 0 || preferenceQuestion == null) {
 			return false;
 		}
@@ -102,7 +102,7 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return true;
 	}
 	
-	private Boolean recordScore(Preference answerPreference) {
+	public Boolean recordScore(Preference answerPreference) {
 		if (answerPreference == null) {
 			return false;
 		}

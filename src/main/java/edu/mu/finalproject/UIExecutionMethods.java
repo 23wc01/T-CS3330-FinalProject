@@ -1,8 +1,13 @@
 package edu.mu.finalproject;
 
+import edu.mu.finalproject.controller.DownloadPlaylistController;
+import edu.mu.finalproject.controller.FindObjectController;
+import edu.mu.finalproject.controller.MediaCatalogController;
+import edu.mu.finalproject.controller.RecommendPlaylistController;
+import edu.mu.finalproject.controller.SearchController;
+import edu.mu.finalproject.controller.SetupPreferenceController;
 import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.CatalogSingleton;
-import edu.mu.finalproject.controller.*;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.Event;
 import edu.mu.finalproject.model.EventSingleton;
@@ -11,6 +16,7 @@ import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
 import edu.mu.finalproject.view.FindObjectView;
+import recommendPlaylistTests.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -118,12 +124,13 @@ public class UIExecutionMethods {
 			searchController.search();
 		}
 
-		
-	
 		public static void executeSetupPreference() {
 			UserInterface.setUser(new Account(0, "23wc01", "secret")); //!!!!!!!! Store global user field in this class
+			if (UserInterface.getUser() == null) {
+				System.err.println("Must 'login' first before setting preference!");
+			}
 			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
-			UserInterface.getUser().setUserPreference(setupPreferenceController.newPreference());
+			setupPreferenceController.newPreference(UserInterface.getUser());
 		}
 		
 		public static void executeRecommendPlaylist() {			

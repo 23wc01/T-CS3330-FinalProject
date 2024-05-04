@@ -3,7 +3,6 @@ package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.MediaProduct;
