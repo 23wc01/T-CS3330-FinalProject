@@ -57,13 +57,11 @@ public class AccountView {
 	public static int viewDeleteAccount(Account account) {
 		String username = account.getUsername();
 		int isDeleted = controller.deleteAccount(username);
-		if (isDeleted == 1) {
-			System.out.println("Account cannot be deleted.");
-		}
-		else {
-			System.out.println("Account successfully deleted.");
-		}
-		return isDeleted;
+		
+		String successMessage = "Account successfully deleted.";
+		String failureMessage = "Account cannot be deleted.";
+		
+		return displayResult(isDeleted, successMessage, failureMessage, "");
 	}
 	
 	public static int viewFollowUser(Account account) {
@@ -72,18 +70,12 @@ public class AccountView {
 		String userToFollow = getStringInput(userToFollowMessage);
 	    
 		int isFollowed = controller.followUser(account.getUsername(), userToFollow);
-		if (isFollowed == -1) {
-			System.out.println("You already follow that user!");
-			return 1;
-		}
-		else if (isFollowed == 1) {
-			System.out.println("ERROR: Follow unsuccessful.");
-		}
-		else {
-			System.out.println("Successfully followed " + userToFollow + ".");
-		}
 		
-		return isFollowed;
+		String successMessage = "Successfully followed " + userToFollow + ".";
+		String failureMessage = "Cannot follow user " + userToFollow + ". Please try again.";
+		String specialMessage = "You already follow that user!";
+		
+		return displayResult(isFollowed, successMessage, failureMessage, specialMessage);
 	}
 	
 	public static int viewChangeUsername(Account account) {
@@ -92,17 +84,12 @@ public class AccountView {
         String username = getStringInput(usernameMessage);
         
         int usernameChanged = controller.changeUsername(account.getUsername(), username);
-        if (usernameChanged == -1) {
-        	System.out.println("Could not change username. Desired username already taken.");
-        	return 1;
-        }
-        else if (usernameChanged == 1) {
-        	System.out.println("ERROR: Could not update username.");
-        }
-        else {
-        	System.out.println("Good news " + account.getUsername() + "! Your username has been changed.");
-        }
-        return usernameChanged;
+        
+        String successMessage = "Good news " + account.getUsername() + "! Your username has been changed.";
+		String failureMessage = "Could not update username. Please try again";
+		String specialMessage = "Could not change username. Desired username already taken.";
+		
+        return displayResult(usernameChanged, successMessage, failureMessage, specialMessage);
 	}
 	
 	public static int viewChangePassword(Account account) {
@@ -110,35 +97,42 @@ public class AccountView {
 		String password = getStringInput(passwordMessage);
 		
 		int passwordChanged = controller.changePassword(account.getUsername(), account.getPassword(), password);
-		if (passwordChanged == 1) {
-			System.out.println("Could not change password. Please try again.");
-		}
-		else {
-			System.out.println("Good news " + account.getPassword() + "! Your password has been changed.");
-		}
-		return passwordChanged;
+		
+		String successMessage = "Good news " + account.getPassword() + "! Your password has been changed.";
+		String failureMessage = "Could not change password. Please try again.";
+		
+        return displayResult(passwordChanged, successMessage, failureMessage, "");
 	}
 	
 	public static int viewSaveSong(Account account, String song) {
 		int songSaved = controller.saveSong(song, account.getUsername());
-		if (songSaved == 1) {
-			System.out.println("Error saving song. Please try again.");
-		}
-		else {
-			System.out.println("Song successfully saved to " + account.getUsername() + "'s account.");
-		}
-		return songSaved;
+		
+		String successMessage = "Song successfully saved to " + account.getUsername() + "'s account.";
+		String failureMessage = "Error saving song. Please try again.";
+		
+		return displayResult(songSaved, successMessage, failureMessage, "");
 	}
 	
 	public static int viewSavePlaylist(Account account, String playlist) {
 		int playlistSaved = controller.savePlaylist(playlist, account.getUsername());
-		if (playlistSaved == 1) {
-			System.out.println("Error saving playlist. Please try again.");
+		
+		String successMessage = "Playlist successfully saved to " + account.getUsername() + "'s account.";
+		String failureMessage = "Error saving playlist. Please try again.";
+		
+		return displayResult(playlistSaved, successMessage, failureMessage, "");
+	}
+	
+	private static int displayResult(int errorCode, String successMessage, String failureMessage, String specialMessage) {
+		if (errorCode == -1) {
+			System.out.println(specialMessage);
+		}
+		else if (errorCode == 1) {
+			System.out.println(failureMessage);
 		}
 		else {
-			System.out.println("Playlist successfully saved to " + account.getUsername() + "'s account.");
+			System.out.println(successMessage);
 		}
-		return 0;
+		return errorCode;
 	}
 	
 	private static String getStringInput(String message) {
