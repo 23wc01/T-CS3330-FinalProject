@@ -89,9 +89,16 @@ public class AccountView {
         return account;
 	}
 	
-	public static int viewDeleteAccount() {
-		
-		return 0;
+	public static int viewDeleteAccount(Account account) {
+		String username = account.getUsername();
+		int isDeleted = controller.deleteAccount(username);
+		if (isDeleted == 1) {
+			System.out.println("Account cannot be deleted.");
+		}
+		else {
+			System.out.println("Account successfully deleted.");
+		}
+		return isDeleted;
 	}
 	
 	public static int viewFollowUser() {
