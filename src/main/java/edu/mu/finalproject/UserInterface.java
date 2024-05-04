@@ -20,6 +20,10 @@ import edu.mu.finalproject.model.CatalogSingleton;
 public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
+<<<<<<< HEAD
+	public static CatalogSingleton TheCatalogSingleton;
+	private static Account user;
+=======
 
 	public static AccountSingleton TheAccountManager;
 	//public static CatalogSingleton CatalogSingleton;
@@ -28,6 +32,7 @@ public class UserInterface {
 	public static CatalogSingleton TheCatalogSingleton;
 	private static Account user;
 
+>>>>>>> 4aea5ada45b953812644a08d02ee5a556c9264f8
 	
 	public static Account getUser() {
 		return user;
@@ -45,11 +50,7 @@ public class UserInterface {
 	 */
 	public UserInterface() {
 		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
-
-		TheAccountManager = AccountSingleton.getInstance();
-		//Create a music catalog
-		//TheCatalogSingleton = CatalogSingleton.getInstance();
-
+		TheCatalogSingleton = TheCatalogSingleton.getInstance();
 	}
 	
 	/**
