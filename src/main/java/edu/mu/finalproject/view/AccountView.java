@@ -131,8 +131,35 @@ public class AccountView {
 		return isFollowed;
 	}
 	
-	public static int viewChangeUsername() {
-		return 0;
+	public static int viewChangeUsername(Account account) {
+		Scanner scanner = new Scanner(System.in);
+        String username;
+        boolean isUsernameTaken = false;
+
+        do {
+            System.out.print("Enter new username: ");
+            username = scanner.nextLine().trim();
+
+            if (username.isEmpty()) {
+                System.out.println("Username cannot be empty.");
+                continue;
+            }
+
+            isUsernameTaken = controller.isUsernameTaken(username);
+            if (isUsernameTaken) {
+                System.out.println("Username is already taken. Please choose another one.");
+            }
+        } while (username.isEmpty() || isUsernameTaken);
+
+        scanner.close();
+        
+        int usernameChanged = controller.changeUsername(account.getUsername(), username);
+        if (usernameChanged == 1) {
+        	System.out.println("ERROR: Username change unsuccessful.");
+        }
+        else {
+        	System.out.println("Good news " + account.getUsername() + "! Your username has been changed.");
+        }
 	}
 	
 	public static int viewChangePassword() {
@@ -146,4 +173,24 @@ public class AccountView {
 	public static int viewSavePlaylist() {
 		return 0;
 	}
+	
+	private String getStringInput(String message) {
+		Scanner scanner = new Scanner(System.in);
+	    String string;
+	        
+	    // Keep prompting the user until username is entered
+	    do {
+            System.out.print(message);
+            string = scanner.nextLine().trim();
+
+            if (string.isEmpty()) {
+                System.out.println("Input cannot be empty. Please try again.");
+                continue;
+            }
+	    }
+	    while (string.isEmpty() == true);
+	    scanner.close();
+	    return string;
+	}
+	
 }
