@@ -201,6 +201,13 @@ public class AccountController {
 			for (Account account : accounts) {
 				if (account.getUsername().equals(username)) {
 					List<String> update = account.getFollowedUsers();
+					// Check if the user already follows this person
+					for (String user : update) {
+						if (user.equals(userToFollow)) {
+							return -1;
+						}
+					}
+					// Otherwise add them to the follow list
 					update.add(userToFollow);
 					account.setFollowedUsers(update);
 					return saveChanges();

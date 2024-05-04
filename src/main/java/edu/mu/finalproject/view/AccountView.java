@@ -101,8 +101,34 @@ public class AccountView {
 		return isDeleted;
 	}
 	
-	public static int viewFollowUser() {
-		return 0;
+	public static int viewFollowUser(Account account) {
+		Scanner scanner = new Scanner(System.in);
+		String userToFollow;
+		
+		 do {
+	            System.out.print("Who would you like to follow? Enter their username: ");
+	            userToFollow = scanner.nextLine().trim();
+
+	            if (userToFollow.isEmpty()) {
+	                System.out.println("Username cannot be empty.");
+	                continue;
+	            }
+		 } while (userToFollow.isEmpty());
+		 scanner.close();
+	    
+		int isFollowed = controller.followUser(account.getUsername(), userToFollow);
+		if (isFollowed == -1) {
+			System.out.println("You already follow that user!");
+			return 1;
+		}
+		else if (isFollowed == 1) {
+			System.out.println("ERROR: Follow unsuccessful.");
+		}
+		else {
+			System.out.println("Successfully followed " + userToFollow + ".");
+		}
+		
+		return isFollowed;
 	}
 	
 	public static int viewChangeUsername() {
