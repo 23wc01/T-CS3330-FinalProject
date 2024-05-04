@@ -119,11 +119,25 @@ public class AccountView {
 		return passwordChanged;
 	}
 	
-	public static int viewSaveSong() {
-		return 0;
+	public static int viewSaveSong(Account account, String song) {
+		int songSaved = controller.saveSong(song, account.getUsername());
+		if (songSaved == 1) {
+			System.out.println("Error saving song. Please try again.");
+		}
+		else {
+			System.out.println("Song successfully saved to " + account.getUsername() + "'s account.");
+		}
+		return songSaved;
 	}
 	
-	public static int viewSavePlaylist() {
+	public static int viewSavePlaylist(Account account, String playlist) {
+		int playlistSaved = controller.savePlaylist(playlist, account.getUsername());
+		if (playlistSaved == 1) {
+			System.out.println("Error saving playlist. Please try again.");
+		}
+		else {
+			System.out.println("Playlist successfully saved to " + account.getUsername() + "'s account.");
+		}
 		return 0;
 	}
 	
