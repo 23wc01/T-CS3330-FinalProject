@@ -104,10 +104,12 @@ public class SetupPreferenceView {
 	
 	/**
 	 * Displays error message if error occurs in quiz setup 
-	 * @return
 	 */
-	public Boolean displayQuizError() {
-		System.out.println("\nSorry, there's an error in displaying the quiz right now.");
+	public Boolean displayQuizError(String errorMessage) {
+		if (errorMessage == null) {
+			return false;
+		}
+		System.err.println(errorMessage);
 		return true;
 	}
 	

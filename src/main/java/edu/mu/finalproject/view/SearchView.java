@@ -13,19 +13,9 @@ public class SearchView {
 	 * Prompts user to enter a name (max 50 chars) to search by. Returns user inputted search as @queryString
 	 * @return queryString, will be null if input mismatch detected
 	 */
-	public String getSearchQuery() {
+	public String getSearchQuery(Scanner searchScanner) {
 		System.out.println("Search for any media product based on their name...");
 		System.out.print("Enter search (max char = " + MAX_SEARCH_CHARS + "): ");
-		Scanner searchScanner = new Scanner(System.in);
-		return scanQuery(searchScanner);
-	}
-	
-	/**
-	 * Scan in user's input query
-	 * @param searchScanner
-	 * @return
-	 */
-	public String scanQuery(Scanner searchScanner) {
 		try {
 			String searchQuery = searchScanner.nextLine();
 			searchQuery = searchQuery.substring(0, Math.min(searchQuery.length(), MAX_SEARCH_CHARS));
@@ -36,6 +26,7 @@ public class SearchView {
 			return null;
 		}
 	}
+
 	
 	/**
 	 * Displays @param topNResults of MediaObjects in @param catalog sorted in descending order of fuzzyscore similarity to @param queryString
@@ -50,13 +41,8 @@ public class SearchView {
 		}
 		System.out.println("\nTop " + topNResults + " search results for '"+ queryString + "'");
 		System.out.println("-------------------------------");
-		int resultCount = 0;
-		for (MediaProduct mediaObj : sortedCatalog) {
-			if(resultCount == topNResults) {
-				break;
-			}
-			System.out.println(mediaObj.toString());
-			++resultCount;
+		for (int i = 0; i < topNResults; ++i) {
+			System.out.println(sortedCatalog.get(i).toString());
 		}
 		System.out.println("-------------------------------\n");
 		return true;
