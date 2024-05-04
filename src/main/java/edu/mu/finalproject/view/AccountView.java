@@ -43,7 +43,8 @@ public class AccountView {
         	System.out.println("Welcome " + account.getUsername() + "!");
         }
 
-
+        return account;
+        
 	}
 	
 	public static Account viewCreateAccount() {
@@ -90,25 +91,26 @@ public class AccountView {
 	
 	public static int viewDeleteAccount() {
 		
+		return 0;
 	}
 	
 	public static int viewFollowUser() {
-		
+		return 0;
 	}
 	
 	public static int viewChangeUsername() {
-		
+		return 0;
 	}
 	
 	public static int viewChangePassword() {
-		
+		return 0;
 	}
 	
 	public static int viewSaveSong() {
-		
+		return 0;
 	}
 	
 	public static int viewSavePlaylist() {
-		
+		return 0;
 	}
 }

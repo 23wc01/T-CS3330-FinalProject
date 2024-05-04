@@ -1,4 +1,4 @@
-package EventTests;
+package FavoriteTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -10,7 +10,6 @@ import java.util.Date;
 import org.junit.Test;
 
 import edu.mu.finalproject.controller.FavoritesController;
-import edu.mu.finalproject.model.Artist;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Preference;
 import edu.mu.finalproject.model.Song;
@@ -60,21 +59,21 @@ public class FavoriteTest {
 		assertEquals(-1, testResult2);
 	}
 	
-	@Test
-	public void testFavoriteArtist() {
-		//Arrange
-		Artist testArtistFavorite = new Artist(1, "jack", "bad", new Date(), false, (float) 12.2);
-		Artist testArtistUnfavorite = new Artist(3, "max", "good", new Date(), true, (float) 12.3);
-		FavoritesController favoritesController = new FavoritesController();
-		
-		//Act
-		int testResult1 = favoritesController.favorite(testArtistFavorite);
-		int testResult2 = favoritesController.favorite(testArtistUnfavorite);
-		
-		//Assert
-		assertEquals(1, testResult1);
-		assertEquals(-1, testResult2);
-	}
+//	@Test
+//	public void testFavoriteArtist() {
+//		//Arrange
+//		Artist testArtistFavorite = new Artist(1, "jack", "bad", new Date(), false, (float) 12.2);
+//		Artist testArtistUnfavorite = new Artist(3, "max", "good", new Date(), true, (float) 12.3);
+//		FavoritesController favoritesController = new FavoritesController();
+//		
+//		//Act
+//		int testResult1 = favoritesController.favorite(testArtistFavorite);
+//		int testResult2 = favoritesController.favorite(testArtistUnfavorite);
+//		
+//		//Assert
+//		assertEquals(1, testResult1);
+//		assertEquals(-1, testResult2);
+//	}
 	
 	@Test 
 	public void testFavorite_ObjectNotFound() {

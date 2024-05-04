@@ -44,15 +44,15 @@ public class SearchController {
 	 * @param searchView
 	 * @return false if queryString is null, else true
 	 */
-	private Boolean searchSort(String searchQuery) {
-		ArrayList<MediaProduct> catalog = CatalogSingleton.getCatalogArrayList();
-		if (searchQuery == null || catalog == null) {
+	public Boolean searchSort(String searchQuery) {
+		ArrayList<MediaProduct> catalog = CatalogSingleton.getInstance().getMediaProductCollection();
+		if (searchQuery == null || searchQuery == "") {
 			System.out.println("Did not enter a query.");
 			return false;
 		}
 		SearchComparator songSearch = new SearchComparator(searchQuery);
 		Collections.sort(catalog, songSearch);
-		view.DisplaySearchResultsView(searchQuery, getTopNResults(), catalog);
+		view.displaySearchResults(searchQuery, getTopNResults(), catalog);
 		return true;
 	}
 
@@ -62,9 +62,13 @@ public class SearchController {
 	 * This functionality/feature is used to find Song in CatalogSingleton given PRECISE song's name 
 	 * @param songName
 	 */
-	public static Song searchSongName(String songName, List<MediaProduct> mediaProducts) {
-		if(mediaProducts == null || songName == null || songName == "") {
-			System.err.println("Failed to retieve song because songName = " + songName);
+	public static Song searchSongName(String songName, ArrayList<MediaProduct> mediaProducts) {
+		if(mediaProducts == null) {
+			System.err.println("Failed to retrieve song because mediaProduct = " + mediaProducts);
+			return null;
+		}
+		if(songName == null || songName == "") {
+			System.err.println("Failed to retrieve song because songName searched was = '" + songName + "' (which is invalid)");
 			return null;
 		}
 		for(MediaProduct traverseObject : mediaProducts) { 

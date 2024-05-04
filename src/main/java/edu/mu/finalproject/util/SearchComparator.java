@@ -32,7 +32,6 @@ import org.apache.commons.text.similarity.*;
 			return Integer.compare(similarity2, similarity1);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
 			return -1;
 		}
 			

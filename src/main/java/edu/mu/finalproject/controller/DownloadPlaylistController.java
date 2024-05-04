@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.CatalogSingleton;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;
 import edu.mu.finalproject.util.downloadPlaylistBuilder.HtmlDirector;
@@ -37,8 +38,8 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	public Boolean downloadRecommendedPlaylist(Account account) {	
-		if (!createPlaylist(account)) {
+	public Boolean downloadRecommendedPlaylist(Account account, ArrayList<MediaProduct> CatalogSingletonArray) {	
+		if (!createPlaylist(account, CatalogSingletonArray)) {
 			return view.displayMissingStepsError();
 		}
 		
@@ -65,12 +66,12 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	private Boolean createPlaylist(Account account) {
-		if (account == null || CatalogSingleton.getCatalogArrayList() == null) {
+	private Boolean createPlaylist(Account account, ArrayList<MediaProduct> CatalogSingletonArray) {
+		if (account == null || CatalogSingletonArray == null) {
 			return false;
 		}
 		RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
-		recommendedPlaylist = recommendPlaylistController.recommendPlaylist(account.getUserPreference());
+		recommendedPlaylist = recommendPlaylistController.recommendPlaylist(account.getUserPreference(), CatalogSingletonArray);
 		if (recommendedPlaylist == null || recommendedPlaylist.getSongs().size() == 0) {
 			return false;
 		}

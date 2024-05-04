@@ -105,24 +105,6 @@ public class AddEventTest {
     }
     
     
-//    @Test
-//    public void testAddEvent_FailureInAppendEvent() {
-//    	// Arrange
-//        Event myEvent = new Event(MonthDay.of(6, 6), Year.of(2022), "ME:I");
-//
-//        // Mocking EventSingleton.getEventCollection() to return an empty list 
-//        PowerMockito.mockStatic(EventSingleton.class);
-//        when(EventSingleton.getEventCollection()).thenReturn(new ArrayList<>());
-//
-//        // Mocking EventFileReader.appendEvent(myEvent) to return failure
-//        when(EventFileReader.appendEvent(myEvent)).thenReturn(-1);
-//
-//        // Act
-//        int result = EventController.addEvent(myEvent);
-//
-//        // Assert
-//        assertEquals(-1, result);
-//    }
     
 
 }
