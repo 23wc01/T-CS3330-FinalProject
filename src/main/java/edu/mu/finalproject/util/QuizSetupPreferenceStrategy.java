@@ -21,8 +21,12 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	private final static String jsonFilePath = "files/preferenceQuestions.json";
 	private static ArrayList<HashMap<String, ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>>>> json;
 	private HashMap<Preference, Integer> scoreboard;
-	
+
 	@Override
+	/**
+	 * Setup preference by scoring quiz answers
+	 *@return Preference 
+	 */
 	public Preference setupPreference(SetupPreferenceView view) {
 		setView(view);
 		if (getView() == null) {
@@ -92,7 +96,7 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	}
 	
 	public Boolean scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
-		if (answer <= 0 || preferenceQuestion == null) {
+		if (answer < 1 || preferenceQuestion == null) {
 			return false;
 		}
 		--answer; // Answers are 1-based in UI. Decrement to get 0-based
@@ -134,5 +138,4 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	private SetupPreferenceView getView() {
 		return view;
 	}
-	
 }

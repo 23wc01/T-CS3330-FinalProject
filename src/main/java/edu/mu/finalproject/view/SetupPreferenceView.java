@@ -66,9 +66,8 @@ public class SetupPreferenceView {
 	 * Displays the introduction to the quiz option of setting up preferences
 	 * @return
 	 */
-	public Boolean displayQuizIntro() {
-		Boolean displayIntroSuccess = displayIntro("Here's a multiple choice quiz to help determine your preference as a listener!");
-		return displayIntroSuccess;
+	public void displayQuizIntro() {
+		displayIntro("Here's a multiple choice quiz to help determine your preference as a listener!");;
 	}
 	
 	/**
@@ -121,10 +120,10 @@ public class SetupPreferenceView {
 		if(preference == null) {
 			return false;
 		}
-		Boolean displayIntroSuccess = displayIntro("\nYour preference is...");
+		displayIntro("\nYour preference is...");
 		System.out.println("You're a(n) " + preference + " lover!");
 		displayIntro("");
-		return displayIntroSuccess;
+		return true;
 	}
 }
  
