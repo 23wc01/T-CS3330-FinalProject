@@ -7,7 +7,7 @@ import java.util.Map;
 public class PreferenceQuestion {
 	private String question;
 	private ArrayList<HashMap<String, String>> choicesToPrefs;
-	ArrayList<String> answerPreferences = new ArrayList<String>();
+	private ArrayList<String> answerPreferences = new ArrayList<String>();
 
 	public String getQuestion() {
 		return question;
@@ -43,4 +43,5 @@ public class PreferenceQuestion {
 		}
 		return answerPreferences;
 	}
+
  }

@@ -18,6 +18,7 @@ import edu.mu.finalproject.view.DownloadPlaylistView;
 public class DownloadPlaylistController {
 	private final static String htmlOutputFolder = "outputs/";
 	private ArrayList<String> htmlStrs;
+
 	private String htmlOutputFilepath;
 	private Playlist recommendedPlaylist;
 	private DownloadPlaylistView view;
@@ -26,7 +27,7 @@ public class DownloadPlaylistController {
 	 * Constructor initializes some members automatically
 	 */
 	public DownloadPlaylistController() {
-		htmlStrs = new ArrayList<String>();
+		setHtmlStrs(new ArrayList<String>());
 		htmlOutputFilepath = htmlOutputFolder;
 		view = new DownloadPlaylistView();
 	}
@@ -65,7 +66,7 @@ public class DownloadPlaylistController {
 	 * @param catalog
 	 * @return
 	 */
-	private Boolean createPlaylist(Account account, ArrayList<MediaProduct> CatalogSingletonArray) {
+	public Boolean createPlaylist(Account account, ArrayList<MediaProduct> CatalogSingletonArray) {
 		if (account == null || CatalogSingletonArray == null) {
 			return false;
 		}
@@ -112,5 +113,13 @@ public class DownloadPlaylistController {
 			e.printStackTrace();
 			return false;
 		}
+	}
+// Getters & Setters
+	public ArrayList<String> getHtmlStrs() {
+		return htmlStrs;
+	}
+
+	public void setHtmlStrs(ArrayList<String> htmlStrs) {
+		this.htmlStrs = htmlStrs;
 	}
 }

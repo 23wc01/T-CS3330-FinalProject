@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class HtmlDirector {
 	ArrayList<Boolean> constructionSuccess;
 
+	public ArrayList<Boolean> getConstructionSuccess() {
+		return constructionSuccess;
+	}
+
 	public HtmlDirector() {
 		this.constructionSuccess = new ArrayList<Boolean>();
 	}

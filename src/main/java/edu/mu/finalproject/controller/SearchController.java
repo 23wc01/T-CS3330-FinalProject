@@ -3,6 +3,7 @@ package edu.mu.finalproject.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 import edu.mu.finalproject.model.CatalogSingleton;
 import edu.mu.finalproject.model.MediaProduct;
@@ -28,7 +29,9 @@ public class SearchController {
 	 * @return false if search
 	 */
 	public Boolean search() {
-		String searchQuery = view.getSearchQuery();
+		Scanner searchScanner = new Scanner(System.in);
+		String searchQuery = view.getSearchQuery(searchScanner);
+		searchScanner.close();
 		return searchSort(searchQuery);
 	}
 
