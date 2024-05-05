@@ -30,11 +30,11 @@ public class UserInterface {
 	private static MediaCatalogController mediaCatalogController = new MediaCatalogController();
 
 	
-	public static Account getAccount() {
+	public Account getAccount() {
 		return account;
 	}
 
-	public static void setUser(Account user) {
+	public void setUser(Account user) {
 		UserInterface.account = user;
 	}
 
