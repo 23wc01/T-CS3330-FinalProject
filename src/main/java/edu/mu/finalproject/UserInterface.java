@@ -60,6 +60,7 @@ public class UserInterface {
 	public void start() {
 		
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
+		MediaFileReader.readSongs();
 		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readPlaylists());
 		//Read any other files here
 		
