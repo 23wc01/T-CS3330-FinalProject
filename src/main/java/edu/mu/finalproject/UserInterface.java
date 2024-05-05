@@ -21,7 +21,7 @@ public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
 	public static CatalogSingleton TheCatalogSingleton;
-	private static Account user;
+	private static Account account;
 
 
 	public static AccountSingleton TheAccountManager;
@@ -29,12 +29,12 @@ public class UserInterface {
 	//Any other fields go here (user?)
 
 	
-	public static Account getUser() {
-		return user;
+	public static Account getAccount() {
+		return account;
 	}
 
 	public static void setUser(Account user) {
-		UserInterface.user = user;
+		UserInterface.account = user;
 	}
 
 

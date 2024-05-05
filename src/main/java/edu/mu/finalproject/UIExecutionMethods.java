@@ -125,7 +125,7 @@ public class UIExecutionMethods {
 		}
 
 		public static void executeSetupPreference() {
-			UserInterface.setUser(new Account(0, "23wc01", "secret")); //!!!!!!!! Store global user field in this class
+			UserInterface.setUser(new Account(0, "test", "test")); //!!!!!!!! Store global user field in this class
 			if (UserInterface.getUser() == null) {
 				System.err.println("Must 'login' first before setting preference!");
 			}
@@ -138,12 +138,12 @@ public class UIExecutionMethods {
 				System.err.println("'login' first or check CatalogSingleton instance is not null!");
 			}
 			RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
-			recommendPlaylistController.recommendPlaylist(UserInterface.getUser().getUserPreference(), CatalogSingleton.getInstance().getMediaProductCollection());
+			recommendPlaylistController.recommendPlaylist(UserInterface.getAccount().getUserPreference(), CatalogSingleton.getInstance().getMediaProductCollection());
 		}
 		
 		public static void executeDownloadRecommendedPlaylist() {
 			DownloadPlaylistController downloadPlaylistController = new DownloadPlaylistController();
-			downloadPlaylistController.downloadRecommendedPlaylist(UserInterface.getUser(), CatalogSingleton.getInstance().getMediaProductCollection());
+			downloadPlaylistController.downloadRecommendedPlaylist(UserInterface.getAccount(), CatalogSingleton.getInstance().getMediaProductCollection());
 		}
 		
 		//!!!NEW METHODS HERE!!! try to put in alphabetical order
