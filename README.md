@@ -75,9 +75,26 @@ Display Events
 
 
 ## Wen-Hsin Chen
- features
 
-Whatever you have in your individual feature document
+### Search
+
+Searches through CatalogSingleton's ArrayList<MediaProduct> for a MediaProduct (can be Song, Playlist, Artist). Displays topNResults from CatalogSingleton's ArrayList<MediaProduct> sorted by most to least matching to queryStr. Returns false if no match is found.
+
+### Manual Setup Preference
+
+Prompts user to set their own preference by displaying list of preferences  for user to choose from. Returns the preference matching user’s answer.
+
+### Quiz Setup Preference
+
+Fetches quiz questions from a json file, displays it to user & prompts for user’s answers. User’s answers are mapped to a “scoreboard” that tracks how many answers are matched to each Preference enum. The Preference enum with the most matched score will be returned
+
+### Create & Display Recommendation Playlist
+
+Gets the Preference field stored in passed-in Account argument. If no preference for account, call setupPreference(), else filter CatalogSingleton's ArrayList<MediaProduct> for songs that match Account’s preference. Create a Playlist & add the filtered songs into playlist. Return created Playlist.
+
+### Download Recommendation Playlist
+
+Gets & downloads account’s recommended playlist and format’s the playlist’s fields into a html file (html formatting read from a html template). Songs in the playlist are displayed via beautiful html flipcards that can be flipped around to reveal a youtube link button that’ll query for the song’s name on youtube’s search bar. The photos in html file will use song’s imgDescription to query & fetch for background images on unsplash.com. Returns false if download fails/if Account doesn’t have a preference
 
 # Class diagram
 
