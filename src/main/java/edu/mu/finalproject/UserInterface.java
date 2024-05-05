@@ -61,6 +61,8 @@ public class UserInterface {
 		
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
 		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readPlaylists());
+		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readSongs());
+
 		//Read any other files here
 		
 		UserInterface.setAccount(null);
