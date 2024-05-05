@@ -135,7 +135,10 @@ public class UserInterface {
   			case DOWNLOAD_RECOMMENDED_PLAYLIST:
   				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
   				break;              
-  	    // Add case for catalog	             
+  	    // Add case for catalog	
+  			case DISPLAY_ALL:
+  				UIExecutionMethods.executeDisplayAll();
+  				break;
   			case TEST_CATALOG:
   				UIExecutionMethods.executeTestCatalogFunctionality();
   				break;

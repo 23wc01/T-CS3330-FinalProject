@@ -20,6 +20,7 @@ import edu.mu.finalproject.view.AccountView;
 import recommendPlaylistTests.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 /**
  * The UIExecutionMethods class manages flow from the switch statement in UserInterface.
@@ -62,56 +63,53 @@ public class UIExecutionMethods {
 			favoritesview.getFavInfo(CatalogSingleton.getInstance().getMediaProductCollection()); //!!!!ADD REAL CATALOG HERE
 		} 
 	
- 
-		// New method to test catalog functionality
+		public static void executeDisplayAll()
+		{
+			MediaCatalogController.displayAll();
+		}
     	public static void executeTestCatalogFunctionality() {
         	System.out.println("Starting catalog functionality tests...");
         	
 
         	// Display all media in the catalog
         	System.out.println("Displaying all media:");
-        	mediaCatalogController.displayAll();
-
-        	// Search for a specific song
-	        String searchQuery = "God's Menu"; // Example song name, change as needed
-        	System.out.println("Searching for song: " + searchQuery);
-        	mediaCatalogController.findAndDisplaySongs(searchQuery);
+        	MediaCatalogController.displayAll();
 
         	// Add a new playlist 
-        	Playlist newPlaylist = new Playlist(1, "Test Playlist", "Description", new Date(), false, new ArrayList<>());
+        	Playlist playlist1 = new Playlist(1, "Test Playlist", "Description", new Date(), false, new ArrayList<>());
         	System.out.println("Adding a new playlist...");
-        	mediaCatalogController.addMedia(newPlaylist);
+        	MediaCatalogController.addMedia(playlist1);
 
-		Playlist newPlaylist = new Playlist(2, "Test Playlist", "Description", new Date(), false, new ArrayList<>());
+		Playlist playlist2 = new Playlist(2, "Test Playlist", "Description", new Date(), false, new ArrayList<>());
         	System.out.println("Adding a new playlist...");
-        	mediaCatalogController.addMedia(newPlaylist);
+        	MediaCatalogController.addMedia(playlist2);
 
 		// Check if there are stil media items in Catalog, if not add to display
 		if (!CatalogSingleton.getInstance().getMediaProductCollection().isEmpty()) {
            		System.out.println("Catalog still contains media items!");
-            		mediaCatalogController.displayAll();
+            		MediaCatalogController.displayAll();
         	} else {
             		System.out.println("Catalog is empty after deletion.");
         	}
 
         	// Display all media after adding new playlist
         	System.out.println("Displaying all media after adding a new playlist:");
-        	mediaCatalogController.displayAll();
+        	MediaCatalogController.displayAll();
 
         	// Delete a media item 
 	        int mediaIdToDelete = 2; 
 	        System.out.println("Deleting media with ID: " + mediaIdToDelete);
-	        mediaCatalogController.deleteMedia(mediaIdToDelete);
+	        MediaCatalogController.deleteMedia(mediaIdToDelete);
 
 		
 	        // Display all media after deletion
 	        System.out.println("Displaying all media after deletion:");
-	        mediaCatalogController.displayAll();
+	        MediaCatalogController.displayAll();
 	
 	        // Shuffle and display the catalog to ensure shuffle functionality
 		// Not sure about this one. I will ask Prof about this more. Playing by string or better randint id
 	        System.out.println("Displaying shuffled media:");
-	        mediaCatalogController.displayShuffle();
+	        //MediaCatalogController.displayShuffle();
 		}
 
  
