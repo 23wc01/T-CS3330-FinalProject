@@ -11,7 +11,7 @@ public class AccountController {
 	
 	static AccountSingleton theAccountSingleton = AccountSingleton.getInstance();
 	static CatalogSingleton theCatalogSingleton = CatalogSingleton.getInstance();
-	private List<Account> accounts;				// List of all application accounts
+	public List<Account> accounts;				// List of all application accounts
 	private int accountCounter;					// Increments with creation of each new account
 	
 	
@@ -118,7 +118,7 @@ public class AccountController {
 	 * @param passwordToHash The plain text password to be hashed.
 	 * @return The hashed password as a hexadecimal string or null if an error occurred.
 	 */
-	private String hashPassword(String passwordToHash) {
+	public String hashPassword(String passwordToHash) {
 		String hashedPassword = null;
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
