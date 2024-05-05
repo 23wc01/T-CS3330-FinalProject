@@ -29,16 +29,16 @@ import java.util.Scanner;
  */
 public class UIExecutionMethods {
 	//Instances here
-	static EventView eventview = new EventView();
-	static FavoritesView favoritesview = new FavoritesView();
-	static FindObjectController findobjectcontroller = new FindObjectController();
-	
+	private static EventView eventview = new EventView();
+	private static FavoritesView favoritesview = new FavoritesView();
+	private static FindObjectController findobjectcontroller = new FindObjectController();
+	private static MediaCatalogController mediaCatalogController = new MediaCatalogController();
+
 	//Define methods to be called based on user input--------------------------------
 		public static void executeAddEvent() {
 			Event myEvent = eventview.createEvent();
 		    EventView.viewAddEvent(myEvent);
 		}
-		
 		  
 		public static void executeDeleteEvent() {
 			System.out.println("\nEnter information so we can find the event to delete\n ");
@@ -54,12 +54,10 @@ public class UIExecutionMethods {
 			favoritesview.getFavInfo(CatalogSingleton.getInstance().getMediaProductCollection()); //!!!!ADD REAL CATALOG HERE
 		} 
 	
-
  
 		// New method to test catalog functionality
     	public static void executeTestCatalogFunctionality() {
         	System.out.println("Starting catalog functionality tests...");
-
         	
 
         	// Display all media in the catalog

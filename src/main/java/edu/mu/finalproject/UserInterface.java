@@ -1,6 +1,5 @@
 package edu.mu.finalproject;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import edu.mu.finalproject.controller.MediaCatalogController;
@@ -10,7 +9,6 @@ import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
 import edu.mu.finalproject.model.MediaFileReader;
-import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.CatalogSingleton;
 
 /**

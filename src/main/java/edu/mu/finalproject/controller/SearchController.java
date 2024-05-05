@@ -31,7 +31,6 @@ public class SearchController {
 	public Boolean search() {
 		Scanner searchScanner = new Scanner(System.in);
 		String searchQuery = view.getSearchQuery(searchScanner);
-		searchScanner.close();
 		return searchSort(searchQuery);
 	}
 
@@ -82,6 +81,7 @@ public class SearchController {
 		}
 		return null;
 	}
+	
 // GETTER & SETTER
 	public static int getTopNResults() {
 		return topNResults;
