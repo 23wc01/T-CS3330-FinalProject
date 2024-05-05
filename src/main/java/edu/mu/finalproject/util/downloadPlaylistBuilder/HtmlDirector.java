@@ -5,14 +5,15 @@ import java.util.ArrayList;
 public class HtmlDirector {
 	ArrayList<Boolean> constructionSuccess;
 
-	public ArrayList<Boolean> getConstructionSuccess() {
-		return constructionSuccess;
-	}
-
 	public HtmlDirector() {
-		this.constructionSuccess = new ArrayList<Boolean>();
+		setConstructionSuccess(new ArrayList<Boolean>());
 	}
 	
+	/**
+	 * Given Playlist model, build the html string for displaying Playlist's info on html file
+	 * @param model
+	 * @return htmlStr for Playlist
+	 */
 	public String constructPlaylistHtml(Object model) {
 		
 		if (!checkNullParams(model)) {
@@ -28,6 +29,11 @@ public class HtmlDirector {
 		return playlistHtml.getHtmlStr();
 	}
 	
+	/**
+	 * Given Song model, build the html string for displaying Song's info on html file
+	 * @param model
+	 * @return htmlStr for Song
+	 */
 	public String constructSongHtml(Object model) {
 		if (!checkNullParams(model)) {
 			return null;
@@ -41,6 +47,11 @@ public class HtmlDirector {
 		return songHtml.getHtmlStr();
 	}
 	
+	/**
+	 * Given Account model, build the html string for displaying Account's info on html file
+	 * @param model
+	 * @return htmlStr for Account
+	 */
 	public String constructAccountHtml(Object model) {
 		if (!checkNullParams(model)) {
 			return null;
@@ -68,13 +79,23 @@ public class HtmlDirector {
 		return constructionSuccess.contains(false);
 	}
 	
+	/**
+	 * Verify model isn't null
+	 * @param model
+	 * @return false if model == null, else true
+	 */
 	private Boolean checkNullParams(Object model) {
 		if (model == null) {
 			System.err.println("Parameter(s) passed into HtmlDirector() is null");
-			constructionSuccess.add(false);
 			return false;	
 		}
 		return true;
 	}
-	
+// Getters & Setters
+	public ArrayList<Boolean> getConstructionSuccess() {
+		return constructionSuccess;
+	}
+	public void setConstructionSuccess(ArrayList<Boolean> constructionSuccess) {
+		this.constructionSuccess = constructionSuccess;
+	}
 }
