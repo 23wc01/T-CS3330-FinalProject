@@ -238,6 +238,10 @@ public class AccountController {
 	 * @return 0 if the user is successfully followed, or 1 if they are not.
 	 */
 	public int followUser(String username, String userToFollow) {
+		// Make sure user does not follow themselves!
+		if (username.equals(userToFollow)) {
+			return -2;
+		}
 		// Make sure username of person to follow exists.
 		if (isUsernameTaken(userToFollow) == false) {
 			return 1;

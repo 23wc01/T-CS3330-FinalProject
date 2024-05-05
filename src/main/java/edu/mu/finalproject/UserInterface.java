@@ -136,6 +136,9 @@ public class UserInterface {
             case FAVORITE:
             	UIExecutionMethods.executeFavorite();
             	break;
+            case FOLLOW_USER:
+            	UIExecutionMethods.executeFollowUser(UserInterface.getAccount());
+            	break;
             case LOGOUT:
             	start();
             	break;

@@ -130,6 +130,10 @@ public class UIExecutionMethods {
 			favoritesview.displayFavoriteResult(objectToBeFavorited);														
 		}
 		
+		public static void executeFollowUser(Account account) {
+			AccountView.viewFollowUser(account);
+		}
+		
 		public static Account executeLogin() {
 			Account account = AccountView.viewLogin();
 			return account;

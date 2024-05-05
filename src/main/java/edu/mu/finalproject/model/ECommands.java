@@ -21,6 +21,7 @@ public enum ECommands {
 	DISPLAY_FAVORITES("display_favorites"),
 	//WAITING FOR CATALOG: DOWNLOAD_PLAYLIST("download_playlist"),
 	FAVORITE("favorite"),
+	FOLLOW_USER("follow_user"),
 	SAVE_PLAYLIST("save_playlist"),
 	SAVE_SONG("save_song"),
 	SEARCH("search"),
