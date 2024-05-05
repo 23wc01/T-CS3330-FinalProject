@@ -2,11 +2,13 @@ package edu.mu.finalproject;
 
 import java.util.Scanner;
 
+import edu.mu.finalproject.controller.MediaCatalogController;
 import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.AccountSingleton;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
+import edu.mu.finalproject.model.MediaFileReader;
 import edu.mu.finalproject.model.CatalogSingleton;
 
 /**
@@ -19,11 +21,13 @@ import edu.mu.finalproject.model.CatalogSingleton;
 
 public class UserInterface {
 	
+	//Fields and instances
 	public static EventSingleton TheEventManager;
 	public static CatalogSingleton TheCatalogSingleton;
 	private Account account;
 	public static AccountSingleton TheAccountManager;
 	//public static CatalogSingleton CatalogSingleton;
+	private static MediaCatalogController mediaCatalogController = new MediaCatalogController();
 
 	
 	public static Account getAccount() {
@@ -53,6 +57,7 @@ public class UserInterface {
 	public void start() {
 		
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
+		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readSongs(), MediaFileReader.readPlaylists());
 		//Read any other files here
 		
 		Scanner scanner = new Scanner(System.in);

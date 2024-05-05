@@ -30,13 +30,12 @@ import java.util.Scanner;
  */
 public class UIExecutionMethods {
 	//Instances here
-	static EventView eventview = new EventView();
-	static FavoritesView favoritesview = new FavoritesView();
-	static AccountView accountview = new AccountView();
-	static FindObjectController findobjectcontroller = new FindObjectController();
-	static MediaCatalogController mediaCatalogController = new MediaCatalogController();
-	
-	
+	private static EventView eventview = new EventView();
+	private static FavoritesView favoritesview = new FavoritesView();
+	private static AccountView accountview = new AccountView();
+	private static FindObjectController findobjectcontroller = new FindObjectController();
+	private static MediaCatalogController mediaCatalogController = new MediaCatalogController();
+
 	//Define methods to be called based on user input--------------------------------
 		public static void executeAddEvent() {
 			Event myEvent = eventview.createEvent();
@@ -47,6 +46,7 @@ public class UIExecutionMethods {
 			Account account = AccountView.viewCreateAccount();
 			return account;
 		}
+
 		  
 		public static void executeDeleteEvent() {
 			System.out.println("\nEnter information so we can find the event to delete\n ");
@@ -62,15 +62,11 @@ public class UIExecutionMethods {
 			favoritesview.getFavInfo(CatalogSingleton.getInstance().getMediaProductCollection()); //!!!!ADD REAL CATALOG HERE
 		} 
 	
-
  
 		// New method to test catalog functionality
     	public static void executeTestCatalogFunctionality() {
         	System.out.println("Starting catalog functionality tests...");
-
-        	// Load media into the catalog
-        	System.out.println("Loading media from files...");
-        	mediaCatalogController.loadMediaFromFiles();
+        	
 
         	// Display all media in the catalog
         	System.out.println("Displaying all media:");
@@ -138,15 +134,15 @@ public class UIExecutionMethods {
 
 		public static void executeSetupPreference() {
 			UserInterface.setUser(new Account(0, "test", "test")); //!!!!!!!! Store global user field in this class
-			if (UserInterface.getUser() == null) {
+			if (UserInterface.getAccount() == null) {
 				System.err.println("Must 'login' first before setting preference!");
 			}
 			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
-			setupPreferenceController.newPreference(UserInterface.getUser());
+			setupPreferenceController.newPreference(UserInterface.getAccount());
 		}
 		
 		public static void executeRecommendPlaylist() {			
-			if (UserInterface.getUser() == null || CatalogSingleton.getInstance() == null) {
+			if (UserInterface.getAccount() == null || CatalogSingleton.getInstance() == null) {
 				System.err.println("'login' first or check CatalogSingleton instance is not null!");
 			}
 			RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
