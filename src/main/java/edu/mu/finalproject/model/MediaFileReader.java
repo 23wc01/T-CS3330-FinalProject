@@ -10,6 +10,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import edu.mu.finalproject.controller.MediaCatalogController;
 import edu.mu.finalproject.controller.SearchController;
 
 public class MediaFileReader {
@@ -34,6 +35,7 @@ public class MediaFileReader {
                         Preference.valueOf(songObj.getString("preference"))
                 );
                 songs.add(song);
+                MediaCatalogController.addMedia(song);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -42,7 +44,7 @@ public class MediaFileReader {
     }
 
     public static List<Playlist> readPlaylists() {
-        List<Playlist> playlists = new ArrayList<>();
+    	List<Playlist> playlists = new ArrayList<>();
         try {
             String content = new String(Files.readAllBytes(Paths.get(PLAYLISTS_JSON_PATH)));
             JSONArray playlistsArray = new JSONArray(content);
@@ -62,7 +64,7 @@ public class MediaFileReader {
                         playlistObj.getString("imgDescription"),
                         new Date(),
                         playlistObj.getBoolean("isFavorited"),
-                        (ArrayList)songs
+                        songs
                 );
                 playlists.add(playlist);
             }

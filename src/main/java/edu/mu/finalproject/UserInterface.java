@@ -24,7 +24,7 @@ public class UserInterface {
 	//Fields and instances
 	public static EventSingleton TheEventManager;
 	public static CatalogSingleton TheCatalogSingleton;
-	private Account account;
+	private static Account account;
 	public static AccountSingleton TheAccountManager;
 	//public static CatalogSingleton CatalogSingleton;
 	private static MediaCatalogController mediaCatalogController = new MediaCatalogController();
@@ -34,8 +34,8 @@ public class UserInterface {
 		return account;
 	}
 
-	public static void setUser(Account user) {
-		UserInterface.account = user;
+	public static void setAccount(Account account) {
+		UserInterface.account = account;
 	}
 
 
@@ -57,7 +57,7 @@ public class UserInterface {
 	public void start() {
 		
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
-		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readSongs(), MediaFileReader.readPlaylists());
+		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readPlaylists());
 		//Read any other files here
 		
 		Scanner scanner = new Scanner(System.in);
@@ -67,15 +67,15 @@ public class UserInterface {
 			System.out.println("Type 'login' or 'create_account' to get started.");	
 			userInput = scanner.nextLine().trim();
 			if (userInput.equalsIgnoreCase("login")) {
-				this.account = UIExecutionMethods.executeLogin();
+				setAccount(UIExecutionMethods.executeLogin());
 			}
 			else if (userInput.equalsIgnoreCase("create_account")) {
-				this.account = UIExecutionMethods.executeCreateAccount();
+				setAccount(UIExecutionMethods.executeCreateAccount());
 			}
 			else {
 				System.out.println("Invalid input.");
 			}
-		} while (this.account == null);
+		} while (UserInterface.getAccount() == null);
 		
 		run();
 	}
