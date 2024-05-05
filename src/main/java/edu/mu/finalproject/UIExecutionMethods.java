@@ -147,7 +147,7 @@ public class UIExecutionMethods {
 		}
 
 		public static void executeSetupPreference() {
-			UserInterface.setUser(new Account(0, "test", "test")); //!!!!!!!! Store global user field in this class
+			UserInterface.setAccount(new Account(0, "test", "test")); //!!!!!!!! Store global user field in this class
 			if (UserInterface.getAccount() == null) {
 				System.err.println("Must 'login' first before setting preference!");
 			}
