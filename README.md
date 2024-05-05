@@ -92,7 +92,7 @@ Fetches quiz questions from a json file, displays it to user & prompts for user�
 
 Gets the Preference field stored in passed-in Account argument. If no preference for account, call setupPreference(), else filter CatalogSingleton's ArrayList<MediaProduct> for songs that match Account’s preference. Create a Playlist & add the filtered songs into playlist. Return created Playlist.
 
-### Download Recommendation Playlist
+### Download Recommended Playlist
 
 Gets & downloads account’s recommended playlist and format’s the playlist’s fields into a html file (html formatting read from a html template). Songs in the playlist are displayed via beautiful html flipcards that can be flipped around to reveal a youtube link button that’ll query for the song’s name on youtube’s search bar. The photos in html file will use song’s imgDescription to query & fetch for background images on unsplash.com. Returns false if download fails/if Account doesn’t have a preference
 
