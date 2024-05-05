@@ -2,13 +2,13 @@
 package edu.mu.finalproject.view;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import edu.mu.finalproject.model.MediaProduct;
 
 public class SearchView {
 	private final static int  MAX_SEARCH_CHARS = 50;
+	
 	/**
 	 * Prompts user to enter a name (max 50 chars) to search by. Returns user inputted search as @queryString
 	 * @return queryString, will be null if input mismatch detected

@@ -11,8 +11,8 @@ public class ManualSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 
 	/**
 	 * Prompts for user preference based & assigns preference based on user's 1 choice. Returns the preference matching user’s answer
-	 * @param view
-	 * @return 
+	 * @param view, will use view to display the question(s) & answers
+	 * @return Preference according to user's choice
 	 */
 	@Override
 	public Preference setupPreference(SetupPreferenceView view) {
@@ -33,6 +33,7 @@ public class ManualSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		}
 		return null;
 	}
+// Getters & Setters
 	private Boolean setView(SetupPreferenceView view) {
 		if(view == null) {
 			return false;

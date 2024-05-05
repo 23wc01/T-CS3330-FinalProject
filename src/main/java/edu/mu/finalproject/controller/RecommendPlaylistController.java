@@ -13,15 +13,18 @@ public class RecommendPlaylistController {
 	private RecommendPlaylistView recommendedView;
 	private Playlist recommendedPlaylist;
 
+	/**
+	 * Constructor automatically intializes the view
+	 */
 	public RecommendPlaylistController() {
 		this.recommendedView = new RecommendPlaylistView();
 	}
 	
  	/**
 	 * Create a playlist storing only songs in @param catalog that match @param preference
-	 * @param catalog
-	 * @param preference
-	 * @return
+	 * @param catalog, use CatalogSingleton.getInstance().getMediaProductCollection()
+	 * @param preference, account's preference. UserInterface.getAccount().getUserPreference()
+	 * @return playlist containing songs from @param catalog
 	 */
 	public Playlist recommendPlaylist(Preference preference, ArrayList<MediaProduct> CatalogSingletonArray) {
 		if (initializeRecommendedPlaylist(preference) && CatalogSingletonArray != null) {
@@ -47,8 +50,8 @@ public class RecommendPlaylistController {
 // HELPER METHOD(S)
 	
 	/**
-	 * Initialize playlist to 
-	 * @param preference
+	 * Initialize playlist. Name & imgDescription in playlist will be the preference in correctly capitalized string type
+	 * @param preference, preference of account
 	 * @return false if preference = null, else true
 	 */
 	public Boolean initializeRecommendedPlaylist(Preference preference) {

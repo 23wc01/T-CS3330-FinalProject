@@ -103,7 +103,9 @@ public class SetupPreferenceView {
 	}
 	
 	/**
-	 * Displays error message if error occurs in quiz setup 
+	 * Displays red error message if error occurs in quiz setup 
+	 * @param errorMessage
+	 * @return false if @param errorMessage is null, else true
 	 */
 	public Boolean displayQuizError(String errorMessage) {
 		if (errorMessage == null) {
@@ -116,7 +118,7 @@ public class SetupPreferenceView {
 	/**
 	 * Displays preference with * divider line below it
 	 * @param preference
-	 * @return
+	 * @return false if preference = null, else true
 	 */
 	public Boolean displayPreference(String preference) {
 		if(preference == null) {

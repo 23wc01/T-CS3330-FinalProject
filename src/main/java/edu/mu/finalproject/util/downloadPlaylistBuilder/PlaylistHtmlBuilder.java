@@ -5,6 +5,11 @@ import edu.mu.finalproject.model.Playlist;
 public class PlaylistHtmlBuilder extends HtmlBuilder {
 	private Playlist playlist;
 	
+	/**
+	 * Initializes html template file path. Will search through html template for what's added to replaceHtml
+	 * Sets the default value that'll replaceHtml if anything goes wrong with fetching fields from model 
+	 * @param model
+	 */
 	public PlaylistHtmlBuilder(Object model) {
 		super();
 		Boolean success = setModel(model);
@@ -24,12 +29,20 @@ public class PlaylistHtmlBuilder extends HtmlBuilder {
 	}
 
 	@Override
+	/**
+	 * Sets playlist using @param model
+	 * @return true
+	 */
 	protected Boolean setModel(Object model) {
 		this.playlist = (Playlist) model;
 		return true;
 	}
 
 	@Override
+	/**
+	 * Gets the dynamic field that'll replace replaceHtml. If field = null will do nothing (thus, falling back on default values set in constructor)
+	 * @return true
+	 */
 	protected Boolean getDynamicFields() {
 		if (playlist.getName() != null && playlist.getName() != "") {
 			this.getModelFields().set(0, playlist.getName());

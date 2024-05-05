@@ -13,6 +13,9 @@ public class SetupPreferenceController {
 
 	private Preference userPreference;
 
+	/**
+	 * Constructor auto-initializes setupPreferenceView
+	 */
 	public SetupPreferenceController() {
 		this.setupPreferenceView = new SetupPreferenceView();	
 	}
