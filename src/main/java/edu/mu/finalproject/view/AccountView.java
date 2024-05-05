@@ -83,7 +83,7 @@ public class AccountView {
         String usernameMessage = "Enter new username: ";
         String username = getStringInput(usernameMessage);
         
-        int usernameChanged = controller.changeUsername(account.getUsername(), username);
+        int usernameChanged = controller.changeUsername(username, account.getUsername());
         
         String successMessage = "Good news " + account.getUsername() + "! Your username has been changed.";
 		String failureMessage = "Could not update username. Please try again";
@@ -98,7 +98,7 @@ public class AccountView {
 		
 		int passwordChanged = controller.changePassword(account.getUsername(), account.getPassword(), password);
 		
-		String successMessage = "Good news " + account.getPassword() + "! Your password has been changed.";
+		String successMessage = "Good news " + account.getUsername() + "! Your password has been changed.";
 		String failureMessage = "Could not change password. Please try again.";
 		
         return displayResult(passwordChanged, successMessage, failureMessage, "");

@@ -269,10 +269,9 @@ public class AccountController {
 	 * @return 0 if the password is successfully changed, 1 if it is not.
 	 */
 	public int changePassword(String username, String oldPassword, String newPassword) {
-		String hashedOldPassword = hashPassword(oldPassword);
 		String hashedNewPassword = hashPassword(newPassword);
 		for (Account account : accounts) {
-			if (account.getUsername().equals(username) && account.getPassword().equals(hashedOldPassword)) {
+			if (account.getUsername().equals(username) && account.getPassword().equals(oldPassword)) {
 				account.setPassword(hashedNewPassword);
 				return saveChanges();
 			}

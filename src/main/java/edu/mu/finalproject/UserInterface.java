@@ -114,6 +114,12 @@ public class UserInterface {
             case ADD_EVENT:
                 UIExecutionMethods.executeAddEvent();
                 break;
+            case CHANGE_PASSWORD:
+            	UIExecutionMethods.executeChangePassword(UserInterface.getAccount());
+            	break;
+            case CHANGE_USERNAME:
+            	UIExecutionMethods.executeChangeUsername(UserInterface.getAccount());;
+            	break;
             case DELETE_ACCOUNT:
             	UIExecutionMethods.executeDeleteAccount(UserInterface.getAccount());
             	start();

@@ -42,6 +42,14 @@ public class UIExecutionMethods {
 		    EventView.viewAddEvent(myEvent);
 		}
 		
+		public static void executeChangePassword(Account account) {
+			AccountView.viewChangePassword(account);
+		}
+		
+		public static void executeChangeUsername(Account account) {
+			AccountView.viewChangeUsername(account);
+		}
+		
 		public static Account executeCreateAccount() {
 			Account account = AccountView.viewCreateAccount();
 			return account;
