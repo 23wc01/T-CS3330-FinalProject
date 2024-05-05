@@ -47,6 +47,9 @@ public class UIExecutionMethods {
 			return account;
 		}
 
+		public static void executeDeleteAccount(Account account) {
+			AccountView.viewDeleteAccount(account);
+		}
 		  
 		public static void executeDeleteEvent() {
 			System.out.println("\nEnter information so we can find the event to delete\n ");
