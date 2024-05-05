@@ -5,13 +5,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.mu.finalproject.model.Account;
-import edu.mu.finalproject.model.AccountSingleton;
-import edu.mu.finalproject.model.AccountFileReader;
+import edu.mu.finalproject.model.*;
 
 public class AccountController {
 	
 	static AccountSingleton theAccountSingleton = AccountSingleton.getInstance();
+	static CatalogSingleton theCatalogSingleton = CatalogSingleton.getInstance();
 	private List<Account> accounts;				// List of all application accounts
 	private int accountCounter;					// Increments with creation of each new account
 	
@@ -164,11 +163,17 @@ public class AccountController {
 	 */
 	public int saveSong(String song, String username) {
 		// Find the user account with the specified username.
-		if (accounts != null) {
+		if (accounts != null && mediaExists(Song.class, song)) {
 			for (Account account : accounts) {
 				if (account.getUsername().equals(username)) {
 					// Add the song to the user's list of saved songs
 					List<String> update = account.getSavedSongs();
+					// Make sure user has not added the song already
+					for (String songAlreadySaved : update) {
+						if (songAlreadySaved.equals(song)) {
+							return -1;
+						}
+					}
 					update.add(song);
 					account.setSavedSongs(update);
 					return saveChanges();
@@ -188,11 +193,16 @@ public class AccountController {
 	 */
 	public int savePlaylist(String playlist, String username) {
 		// Find the user account with the specified username.
-		if (accounts != null) {
+		if (accounts != null && mediaExists(Playlist.class, playlist)) {
 			for (Account account : accounts) {
 				if (account.getUsername().equals(username)) {
 					// Add the playlist to the user's list of saved playlists.
 					List<String> update = account.getSavedPlaylists();
+					for (String playlistAlreadySaved : update) {
+						if (playlistAlreadySaved.equals(playlist)) {
+							return -1;
+						}
+					}
 					update.add(playlist);
 					account.setSavedPlaylists(update);
 					return saveChanges();
@@ -200,6 +210,23 @@ public class AccountController {
 			}	
 		}
 		return 1;
+	}
+	
+	/**
+	 * Checks if there is a media item with the given name and class in the 
+	 * catalog.
+	 * 
+	 * @param type The class of the product to search for. Will be 'Song' or 'Playlist'.
+	 * @param name The name of the product to search for.
+	 * @return true if the product exists in the catalog, false if not. 
+	 */
+	public boolean mediaExists(Class<? extends MediaProduct> type, String name) {
+		for (MediaProduct mediaProduct : theCatalogSingleton.getMediaProductCollection()) {
+			if (mediaProduct.getClass().equals(type) && mediaProduct.getName().equals(name)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**

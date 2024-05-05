@@ -139,6 +139,12 @@ public class UserInterface {
             case LOGOUT:
             	start();
             	break;
+            case SAVE_PLAYLIST:
+            	UIExecutionMethods.executeSavePlaylist(UserInterface.getAccount());
+            	break;
+            case SAVE_SONG:
+            	UIExecutionMethods.executeSaveSong(UserInterface.getAccount());
+            	break;
             case SEARCH:
  				UIExecutionMethods.executeSearchCatalog(); 
  				break; 

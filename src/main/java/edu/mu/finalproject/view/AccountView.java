@@ -104,22 +104,30 @@ public class AccountView {
         return displayResult(passwordChanged, successMessage, failureMessage, "");
 	}
 	
-	public static int viewSaveSong(Account account, String song) {
+	public static int viewSaveSong(Account account) {
+		String songMessage = "Enter song name: ";
+		String song = getStringInput(songMessage);
+		
 		int songSaved = controller.saveSong(song, account.getUsername());
 		
 		String successMessage = "Song successfully saved to " + account.getUsername() + "'s account.";
 		String failureMessage = "Error saving song. Please try again.";
+		String specialMessage = "Error saving song. You already have this song saved!";
 		
-		return displayResult(songSaved, successMessage, failureMessage, "");
+		return displayResult(songSaved, successMessage, failureMessage, specialMessage);
 	}
 	
-	public static int viewSavePlaylist(Account account, String playlist) {
+	public static int viewSavePlaylist(Account account) {
+		String playlistMessage = "Enter playlist name: ";
+		String playlist = getStringInput(playlistMessage);
+		
 		int playlistSaved = controller.savePlaylist(playlist, account.getUsername());
 		
 		String successMessage = "Playlist successfully saved to " + account.getUsername() + "'s account.";
 		String failureMessage = "Error saving playlist. Please try again.";
+		String specialMessage = "Error saving playlist. You already have this playlist saved!";
 		
-		return displayResult(playlistSaved, successMessage, failureMessage, "");
+		return displayResult(playlistSaved, successMessage, failureMessage, specialMessage);
 	}
 	
 	private static int displayResult(int errorCode, String successMessage, String failureMessage, String specialMessage) {

@@ -135,6 +135,14 @@ public class UIExecutionMethods {
 			return account;
 		}
 		
+		public static void executeSavePlaylist(Account account) {
+			AccountView.viewSavePlaylist(account);
+		}
+		
+		public static void executeSaveSong(Account account) {
+			AccountView.viewSaveSong(account);
+		}
+		
 		public static void executeSearchCatalog() {
 			SearchController searchController = new SearchController();
 			searchController.search();
