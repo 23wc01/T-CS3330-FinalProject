@@ -50,14 +50,13 @@ public class EventFileReaderTest {
         ArrayList<Event> actualEvents = EventFileReader.readEvents("files/eventstest.json");
 
         // Assert
-        assertEquals(expectedEvents.size(), actualEvents.size(), "Size expected to be 2"); //subtract 3 if events.json is cleared
+        assertEquals(expectedEvents.size(), actualEvents.size(), "Size expected to be 2"); 
         assertTrue(actualEvents.containsAll(expectedEvents));
     }
     
 
     @Test
     public void test2AppendEvent() {
-    	System.out.println("in test append");
     	
         // Arrange
         Event myEvent = new Event(MonthDay.of(8, 8), Year.of(2024), "TestIVE");
