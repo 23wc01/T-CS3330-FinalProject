@@ -12,7 +12,7 @@ public class AccountController {
 	static AccountSingleton theAccountSingleton = AccountSingleton.getInstance();
 	static CatalogSingleton theCatalogSingleton = CatalogSingleton.getInstance();
 	public List<Account> accounts;				// List of all application accounts
-	private int accountCounter;					// Increments with creation of each new account
+	public int accountCounter;					// Increments with creation of each new account
 	
 	
 	/**
