@@ -141,7 +141,7 @@ public class AccountView {
 	        
 	    // Keep prompting the user until non-empty input is entered
 	    do {
-            System.out.print(message);
+            System.out.println(message);
             string = scanner.nextLine().trim();
 
             if (string.isEmpty()) {
@@ -149,8 +149,7 @@ public class AccountView {
                 continue;
             }
 	    }
-	    while (string.isEmpty() == true);
-	    scanner.close();
+	    while (string.isEmpty());
 	    return string;
 	}
 	

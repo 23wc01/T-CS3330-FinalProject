@@ -11,13 +11,14 @@ import org.json.JSONObject;
  * the date of the event and artist's name
  * 
  * It works closely with EventView.
+ * @author etwil
  */
 public class Event {
 	
 	
-	protected MonthDay eventMonthDay;
-	protected Year eventYear;
-	protected String artistName;
+	private MonthDay eventMonthDay;
+	private Year eventYear;
+	private String artistName;
 	
 	
 	//Parameterized Constructors
@@ -28,7 +29,6 @@ public class Event {
 	}
 	
 	
-	//No use for copy constructor
 	
 	
 	

@@ -2,6 +2,7 @@ package edu.mu.finalproject.controller;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.mu.finalproject.model.Account;
@@ -37,9 +38,11 @@ public class AccountController {
 		// Hash the password
 		String hashedPassword = hashPassword(password);
 		// Find account asscociated with username and password
-		for (Account account : this.accounts) {
-			if (account.getUsername().equals(username) && account.getPassword().equals(hashedPassword)) {
-				return account;
+		if (accounts != null) {
+			for (Account account : this.accounts) {
+				if (account.getUsername().equals(username) && account.getPassword().equals(hashedPassword)) {
+					return account;
+				}
 			}
 		}
 		return null; 
@@ -61,6 +64,10 @@ public class AccountController {
 		// Create an account object and add it to the accounts list
 		Account account = new Account(this.accountCounter, username, password);
 		this.accountCounter++; 		
+		if (this.accounts == null) {
+			List<Account> accountInit = new ArrayList<Account>();
+			this.accounts = accountInit;
+		}
 		this.accounts.add(account);
 		saveChanges();
 		return account;
@@ -73,10 +80,12 @@ public class AccountController {
 	 * @return 0 if the account is successfully deleted, or 1 if the account cannot be deleted.
 	 */
 	public int deleteAccount(String username) {
-		for (int i = 0; i < this.accounts.size(); i++) {
-			if (this.accounts.get(i).getUsername().equals(username)) {
-				this.accounts.remove(i);
-				return saveChanges();
+		if (accounts != null) {
+			for (int i = 0; i < accounts.size(); i++) {
+				if (this.accounts.get(i).getUsername().equals(username)) {
+					this.accounts.remove(i);
+					return saveChanges();
+				}
 			}
 		}
 		return 1;
@@ -91,7 +100,7 @@ public class AccountController {
 	 */
 	private int getLastAccountID() {
 		// Check if the accounts list is empty.
-		if (accounts.size() == 0) {
+		if (accounts == null) {
 			return 0;
 		}
 		// Get the index of the last account in the list and return its ID.
@@ -131,9 +140,11 @@ public class AccountController {
 	 * @return true if username is already taken, false otherwise.
 	 */
 	public boolean isUsernameTaken(String username) {
-		for (Account account: this.accounts) {
-			if (account.getUsername().equals(username)) {
-				return true;
+		if (accounts != null) {
+			for (Account account: accounts) {
+				if (account.getUsername().equals(username)) {
+					return true;
+				}
 			}
 		}
 		return false;
@@ -149,13 +160,15 @@ public class AccountController {
 	 */
 	public int saveSong(String song, String username) {
 		// Find the user account with the specified username.
-		for (Account account : accounts) {
-			if (account.getUsername().equals(username)) {
-				// Add the song to the user's list of saved songs
-				List<String> update = account.getSavedSongs();
-				update.add(song);
-				account.setSavedSongs(update);
-				return saveChanges();
+		if (accounts != null) {
+			for (Account account : accounts) {
+				if (account.getUsername().equals(username)) {
+					// Add the song to the user's list of saved songs
+					List<String> update = account.getSavedSongs();
+					update.add(song);
+					account.setSavedSongs(update);
+					return saveChanges();
+				}
 			}
 		}
 		return 1;
@@ -171,14 +184,16 @@ public class AccountController {
 	 */
 	public int savePlaylist(String playlist, String username) {
 		// Find the user account with the specified username.
-		for (Account account : accounts) {
-			if (account.getUsername().equals(username)) {
-				// Add the playlist to the user's list of saved playlists.
-				List<String> update = account.getSavedPlaylists();
-				update.add(playlist);
-				account.setSavedPlaylists(update);
-				return saveChanges();
-			}
+		if (accounts != null) {
+			for (Account account : accounts) {
+				if (account.getUsername().equals(username)) {
+					// Add the playlist to the user's list of saved playlists.
+					List<String> update = account.getSavedPlaylists();
+					update.add(playlist);
+					account.setSavedPlaylists(update);
+					return saveChanges();
+				}
+			}	
 		}
 		return 1;
 	}
