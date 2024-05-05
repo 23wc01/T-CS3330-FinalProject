@@ -61,8 +61,12 @@ public class AccountController {
 		if (isUsernameTaken(username) == true) {
 			return null;
 		}
+		
+		// Hash password before sending to account constructor
+		String hashedPassword = hashPassword(password);
+				
 		// Create an account object and add it to the accounts list
-		Account account = new Account(this.accountCounter, username, password);
+		Account account = new Account(this.accountCounter, username, hashedPassword);
 		this.accountCounter++; 		
 		if (this.accounts == null) {
 			List<Account> accountInit = new ArrayList<Account>();

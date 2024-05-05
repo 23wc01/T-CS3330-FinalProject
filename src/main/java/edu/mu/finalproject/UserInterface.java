@@ -37,6 +37,9 @@ public class UserInterface {
 	public static void setAccount(Account account) {
 		UserInterface.account = account;
 	}
+	public void setUser(Account user) {
+		UserInterface.account = user;
+	}
 
 
 	/**
