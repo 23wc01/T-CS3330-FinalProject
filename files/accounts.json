@@ -1,1 +1,1 @@
-[Account [accountID=1, username=Alyssa, savedPlaylists=[], savedSongs=[], followedUsers=[], userPreference=null]]
+[{"accountID":1,"password":"202cb962ac59075b964b07152d234b70","preference":"null","followedUserIDs":[],"savedPlaylistIDs":[],"savedSongIDs":[],"username":"Alyssa"},{"accountID":2,"password":"098f6bcd4621d373cade4e832627b4f6","preference":"null","followedUserIDs":[],"savedPlaylistIDs":[],"savedSongIDs":[],"username":"test"}]

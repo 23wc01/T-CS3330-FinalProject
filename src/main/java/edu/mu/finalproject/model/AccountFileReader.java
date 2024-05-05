@@ -45,8 +45,14 @@ public class AccountFileReader {
 				JSONArray savedPlaylistsJSON = accountJSON.getJSONArray("savedPlaylistIDs");
 				JSONArray savedSongsJSON = accountJSON.getJSONArray("savedSongIDs");
 				JSONArray followedUsersJSON = accountJSON.getJSONArray("followedUserIDs");
-				String preference = accountJSON.getString("Preference");
-				Preference userPreference = Preference.valueOf(preference);
+				String preference = accountJSON.getString("preference");
+				Preference userPreference;
+				if (preference.equals("null")) {
+					userPreference = null;
+				}
+				else {
+					userPreference = Preference.valueOf(preference);
+				}
 				
 				List<String> savedPlaylists = loadStringArray(savedPlaylistsJSON);
 				List<String> savedSongs = loadStringArray(savedSongsJSON);
@@ -85,12 +91,17 @@ public class AccountFileReader {
 			a.put("savedPlaylistIDs", saveStringArray(account.getSavedPlaylists()));
 			a.put("savedSongIDs", saveStringArray(account.getSavedSongs()));
 			a.put("followedUserIDs", saveStringArray(account.getFollowedUsers()));
-			a.put("preference", account.getUserPreference());
+			if (account.getUserPreference() == null) {
+				a.put("preference", "null");
+			}
+			else {
+				a.put("preference", account.getUserPreference().name());
+			}
 			accountsJSON.put(a);
 		}
 		
 		try {
-			Files.write(Paths.get(path), accounts.toString().getBytes());
+			Files.write(Paths.get(path), accountsJSON.toString().getBytes());
 		} catch (IOException e) {
 			return 1; // on failure
 		}
