@@ -2,6 +2,9 @@
 # Media Tracking System Final Project
 
 Group T - Alyssa Schaefer, Thomas Quan, Evie Wilbur, Wen-Hsin Chen
+This project will be a media tracking system for songs and playlists. It will have a user login system so that the user can keep track of their favorite tracks, create playlists, organize music events, determine user preferences, recommend songs based on preferences, and more!  
+
+Check out a video demonstration here: (link)
 
 ### Navigating the program:
 Once a command is received from the console, the switch statement in UserInterface will go to the execution method in UIExecution. UIExecution has execution methods which you can use to start navigating through the methods that make that feature work.
