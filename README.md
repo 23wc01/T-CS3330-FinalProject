@@ -1,12 +1,24 @@
+
 # Media Tracking System Final Project
+
 Group T - Alyssa Schaefer, Thomas Quan, Evie Wilbur, Wen-Hsin Chen
 
+## Login information
+
+> username = 'test'
+> password = 'test' 
+
+
 ## Alyssa Schaefer features
+
 Whatever you have in your individual feature document
+
 ## Thomas Quan features
+
 Whatever you have in your individual feature document
 
 ## Evie Wilbur features
+
 Mark Something As Favorite
   Description: Favorites or unfavorites a media product
   Package: edu.mu.finalproject.controller
@@ -53,10 +65,10 @@ Display Events
   public int getEventDisplayInfo()
   public int displayEventsByDate(ArrayList <Event> eventsInRange)
 
- 
 
 
 ## Wen-Hsin Chen features
+
 Whatever you have in your individual feature document
 
 # Class diagram
