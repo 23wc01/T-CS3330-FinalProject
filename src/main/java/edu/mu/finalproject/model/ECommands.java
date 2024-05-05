@@ -24,7 +24,7 @@ public enum ECommands {
 	DOWNLOAD_RECOMMENDED_PLAYLIST("download_recommended_playlist"),
 	//New commands here!
 	TEST_CATALOG("test_catalog"),
-	
+	DISPLAY_ALL("display_all"),
 	
 	EXIT("exit"),
 	MENU("menu"),
