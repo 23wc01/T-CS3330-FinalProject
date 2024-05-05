@@ -42,11 +42,22 @@ public class UIExecutionMethods {
 		    EventView.viewAddEvent(myEvent);
 		}
 		
+		public static void executeChangePassword(Account account) {
+			AccountView.viewChangePassword(account);
+		}
+		
+		public static void executeChangeUsername(Account account) {
+			AccountView.viewChangeUsername(account);
+		}
+		
 		public static Account executeCreateAccount() {
 			Account account = AccountView.viewCreateAccount();
 			return account;
 		}
 
+		public static void executeDeleteAccount(Account account) {
+			AccountView.viewDeleteAccount(account);
+		}
 		  
 		public static void executeDeleteEvent() {
 			System.out.println("\nEnter information so we can find the event to delete\n ");
@@ -119,9 +130,21 @@ public class UIExecutionMethods {
 			favoritesview.displayFavoriteResult(objectToBeFavorited);														
 		}
 		
+		public static void executeFollowUser(Account account) {
+			AccountView.viewFollowUser(account);
+		}
+		
 		public static Account executeLogin() {
 			Account account = AccountView.viewLogin();
 			return account;
+		}
+		
+		public static void executeSavePlaylist(Account account) {
+			AccountView.viewSavePlaylist(account);
+		}
+		
+		public static void executeSaveSong(Account account) {
+			AccountView.viewSaveSong(account);
 		}
 		
 		public static void executeSearchCatalog() {

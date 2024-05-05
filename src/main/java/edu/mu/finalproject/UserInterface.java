@@ -62,8 +62,11 @@ public class UserInterface {
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
 		MediaFileReader.readSongs();
 		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readPlaylists());
+		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readSongs());
+
 		//Read any other files here
 		
+		UserInterface.setAccount(null);
 		Scanner scanner = new Scanner(System.in);
 		String userInput;
 		System.out.println("Welcome to Media Tracker!");	
@@ -114,6 +117,16 @@ public class UserInterface {
             case ADD_EVENT:
                 UIExecutionMethods.executeAddEvent();
                 break;
+            case CHANGE_PASSWORD:
+            	UIExecutionMethods.executeChangePassword(UserInterface.getAccount());
+            	break;
+            case CHANGE_USERNAME:
+            	UIExecutionMethods.executeChangeUsername(UserInterface.getAccount());;
+            	break;
+            case DELETE_ACCOUNT:
+            	UIExecutionMethods.executeDeleteAccount(UserInterface.getAccount());
+            	start();
+            	break;
             case DELETE_EVENT:
             	UIExecutionMethods.executeDeleteEvent();
             	break;
@@ -126,7 +139,18 @@ public class UserInterface {
             case FAVORITE:
             	UIExecutionMethods.executeFavorite();
             	break;
-// WAITING FOR ACCOUNT
+            case FOLLOW_USER:
+            	UIExecutionMethods.executeFollowUser(UserInterface.getAccount());
+            	break;
+            case LOGOUT:
+            	start();
+            	break;
+            case SAVE_PLAYLIST:
+            	UIExecutionMethods.executeSavePlaylist(UserInterface.getAccount());
+            	break;
+            case SAVE_SONG:
+            	UIExecutionMethods.executeSaveSong(UserInterface.getAccount());
+            	break;
             case SEARCH:
  				UIExecutionMethods.executeSearchCatalog(); 
  				break; 

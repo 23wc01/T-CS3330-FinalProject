@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"accountID":1,"password":"202cb962ac59075b964b07152d234b70","preference":"null","followedUserIDs":[],"savedPlaylistIDs":[],"savedSongIDs":[],"username":"Alyssa"},{"accountID":2,"password":"098f6bcd4621d373cade4e832627b4f6","preference":"null","followedUserIDs":[],"savedPlaylistIDs":[],"savedSongIDs":[],"username":"test"},{"accountID":3,"password":"0eb380daee5be25702283ee4514913dd","preference":"null","followedUserIDs":[],"savedPlaylistIDs":[],"savedSongIDs":[],"username":"wen-hsin"}]
+=======
+[{"accountID":2,"password":"098f6bcd4621d373cade4e832627b4f6","preference":"null","followedUserIDs":["test","Alyssa"],"savedPlaylistIDs":["Foodie","Upbeat Hits"],"savedSongIDs":["Upbeat Hits","Upbeat Hits"],"username":"test"},{"accountID":3,"password":"82a244635199b588b8c913e33299cf51","preference":"null","followedUserIDs":[],"savedPlaylistIDs":[],"savedSongIDs":[],"username":"Alyssa"}]
+>>>>>>> ac53c3a21b095cbdff7cf16ef9ccaeb79026a8bd

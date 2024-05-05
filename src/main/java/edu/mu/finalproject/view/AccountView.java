@@ -61,7 +61,7 @@ public class AccountView {
 		String successMessage = "Account successfully deleted.";
 		String failureMessage = "Account cannot be deleted.";
 		
-		return displayResult(isDeleted, successMessage, failureMessage, "");
+		return displayResult(isDeleted, successMessage, failureMessage, "", "");
 	}
 	
 	public static int viewFollowUser(Account account) {
@@ -74,8 +74,9 @@ public class AccountView {
 		String successMessage = "Successfully followed " + userToFollow + ".";
 		String failureMessage = "Cannot follow user " + userToFollow + ". Please try again.";
 		String specialMessage = "You already follow that user!";
+		String specialMessage2 = "You cannot follow yourself!";
 		
-		return displayResult(isFollowed, successMessage, failureMessage, specialMessage);
+		return displayResult(isFollowed, successMessage, failureMessage, specialMessage, specialMessage2);
 	}
 	
 	public static int viewChangeUsername(Account account) {
@@ -83,13 +84,13 @@ public class AccountView {
         String usernameMessage = "Enter new username: ";
         String username = getStringInput(usernameMessage);
         
-        int usernameChanged = controller.changeUsername(account.getUsername(), username);
+        int usernameChanged = controller.changeUsername(username, account.getUsername());
         
         String successMessage = "Good news " + account.getUsername() + "! Your username has been changed.";
 		String failureMessage = "Could not update username. Please try again";
 		String specialMessage = "Could not change username. Desired username already taken.";
 		
-        return displayResult(usernameChanged, successMessage, failureMessage, specialMessage);
+        return displayResult(usernameChanged, successMessage, failureMessage, specialMessage, "");
 	}
 	
 	public static int viewChangePassword(Account account) {
@@ -98,36 +99,47 @@ public class AccountView {
 		
 		int passwordChanged = controller.changePassword(account.getUsername(), account.getPassword(), password);
 		
-		String successMessage = "Good news " + account.getPassword() + "! Your password has been changed.";
+		String successMessage = "Good news " + account.getUsername() + "! Your password has been changed.";
 		String failureMessage = "Could not change password. Please try again.";
 		
-        return displayResult(passwordChanged, successMessage, failureMessage, "");
+        return displayResult(passwordChanged, successMessage, failureMessage, "", "");
 	}
 	
-	public static int viewSaveSong(Account account, String song) {
+	public static int viewSaveSong(Account account) {
+		String songMessage = "Enter song name: ";
+		String song = getStringInput(songMessage);
+		
 		int songSaved = controller.saveSong(song, account.getUsername());
 		
 		String successMessage = "Song successfully saved to " + account.getUsername() + "'s account.";
 		String failureMessage = "Error saving song. Please try again.";
+		String specialMessage = "Error saving song. You already have this song saved!";
 		
-		return displayResult(songSaved, successMessage, failureMessage, "");
+		return displayResult(songSaved, successMessage, failureMessage, specialMessage, "");
 	}
 	
-	public static int viewSavePlaylist(Account account, String playlist) {
+	public static int viewSavePlaylist(Account account) {
+		String playlistMessage = "Enter playlist name: ";
+		String playlist = getStringInput(playlistMessage);
+		
 		int playlistSaved = controller.savePlaylist(playlist, account.getUsername());
 		
 		String successMessage = "Playlist successfully saved to " + account.getUsername() + "'s account.";
 		String failureMessage = "Error saving playlist. Please try again.";
+		String specialMessage = "Error saving playlist. You already have this playlist saved!";
 		
-		return displayResult(playlistSaved, successMessage, failureMessage, "");
+		return displayResult(playlistSaved, successMessage, failureMessage, specialMessage, "");
 	}
 	
-	private static int displayResult(int errorCode, String successMessage, String failureMessage, String specialMessage) {
+	private static int displayResult(int errorCode, String successMessage, String failureMessage, String specialMessage, String specialMessage2) {
 		if (errorCode == -1) {
 			System.out.println(specialMessage);
 		}
 		else if (errorCode == 1) {
 			System.out.println(failureMessage);
+		}
+		else if (errorCode == -2) {
+			System.out.println(specialMessage2);
 		}
 		else {
 			System.out.println(successMessage);

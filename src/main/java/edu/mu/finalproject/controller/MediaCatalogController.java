@@ -54,13 +54,13 @@ public class MediaCatalogController {
     	return true;
     }
 
-    public Boolean loadMediaFromFiles(List<Playlist> playlists) {
-    	if (playlists == null) {
+    public Boolean loadMediaFromFiles(List<? extends MediaProduct> products) {
+    	if (products == null) {
     		System.err.println("Argument(s) passed to loadMediaFromFiles() are null");
     	}
 
-        for (Playlist playlist : playlists) {
-        	addMedia(playlist);
+        for (MediaProduct product : products) {
+        	addMedia(product);
         }
         return true;
     }
