@@ -6,6 +6,7 @@ Group T - Alyssa Schaefer, Thomas Quan, Evie Wilbur, Wen-Hsin Chen
 ## Login information
 
 > username = 'test'
+
 > password = 'test' 
 
 
