@@ -18,7 +18,6 @@ public class MediaCatalogController {
     public MediaCatalogController() {
         catalogSingleton = CatalogSingleton.getInstance();
         catalogSingleton_Collection = catalogSingleton.getMediaProductCollection();
-        loadMediaFromFiles(MediaFileReader.readSongs(), MediaFileReader.readPlaylists());
     }
 
     public static Boolean addMedia(MediaProduct mediaProduct) {

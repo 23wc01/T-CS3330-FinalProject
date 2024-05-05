@@ -1,12 +1,16 @@
 package edu.mu.finalproject;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import edu.mu.finalproject.controller.MediaCatalogController;
 import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.model.AccountSingleton;
 import edu.mu.finalproject.model.ECommands;
 import edu.mu.finalproject.model.EventFileReader;
 import edu.mu.finalproject.model.EventSingleton;
+import edu.mu.finalproject.model.MediaFileReader;
+import edu.mu.finalproject.model.MediaProduct;
 import edu.mu.finalproject.model.CatalogSingleton;
 
 /**
@@ -21,6 +25,7 @@ public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
 	public static CatalogSingleton TheCatalogSingleton;
+	private static MediaCatalogController mediaCatalogController = new MediaCatalogController();
 	private static Account account;
 
 
@@ -55,7 +60,8 @@ public class UserInterface {
 	 */
 	public void start() {
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
-		//Read any other files here
+		ArrayList<MediaProduct>catalogSingleton_Collection = TheCatalogSingleton.getMediaProductCollection();
+		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readSongs(), MediaFileReader.readPlaylists());
 		run();
 	}
 	

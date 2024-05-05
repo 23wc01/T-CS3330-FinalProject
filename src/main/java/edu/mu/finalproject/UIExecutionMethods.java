@@ -32,7 +32,6 @@ public class UIExecutionMethods {
 	static EventView eventview = new EventView();
 	static FavoritesView favoritesview = new FavoritesView();
 	static FindObjectController findobjectcontroller = new FindObjectController();
-	static MediaCatalogController mediaCatalogController = new MediaCatalogController();
 	
 	//Define methods to be called based on user input--------------------------------
 		public static void executeAddEvent() {
