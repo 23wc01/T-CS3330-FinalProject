@@ -84,7 +84,7 @@ public class DownloadPlaylistController {
 	 */
 	private String combineHtmlStrs() {
 		String combinedStr = "";
-		if(htmlStrs.contains(null)) {
+		if(htmlStrs.contains("null")) {
 			return null;
 		}
 		for (String htmlStr : htmlStrs) {
@@ -102,7 +102,7 @@ public class DownloadPlaylistController {
 	private Boolean writeHtmlToFile(String filename, String html) {
 		filename = filename.replaceAll(" ", "_");
 		htmlOutputFilepath += filename + ".html";
-
+		html = html.replaceAll("null", "");
 		try {
 			FileWriter writer = new FileWriter(htmlOutputFilepath);
 			writer.write(html);

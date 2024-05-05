@@ -127,7 +127,7 @@ public abstract class HtmlBuilder {
 	}
 
 	public Boolean setHtmlTemplate(String htmlTemplate) {
-		if (htmlTemplate == null) {
+		if (htmlTemplate == null || htmlTemplate == "") {
 			return false;
 		}
 		this.htmlTemplate = htmlTemplate;
