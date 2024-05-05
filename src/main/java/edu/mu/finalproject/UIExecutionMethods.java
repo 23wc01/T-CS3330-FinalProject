@@ -60,9 +60,7 @@ public class UIExecutionMethods {
     	public static void executeTestCatalogFunctionality() {
         	System.out.println("Starting catalog functionality tests...");
 
-        	// Load media into the catalog
-        	System.out.println("Loading media from files...");
-        	mediaCatalogController.loadMediaFromFiles();
+        	
 
         	// Display all media in the catalog
         	System.out.println("Displaying all media:");
@@ -125,15 +123,15 @@ public class UIExecutionMethods {
 
 		public static void executeSetupPreference() {
 			UserInterface.setUser(new Account(0, "test", "test")); //!!!!!!!! Store global user field in this class
-			if (UserInterface.getUser() == null) {
+			if (UserInterface.getAccount() == null) {
 				System.err.println("Must 'login' first before setting preference!");
 			}
 			SetupPreferenceController setupPreferenceController = new SetupPreferenceController();
-			setupPreferenceController.newPreference(UserInterface.getUser());
+			setupPreferenceController.newPreference(UserInterface.getAccount());
 		}
 		
 		public static void executeRecommendPlaylist() {			
-			if (UserInterface.getUser() == null || CatalogSingleton.getInstance() == null) {
+			if (UserInterface.getAccount() == null || CatalogSingleton.getInstance() == null) {
 				System.err.println("'login' first or check CatalogSingleton instance is not null!");
 			}
 			RecommendPlaylistController recommendPlaylistController = new RecommendPlaylistController();
