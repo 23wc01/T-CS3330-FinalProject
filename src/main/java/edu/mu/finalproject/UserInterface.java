@@ -62,24 +62,6 @@ public class UserInterface {
 
 		//Read any other files here
 		
-		UserInterface.setAccount(null);
-		Scanner scanner = new Scanner(System.in);
-		String userInput;
-		System.out.println("Welcome to Media Tracker!");	
-		do {
-			System.out.println("Type 'login' or 'create_account' to get started.");	
-			userInput = scanner.nextLine().trim();
-			if (userInput.equalsIgnoreCase("login")) {
-				setAccount(UIExecutionMethods.executeLogin());
-			}
-			else if (userInput.equalsIgnoreCase("create_account")) {
-				setAccount(UIExecutionMethods.executeCreateAccount());
-			}
-			else {
-				System.out.println("Invalid input.");
-			}
-		} while (UserInterface.getAccount() == null);
-		
 		run();
 	}
 	
@@ -90,9 +72,26 @@ public class UserInterface {
 	 */
 	public void run() {
 		
+		UserInterface.setAccount(null);
+		Scanner scanner = new Scanner(System.in);
+		String loginChoice;
+		System.out.println("Welcome to Media Tracker!");	
+		do {
+			System.out.println("Type 'login' or 'create_account' to get started.");	
+			loginChoice = scanner.nextLine().trim();
+			if (loginChoice.equalsIgnoreCase("login")) {
+				setAccount(UIExecutionMethods.executeLogin());
+			}
+			else if (loginChoice.equalsIgnoreCase("create_account")) {
+				setAccount(UIExecutionMethods.executeCreateAccount());
+			}
+			else {
+				System.out.println("Invalid input.");
+			}
+		} while (UserInterface.getAccount() == null);
+		
 		
 		System.out.println("Welcome to Media Tracker! Type your command, or type \"menu\" to see options.");
-		Scanner scanner = new Scanner(System.in);
 	    String userInput;
 		
 	
@@ -121,7 +120,7 @@ public class UserInterface {
             	break;
             case DELETE_ACCOUNT:
             	UIExecutionMethods.executeDeleteAccount(UserInterface.getAccount());
-            	start();
+            	run();
             	break;
             case DELETE_EVENT:
             	UIExecutionMethods.executeDeleteEvent();
@@ -139,7 +138,7 @@ public class UserInterface {
             	UIExecutionMethods.executeFollowUser(UserInterface.getAccount());
             	break;
             case LOGOUT:
-            	start();
+            	run();
             	break;
             case SAVE_PLAYLIST:
             	UIExecutionMethods.executeSavePlaylist(UserInterface.getAccount());
