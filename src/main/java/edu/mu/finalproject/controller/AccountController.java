@@ -39,7 +39,7 @@ public class AccountController {
 		String hashedPassword = hashPassword(password);
 		// Find account asscociated with username and password
 		if (accounts != null) {
-			for (Account account : this.accounts) {
+			for (Account account : accounts) {
 				if (account.getUsername().equals(username) && account.getPassword().equals(hashedPassword)) {
 					return account;
 				}

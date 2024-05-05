@@ -31,6 +31,7 @@ public class AccountSingleton {
 		
 		if (instance == null) {
 			instance = new AccountSingleton();
+			accounts = AccountFileReader.loadAccounts();
 		}
 		
 		return instance;
