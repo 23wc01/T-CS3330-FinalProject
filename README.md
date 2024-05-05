@@ -3,7 +3,7 @@
 
 Group T - Alyssa Schaefer, Thomas Quan, Evie Wilbur, Wen-Hsin Chen
 
-###Navigating the program:
+### Navigating the program:
 Once a command is received from the console, the switch statement in UserInterface will go to the execution method in UIExecution. UIExecution has execution methods which you can use to start navigating through the methods that make that feature work.
 
 ## Login information
