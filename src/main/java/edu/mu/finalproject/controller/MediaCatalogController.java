@@ -59,6 +59,7 @@ public class MediaCatalogController {
     		System.err.println("Argument(s) passed to loadMediaFromFiles() are null");
     	}
 
+    	
         for (MediaProduct product : products) {
         	addMedia(product);
         }
