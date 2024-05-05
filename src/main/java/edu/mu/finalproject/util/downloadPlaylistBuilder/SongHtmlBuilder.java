@@ -22,24 +22,13 @@ public class SongHtmlBuilder extends HtmlBuilder {
 	}
 	@Override
 	protected Boolean setModel(Object model) {
-		if (model == null) {
-			System.err.println("Parameter passed into setModel() is null");
-			return false;
-		}
-		if (!(model instanceof Song)) {
-			System.err.println("Parameter passed into setModel() is not of Song class");
-			return false;
-		}
 		this.song = (Song) model;
 		return true;
 	}
 
 	@Override
 	protected Boolean getDynamicFields() {
-		if (song == null) {
-			System.err.println("Song can't be " + song);
-			return false;
-		}
+
 		if (song.getName() != null) {
 			getModelFields().set(0, song.getName());
 		}

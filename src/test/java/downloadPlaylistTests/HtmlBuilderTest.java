@@ -41,7 +41,14 @@ class HtmlBuilderTest {
 	void testSetHtmlMapModelFields() {
 		assertTrue(accountHtmlBuilder.setHtmlMapModelFields(new HashMap<String, String>()));
 		assertFalse(accountHtmlBuilder.setHtmlMapModelFields(null));
-		
+		assertFalse(accountHtmlBuilder.setReplaceHtml(null));
+		assertFalse(accountHtmlBuilder.setTemplateFileLocation(null));
+		assertFalse(accountHtmlBuilder.setTemplateFileLocation(""));
+
+		accountHtmlBuilder = new AccountHtmlBuilder(null);
+
+		accountHtmlBuilder = new AccountHtmlBuilder(new String());
+
 	}
 
 }

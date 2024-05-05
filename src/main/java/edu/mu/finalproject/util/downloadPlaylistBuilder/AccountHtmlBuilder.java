@@ -20,14 +20,6 @@ public class AccountHtmlBuilder extends HtmlBuilder {
 	}
 	@Override
 	protected Boolean setModel(Object model) {
-		if (model == null) {
-			System.err.println("Parameter passed into setModel() is null");
-			return false;
-		}
-		if (!(model instanceof Account)) {
-			System.err.println("Parameter passed into setModel() is not of Song class");
-			return false;
-		}
 		this.account = (Account) model;
 		
 		return true;
@@ -35,9 +27,6 @@ public class AccountHtmlBuilder extends HtmlBuilder {
 
 	@Override
 	protected Boolean getDynamicFields() {
-		if(account == null) {
-			return false;
-		}
 		if (account.getUsername() != null) {
 			getModelFields().set(0, account.getUsername());
 		}

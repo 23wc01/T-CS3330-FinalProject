@@ -25,24 +25,12 @@ public class PlaylistHtmlBuilder extends HtmlBuilder {
 
 	@Override
 	protected Boolean setModel(Object model) {
-		if (model == null) {
-			System.err.println("Parameter passed into setModel() is null");
-			return false;
-		}
-		if (!(model instanceof Playlist)) {
-			System.err.println("Parameter passed into setModel() is not of Playlist class");
-			return false;
-		}
 		this.playlist = (Playlist) model;
 		return true;
 	}
 
 	@Override
 	protected Boolean getDynamicFields() {
-		if (playlist == null) {
-			System.err.println("Playlist can't be " + playlist);
-			return false;
-		}
 		if (playlist.getName() != null && playlist.getName() != "") {
 			this.getModelFields().set(0, playlist.getName());
 		}
