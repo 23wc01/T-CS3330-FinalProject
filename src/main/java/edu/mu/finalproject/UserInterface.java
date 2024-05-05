@@ -23,15 +23,13 @@ import edu.mu.finalproject.model.CatalogSingleton;
 
 public class UserInterface {
 	
+	//Fields and instances
 	public static EventSingleton TheEventManager;
 	public static CatalogSingleton TheCatalogSingleton;
 	private static MediaCatalogController mediaCatalogController = new MediaCatalogController();
 	private static Account account;
-
-
 	public static AccountSingleton TheAccountManager;
-	//public static CatalogSingleton CatalogSingleton;
-	//Any other fields go here (user?)
+	
 
 	
 	public static Account getAccount() {
