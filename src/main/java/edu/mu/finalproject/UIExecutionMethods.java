@@ -78,12 +78,6 @@ public class UIExecutionMethods {
 			MediaCatalogController.displayAll();
 		}
     	public static void executeTestCatalogFunctionality() {
-        	System.out.println("Starting catalog functionality tests...");
-        	
-
-        	// Display all media in the catalog
-        	System.out.println("Displaying all media:");
-        	MediaCatalogController.displayAll();
 
         	// Add a new playlist 
         	Playlist playlist1 = new Playlist(1, "Test Playlist", "Description", new Date(), false, new ArrayList<>());
