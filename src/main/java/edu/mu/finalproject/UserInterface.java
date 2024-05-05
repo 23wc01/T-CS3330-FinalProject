@@ -21,12 +21,9 @@ public class UserInterface {
 	
 	public static EventSingleton TheEventManager;
 	public static CatalogSingleton TheCatalogSingleton;
-	private static Account account;
-
-
+	private Account account;
 	public static AccountSingleton TheAccountManager;
 	//public static CatalogSingleton CatalogSingleton;
-	//Any other fields go here (user?)
 
 	
 	public static Account getAccount() {
@@ -54,8 +51,27 @@ public class UserInterface {
 	 * @param none
 	 */
 	public void start() {
+		
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
 		//Read any other files here
+		
+		Scanner scanner = new Scanner(System.in);
+		String userInput;
+		System.out.println("Welcome to Media Tracker!");	
+		do {
+			System.out.println("Type 'login' or 'create_account' to get started.");	
+			userInput = scanner.nextLine().trim();
+			if (userInput.equalsIgnoreCase("login")) {
+				this.account = UIExecutionMethods.executeLogin();
+			}
+			else if (userInput.equalsIgnoreCase("create_account")) {
+				this.account = UIExecutionMethods.executeCreateAccount();
+			}
+			else {
+				System.out.println("Invalid input.");
+			}
+		} while (this.account == null);
+		
 		run();
 	}
 	
@@ -65,6 +81,7 @@ public class UserInterface {
 	 * @return none
 	 */
 	public void run() {
+		
 		
 		System.out.println("Welcome to Media Tracker! Type your command, or type \"menu\" to see options.");
 		Scanner scanner = new Scanner(System.in);

@@ -16,6 +16,7 @@ import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.view.EventView;
 import edu.mu.finalproject.view.FavoritesView;
 import edu.mu.finalproject.view.FindObjectView;
+import edu.mu.finalproject.view.AccountView;
 import recommendPlaylistTests.*;
 
 import java.util.ArrayList;
@@ -31,8 +32,10 @@ public class UIExecutionMethods {
 	//Instances here
 	static EventView eventview = new EventView();
 	static FavoritesView favoritesview = new FavoritesView();
+	static AccountView accountview = new AccountView();
 	static FindObjectController findobjectcontroller = new FindObjectController();
 	static MediaCatalogController mediaCatalogController = new MediaCatalogController();
+	
 	
 	//Define methods to be called based on user input--------------------------------
 		public static void executeAddEvent() {
@@ -40,6 +43,10 @@ public class UIExecutionMethods {
 		    EventView.viewAddEvent(myEvent);
 		}
 		
+		public static Account executeCreateAccount() {
+			Account account = AccountView.viewCreateAccount();
+			return account;
+		}
 		  
 		public static void executeDeleteEvent() {
 			System.out.println("\nEnter information so we can find the event to delete\n ");
@@ -117,6 +124,11 @@ public class UIExecutionMethods {
 		
 			MediaProduct objectToBeFavorited = findobjectcontroller.searchMediaCatalog(CatalogSingleton.getInstance().getMediaProductCollection(), userQuery); //!!! Add real catalog here!
 			favoritesview.displayFavoriteResult(objectToBeFavorited);														
+		}
+		
+		public static Account executeLogin() {
+			Account account = AccountView.viewLogin();
+			return account;
 		}
 		
 		public static void executeSearchCatalog() {
