@@ -37,11 +37,7 @@ public class SetupPreferenceController {
 		
 		userPreference = context.updatePreference(setupPreferenceView);
 		
-		if (userPreference == null) {
-			setupPreferenceView.displayQuizError("userPrefere = " + userPreference);
-		}
-		account.setUserPreference(userPreference);
-		return true;
+		return modifyAccountPreference(userPreference, account);
 	}
 	
 	/**
@@ -61,5 +57,13 @@ public class SetupPreferenceController {
 		default:
 			return null;
 		}
+	}
+	public Boolean modifyAccountPreference(Preference preference, Account account) {
+		if (preference == null || account == null) {
+			setupPreferenceView.displayQuizError("userPrefere = " + userPreference);
+			return false;
+		}
+		account.setUserPreference(userPreference);
+		return true;
 	}
 }

@@ -22,7 +22,7 @@ public class CatalogFileReaderTest {
         expected.add(new Song(3, "Pretty Savage", "Description", true, new java.util.Date(), "Artist", Preference.POP));
 
         // Act
-        ArrayList<Song> actual = CatalogFileReader.readCatalog(FILE_PATH);
+        ArrayList<Song> actual = MediaFileReader.readCatalog(FILE_PATH);
 
         // Assert
         assertEquals("Should match the number of songs read", expected.size(), actual.size());

@@ -84,9 +84,16 @@ class SetupPreferenceControllerTest {
 		assertFalse(setupPreferenceController.newPreference(null));
 	}
 	
-	
 	@Test
 	@Order(5)
+	void testModifyAccountPreference() {
+		assertTrue(setupPreferenceController.modifyAccountPreference(Preference.RAP, account));
+		assertFalse(setupPreferenceController.modifyAccountPreference(Preference.RAP, null));
+		assertFalse(setupPreferenceController.modifyAccountPreference(null, account));
+	}
+	
+	@Test
+	@Order(6)
 	void testNewPreferenceManual() { // Success case
 		System.err.println("\n!!!! Please test by entering 1, 1 into console!!!!!\n");
 		assertTrue(setupPreferenceController.newPreference(account));
@@ -94,7 +101,7 @@ class SetupPreferenceControllerTest {
 	}
 	
 	@Test
-	@Order(6)
+	@Order(7)
 	void testNewPreferenceFail() { // Fail case
 		System.err.println("\n!!!! Please test by entering 2, 1, 1 into console!!!!!\n");
 		assertTrue(setupPreferenceController.newPreference(account));
@@ -102,7 +109,7 @@ class SetupPreferenceControllerTest {
 	}
 	
 	@Test
-	@Order(7)
+	@Order(8)
 	void testNewPreferenceQuiz() { // Success case
 		System.err.println("\n!!!! Please test by entering 0, 1, 3, 3, 3 into console!!!!\n");
 		assertTrue(setupPreferenceController.newPreference(account));
