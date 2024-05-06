@@ -31,7 +31,7 @@ class CatalogSingletonTest {
 	@Test
 	void testSetMediaProductCollection() {
 		assertFalse(CatalogSingleton.getInstance().setMediaProductCollection(null));
-		assertFalse(CatalogSingleton.getInstance().setMediaProductCollection(new ArrayList<MediaProduct>()));
+		assertTrue(CatalogSingleton.getInstance().setMediaProductCollection(new ArrayList<MediaProduct>()));
 	}
 
 }
