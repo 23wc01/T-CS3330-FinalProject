@@ -48,7 +48,10 @@ class HtmlBuilderTest {
 		ArrayList<String> modelFields = new ArrayList<String>();
 		modelFields.add("test data");
 		assertTrue(accountHtmlBuilder.setReplaceHtml(modelFields));
+<<<<<<< HEAD
 
+=======
+>>>>>>> f2992666ce855cabb65e4d6c255d60d9218ea6e3
 		assertFalse(accountHtmlBuilder.setReplaceHtml(null));
 	}
 	@Test 

@@ -25,7 +25,7 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 	@Override
 	/**
 	 * Setup preference by scoring quiz answers
-	 *@return Preference 
+	 * @return Preference 
 	 */
 	public Preference setupPreference(SetupPreferenceView view) {
 		setView(view);
@@ -39,7 +39,6 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 			askQuestions();
 			userPreference = getTopPreference();
 			getView().displayPreference(userPreference.capitalizePreference());
-			// user.setPreference(userPreference);
 			return userPreference;
 		}
 		else {
@@ -48,6 +47,10 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		}
 	}
 	
+	/**
+	 * Reads from in questions json files in files folder
+	 * @return false if read failed, else true
+	 */
 	private Boolean readJson() {
 		Gson gson = new Gson();
 		json = new ArrayList<HashMap<String, ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>>>>();
@@ -68,7 +71,11 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 			return false;
 		}
 	}
-	
+
+	/**
+	 * Creates a "scoreboard" which is a HashMap containing all enum values in Preference mapped to initial score of 0.
+	 * @return initialized HashMap<Preference, Integer>
+	 */
 	private HashMap<Preference, Integer> createScoreboard() {
 		HashMap<Preference, Integer> scoreboard = new HashMap<Preference, Integer>();
 		for(Preference preference : Preference.values()) {
@@ -77,6 +84,12 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return scoreboard;
 	}
 	
+	/**
+	 * Creates PreferenceQuestions for each question in json. 
+	 * Specifies to view how to appropriately print the different members of PreferenceQuestion
+	 * Calls scoreQuestion() to score the user's answer
+	 * @return false if error encountered for question scoring
+	 */
 	private Boolean askQuestions() {
 		ArrayList<Boolean> successes = new ArrayList<Boolean>();
 		PreferenceQuestion preferenceQuestion;
@@ -95,6 +108,12 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return true;
 	}
 	
+	/**
+	 * Finds the preference that maps to user's input answer. Calls recordScore() to score it
+	 * @param answer
+	 * @param preferenceQuestion
+	 * @return false if @param answer from user less than 1/ @param preferenceQuestion is null
+	 */
 	public Boolean scoreQuestion(int answer, PreferenceQuestion preferenceQuestion) {
 		if (answer < 1 || preferenceQuestion == null) {
 			return false;
@@ -102,10 +121,14 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		--answer; // Answers are 1-based in UI. Decrement to get 0-based
 		ArrayList<String> answerPreferences = preferenceQuestion.getAnswerPreferences();
 		Preference answerPreference = Preference.toPreference(answerPreferences.get(answer));
-		recordScore(answerPreference);
-		return true;
+		return recordScore(answerPreference);
 	}
 	
+	/**
+	 * Increment score of @param answerPreference
+	 * @param answerPreference
+	 * @return false if answerPreference = null, else true
+	 */
 	public Boolean recordScore(Preference answerPreference) {
 		if (answerPreference == null) {
 			return false;
@@ -116,6 +139,10 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return true;
 	}
 	
+	/**
+	 * Compare scores in scoreboard. 
+	 * @return Preference mapped to score with the max value will be returned
+	 */
 	private Preference getTopPreference() {
 		int maxScore = 0;
 		Preference topPreference = null;
@@ -128,6 +155,7 @@ public class QuizSetupPreferenceStrategy implements ISetupPreferenceStrategy {
 		return topPreference;
 	}
 	
+// Setters & Getters
 	private Boolean setView(SetupPreferenceView view) {
 		if(view == null) {
 			return false;
