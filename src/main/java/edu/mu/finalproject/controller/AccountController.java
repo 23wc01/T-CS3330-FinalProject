@@ -277,11 +277,11 @@ public class AccountController {
 	 */
 	public int changeUsername(String newUsername, String oldUsername) {
 		// Check if desired username is already taken.
-		if (isUsernameTaken(newUsername)) {
-			return -1;
-		}
 		if (newUsername.equals(oldUsername)) {
 			return -2;
+		}
+		if (isUsernameTaken(newUsername)) {
+			return -1;
 		}
 		// Find the correct account and change its username. 
 		for (Account account : accounts) {

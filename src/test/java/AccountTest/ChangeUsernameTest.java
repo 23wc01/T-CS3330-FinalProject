@@ -10,10 +10,29 @@ import org.junit.Test;
 import edu.mu.finalproject.model.Account;
 import edu.mu.finalproject.controller.AccountController;
 
-class ChangeUsernameTest {
+public class ChangeUsernameTest {
 
 	private AccountController accountController = new AccountController();
 	private List<Account> accounts = new ArrayList<Account>();
+	
+	// This is the same method as in AccountController but without saveChanges() so the file and AccountSingleton are not affected. 
+	public int changeUsername(String newUsername, String oldUsername) {
+		// Check if desired username is already taken.
+		if (newUsername.equals(oldUsername)) {
+			return -2;
+		}
+		if (accountController.isUsernameTaken(newUsername)) {
+			return -1;
+		}
+		// Find the correct account and change its username. 
+		for (Account account : accounts) {
+			if (account.getUsername().equals(oldUsername)) {
+				account.setUsername(newUsername);
+				return 0;
+			}
+		}
+		return 1;
+	}
 	
 	@Before
     public void setUp() {
@@ -30,22 +49,22 @@ class ChangeUsernameTest {
 	
 	@Test
 	public void testValidChange() {
-		assertEquals(0, accountController.changeUsername("Markiplier", "Alyssa"));
+		assertEquals(0, changeUsername("Markiplier", "Alyssa"));
 	}
 	
 	@Test
 	public void testAccountDoesNotExist() {
-		assertEquals(1, accountController.changeUsername("Markiplier", "Brooke"));
+		assertEquals(1, changeUsername("Markiplier", "Brooke"));
 	}
 	
 	@Test
 	public void testNewUsernameSameAsOld() {
-		assertEquals(-2, accountController.changeUsername("Alyssa", "Alyssa"));
+		assertEquals(-2, changeUsername("Alyssa", "Alyssa"));
 	}
 	
 	@Test
 	public void testNewUsernameTaken() {
-		assertEquals(-1, accountController.changeUsername("Evie", "Alyssa"));
+		assertEquals(-1, changeUsername("Evie", "Alyssa"));
 	}
 
 }
