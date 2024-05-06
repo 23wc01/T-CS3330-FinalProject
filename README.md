@@ -34,8 +34,8 @@ Once a command is received from the console, the switch statement in UserInterfa
   **Description:**  This feature allows logged in users to change their account username or password.<br>
   **Package:** edu.mu.finalproject.controller<br>
   **Class:** AccountController<br>
-  ** Username Method:** public int changeUsername(String newUsername, oldUsername);<br>
-  ** Password Method:** public int changePassword(String username, String oldPassword, String newPassword);
+  **Username Method:** public int changeUsername(String newUsername, oldUsername);<br>
+  **Password Method:** public int changePassword(String username, String oldPassword, String newPassword);
 
 ### Follow Other Users
   **Description:** This feature allows users in the system to follow other users.<br>
