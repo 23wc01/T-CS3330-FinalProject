@@ -48,7 +48,6 @@ class HtmlBuilderTest {
 		ArrayList<String> modelFields = new ArrayList<String>();
 		modelFields.add("test data");
 		assertTrue(accountHtmlBuilder.setReplaceHtml(modelFields));
-		se
 		assertFalse(accountHtmlBuilder.setReplaceHtml(null));
 	}
 	@Test 
@@ -61,7 +60,15 @@ class HtmlBuilderTest {
 	}
 	@Test
 	void testSetHtmlMapModelFields() {
-		assertEquals(null, htmlDirector.constructAccountHtml(new Account(0, null, null)));
+		String html = "null<div class=\"userInfo\">"
+				+ "\n<h1 class=\"glow\">Anonymous 's playlist</h1>\n"
+				+ "</div>\n"
+				+ "</div>\n"
+				+ "\n"
+				+ "<div class=\"parallax\"></div>\n"
+				+ "</body>\n"
+				+ "</html>";
+		assertEquals(html, htmlDirector.constructAccountHtml(new Account(0, null, null)));
 		assertTrue(accountHtmlBuilder.setHtmlMapModelFields(new HashMap<String, String>()));
 		assertFalse(accountHtmlBuilder.setHtmlMapModelFields(null));
 

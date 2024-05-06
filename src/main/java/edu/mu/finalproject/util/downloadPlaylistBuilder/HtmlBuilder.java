@@ -109,7 +109,7 @@ public abstract class HtmlBuilder {
 	}	
 	
 	
-	// Getters & Setters
+// Getters & Setters
 	public String getTemplateFileLocation() {
 		return templateFileLocation;
 	}

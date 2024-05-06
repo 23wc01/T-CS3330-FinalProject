@@ -15,7 +15,7 @@ public class CatalogSingleton {
 
     private CatalogSingleton() {
     }
-    public ArrayList<MediaProduct> getMediaProductCollection() {
+    public static ArrayList<MediaProduct> getMediaProductCollection() {
 		return mediaProductCollection;
 	}
     public static boolean setMediaProductCollection(ArrayList<MediaProduct> mediaProductCollection) {

@@ -22,8 +22,12 @@ public class DownloadPlaylistView {
 			return false;
 		}
 	}
+	/**
+	 * Displays suggestion to user if the setup_preference wasn't done before 'download_recommended playlist' command
+	 * @return false to indicate error
+	 */
 	public Boolean displayMissingStepsError() {
-		System.err.println("Try 'login' and or 'setup_preference' first!");
+		System.err.println("Try 'setup_preference' first!");
 		return false;
 	}
 }

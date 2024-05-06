@@ -14,15 +14,19 @@ import org.apache.commons.text.similarity.*;
 	public class SearchComparator implements Comparator<MediaProduct> {
 	private final String queryString; 
 	
+	/**
+	 * Constructor will take queryName that can't be changed after SearchComparator created
+	 * @param queryName
+	 */
 	public SearchComparator(String queryName) {
 		this.queryString = queryName;
 	}
 	
-
-	/* This compares the FuzzyScore (case insensitive & 1 point added for each char matched) between 2 MediaObject's name and queryString. 
+	/**
+	 * This compares the FuzzyScore (case insensitive & 1 point added for each char matched) between 2 MediaObject's name and queryString. 
 	 * @param obj1
 	 * @param obj2
-	 * @return fuzzyScoresComparison (1 = obj2's name more similar to queryString than obj1's name)
+	 * @return fuzzyScoresComparison (1 = obj2's name more similar to queryString than obj1's name). -1 if error occurs
 	 */
 	@Override
 	public int compare(MediaProduct obj1, MediaProduct obj2) {
@@ -34,7 +38,6 @@ import org.apache.commons.text.similarity.*;
 		catch (Exception e) {
 			return -1;
 		}
-			
 	}
 
 }
