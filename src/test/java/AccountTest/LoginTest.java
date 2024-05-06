@@ -15,14 +15,16 @@ public class LoginTest {
 	private AccountController loginController = new AccountController();
     private List<Account> accounts = new ArrayList<Account>();
     private List<Account> nullAccountList = null;
+    private Account account1;
+    private Account account2;
     
     @Before
     public void setUp() {
         // Creates some accounts for testing and add them to the accounts List
     	String hashedPassword1 = loginController.hashPassword("Unicorn");
     	String hashedPassword2 = loginController.hashPassword("Dragon");
-        Account account1 = new Account(1, "Alyssa", hashedPassword1);
-        Account account2 = new Account(2, "Evie", hashedPassword2);
+        account1 = new Account(1, "Alyssa", hashedPassword1);
+        account2 = new Account(2, "Evie", hashedPassword2);
         accounts.add(account1);
         accounts.add(account2);
     	loginController.accounts = accounts;
@@ -31,9 +33,7 @@ public class LoginTest {
     
     @Test
     public void testValidLogin() {
-    	String validHashedPassword = loginController.hashPassword("Unicorn");
-        Account validAccount = new Account(1, "Alyssa", validHashedPassword);
-        assertEquals(validAccount, loginController.loginUser("Alyssa", "Unicorn"));
+        assertEquals(account1, loginController.loginUser("Alyssa", "Unicorn"));
     }
     
     @Test

@@ -137,8 +137,9 @@ public class AccountView {
         String successMessage = "Good news " + account.getUsername() + "! Your username has been changed.";
 		String failureMessage = "Could not update username. Please try again";
 		String specialMessage = "Could not change username. Desired username already taken.";
+		String specialMessage2 = "That is already your username! Try again";
 		
-        return displayResult(usernameChanged, successMessage, failureMessage, specialMessage, "");
+        return displayResult(usernameChanged, successMessage, failureMessage, specialMessage, specialMessage2);
 	}
 	
 	/**
@@ -158,8 +159,9 @@ public class AccountView {
 		
 		String successMessage = "Good news " + account.getUsername() + "! Your password has been changed.";
 		String failureMessage = "Could not change password. Please try again.";
+		String specialMessage = "Password same. Could not be changed.";
 		
-        return displayResult(passwordChanged, successMessage, failureMessage, "", "");
+        return displayResult(passwordChanged, successMessage, failureMessage, specialMessage, "");
 	}
 	
 	/** 

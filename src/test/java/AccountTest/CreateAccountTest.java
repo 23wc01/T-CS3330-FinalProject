@@ -17,6 +17,27 @@ public class CreateAccountTest {
     private Account account1;
     private Account account2;
     
+	// This is the same method as in AccountController but without saveChanges() so the file and AccountSingleton are not affected. 
+    public Account createAccount(String username, String password) {
+		// Check if the username already in use
+		if (accountController.isUsernameTaken(username) == true) {
+			return null;
+		}
+		
+		// Hash password before sending to account constructor
+		String hashedPassword = accountController.hashPassword(password);
+				
+		// Create an account object and add it to the accounts list
+		Account account = new Account(accountController.accountCounter, username, hashedPassword);
+		accountController.accountCounter++; 		
+		if (accountController.accounts == null) {
+			List<Account> accountInit = new ArrayList<Account>();
+			accountController.accounts = accountInit;
+		}
+		accountController.accounts.add(account);
+		return account;
+	}
+    
     @Before
     public void setUp() {
         // Initialize accounts for testing and add them to the accounts List
@@ -31,7 +52,7 @@ public class CreateAccountTest {
     
     @Test
     public void testValidInput() {
-    	Account newAccount = accountController.createAccount("Wen-Hsin", "Pheonix");
+    	Account newAccount = createAccount("Wen-Hsin", "Pheonix");
     	for (Account account : accountController.accounts) {
     		if (newAccount.getUsername().equals(account.getUsername())) {
     			assertEquals(newAccount, account);
@@ -41,7 +62,7 @@ public class CreateAccountTest {
     
     @Test
     public void testUsernameIsTaken() {
-    	assertNull(accountController.createAccount("Alyssa", "Cat"));
+    	assertNull(createAccount("Alyssa", "Cat"));
     }
 
 }

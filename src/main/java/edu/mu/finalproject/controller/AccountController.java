@@ -280,6 +280,9 @@ public class AccountController {
 		if (isUsernameTaken(newUsername)) {
 			return -1;
 		}
+		if (newUsername.equals(oldUsername)) {
+			return -2;
+		}
 		// Find the correct account and change its username. 
 		for (Account account : accounts) {
 			if (account.getUsername().equals(oldUsername)) {
@@ -300,6 +303,9 @@ public class AccountController {
 	 * @return 0 if the password is successfully changed, 1 if it is not.
 	 */
 	public int changePassword(String username, String oldPassword, String newPassword) {
+		if (oldPassword.equals(newPassword) ) {
+			return -1;
+		}
 		String hashedNewPassword = hashPassword(newPassword);
 		for (Account account : accounts) {
 			if (account.getUsername().equals(username) && account.getPassword().equals(oldPassword)) {
