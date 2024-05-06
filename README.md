@@ -22,8 +22,48 @@ Whatever you have in your individual feature document
 
 ## Thomas Quan features
 
-Whatever you have in your individual feature document
+Add Media Items
+Description: Adds a new media item to the media catalog.
+Package: edu.mu.finalproject.controller
+Class: MediaCatalogController
+Method: public static boolean addMedia(MediaProduct mediaProduct)
+Helper methods:
+public static Boolean addMedia(MediaProduct mediaProduct) {
 
+Delete Media Items
+Description: Deletes a media item from the media catalog by index.
+Package: edu.mu.finalproject.controller
+Class: MediaCatalogController
+Method: public static boolean deleteMedia(int index)
+Helper methods:
+public static Boolean deleteMedia(int id) 
+
+Display All Media Items
+Description: Displays all media items currently stored in the media catalog.
+Package: edu.mu.finalproject.controller
+Class: MediaCatalogController
+Method: public static Boolean displayAll()
+Helper methods:
+public static Boolean displayAll() 
+
+Display Shuffle Media Items
+Description: Displays all media items in a shuffled order, providing a randomized view of the media catalog.
+Package: edu.mu.finalproject.controller
+Class: MediaCatalogController
+Method: public static Boolean displayShuffle()
+Helper methods:
+public static Boolean displayShuffle() {
+
+
+Create Catalog File
+Description: Creates a file containing all media items, allowing the user to export their media catalog.
+Package: edu.mu.finalproject.controller
+Class: MediaCatalogController
+Method: public Boolean saveCatalogToFile(String filename)
+Helper methods:
+
+private String formatMediaForFile(MediaProduct mediaProduct): Formats a single media item for file writing.
+public Boolean loadMediaFromFiles(List<? extends MediaProduct> products) {
 ## Evie Wilbur features
 
 Mark Something As Favorite
