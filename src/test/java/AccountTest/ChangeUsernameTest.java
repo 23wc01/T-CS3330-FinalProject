@@ -44,7 +44,6 @@ public class ChangeUsernameTest {
         accounts.add(account1);
         accounts.add(account2);
         accountController.accounts = accounts;
-
     }
 	
 	@Test
