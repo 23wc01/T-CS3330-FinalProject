@@ -7,6 +7,7 @@ import edu.mu.finalproject.model.Playlist;
 import edu.mu.finalproject.model.Song;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -46,12 +47,15 @@ public class MediaCatalogController {
         return true;
     }
 
-    public Boolean displayShuffle() {
-    	if (catalogSingleton_Collection == null) {
-    		return false;
-    	}
-    	//catalogSingleton_Collection.displayShuffle();
-    	return true;
+    public static Boolean displayShuffle() {
+        if (catalogSingleton_Collection == null) {
+            return false;
+        }
+        Collections.shuffle(catalogSingleton_Collection);
+        for (MediaProduct mediaProduct : catalogSingleton_Collection) {
+            System.out.println(mediaProduct);
+        }
+        return true;
     }
 
     public Boolean loadMediaFromFiles(List<? extends MediaProduct> products) {
