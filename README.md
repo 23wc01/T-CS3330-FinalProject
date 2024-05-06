@@ -18,7 +18,38 @@ Once a command is received from the console, the switch statement in UserInterfa
 
 ## Alyssa Schaefer features
 
-Whatever you have in your individual feature document
+### Login System
+  **Description:**  This feature takes a given username and password and checks if there is an account stored in the system that matches these parameters. If so, it returns the Account object and logs the user in.<br>
+  **Package:** edu.mu.finalproject.controller<br>
+  **Class:** AccountController<br>
+  **Method:** public Account loginUser(String username, String password);
+
+### Account Creation
+  **Description:**  This feature takes a given username and password and uses them to create a new Account object. It then saves this in the system and logs the user in if the creation is successful.<br>
+  **Package:** edu.mu.finalproject.controller<br>
+  **Class:** AccountController<br>
+  **Method:** public Account createAccount(String username, String password);
+
+### Editing Account Information
+  **Description:**  This feature allows logged in users to change their account username or password.<br>
+  **Package:** edu.mu.finalproject.controller<br>
+  **Class:** AccountController<br>
+  **Username Method:** public int changeUsername(String newUsername, oldUsername);<br>
+  **Password Method:** public int changePassword(String username, String oldPassword, String newPassword);
+
+### Follow Other Users
+  **Description:** This feature allows users in the system to follow other users.<br>
+  **Package:** edu.mu.finalproject.controller<br>
+  **Class:** AccountController<br>
+  **Method:** public int followUser(String username, String userToFollow);
+
+### Save Songs and Playlists to Account
+  **Description:**  This feature allows users to save the names of a song or playlist in the system to the their account.<br>
+  **Package:** edu.mu.finalproject.controller<br>
+  **Class:** AccountController<br>
+  **Song Method:** public int saveSong(String song, String username);<br>
+  **Playlist Method:** public int savePlaylist(String playlist, String username);
+
 
 ## Thomas Quan features
 
