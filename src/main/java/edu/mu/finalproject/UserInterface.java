@@ -26,7 +26,6 @@ public class UserInterface {
 	public static CatalogSingleton TheCatalogSingleton;
 	private static Account account;
 	public static AccountSingleton TheAccountManager;
-	//public static CatalogSingleton CatalogSingleton;
 	private static MediaCatalogController mediaCatalogController = new MediaCatalogController();
 
 	
@@ -45,8 +44,9 @@ public class UserInterface {
 	 * 
 	 */
 	public UserInterface() {
-		TheEventManager = EventSingleton.getInstance(); //Create an instance of EventManager
-		TheCatalogSingleton = TheCatalogSingleton.getInstance();
+		//Create an instance of EventSingleton and CatalogSingleton
+		TheEventManager = EventSingleton.getInstance(); 
+		TheCatalogSingleton = CatalogSingleton.getInstance(); 
 	}
 	
 	/**
@@ -56,11 +56,11 @@ public class UserInterface {
 	 */
 	public void start() {
 		
+		//Read files
 		EventSingleton.setEventCollection(EventFileReader.readEvents(null)); 
 		MediaFileReader.readSongs();
 		mediaCatalogController.loadMediaFromFiles(MediaFileReader.readPlaylists());
 
-		//Read any other files here
 		
 		run();
 	}
@@ -72,6 +72,7 @@ public class UserInterface {
 	 */
 	public void run() {
 		
+		// Login
 		UserInterface.setAccount(null);
 		Scanner scanner = new Scanner(System.in);
 		String loginChoice;
@@ -91,6 +92,7 @@ public class UserInterface {
 		} while (UserInterface.getAccount() == null);
 		
 		
+		// Main functionalities accessed after successful login
 		System.out.println("Welcome to Media Tracker! Type your command, or type \"menu\" to see options.");
 	    String userInput;
 		
@@ -157,8 +159,7 @@ public class UserInterface {
  				break; 
   			case DOWNLOAD_RECOMMENDED_PLAYLIST:
   				UIExecutionMethods.executeDownloadRecommendedPlaylist(); 
-  				break;              
-  	    // Add case for catalog	
+  				break;              	
   			case DISPLAY_ALL:
   				UIExecutionMethods.executeDisplayAll();
   				break;
@@ -176,7 +177,7 @@ public class UserInterface {
                 break;
 	        }
 	    }
-	    scanner.close();
+	    scanner.close(); 
 	   
 	
 	}
@@ -186,7 +187,6 @@ public class UserInterface {
 	 * Helper for getting command in enum form to use in the switch case
 	 * @param none
 	 * @return Ecommands Command to be used in switch case
-	 * @author etwil
 	 */
 	private ECommands getCommand(String userInput) {
 		try { // Try to test with spaces such as user input "TEST CATALOG"

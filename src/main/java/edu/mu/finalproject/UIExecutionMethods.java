@@ -29,7 +29,7 @@ import java.util.Scanner;
  * It is part of the Mediator Design Pattern.
  */
 public class UIExecutionMethods {
-	//Instances here
+	//Instances 
 	private static EventView eventview = new EventView();
 	private static FavoritesView favoritesview = new FavoritesView();
 	private static AccountView accountview = new AccountView();
@@ -70,7 +70,7 @@ public class UIExecutionMethods {
 		}
 	
 		public static void executeDisplayFavorites() {
-			favoritesview.getFavInfo(CatalogSingleton.getInstance().getMediaProductCollection()); //!!!!ADD REAL CATALOG HERE
+			favoritesview.getFavInfo(CatalogSingleton.getMediaProductCollection()); 
 		} 
 	
 		public static void executeDisplayAll()
@@ -120,7 +120,7 @@ public class UIExecutionMethods {
 		public static void executeFavorite() {
 		    String userQuery = FindObjectView.getInformationFromUser();
 		
-			MediaProduct objectToBeFavorited = findobjectcontroller.searchMediaCatalog(CatalogSingleton.getInstance().getMediaProductCollection(), userQuery); //!!! Add real catalog here!
+			MediaProduct objectToBeFavorited = findobjectcontroller.searchMediaCatalog(CatalogSingleton.getMediaProductCollection(), userQuery); //!!! Add real catalog here!
 			favoritesview.displayFavoriteResult(objectToBeFavorited);														
 		}
 		
@@ -188,7 +188,7 @@ public class UIExecutionMethods {
 
 }
 
-/*Instructions for use: This file connects the input recieved to the methods you want to call
+/*Instructions for use: This file connects the input received to the methods you want to call
 * Use the template to make a new entry
 * 
 * Template: 

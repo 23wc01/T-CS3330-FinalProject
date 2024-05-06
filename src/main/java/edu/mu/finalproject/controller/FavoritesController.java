@@ -44,7 +44,7 @@ public class FavoritesController {
 		//To get certain types of favorited
 		else {
 			for (MediaProduct media : catalog) { 
-				if (media.getClass() == type) { //Use .getClass() not instanceOf because we don't want to count subclasses
+				if (media.getClass() == type) { 
 					if (media.getIsFavorited()) {
 						favorites.add(media);
 					}
@@ -71,10 +71,10 @@ public class FavoritesController {
 	
 		boolean result = objectToBeFavorited.toggleFavorite();
 
-		if (result == true) {
+		if (result == true) { // favorited
 			return 1;
 		}
-		else {
+		else { // un-favorited
 			return -1;
 		}
 	}

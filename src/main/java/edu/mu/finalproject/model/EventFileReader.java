@@ -115,7 +115,7 @@ public class EventFileReader {
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
 				
-				//if not the same event, then add it back to the file
+				// If not the same event, then add it back to the file
 				if(!(jsonObject.getString("eventMonthDay").equals(monthDate.toString().replace("--", "")) 
 				   && jsonObject.getString("eventYear").equals(year.toString())
 				   && jsonObject.getString("artistName").equals(artistName)))
@@ -124,7 +124,7 @@ public class EventFileReader {
 				}
 			}
 			
-			//Write new array to the file
+			// Write new array to the file
 			Files.write(Paths.get(path), updatedJsonArray.toString(4).getBytes());
 			return 1;
 		}
